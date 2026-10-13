@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="A bilingual (English / 简体中文) comic in 13 episodes: Leo and his robot Bit explore computers, data, AI, large language models and agents.">
-<meta property="og:title" content="Leo &amp; Bit's AI Adventure">
-<meta property="og:description" content="A bilingual (English / 简体中文) comic in 13 episodes: Leo and his robot Bit explore computers, data, AI, large language models and agents.">
+<meta name="description" content="Bilingual (English / 简体中文) comic series for 13-year-olds: Leo and his robot Bit explore AI, math, physics, chemistry and engineering, linked to the 7th-grade curriculum.">
+<meta property="og:title" content="Leo &amp; Bit Comics">
+<meta property="og:description" content="Bilingual (English / 简体中文) comic series for 13-year-olds: Leo and his robot Bit explore AI, math, physics, chemistry and engineering, linked to the 7th-grade curriculum.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='14' width='48' height='40' rx='14' fill='%2322B8A7' stroke='%2317182B' stroke-width='4'/%3E%3Crect x='16' y='22' width='32' height='20' rx='7' fill='%2313213C'/%3E%3Ccircle cx='26' cy='32' r='4' fill='%237DF9FF'/%3E%3Ccircle cx='38' cy='32' r='4' fill='%237DF9FF'/%3E%3Cline x1='32' y1='14' x2='32' y2='6' stroke='%2317182B' stroke-width='4'/%3E%3Ccircle cx='32' cy='6' r='4' fill='%23FFD84D'/%3E%3C/svg%3E">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3RUfic9N09KpuCzN",ck:"3RUfic9N09KpuCzN"})</script>
+
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Leo &amp; Bit's AI Adventure</title>
+<title>Leo &amp; Bit Comics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Luckiest+Guy&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700&display=swap">
@@ -126,6 +129,31 @@ body{background:var(--page) radial-gradient(var(--dot) 1.1px,transparent 1.4px) 
 .foot{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;font-weight:700}
 .foot .zh{font-weight:500}
 
+
+/* series tabs */
+.series{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.sr-btn{font:inherit;text-align:left;cursor:pointer;background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:0;color:var(--ink);min-width:0;display:flex;flex-direction:column;transition:transform .12s}
+.sr-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.sr-btn .band{display:flex;align-items:center;gap:8px;background:var(--c);padding:7px 10px;border-bottom:3px solid var(--ink)}
+.sr-btn .band svg{width:26px;height:26px;flex:none}
+.sr-btn .band b{font-family:var(--f-display);font-weight:400;font-size:19px;color:#fff;-webkit-text-stroke:1px var(--ink);paint-order:stroke fill;letter-spacing:.5px;line-height:1.05}
+.sr-btn .band b .zh{font-family:var(--f-zhd);-webkit-text-stroke:0;font-size:15px}
+.sr-btn .meta{padding:8px 10px 10px;font-size:13px;font-weight:700;line-height:1.35}
+.sr-btn .meta .zh{font-weight:500;color:var(--zh);font-size:12.5px}
+.sr-btn .cnt{display:inline-block;margin-top:6px;font-size:11.5px;background:var(--page);border:2px solid var(--ink);border-radius:999px;padding:1px 8px}
+.sr-btn[aria-current="true"]{outline:4px solid var(--cap);outline-offset:-1px}
+.sr-btn[aria-current="true"] .meta{background:#FFF6CC}
+.ep-btn .num{background:var(--sc,var(--page))}
+.ep-no{background:var(--sc,var(--ink))}
+.grade{margin:-4px 0 0;font-size:13.5px;font-weight:700;color:var(--muted)}
+.grade .zh{font-weight:500}
+.map{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.map th,.map td{border-bottom:2px dotted #C8D0E0;padding:9px 12px;text-align:left;vertical-align:top}
+.map th{background:var(--ink);color:#fff;font-weight:700}
+.map td:first-child{font-weight:700;white-space:nowrap}
+.map .zh{color:var(--zh);font-weight:500}
+.map-wrap{overflow-x:auto}
+
 @media (max-width:820px){.cast{grid-template-columns:1fr}.after{grid-template-columns:1fr}}
 @media (max-width:700px){.grid{grid-template-columns:1fr}.mast{grid-template-columns:1fr}.mast-art{display:none}.b{font-size:15px}.term{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.ep-btn{transition:none}}
@@ -135,9 +163,13 @@ body{background:var(--page) radial-gradient(var(--dot) 1.1px,transparent 1.4px) 
 <div class="wrap" id="app"></div>
 
 <script>
-// ===== Script: 13 episodes, 6 panels each. cast: [who, x, expression, pose, opts] =====
 const T=(en,zh)=>({en,zh});
-const EPISODES=[
+const SERIES=[];
+// ===== Script: 13 episodes, 6 panels each. cast: [who, x, expression, pose, opts] =====
+SERIES.push({id:'ai',icon:'chip',color:'#22B8A7',t:T("AI & Computers","AI与计算机"),
+ desc:T("How computers work, from 0s and 1s to machine learning, large language models and AI agents.","计算机如何工作：从0和1，到机器学习、大语言模型和AI智能体。"),
+ grade:T("Links to information technology in grades 7–9","对应七至九年级信息科技"),
+ episodes:[
 // ---------- 1 ----------
 {t:T("Meet Bit","遇见比特"),topic:T("What is a computer?","计算机是什么？"),
 panels:[
@@ -406,7 +438,7 @@ panels:[
  say:[['leo',"How many weights do big models have?","大模型有多少个权重？"],
       ['bit',"Billions, sometimes far more! Weights are also called parameters.","几十亿个，有的还多得多！权重也叫“参数”。"]]},
 {bg:'cyber',cast:[['leo',125,'dizzy','idle'],['bit',285,'happy','wave']],fx:[['stars','leo']],
- say:[['leo',"My brain hurts.","我的脑袋要炸了。"],
+ say:[['leo',"My brain hurts.","我的脑子要转晕了。"],
       ['bit',"Relax! Your brain has about 86 billion real neurons. It can handle this.","放松！你的大脑里有大约860亿个真正的神经元，完全搞得定。"]]}
 ],
 terms:[["Neural network","神经网络","Layers of simple math 'neurons' connected together, loosely inspired by the brain.","由一层层简单的数学“神经元”连接而成，灵感来自大脑。"],
@@ -534,7 +566,752 @@ terms:[["Accuracy","准确率","The share of answers a model gets right on test 
  ["Iteration","迭代","Improving in rounds: build, test, learn, repeat.","一轮一轮地改进：做出来、测试、总结、再来。"],
  ["Responsible AI","负责任的AI","Being honest about what AI can't do, and protecting the people who use it.","如实说明AI做不到什么，并保护使用它的人。"]],
 tryIt:T("Your turn: pick a problem at home or at school. Could data, an algorithm or AI help? Sketch your own science fair project on one page.","轮到你了：在家里或学校找一个问题。数据、算法或AI能帮上忙吗？用一页纸画出你自己的科学节项目。")}
-];
+]});
+
+// ===== Math Detectives: Shanghai 7th-grade math (沪教版 五·四学制) =====
+SERIES.push({id:'math',icon:'calc',color:'#2F6FD6',t:T("Math Detectives","数学侦探"),
+ desc:T("Expressions, factorising, algebraic fractions, real numbers, parallel lines, triangles and coordinates.","整式、因式分解、分式、实数、相交线与平行线、三角形和平面直角坐标系。"),
+ grade:T("Matches Shanghai 7th-grade math, term 1 and term 2","对应上海七年级数学第一、第二学期"),
+ episodes:[
+// ---------- M1 ----------
+{t:T("Letters That Hide Numbers","藏着数字的字母"),topic:T("Algebraic expressions and like terms","整式的加减"),
+panels:[
+{bg:'class',cast:[['leo',85,'think','think'],['mia',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"Math class. Ms. Wang writes 3a + 2b + 4a on the board.","数学课上，王老师在黑板上写下 3a + 2b + 4a。"],
+      ['leo',"Why are there letters in math? I thought math was about numbers!","数学里怎么有字母？我以为数学只跟数字打交道！"],
+      ['bit',"A letter is a box that can hold any number. You met it in coding: a variable!","字母就像一个可以装任何数的盒子。你学编程时见过它：变量！"]]},
+{bg:'class',holo:{t:'big',title:T("Like terms","同类项"),rows:[{s:'3a + 2b + 4a',size:18,mono:true},{s:'= (3 + 4)a + 2b',size:14,mono:true},{s:'= 7a + 2b',size:20,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Terms with the same letters are like terms. Add their numbers and keep the letters.","字母部分相同的项叫同类项。把系数相加，字母部分不变。"]]},
+{bg:'class',holo:{t:'cards',cols:3,title:T("Apples and oranges","苹果和橙子"),items:[{p:'apple',l:'3a'},{p:'apple',l:'4a'},{p:'orange',l:'2b'}],foot:T("3a + 4a = 7a, but 7a + 2b stays as it is","3a + 4a = 7a，但 7a + 2b 不能再合并")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"Like adding apples to apples. But apples and oranges can't be combined!","就像苹果加苹果。可苹果和橙子没法合并！"]]},
+{bg:'class',holo:{t:'big',title:T("Watch the signs","注意符号"),rows:[{s:'5x − (2x − 3)',size:16,mono:true},{s:'= 5x − 2x + 3',size:14,mono:true},{s:'= 3x + 3',size:18,mono:true,fill:'#C2416B'},{s:T("A minus sign before brackets flips every sign inside","括号前是减号，去括号时括号里每一项都变号"),size:10}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"Wait, why did −3 become +3?","等等，−3 怎么变成 +3 了？"],
+      ['bit',"Taking away a debt is like getting money back!","减去一笔欠款，就等于拿回了钱！"]]},
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'think','think'],['bit',322,'wink','idle']],
+ say:[['leo',"Mia, think of a number. Double it, add 6, halve it, then take away the number you first thought of.","米娅，心里想一个数。乘以2，加6，再除以2，最后减去你一开始想的数。"],
+      ['mia',"...Done.","……好了。"],
+      ['leo',"You got 3!","你得到的是3！"]]},
+{bg:'class',holo:{t:'big',title:T("Why the trick works","魔术的秘密"),rows:[{s:'n → 2n → 2n + 6',size:14,mono:true},{s:'→ n + 3 → 3',size:16,mono:true},{s:T("Algebra proves it works for EVERY number","代数证明它对“每一个”数都成立"),size:11,fill:'#C2416B'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'happy','present']],fx:[['!','mia']],
+ say:[['bit',"Algebra lets you prove something for every number at once. That's its superpower.","代数能一次性证明对所有数都成立的结论。这就是它的超能力。"]]}
+],
+terms:[["Variable","字母（变量）","A letter that stands for a number.","代表数的字母。"],
+ ["Like terms","同类项","Terms with exactly the same letters and powers, such as 3a and 4a.","所含字母相同、相同字母的指数也相同的项，比如3a和4a。"],
+ ["Coefficient","系数","The number in front of the letters: in 7a it is 7.","字母前面的数，7a的系数是7。"]],
+tryIt:T("Invent your own 'think of a number' trick, then use algebra to check that it always works. Try it on your family!","自己发明一个“心里想一个数”的魔术，用代数验证它总是成立，再拿家人试一试！")},
+
+// ---------- M2 ----------
+{t:T("The Area Trick","面积的魔法"),topic:T("Multiplying expressions","整式的乘除"),
+panels:[
+{bg:'class',cast:[['leo',110,'worried','think'],['bit',290,'talk','wave']],fx:[['?','leo']],
+ say:[['leo',"Ms. Wang says (a + b)² is NOT a² + b². Why not?","王老师说 (a + b)² 不等于 a² + b²。为什么？"],
+      ['bit',"Let's draw it. Multiplying is really finding an area!","我们画出来看看。乘法其实就是求面积！"]]},
+{bg:'class',holo:{t:'area',title:T("(a + b)² as a picture","把 (a + b)² 画出来"),foot:'(a + b)² = a² + 2ab + b²'},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A square with side a + b splits into four pieces: a², b², and TWO ab rectangles.","边长为 a + b 的正方形可以分成四块：a²、b²，还有“两个” ab 长方形。"],
+      ['leo',"So the 2ab was hiding in the corners!","原来 2ab 藏在角落里！"]]},
+{bg:'class',holo:{t:'big',title:T("Multiply every term","逐项相乘"),rows:[{s:'(x + 2)(x + 5)',size:16,mono:true},{s:'= x² + 5x + 2x + 10',size:13,mono:true},{s:'= x² + 7x + 10',size:17,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Every term in the first bracket multiplies every term in the second. Then collect like terms.","第一个括号里的每一项都要乘第二个括号里的每一项，再合并同类项。"]]},
+{bg:'class',cast:[['mia',80,'smirk','point'],['leo',195,'surprised','idle'],['bit',322,'wink','idle']],
+ say:[['mia',"Quick: what is 21 × 19?","快算：21 × 19 等于多少？"],
+      ['leo',"Um... let me get a calculator...","呃……我去拿计算器……"],
+      ['mia',"399. Done!","399。算完了！"]]},
+{bg:'class',holo:{t:'big',title:T("Difference of squares","平方差公式"),rows:[{s:'(a + b)(a − b) = a² − b²',size:12,mono:true},{s:'21 × 19 = (20 + 1)(20 − 1)',size:12,mono:true},{s:'= 400 − 1 = 399',size:17,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Mia used the difference of squares: (a + b)(a − b) = a² − b².","米娅用了平方差公式：(a + b)(a − b) = a² − b²。"]]},
+{bg:'class',holo:{t:'big',title:T("Rules for powers","幂的运算"),rows:[{s:'a² · a³ = a⁵',size:17,mono:true},{s:'a⁶ ÷ a² = a⁴',size:17,mono:true},{s:T("Same base: add the powers to multiply, subtract to divide","同底数幂：相乘指数相加，相除指数相减"),size:10.5,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['leo',"a·a times a·a·a is five a's multiplied together. Makes sense!","a·a 乘 a·a·a 就是五个 a 相乘。说得通！"]]}
+],
+terms:[["Expanding","展开","Multiplying out the brackets.","把括号乘开。"],
+ ["Square of a sum","完全平方公式","(a + b)² = a² + 2ab + b²","(a + b)² = a² + 2ab + b²"],
+ ["Difference of squares","平方差公式","(a + b)(a − b) = a² − b²","(a + b)(a − b) = a² − b²"],
+ ["Power","幂","aⁿ means n copies of a multiplied together.","aⁿ 表示 n 个 a 相乘。"]],
+tryIt:T("Use the difference of squares to work out 31 × 29, 52 × 48 and 105 × 95 in your head. Then check with a calculator.","用平方差公式心算 31 × 29、52 × 48 和 105 × 95，再用计算器验算。")},
+
+// ---------- M3 ----------
+{t:T("Packing It Back Up","打包还原"),topic:T("Factorising","因式分解"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'talk','wave']],
+ say:[['bit',"Expanding is like unpacking a box. Factorising is packing it back up.","展开就像拆箱子，因式分解就是把东西装回去。"],
+      ['leo',"So I turn a sum back into a product?","也就是把加法式子变回乘法式子？"]]},
+{bg:'room',holo:{t:'big',title:T("Take out a common factor","提公因式"),rows:[{s:'6x + 9',size:20,mono:true},{s:'= 3(2x + 3)',size:20,mono:true,fill:'#C2416B'},{s:T("3 goes into both terms","3 是两项的公因数"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"First, look for something every term shares and pull it out in front.","先找每一项都有的公因式，把它提到括号外面。"]]},
+{bg:'room',holo:{t:'tiles',p:2,q:3,title:T("Tiles make a rectangle","拼成长方形"),foot:'x² + 5x + 6 = (x + 2)(x + 3)'},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"One big x² tile, five x strips and six small squares. Arrange them into a rectangle...","一块 x² 大方块、五根 x 长条、六个小方块，把它们拼成长方形……"],
+      ['leo',"...and the sides are x + 2 and x + 3!","……边长就是 x + 2 和 x + 3！"]]},
+{bg:'class',holo:{t:'big',title:T("The number hunt","找数字"),rows:[{s:'x² + 7x + 12',size:16,mono:true},{s:T("Two numbers: product 12, sum 7","找两个数：积是12，和是7"),size:11},{s:'3 × 4 = 12,  3 + 4 = 7',size:12,mono:true},{s:'= (x + 3)(x + 4)',size:16,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"It's a puzzle! Which two numbers multiply to 12 and add to 7?","这是个谜题！哪两个数相乘得12、相加得7？"]]},
+{bg:'class',holo:{t:'big',title:T("Use a formula backwards","公式倒着用"),rows:[{s:'x² − 25',size:20,mono:true},{s:'= (x + 5)(x − 5)',size:18,mono:true,fill:'#C2416B'},{s:T("The difference of squares, in reverse","平方差公式，倒过来用"),size:11}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"It's Mia's speed trick in reverse!","这就是米娅的速算技巧倒过来！"]]},
+{bg:'class',cast:[['mia',85,'happy','idle'],['leo',200,'grin','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"Factorising turns hard problems into easy ones. You'll use it to solve equations and simplify fractions.","因式分解能把难题变简单。以后解方程、化简分式都会用到它。"],
+      ['mia',"So next is fractions with letters?","所以下一课是带字母的分数？"],
+      ['bit',"Exactly!","没错！"]]}
+],
+terms:[["Factorising","因式分解","Writing a sum as a product of factors.","把一个多项式写成几个整式乘积的形式。"],
+ ["Common factor","公因式","A factor that every term shares.","各项都含有的因式。"],
+ ["Check by expanding","展开检验","Multiply your answer back out. You should get the original expression.","把结果乘开，应该得到原式。"]],
+tryIt:T("Cut paper tiles (1 big square, some strips, some small squares) and try to build rectangles for x² + 5x + 6 and x² + 6x + 8.","用纸剪出大方块、长条和小方块，试着为 x² + 5x + 6 和 x² + 6x + 8 拼出长方形。")},
+
+// ---------- M4 ----------
+{t:T("Fractions with Letters","带字母的分数"),topic:T("Algebraic fractions","分式"),
+panels:[
+{bg:'class',cast:[['leo',85,'think','think'],['mia',200,'talk','point'],['bit',322,'happy','idle']],
+ say:[['mia',"The bus for our class trip costs ¥600. If n students go, how much does each pay?","我们班出游包车要600元。如果有 n 个同学去，每人付多少？"],
+      ['leo',"600 ÷ n... so 600/n yuan!","600 ÷ n……所以是 600/n 元！"]]},
+{bg:'class',holo:{t:'big',title:T("An algebraic fraction","分式"),rows:[{s:'600 / n',size:24,mono:true,fill:'#C2416B'},{s:T("n = 40 → ¥15 each","n = 40 → 每人15元"),size:12},{s:T("n = 50 → ¥12 each","n = 50 → 每人12元"),size:12}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"A fraction with a letter on the bottom is an algebraic fraction. More students, smaller share!","分母里含有字母的式子叫分式。人越多，每人分摊得越少！"]]},
+{bg:'class',holo:{t:'code',title:T("What if n = 0?","如果 n = 0 呢？"),lines:['print(600 / 0)'],out:['ZeroDivisionError:','division by zero'],err:true},
+ cast:[['leo',54,'grin','point'],['bit',356,'error','present']],
+ say:[['leo',"What if nobody goes? n = 0!","要是没人去呢？n = 0！"],
+      ['bit',"ERROR! You can never divide by zero. So in 600/n, n can't be 0.","错误！除数永远不能是0。所以在 600/n 里，n 不能等于0。"]]},
+{bg:'class',holo:{t:'big',title:T("Simplifying","约分"),rows:[{s:'(x² − 9) / (x + 3)',size:13,mono:true},{s:'= (x+3)(x−3) / (x+3)',size:12,mono:true},{s:'= x − 3',size:19,mono:true,fill:'#C2416B'},{s:T("(x ≠ −3)","（x ≠ −3）"),size:10.5}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Factorise, then cancel the common factor, just like 6/9 = 2/3.","先因式分解，再约去公因式，就像 6/9 = 2/3 一样。"],
+      ['mia',"So factorising really was useful!","原来因式分解真有用！"]]},
+{bg:'class',holo:{t:'big',title:T("Speed problems","行程问题"),rows:[{s:T("Time = distance ÷ speed","时间 = 路程 ÷ 速度"),size:12},{s:'t = 12 / v',size:19,mono:true,fill:'#C2416B'},{s:T("Cycling at 12 km/h → 1 hour","骑车每小时12千米 → 1小时"),size:11},{s:T("Walking at 4 km/h → 3 hours","步行每小时4千米 → 3小时"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Algebraic fractions show up everywhere: speed, sharing costs, price per item.","分式无处不在：速度、平均分摊、单价……"]]},
+{bg:'class',cast:[['leo',115,'happy','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So an algebraic fraction is a fraction that can change. And the bottom can never be zero.","所以分式就是会变化的分数，而且分母永远不能为零。"],
+      ['bit',"Perfect summary!","总结得太好了！"]]}
+],
+terms:[["Algebraic fraction","分式","A fraction with a letter in the denominator, like 600/n.","分母中含有字母的式子，比如 600/n。"],
+ ["Denominator ≠ 0","分母不为零","A fraction only makes sense when its bottom is not zero.","分母不为零时，分式才有意义。"],
+ ["Simplifying","约分","Dividing top and bottom by the same factor.","分子分母同时除以相同的因式。"]],
+tryIt:T("Plan a family meal out: write the cost per person as a fraction of the total bill. What happens as more people join?","规划一次家庭聚餐：把人均费用写成分式。人越多会怎样？")},
+
+// ---------- M5 ----------
+{t:T("The Never-Ending Number","永远写不完的数"),topic:T("Real numbers and square roots","实数"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'talk','idle']],
+ say:[['nar',"Leo looks at a square floor tile. Each side is 1 unit long.","乐乐看着一块正方形地砖，边长是1个单位。"],
+      ['leo',"So how long is the diagonal?","那它的对角线有多长？"]]},
+{bg:'room',holo:{t:'sqrt2',title:T("Four tiles and a diamond","四块砖和一个菱形"),foot:T("The diamond's side is the diagonal: √2","菱形的边长就是对角线：√2")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Draw a square on the diagonal. It's made of four half-tiles, so its area is 2. The diagonal is √2: the number that makes 2 when squared.","以对角线为边画正方形，它由四个半块砖组成，面积是2。所以对角线长√2，也就是平方等于2的那个数。"]]},
+{bg:'room',holo:{t:'big',title:'√2 = 1.41421356…',rows:[{s:T("The digits never end","小数永远写不完"),size:13},{s:T("and never repeat","也永远不循环"),size:13},{s:T("It can't be written as a fraction","它不能写成分数"),size:12,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"It goes on forever?!","它永远写不完？！"],
+      ['bit',"Forever, with no repeating pattern. That makes √2 an irrational number.","永远，而且不循环。所以√2是无理数。"]]},
+{bg:'class',holo:{t:'numline2',title:T("Real numbers","实数"),min:-2,max:4,pts:[{v:-1.5,l:'−1.5'},{v:0.5,l:'½'},{v:1.414,l:'√2',irr:true},{v:3.1416,l:'π',irr:true}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Rational numbers (fractions) and irrational numbers like √2 and π fill the whole number line. Together they're the real numbers.","有理数（能写成分数的数）和√2、π这样的无理数一起铺满整条数轴，合起来叫实数。"]]},
+{bg:'class',holo:{t:'big',title:T("Square roots","平方根"),rows:[{s:'√16 = 4',size:16,mono:true},{s:'√25 = 5',size:16,mono:true},{s:'∛8 = 2',size:16,mono:true},{s:T("√2 is between 1.4 and 1.5","√2 在1.4和1.5之间"),size:11,fill:'#C2416B'}]},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['mia',"So √ undoes squaring, the way subtraction undoes addition.","所以开平方是平方的逆运算，就像减法是加法的逆运算。"]]},
+{bg:'class',cast:[['leo',85,'grin','idle'],['mia',200,'happy','idle'],['bit',322,'wink','idle']],
+ say:[['nar',"Fun fact: the ancient Chinese book The Nine Chapters on the Mathematical Art already explained how to find square roots.","冷知识：中国古代数学著作《九章算术》里就已经介绍了开平方的方法。"],
+      ['leo',"Mathematicians were figuring this out about 2,000 years ago!","大约2000年前，数学家们就在研究这个了！"]]}
+],
+terms:[["Square root","平方根","A number that gives x when squared: √9 = 3.","平方后等于 x 的数：√9 = 3。"],
+ ["Irrational number","无理数","A decimal that never ends and never repeats, like √2 or π.","无限不循环小数，比如√2和π。"],
+ ["Real numbers","实数","All rational and irrational numbers together.","有理数和无理数的统称。"]],
+tryIt:T("Without a calculator, find √2 to two decimal places by guessing: 1.4² = ? 1.5² = ? Keep narrowing it down, like binary search!","不用计算器，用试算法求√2到两位小数：1.4² = ？1.5² = ？一步步缩小范围，就像二分查找！")},
+
+// ---------- M6 ----------
+{t:T("Angles and Triangles","角与三角形"),topic:T("Parallel lines and triangles","相交线、平行线与三角形"),
+panels:[
+{bg:'city',cast:[['leo',115,'happy','point'],['bit',290,'talk','idle']],
+ say:[['leo',"Railway tracks, zebra crossings, the railings by the river... parallel lines are everywhere!","铁轨、斑马线、江边的栏杆……平行线到处都是！"],
+      ['bit',"Parallel lines never meet, however far they go.","平行线无论延伸多远都不会相交。"]]},
+{bg:'class',holo:{t:'angles',title:T("A line crossing parallel lines","截线与平行线"),foot:T("∠1 = ∠2 (corresponding angles)","∠1 = ∠2（同位角相等）")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When a line crosses two parallel lines, the angles in matching positions are equal. These are corresponding angles.","一条直线截两条平行线，位置相同的角相等，这叫同位角。"]]},
+{bg:'class',props:[['ptri',126,159]],cast:[['mia',80,'happy','hold'],['leo',200,'surprised','idle'],['bit',322,'think','idle']],
+ say:[['nar',"Mia cuts out a paper triangle and tears off its three corners.","米娅剪出一个纸三角形，把三个角撕了下来。"],
+      ['mia',"Put the three corners together and...","把三个角拼在一起……"],
+      ['leo',"They make a straight line!","拼成了一条直线！"]]},
+{bg:'class',holo:{t:'tri',title:T("Angles add up to 180°","内角和是180°"),foot:T("∠A + ∠B + ∠C = 180°","∠A + ∠B + ∠C = 180°")},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Every triangle's angles add up to 180°, a straight angle. Big or small, thin or wide!","任何三角形的内角和都是180°，正好一个平角。不管大小胖瘦！"]]},
+{bg:'class',holo:{t:'truss',title:T("Triangles don't wobble","三角形不变形")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Push a square frame and it squashes. A triangle keeps its shape. That's triangle stability.","推一下正方形框架，它会变形；三角形却能保持形状。这就是三角形的稳定性。"],
+      ['leo',"That's why bridges and cranes are full of triangles!","怪不得桥和塔吊上全是三角形！"]]},
+{bg:'class',holo:{t:'big',title:T("Congruent triangles","全等三角形"),rows:[{s:T("Same 3 sides → same triangle","三边对应相等 → 两个三角形全等"),size:12},{s:'SSS · SAS · ASA',size:16,mono:true,fill:'#C2416B'},{s:T("Builders use this to copy shapes exactly","工匠用它精确地复制形状"),size:11}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So three sticks of fixed length can only make one triangle shape?","所以三根长度固定的木棍，只能拼出一种形状的三角形？"],
+      ['bit',"Exactly. That's why triangles are so strong.","没错。所以三角形结构才那么稳固。"]]}
+],
+terms:[["Parallel lines","平行线","Lines in the same plane that never meet.","同一平面内永不相交的直线。"],
+ ["Corresponding angles","同位角","Angles in matching positions. They're equal when the lines are parallel.","位置相同的角；两直线平行时它们相等。"],
+ ["Angle sum","内角和","A triangle's three angles always add up to 180°.","三角形三个内角之和总是180°。"],
+ ["Congruent","全等","Exactly the same shape and size.","形状和大小完全相同。"]],
+tryIt:T("Cut out three different paper triangles and tear off the corners. Do they always make a straight line? Then build a square and a triangle from straws and push on them.","剪三个不同的纸三角形，撕下三个角拼一拼，总能拼成直线吗？再用吸管做一个正方形和一个三角形，推推看。")},
+
+// ---------- M7 ----------
+{t:T("Treasure Map","藏宝图"),topic:T("The coordinate plane","平面直角坐标系"),
+panels:[
+{bg:'field',props:[['paper',148,155]],cast:[['leo',100,'grin','hold'],['mia',215,'happy','idle'],['bit',325,'talk','wave',{y:96}]],
+ say:[['nar',"Ms. Wang has hidden 'treasure' around the sports field for a math game.","王老师在运动场上藏了“宝藏”，玩一场数学游戏。"],
+      ['mia',"The clue says: go to (4, 3). What does that mean?","线索说：去 (4, 3)。这是什么意思？"]]},
+{bg:'field',holo:{t:'coords',title:T("The coordinate plane","平面直角坐标系"),xr:[0,6],yr:[0,4],walk:[4,3],pts:[{x:0,y:0,c:'#22B8A7'},{x:4,y:3,l:T("Treasure","宝藏")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Start at the origin (0, 0). Walk 4 along the x-axis, then 3 up the y-axis. The first number is always x!","从原点(0, 0)出发，沿x轴走4格，再沿y轴向上走3格。第一个数永远是x！"]]},
+{bg:'field',holo:{t:'coords',title:T("Four quadrants","四个象限"),xr:[-3,4],yr:[-2,4],pts:[{x:4,y:3,l:T("Treasure","宝藏")},{x:-2,y:2,l:T("Goal","球门"),c:'#2F6FD6'},{x:2,y:-1,l:T("Bench","长椅"),c:'#22B8A7'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Negative numbers go left and down. The two axes split the plane into four quadrants.","负数往左、往下。两条坐标轴把平面分成四个象限。"]]},
+{bg:'room',holo:{t:'list',title:T("Coordinates everywhere","坐标无处不在"),items:[{i:'game',l:T("Video games track every character with (x, y)","游戏用(x, y)记录每个角色的位置")},{i:'screen',l:T("Every pixel on a screen has a position","屏幕上每个像素都有位置")},{i:'map',l:T("Maps use longitude and latitude","地图用经纬度定位")},{i:'chip',l:T("Robots and drones navigate with them","机器人和无人机靠坐标导航")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"So my game knows where my player is using x and y!","所以游戏是用x和y知道我的角色在哪儿！"]]},
+{bg:'class',holo:{t:'coords',title:T("Draw with coordinates","用坐标画图"),xr:[0,6],yr:[0,5],poly:[[1,1],[5,1],[3,4]],pts:[{x:1,y:1},{x:5,y:1},{x:3,y:4}]},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['mia',"Connect (1, 1), (5, 1) and (3, 4)... it's a triangle! Everything in math connects.","连接(1, 1)、(5, 1)和(3, 4)……是个三角形！数学知识都是相通的。"]]},
+{bg:'field',cast:[['leo',90,'grin','cheer'],['mia',205,'grin','cheer'],['bit',325,'happy','wave',{y:96}]],fx:[['sparkles',150,90]],
+ say:[['nar',"At (4, 3) they find the treasure: a box of math puzzle cards!","他们在(4, 3)找到了宝藏：一盒数学谜题卡！"],
+      ['leo',"Next time I'll hide one for you, Bit!","下次我藏一个让你找，比特！"],
+      ['bit',"Give me the coordinates and I'll be there in a second!","给我坐标，我一秒就到！"]]}
+],
+terms:[["Coordinate plane","平面直角坐标系","Two number lines, the x-axis and y-axis, crossing at the origin.","两条在原点相交的数轴：x轴和y轴。"],
+ ["Ordered pair","有序数对","(x, y): x first, then y.","(x, y)：先写x，再写y。"],
+ ["Quadrant","象限","One of the four regions made by the axes.","坐标轴把平面分成的四个区域之一。"]],
+tryIt:T("Draw a coordinate grid on paper and make a treasure map of your home or a park. Give a family member three clues as coordinates.","在纸上画坐标网格，做一张家里或公园的藏宝图，用坐标给家人出三条线索。")}
+]});
+
+// ===== Physics Explorers: preview of Shanghai 8th-grade physics =====
+SERIES.push({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explorers","物理探险"),
+ desc:T("Measurement, sound, light, colour, motion and force: the topics that open 8th-grade physics.","测量、声、光、颜色、运动和力：八年级物理开篇的内容。"),
+ grade:T("A preview of Shanghai 8th-grade physics","上海八年级物理预习"),
+ episodes:[
+// ---------- P1 ----------
+{t:T("Measuring the World","测量世界"),topic:T("Measurement and units","测量与单位"),
+panels:[
+{bg:'class',cast:[['leo',85,'grin','idle'],['mia',200,'think','think'],['bit',322,'talk','idle']],
+ say:[['nar',"Leo and Mia measure the classroom with their feet.","乐乐和米娅用脚步量教室。"],
+      ['leo',"The room is 30 of my feet long!","教室有30只我的脚那么长！"],
+      ['mia',"And 34 of mine. So who's right?","我量的是34只脚。那谁对？"]]},
+{bg:'class',holo:{t:'big',title:T("Why we need standard units","为什么需要统一单位"),rows:[{s:T("Leo: 30 feet","乐乐：30脚"),size:13},{s:T("Mia: 34 feet","米娅：34脚"),size:13},{s:T("Tape measure: 7.8 metres","卷尺：7.8米"),size:15,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Everyone's feet are different. That's why scientists agreed on standard units, like the metre.","每个人的脚长都不一样。所以科学家约定了统一的单位，比如米。"]]},
+{bg:'class',holo:{t:'table',title:T("SI base units","国际单位"),head:[T("Quantity","物理量"),T("Unit","单位"),T("Symbol","符号")],rows:[[T("Length","长度"),T("metre","米"),'m'],[T("Mass","质量"),T("kilogram","千克"),'kg'],[T("Time","时间"),T("second","秒"),'s']]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Length in metres, mass in kilograms, time in seconds. Scientists everywhere use the same units.","长度用米，质量用千克，时间用秒。全世界的科学家都用同一套单位。"]]},
+{bg:'class',holo:{t:'list',title:T("How to measure well","测量的诀窍"),items:[{i:'ruler',l:T("Line up the zero mark","零刻度线对准起点")},{i:'eye',l:T("Look straight at the scale","视线正对刻度")},{i:'pen',l:T("Write the number AND the unit","数字和单位都要写")},{i:'check',l:T("Measure 3 times and take the average","测3次，取平均值")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So '7.8' on its own means nothing. It needs 'metres'!","所以光写“7.8”没有意义，得写上“米”！"]]},
+{bg:'class',holo:{t:'big',title:T("Estimate first","先估测"),rows:[{s:T("A door ≈ 2 m tall","门高 ≈ 2米"),size:13},{s:T("A football ≈ 0.4 kg","足球 ≈ 0.4千克"),size:13},{s:T("One heartbeat ≈ 1 s","心跳一次 ≈ 1秒"),size:13},{s:T("Estimates catch silly mistakes","估测能发现低级错误"),size:11,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"If I measure the door as 20 m, I'll know something's wrong!","要是我量出门高20米，就知道肯定错了！"]]},
+{bg:'class',cast:[['leo',115,'happy','idle'],['bit',290,'talk','wave']],
+ say:[['bit',"Physics starts with measuring. Next stop: sound!","物理从测量开始。下一站：声音！"]]}
+],
+terms:[["Unit","单位","An agreed amount used for measuring, like the metre.","约定好的测量标准，比如米。"],
+ ["SI units","国际单位制","The worldwide system: metre, kilogram, second and more.","全世界通用的单位制：米、千克、秒等。"],
+ ["Estimate","估测","A sensible rough value before you measure.","测量前给出的合理大概值。"]],
+tryIt:T("Find your own 'body ruler': measure your hand span, stride and height in centimetres. Then estimate the length of your room and check it.","找到你的“身体尺子”：用厘米量出你的一拃、一步和身高，然后估测房间长度，再实际测量验证。")},
+
+// ---------- P2 ----------
+{t:T("Good Vibrations","声音的秘密"),topic:T("Sound","声"),
+panels:[
+{bg:'class',props:[['band',130,160]],cast:[['mia',85,'happy','hold'],['leo',200,'surprised','idle'],['bit',322,'talk','idle']],
+ say:[['nar',"Mia stretches a rubber band and plucks it.","米娅拉紧一根橡皮筋，用手指拨了一下。"],
+      ['mia',"Twang! I can see it shaking.","嘣！我能看到它在抖动。"],
+      ['bit',"All sound comes from vibration.","所有声音都来自振动。"]]},
+{bg:'class',holo:{t:'flow',title:T("How sound travels","声音怎么传播"),steps:[{i:'speaker',l:T("Something vibrates","物体振动")},{i:'wave',l:T("Air passes it on","空气传递振动")},{i:'ear',l:T("Your ear hears it","耳朵听到")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The vibration pushes on the air, the air pushes on more air, all the way to your ear.","振动推动空气，空气一层层往前传，一直传到你的耳朵。"]]},
+{bg:'class',holo:{t:'big',title:T("No air, no sound","真空不能传声"),rows:[{s:T("Sound needs something to travel through","声音需要介质才能传播"),size:12},{s:T("Air · water · wood · metal","空气 · 水 · 木头 · 金属"),size:12},{s:T("In space: silence","太空中：一片寂静"),size:15,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"So the loud spaceship noises in movies aren't real?","所以电影里飞船在太空中轰隆隆的声音是假的？"],
+      ['bit',"Right! In space there's no air to carry sound.","没错！太空里没有空气来传播声音。"]]},
+{bg:'class',holo:{t:'wave',title:T("Pitch and loudness","音调和响度"),rows:[{l:T("High pitch: fast vibration","音调高：振动快"),f:6,a:0.5},{l:T("Low pitch: slow vibration","音调低：振动慢"),f:2,a:0.5},{l:T("Loud: big vibration","响度大：振幅大"),f:3,a:1,c:'#FF5D5D'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Faster vibrations sound higher. Bigger vibrations sound louder.","振动越快，音调越高；振幅越大，声音越响。"]]},
+{bg:'class',holo:{t:'big',title:T("Count the thunder","数雷声"),rows:[{s:T("Sound in air ≈ 340 m/s","声音在空气中 ≈ 每秒340米"),size:12},{s:T("Light arrives almost instantly","光几乎瞬间到达"),size:12},{s:T("3 seconds ≈ 1 km away","间隔3秒 ≈ 1千米远"),size:15,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"See the lightning, then count the seconds until the thunder. Every 3 seconds is about 1 kilometre.","看到闪电后数秒，直到听到雷声。每3秒大约代表1千米。"],
+      ['bit',"And if you can hear thunder, go indoors!","听到雷声就要进屋躲避！"]]},
+{bg:'class',cast:[['mia',85,'smirk','point'],['leo',200,'surprised','idle'],['bit',322,'happy','idle']],
+ say:[['mia',"Fun fact: sound travels about 4 times faster in water than in air.","冷知识：声音在水中的传播速度大约是空气中的4倍。"],
+      ['leo',"So whales can call to each other across huge distances!","所以鲸鱼能隔着很远的距离互相呼唤！"]]}
+],
+terms:[["Vibration","振动","Moving quickly back and forth. All sound starts with it.","快速地来回运动，一切声音都由它产生。"],
+ ["Medium","介质","The material sound travels through: air, water or solids.","传播声音的物质：空气、水或固体。"],
+ ["Pitch","音调","How high or low a sound is. Faster vibration means higher pitch.","声音的高低，振动越快音调越高。"],
+ ["Loudness","响度","How strong a sound is. Bigger vibration means louder.","声音的强弱，振幅越大越响。"]],
+tryIt:T("Fill some glasses with different amounts of water and tap them gently with a spoon. Which has the highest pitch? Can you explain why?","在几个玻璃杯里装不同量的水，用勺子轻轻敲。哪个音调最高？你能解释原因吗？")},
+
+// ---------- P3 ----------
+{t:T("Bouncing and Bending Light","光的反射与折射"),topic:T("Light","光"),
+panels:[
+{bg:'city',cast:[['leo',115,'think','point'],['bit',290,'talk','idle']],
+ say:[['leo',"Why do shadows have such sharp edges?","为什么影子的边缘这么清楚？"],
+      ['bit',"Because light travels in straight lines!","因为光沿直线传播！"]]},
+{bg:'room',holo:{t:'light',kind:'reflect',title:T("Reflection","光的反射"),foot:T("Angle in = angle out","反射角 = 入射角")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When light hits a mirror, it bounces off at the same angle it came in.","光照到镜面上，会以相同的角度反射出去。"],
+      ['leo',"Like a football bouncing off a wall!","就像足球撞墙弹回来！"]]},
+{bg:'kitchen',props:[['glass',205]],cast:[['mia',95,'surprised','idle'],['bit',310,'happy','idle',{y:96}]],
+ say:[['nar',"Mia puts a pencil in a glass of water.","米娅把一支铅笔放进一杯水里。"],
+      ['mia',"The pencil looks broken!","铅笔看起来断了！"]]},
+{bg:'kitchen',holo:{t:'light',kind:'refract',title:T("Refraction","光的折射")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Light changes direction when it passes from water into air. That bending is called refraction, so things under water look shallower than they are.","光从水中进入空气时会改变方向，这叫折射。所以水里的东西看起来比实际浅。"]]},
+{bg:'class',holo:{t:'light',kind:'lens',title:T("Lenses","透镜")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A convex lens bends light rays together to a point. Cameras, glasses and your own eyes use lenses.","凸透镜能把光线会聚到一点。照相机、眼镜，还有你的眼睛里都有透镜。"],
+      ['leo',"Cool! But I must never look at the Sun through one, right?","酷！不过绝对不能用透镜看太阳，对吧？"],
+      ['bit',"Never! It can badly hurt your eyes.","绝对不能！会严重伤害眼睛。"]]},
+{bg:'class',cast:[['mia',85,'grin','point'],['leo',200,'happy','idle'],['bit',322,'talk','idle']],
+ say:[['mia',"Mirrors bounce light. Water and lenses bend it.","镜子反射光，水和透镜让光弯折。"],
+      ['bit',"Next time: where do the colours of a rainbow come from?","下一课：彩虹的颜色从哪里来？"]]}
+],
+terms:[["Straight-line travel","光沿直线传播","Light goes in straight lines, which is why shadows form.","光沿直线传播，所以会形成影子。"],
+ ["Reflection","反射","Light bouncing off a surface: angle in = angle out.","光在表面弹回：反射角等于入射角。"],
+ ["Refraction","折射","Light bending as it passes from one material into another.","光从一种物质进入另一种物质时方向发生偏折。"],
+ ["Lens","透镜","Curved glass that bends light to focus it.","能让光会聚或发散的弧面镜片。"]],
+tryIt:T("Put a coin in an empty cup and step back until it just disappears behind the rim. Ask someone to pour in water slowly. Why does the coin reappear?","把一枚硬币放进空杯里，后退到刚好被杯沿挡住看不见。请家人慢慢往杯里倒水。硬币为什么又出现了？")},
+
+// ---------- P4 ----------
+{t:T("Where Rainbows Come From","彩虹从哪里来"),topic:T("Colour and dispersion","光的色散"),
+panels:[
+{bg:'city',props:[['rainbow']],cast:[['leo',110,'grin','cheer'],['mia',220,'happy','point']],
+ say:[['nar',"After the rain, a rainbow appears over the river.","雨后，江面上出现了一道彩虹。"],
+      ['leo',"A rainbow! Where do the colours come from?","彩虹！这些颜色是从哪里来的？"]]},
+{bg:'class',holo:{t:'light',kind:'prism',title:T("Dispersion","光的色散")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"White sunlight is really a mix of colours. A prism bends each colour by a different amount and spreads them out.","白色的阳光其实是多种色光混合而成的。三棱镜让每种颜色偏折的程度不同，于是把它们分开了。"]]},
+{bg:'city',holo:{t:'big',title:T("Raindrops are tiny prisms","雨滴是小三棱镜"),rows:[{s:T("Sun behind you","太阳在你身后"),size:13},{s:T("Raindrops in front of you","雨滴在你前方"),size:13},{s:T("→ a rainbow!","→ 彩虹！"),size:17,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Millions of raindrops split the sunlight. That's why you see a rainbow with the Sun behind you.","千千万万的雨滴把阳光分开。所以要背对太阳才能看到彩虹。"]]},
+{bg:'class',holo:{t:'spectrum',title:T("The colours in white light","白光里的颜色")},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['mia',"Red, orange, yellow, green, blue, indigo, violet!","红、橙、黄、绿、蓝、靛、紫！"]]},
+{bg:'field',holo:{t:'big',title:T("Why is a leaf green?","叶子为什么是绿色的？"),rows:[{s:T("A leaf absorbs most colours","叶子吸收了大部分色光"),size:12},{s:T("and reflects green","把绿光反射出来"),size:12},{s:T("We see the colour that bounces back","我们看到的是被反射回来的颜色"),size:11,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Objects absorb some colours and reflect others. A leaf reflects green light, so it looks green.","物体吸收一部分色光，反射另一部分。叶子反射绿光，所以看起来是绿色的。"]]},
+{bg:'room',cast:[['leo',115,'grin','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So my blue jacket is blue because it reflects blue light!","所以我的蓝外套是蓝色的，因为它反射蓝光！"],
+      ['bit',"Exactly. Physics explains even your school uniform!","完全正确。物理连你的校服都能解释！"]]}
+],
+terms:[["Dispersion","色散","White light splitting into colours.","白光分解成各种色光的现象。"],
+ ["Spectrum","光谱","The band of colours from red to violet.","从红到紫排列的彩色光带。"],
+ ["Colour by reflection","反射与颜色","We see an object's colour from the light it reflects.","我们看到的物体颜色，是它反射的光的颜色。"]],
+tryIt:T("On a sunny morning, stand with your back to the Sun and spray a fine mist from a plant sprayer. Can you make your own rainbow?","晴朗的早晨，背对太阳，用喷壶喷出细细的水雾。你能造出一道彩虹吗？")},
+
+// ---------- P5 ----------
+{t:T("How Fast?","有多快？"),topic:T("Motion and speed","机械运动与速度"),
+panels:[
+{bg:'field',props:[['phone',174,156]],cast:[['leo',100,'grin','cheer'],['mia',220,'happy','hold'],['bit',330,'talk','idle',{y:96}]],
+ say:[['nar',"Sports day practice. Mia times Leo's 100-metre run.","运动会训练，米娅给乐乐的100米跑计时。"],
+      ['mia',"16 seconds!","16秒！"],
+      ['leo',"Is that fast?","这算快吗？"]]},
+{bg:'field',holo:{t:'big',title:T("Speed = distance ÷ time","速度 = 路程 ÷ 时间"),rows:[{s:'v = s / t',size:20,mono:true},{s:'100 m ÷ 16 s',size:14,mono:true},{s:'≈ 6.3 m/s',size:18,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Speed tells you how far you go each second. You ran about 6.3 metres every second!","速度表示每秒走多远。你每秒大约跑6.3米！"]]},
+{bg:'field',holo:{t:'list',size:10,title:T("Speeds compared","速度大比拼"),items:[{i:'user',l:T("Walking: about 1.4 m/s","步行：约每秒1.4米")},{i:'bike',l:T("Cycling: about 5 m/s","骑车：约每秒5米")},{i:'train',l:T("High-speed train: up to about 97 m/s","高铁：最高约每秒97米")},{i:'speaker',l:T("Sound: about 340 m/s","声音：约每秒340米")},{i:'bulb',l:T("Light: 300,000 km per second!","光：每秒30万千米！")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"Light is SO much faster than everything else!","光比别的东西都快得多！"]]},
+{bg:'city',holo:{t:'big',title:T("It depends who's watching","运动是相对的"),rows:[{s:T("On the metro, your friend seems still","坐在地铁上，同伴好像没动"),size:12},{s:T("From the platform, you both zoom past","站台上的人看，你们都在飞驰"),size:12},{s:T("Motion depends on the reference point","运动和静止取决于参照物"),size:12,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So am I moving or not?","那我到底动没动？"],
+      ['bit',"Both! It depends on what you compare with.","都对！取决于你拿什么作比较。"]]},
+{bg:'class',holo:{t:'graph',title:T("Distance-time graph","路程-时间图像"),xl:T("time","时间"),yl:T("distance","路程"),lines:[{x:0.62,y:0.95,c:'#2F6FD6',l:T("Leo","乐乐")},{x:0.95,y:0.6,c:'#C2416B',l:T("Mia walking","米娅步行")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"On a distance-time graph, a steeper line means a faster speed. Coordinates from math class, used in physics!","在路程-时间图像中，线越陡，速度越快。数学课学的坐标，用在了物理上！"]]},
+{bg:'field',cast:[['leo',115,'determined','point'],['bit',290,'happy','wave']],
+ say:[['leo',"Next week I'll beat 16 seconds!","下周我要跑进16秒！"],
+      ['bit',"And we'll measure it. That's science!","我们来测量记录。这就是科学！"]]}
+],
+terms:[["Speed","速度","Distance travelled per unit of time: v = s / t.","单位时间内通过的路程：v = s / t。"],
+ ["Metres per second","米/秒","The SI unit of speed (m/s).","速度的国际单位（m/s）。"],
+ ["Reference point","参照物","What you compare against to decide whether something is moving.","判断物体是否运动时选作标准的物体。"]],
+tryIt:T("Time how long it takes you to walk 50 metres, then work out your speed in m/s. Compare walking, jogging and skipping!","测出你步行50米的时间，算出速度（米/秒）。比较一下走、慢跑和跳着走！")},
+
+// ---------- P6 ----------
+{t:T("Push and Pull","推与拉"),topic:T("Force, gravity and friction","力、重力与摩擦力"),
+panels:[
+{bg:'field',props:[['ball',178,232]],cast:[['leo',115,'think','point'],['bit',290,'talk','idle']],
+ say:[['leo',"When I kick the ball, it flies. When it lands, it rolls and stops. Why?","我一踢，球就飞出去；落地后滚一会儿就停了。为什么？"],
+      ['bit',"Forces! A force is a push or a pull.","因为力！力就是推或拉。"]]},
+{bg:'class',holo:{t:'forces',title:T("Forces on a box","箱子受到的力")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Forces have a size and a direction, so we draw them as arrows.","力有大小和方向，所以我们用箭头来表示。"]]},
+{bg:'class',holo:{t:'big',title:T("Gravity","重力"),rows:[{s:T("Earth pulls everything down","地球把一切往下拉"),size:12},{s:'G = m × g',size:18,mono:true},{s:T("g ≈ 9.8 N/kg","g ≈ 9.8 牛/千克"),size:13},{s:T("On the Moon: about 1/6","在月球上：约为1/6"),size:12,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Gravity is why things fall. On the Moon, gravity would pull on you only about one sixth as hard!","重力让物体往下落。在月球上，你受到的重力只有地球上的六分之一左右！"],
+      ['leo',"I could jump so high!","那我能跳得好高！"]]},
+{bg:'field',holo:{t:'big',title:T("Friction","摩擦力"),rows:[{s:T("Rubbing surfaces resist sliding","接触面会阻碍相对滑动"),size:12},{s:T("Football boots: studs grip the grass","足球鞋：鞋钉抓住草地"),size:11},{s:T("Ice: almost no grip","冰面：几乎抓不住"),size:11},{s:T("Friction stopped your ball!","是摩擦力让你的球停下来！"),size:12,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So friction stopped Leo's ball?","所以是摩擦力让乐乐的球停下来的？"],
+      ['bit',"Yes, friction from the grass and the air.","对，来自草地和空气的阻力。"]]},
+{bg:'class',holo:{t:'big',title:T("Forces come in pairs","力的作用是相互的"),rows:[{s:T("You push the wall","你推墙"),size:13},{s:T("The wall pushes you back","墙也推你"),size:13},{s:T("A rocket pushes gas down; the gas pushes the rocket up","火箭向下喷气，气体推火箭向上"),size:11,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When you push on something, it pushes back on you just as hard.","你推一个物体时，它也会以同样大小的力推你。"]]},
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'happy','idle'],['bit',322,'happy','idle']],
+ say:[['leo',"Forces explain football, rockets, and why I slip on ice!","力能解释足球、火箭，还有我为什么会在冰上滑倒！"],
+      ['bit',"And in 8th-grade physics, you'll measure forces with a spring scale.","到了八年级物理课，你们还会用弹簧测力计来测量力。"]]}
+],
+terms:[["Force","力","A push or a pull, measured in newtons (N).","推或拉的作用，单位是牛顿（N）。"],
+ ["Gravity","重力","The pull of the Earth: G = mg.","由于地球吸引而受到的力：G = mg。"],
+ ["Friction","摩擦力","A force that resists sliding between surfaces.","阻碍接触面之间相对滑动的力。"],
+ ["Action and reaction","相互作用力","Forces always come in equal and opposite pairs.","力总是成对出现，大小相等、方向相反。"]],
+tryIt:T("Slide a book across different surfaces (a table, a carpet, a towel) with the same push. Where does it go farthest? What does that tell you about friction?","用同样的力把一本书推过不同表面（桌面、地毯、毛巾），在哪儿滑得最远？这说明了摩擦力的什么特点？")}
+]});
+
+// ===== Chemistry Kitchen: preview of Shanghai 8th-grade chemistry. Fire and electricity appear only as teacher demos. =====
+SERIES.push({id:'chem',icon:'flame',color:'#C2416B',t:T("Chemistry Kitchen","化学小厨房"),
+ desc:T("Lab safety, air, water, atoms and molecules, chemical reactions, acids and bases. Every home activity is safe and done with an adult.","实验安全、空气、水、原子和分子、化学反应、酸和碱。所有家庭小实验都安全，并需大人陪同。"),
+ grade:T("A preview of Shanghai 8th-grade chemistry","上海八年级化学预习"),
+ episodes:[
+// ---------- C1 ----------
+{t:T("Safety First!","安全第一！"),topic:T("Lab safety, physical and chemical changes","实验安全、物理变化与化学变化"),
+panels:[
+{bg:'lab',cast:[['leo',85,'surprised','idle',{g:1}],['mia',190,'happy','idle',{g:1}],['wang',310,'happy','point']],
+ say:[['nar',"The first chemistry club meeting, in the school lab.","化学社团第一次活动，在学校实验室。"],
+      ['wang',"Before we do anything: goggles on!","开始之前，先戴好护目镜！"]]},
+{bg:'lab',holo:{t:'list',size:10,title:T("Lab rules","实验室规则"),items:[{i:'eye',l:T("Always wear goggles","始终戴好护目镜")},{i:'cross',l:T("Never taste or directly sniff chemicals","不尝、不直接闻化学品")},{i:'user',l:T("Only experiment with a teacher or adult","只在老师或大人陪同下做实验")},{i:'warn',l:T("Spill? Tell an adult right away","有东西洒出，马上告诉大人")},{i:'drop',l:T("Wash your hands afterwards","实验后洗手")}]},
+ cast:[['leo',54,'determined','idle',{g:1}],['bit',356,'talk','present']],
+ say:[['bit',"Chemists are careful people. These rules keep everyone safe.","化学家都是很细心的人。这些规则保护每一个人。"]]},
+{bg:'lab',holo:{t:'cards',cols:2,title:T("Physical or chemical?","物理变化还是化学变化？"),items:[{p:'ice',l:T("Ice melting: physical","冰融化：物理变化")},{p:'paper',l:T("Tearing paper: physical","撕纸：物理变化")},{p:'toast',l:T("Toast burning: chemical","面包烤焦：化学变化")},{p:'egg',l:T("Frying an egg: chemical","煎鸡蛋：化学变化")}]},
+ cast:[['leo',54,'think','think',{g:1}],['bit',356,'talk','present']],
+ say:[['bit',"In a physical change, the substance stays the same. In a chemical change, new substances form.","物理变化中，物质本身不变；化学变化中，会生成新物质。"]]},
+{bg:'lab',holo:{t:'list',title:T("Signs of a chemical change","化学变化的迹象"),items:[{i:'palette',l:T("A new colour","颜色改变")},{i:'bubbles',l:T("Bubbles of gas","产生气体")},{i:'flame',l:T("Heat or light given off","放热或发光")},{i:'solid',l:T("A new solid appears","生成沉淀")}]},
+ cast:[['mia',54,'think','think',{g:1}],['bit',356,'talk','present']],
+ say:[['mia',"When toast turns black, that's a new colour AND a new substance!","面包烤焦变黑，是新颜色，也是新物质！"]]},
+{bg:'kitchen',cast:[['leo',110,'grin','point'],['bit',300,'wink','idle',{y:96}]],
+ say:[['nar',"At home, Leo looks around the kitchen with new eyes.","回到家，乐乐用全新的眼光打量厨房。"],
+      ['leo',"Cooking rice, frying eggs, a rusty old pan... there's chemistry everywhere in here!","煮米饭、煎鸡蛋、生锈的旧锅……厨房里到处都是化学！"]]},
+{bg:'lab',cast:[['wang',110,'happy','point'],['leo',230,'grin','idle',{g:1}]],
+ say:[['wang',"Remember: in chemistry, curiosity plus safety is the perfect mix.","记住：在化学里，好奇心加安全意识，才是最完美的配方。"],
+      ['leo',"Got it, Ms. Wang!","明白，王老师！"]]}
+],
+terms:[["Physical change","物理变化","The shape or state changes, but no new substance forms.","形状或状态改变，但没有生成新物质。"],
+ ["Chemical change","化学变化","New substances form, like when toast burns.","生成了新物质，比如面包烤焦。"],
+ ["Lab safety","实验安全","Goggles on, no tasting, and an adult always present.","戴护目镜、不品尝、始终有大人在场。"]],
+tryIt:T("List 5 changes you see in your kitchen today. Sort them into physical and chemical changes. No experiments needed!","列出今天在厨房里看到的5种变化，把它们分成物理变化和化学变化。不用做实验！")},
+
+// ---------- C2 ----------
+{t:T("The Air Around Us","我们身边的空气"),topic:T("Air, oxygen and carbon dioxide","空气、氧气和二氧化碳"),
+panels:[
+{bg:'city',cast:[['leo',115,'think','think'],['bit',290,'talk','idle']],
+ say:[['leo',"Air is just... nothing, right?","空气就是……什么都没有，对吧？"],
+      ['bit',"Air is a mix of gases. You breathe thousands of litres of it every day!","空气是多种气体的混合物。你每天要呼吸上千升空气！"]]},
+{bg:'class',holo:{t:'donut',title:T("What's in air?","空气的成分"),segs:[{v:78,c:'#2F6FD6',l:T("Nitrogen 78%","氮气 78%")},{v:21,c:'#FF5D5D',l:T("Oxygen 21%","氧气 21%")},{v:1,c:'#FFC83D',l:T("Argon, CO₂ and others 1%","稀有气体、二氧化碳等 1%")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Most of the air is nitrogen. Only about a fifth is oxygen, the gas we need to breathe.","空气里大部分是氮气，只有约五分之一是我们呼吸需要的氧气。"]]},
+{bg:'lab',props:[['jar',235]],cast:[['leo',75,'surprised','idle',{g:1}],['mia',160,'think','think',{g:1}],['wang',325,'talk','point']],
+ say:[['nar',"Ms. Wang covers a lit candle with a glass jar. (A teacher-only demo!)","王老师用玻璃罩罩住一支点燃的蜡烛。（仅限老师演示！）"],
+      ['mia',"The flame went out!","火焰熄灭了！"]]},
+{bg:'lab',holo:{t:'big',title:T("Fire needs oxygen","燃烧需要氧气"),rows:[{s:T("Fuel + oxygen + heat = fire","可燃物 + 氧气 + 温度 = 燃烧"),size:12},{s:T("Take one away → the fire goes out","去掉一个 → 火就熄灭"),size:12},{s:T("That's how fire safety works","这就是灭火的原理"),size:12,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think',{g:1}],['bit',356,'talk','present']],
+ say:[['bit',"The candle used up most of the oxygen in the jar, so it went out. Take away the fuel, the oxygen or the heat, and a fire stops.","蜡烛把罩子里的大部分氧气用掉了，所以熄灭。去掉可燃物、氧气或温度中的任何一个，燃烧就会停止。"]]},
+{bg:'field',holo:{t:'cycle',title:T("Oxygen and carbon dioxide","氧气与二氧化碳"),items:[{i:'user',l:T("We breathe in O₂","人吸入氧气")},{i:'bubbles',l:T("We breathe out CO₂","人呼出二氧化碳")},{i:'leaf',l:T("Plants: CO₂ → O₂","植物：CO₂ → O₂")}],center:T("in sunlight","在阳光下")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"We breathe in oxygen and breathe out carbon dioxide. In sunlight, plants do the opposite.","我们吸入氧气、呼出二氧化碳；植物在阳光下正好相反。"]]},
+{bg:'class',cast:[['mia',85,'happy','point'],['leo',200,'grin','idle'],['bit',322,'happy','idle']],
+ say:[['mia',"So plants and people are a team!","所以植物和人类是一个团队！"],
+      ['leo',"I'm putting a plant on my desk.","我要在书桌上放一盆植物。"]]}
+],
+terms:[["Mixture","混合物","Several substances mixed together, like air.","由多种物质混合而成，比如空气。"],
+ ["Oxygen","氧气","About 21% of air. Needed for breathing and burning.","约占空气的21%，呼吸和燃烧都需要它。"],
+ ["Carbon dioxide","二氧化碳","A gas we breathe out. Plants use it to make food.","我们呼出的气体，植物用它制造养分。"],
+ ["Fire triangle","燃烧三要素","Fuel, oxygen and heat.","可燃物、氧气、温度。"]],
+tryIt:T("Breathe on a cold mirror. Why does it fog up? Then go through your home's fire safety plan with your parents: where is the nearest exit?","对着冰凉的镜子哈气，为什么会起雾？再和爸妈一起了解家里的消防安全：最近的出口在哪里？")},
+
+// ---------- C3 ----------
+{t:T("Water, Inside Out","水的奥秘"),topic:T("Water: its states and what it's made of","水的性质与组成"),
+panels:[
+{bg:'kitchen',cast:[['leo',115,'happy','idle'],['bit',290,'talk','idle']],
+ say:[['leo',"Water is the most ordinary thing in the world.","水是世界上最普通的东西了。"],
+      ['bit',"Ordinary? Water is amazing. You see it as a solid, a liquid AND a gas every day.","普通？水可神奇了。你每天都能见到它的固态、液态和气态。"]]},
+{bg:'kitchen',holo:{t:'states',title:T("Three states of water","水的三态")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Heating makes the particles move faster. Ice melts at 0 °C, and at sea level water boils at 100 °C.","加热会让微粒运动得更快。冰在0 °C熔化，在海平面附近水在100 °C沸腾。"]]},
+{bg:'lab',props:[['electro',222]],cast:[['leo',70,'surprised','idle',{g:1}],['mia',150,'happy','idle',{g:1}],['wang',335,'talk','point']],
+ say:[['nar',"Ms. Wang passes electricity through water. (A teacher-only demo!)","王老师让电流通过水。（仅限老师演示！）"],
+      ['mia',"Bubbles at both ends!","两端都冒出了气泡！"]]},
+{bg:'lab',holo:{t:'tubes',title:T("Splitting water","电解水")},
+ cast:[['mia',54,'think','think',{g:1}],['bit',356,'talk','present']],
+ say:[['bit',"Electricity splits water into hydrogen and oxygen. There's always twice as much hydrogen gas as oxygen.","通电后，水分解成氢气和氧气，氢气的体积总是氧气的两倍。"]]},
+{bg:'lab',holo:{t:'mol',items:['H2O'],title:T("What water is made of","水的组成"),foot:T("2 hydrogen atoms + 1 oxygen atom","2个氢原子 + 1个氧原子")},
+ cast:[['leo',54,'surprised','idle',{g:1}],['bit',356,'happy','present']],
+ say:[['leo',"That's why water is H₂O: two H's and one O!","所以水叫H₂O：两个H，一个O！"]]},
+{bg:'city',cast:[['leo',115,'think','think'],['bit',290,'talk','idle']],
+ say:[['bit',"Clean water is precious. Only a tiny part of Earth's water is fresh water we can use.","干净的水很宝贵。地球上能供我们使用的淡水只占极少一部分。"],
+      ['leo',"I'll turn off the tap while I brush my teeth!","我刷牙时会关掉水龙头！"]]}
+],
+terms:[["States of matter","物质的三态","Solid, liquid and gas.","固态、液态和气态。"],
+ ["Electrolysis","电解","Using electricity to split a substance apart.","用电使物质分解。"],
+ ["Chemical formula","化学式","Symbols showing which atoms are in a substance, like H₂O.","用元素符号表示物质组成的式子，如H₂O。"]],
+tryIt:T("Put an ice cube on a plate in the sun and another in the shade. Time how long each takes to melt and record your results in a table.","把一块冰放在阳光下，另一块放在阴凉处，分别测出它们融化需要多久，把结果记录成表格。")},
+
+// ---------- C4 ----------
+{t:T("Too Small to See","看不见的微粒"),topic:T("Atoms and molecules","物质的微观构成"),
+panels:[
+{bg:'kitchen',props:[['stove',300]],cast:[['leo',120,'surprised','idle'],['bit',320,'talk','idle',{y:80}]],
+ say:[['nar',"Leo's grandma is making pan-fried buns.","乐乐的奶奶在煎生煎包。"],
+      ['leo',"I could smell the buns from my bedroom! How did the smell get there?","我在卧室都闻到生煎包的香味了！香味是怎么跑过来的？"],
+      ['bit',"Tiny particles called molecules flew through the air to your nose.","叫作“分子”的微小粒子穿过空气，飞进了你的鼻子。"]]},
+{bg:'kitchen',holo:{t:'beakers',title:T("Particles never stop moving","分子在不停运动"),items:[{l:T("Cold water","冷水"),spread:0.35},{l:T("Hot water","热水"),spread:1}],foot:T("A drop of ink spreads faster in hot water","墨水在热水中扩散得更快")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Molecules are always moving. In hot water they move faster, so the ink spreads faster.","分子永不停歇地运动。热水中分子运动更快，所以墨水扩散得更快。"]]},
+{bg:'kitchen',holo:{t:'big',title:T("How small?","有多小？"),rows:[{s:T("One drop of water holds about","一滴水里大约有"),size:12},{s:'1.7 × 10²¹',size:20,mono:true,fill:'#C2416B'},{s:T("water molecules!","个水分子！"),size:12}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"That number is too big to imagine!","这个数大得没法想象！"]]},
+{bg:'class',holo:{t:'mol',items:['O2','CO2','H2O'],title:T("Molecules are made of atoms","分子由原子构成")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Molecules are built from even smaller atoms, like building blocks. An oxygen molecule is two oxygen atoms joined together.","分子由更小的原子构成，就像搭积木。一个氧分子由两个氧原子结合而成。"]]},
+{bg:'class',holo:{t:'elements',title:T("Elements","元素")},
+ cast:[['mia',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"There are 118 known elements. Everything around you is built from them.","目前已知的元素有118种，你身边的一切都由它们构成。"]]},
+{bg:'kitchen',cast:[['leo',100,'grin','point'],['mia',210,'smirk','idle'],['bit',322,'wink','idle',{y:96}]],
+ say:[['leo',"So the buns, the plate and me are all made of atoms!","所以生煎包、盘子，还有我，全都是原子构成的！"],
+      ['mia',"Mostly oxygen, carbon, hydrogen and nitrogen, in your case.","你嘛，主要是氧、碳、氢、氮。"]]}
+],
+terms:[["Molecule","分子","A tiny particle made of atoms joined together, like H₂O.","由原子结合成的微小粒子，比如H₂O。"],
+ ["Atom","原子","The basic building block of every substance.","构成物质的基本单元。"],
+ ["Element","元素","One kind of atom, such as oxygen (O) or carbon (C).","同一类原子的总称，比如氧（O）、碳（C）。"],
+ ["Diffusion","扩散","Particles spreading out by themselves because they keep moving.","由于微粒不停运动而自发散开的现象。"]],
+tryIt:T("With an adult, add one drop of food colouring to a glass of cold water and one to a glass of warm water at the same time. Which spreads faster? Draw what you see every minute.","在大人陪同下，同时往一杯冷水和一杯温水里各滴一滴食用色素。哪一杯扩散得更快？每分钟画一次你看到的样子。")},
+
+// ---------- C5 ----------
+{t:T("Fizz! Chemical Reactions","嘶嘶！化学反应"),topic:T("Chemical changes and how to write them","化学变化及其表示"),
+panels:[
+{bg:'kitchen',props:[['fizzcup',205]],cast:[['leo',100,'grin','idle'],['mia',300,'surprised','idle']],
+ say:[['nar',"With Leo's dad watching, they mix baking soda and vinegar in a cup.","在乐乐爸爸的看护下，他们在杯子里把小苏打和白醋混在一起。"],
+      ['mia',"Whoa, it's fizzing like crazy!","哇，它冒泡冒得好厉害！"]]},
+{bg:'kitchen',holo:{t:'flow',title:T("What happened?","发生了什么？"),steps:[{i:'solid',l:T("Baking soda","小苏打")},{i:'drop',l:T("Vinegar","白醋")},{i:'bubbles',l:T("CO₂ gas + water + a salt","二氧化碳 + 水 + 一种盐")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The two react and make new substances, including carbon dioxide gas. That's the bubbles!","两者发生反应，生成了新物质，其中包括二氧化碳气体，就是那些气泡！"]]},
+{bg:'class',holo:{t:'big',title:T("Writing a reaction","表示化学反应"),rows:[{s:T("Carbon + oxygen → carbon dioxide","碳 + 氧气 → 二氧化碳"),size:12},{s:'C + O₂ → CO₂',size:19,mono:true,fill:'#C2416B'},{s:T("Reactants → products","反应物 → 生成物"),size:12}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Chemists write reactions like sentences: reactants on the left, products on the right.","化学家像写句子一样写反应：左边是反应物，右边是生成物。"]]},
+{bg:'kitchen',holo:{t:'big',title:T("Nothing disappears","质量守恒"),rows:[{s:T("Atoms just swap partners","原子只是重新组合"),size:12},{s:T("Total mass before = total mass after","反应前总质量 = 反应后总质量"),size:12,fill:'#C2416B'},{s:T("(as long as no gas escapes)","（只要没有气体跑掉）"),size:11}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"But our cup got lighter after it fizzed!","可我们的杯子冒完泡变轻了！"],
+      ['bit',"Because the carbon dioxide escaped into the air. Catch the gas in a balloon and the total mass stays the same.","因为二氧化碳跑到空气里去了。如果用气球把气体收集起来，总质量就不会变。"]]},
+{bg:'kitchen',holo:{t:'cards',cols:2,title:T("Reactions all around","身边的化学反应"),items:[{p:'toast',l:T("Toast browning","面包烤黄")},{p:'egg',l:T("Cooking an egg","煎鸡蛋")},{p:'nail',l:T("Iron rusting","铁生锈")},{p:'leaf',l:T("Leaves turning yellow","树叶变黄")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"Even my breakfast egg is a chemical reaction!","连我早餐的鸡蛋都是化学反应！"]]},
+{bg:'kitchen',cast:[['leo',100,'determined','idle'],['mia',210,'happy','idle'],['bit',322,'talk','idle',{y:96}]],
+ say:[['bit',"Golden rule: never mix household cleaning products. Some combinations make dangerous gases.","黄金法则：千万不要把家用清洁剂混在一起，有些组合会产生危险气体。"],
+      ['leo',"Only safe kitchen chemistry, with an adult. Promise!","只做安全的厨房化学，而且有大人在。我保证！"]]}
+],
+terms:[["Chemical reaction","化学反应","A change that makes new substances.","生成新物质的变化。"],
+ ["Reactants and products","反应物与生成物","What you start with, and what you end up with.","反应开始时的物质，和反应后得到的物质。"],
+ ["Conservation of mass","质量守恒定律","Atoms are rearranged, never lost, so total mass stays the same.","原子只是重新组合，不会消失，所以总质量不变。"]],
+tryIt:T("With an adult: pour some vinegar into an empty bottle, put 2 spoons of baking soda into a balloon, stretch the balloon over the bottle's neck, then lift it so the soda drops in. Watch the balloon fill with carbon dioxide!","在大人陪同下：往空瓶里倒些白醋，把两勺小苏打装进气球，把气球口套在瓶口上，再把气球竖起来让小苏打落进瓶里。看气球被二氧化碳吹大！")},
+
+// ---------- C6 ----------
+{t:T("Acids and Bases","酸和碱"),topic:T("Acids, bases and indicators (a bonus topic)","酸、碱与指示剂（拓展）"),
+panels:[
+{bg:'kitchen',props:[['lemon',146,158]],cast:[['mia',100,'smirk','hold'],['leo',215,'worried','idle'],['bit',325,'talk','idle',{y:96}]],
+ say:[['mia',"Lemon juice is sour. Soap feels slippery. Why are they so different?","柠檬汁是酸的，肥皂摸起来滑滑的。它们为什么这么不同？"],
+      ['bit',"Lemon juice is an acid and soap is a base. They're chemical opposites!","柠檬汁是酸性的，肥皂是碱性的。它们在化学上是一对“对头”！"]]},
+{bg:'kitchen',holo:{t:'ph',title:T("The pH scale","pH值"),items:[{v:2,l:T("Lemon","柠檬汁")},{v:3,l:T("Vinegar","白醋")},{v:7,l:T("Water","清水")},{v:8,l:T("Baking soda","小苏打水")},{v:10,l:T("Soap","肥皂水")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The pH scale runs from 0 to 14. Below 7 is acidic, 7 is neutral, and above 7 is basic.","pH值从0到14。小于7是酸性，等于7是中性，大于7是碱性。"]]},
+{bg:'kitchen',props:[['cabbage',148,154]],cast:[['leo',100,'grin','hold'],['mia',215,'surprised','idle']],
+ say:[['nar',"With Leo's mum's help, they make purple cabbage juice to use as a colour indicator.","在乐乐妈妈的帮助下，他们做了紫甘蓝汁，用来当颜色指示剂。"],
+      ['leo',"Look, it's purple!","看，是紫色的！"]]},
+{bg:'kitchen',holo:{t:'cards',cols:3,title:T("Cabbage juice colour test","紫甘蓝变色实验"),items:[{p:'cupR',l:T("Lemon: pink (acid)","柠檬汁：粉红（酸性）")},{p:'cupP',l:T("Water: purple (neutral)","清水：紫色（中性）")},{p:'cupG',l:T("Baking soda: green-blue (base)","小苏打水：蓝绿（碱性）")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Cabbage juice changes colour with pH: pink for acids, green-blue for bases!","紫甘蓝汁会随pH值变色：遇酸变粉红，遇碱变蓝绿！"]]},
+{bg:'class',holo:{t:'big',title:T("Neutralisation","中和反应"),rows:[{s:T("Acid + base → salt + water","酸 + 碱 → 盐 + 水"),size:13,fill:'#C2416B'},{s:T("Antacid tablets calm extra stomach acid","胃药能中和过多的胃酸"),size:11},{s:T("Toothpaste helps protect teeth from acid","牙膏帮助牙齿抵御酸的侵蚀"),size:11}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Acids and bases cancel each other out. That's neutralisation, and it happens in your body every day.","酸和碱会相互抵消，这叫中和反应，你的身体里每天都在发生。"]]},
+{bg:'kitchen',cast:[['leo',100,'grin','point'],['mia',210,'smirk','idle'],['bit',322,'wink','idle',{y:96}]],
+ say:[['leo',"Chemistry is basically cooking with science!","化学基本上就是用科学做饭！"],
+      ['mia',"Just don't eat the experiments.","只是做实验的东西别吃。"]]}
+],
+terms:[["Acid","酸","pH below 7. Many taste sour, but never taste lab chemicals!","pH小于7。很多酸尝起来是酸的，但绝不能尝实验室化学品！"],
+ ["Base","碱","pH above 7. Soapy solutions are basic.","pH大于7，肥皂水就是碱性的。"],
+ ["Indicator","指示剂","A substance that changes colour with pH.","随pH值变色的物质。"],
+ ["Neutralisation","中和反应","Acid + base → salt + water.","酸 + 碱 → 盐 + 水。"]],
+tryIt:T("With an adult, chop some purple cabbage, soak it in hot water and strain out the purple juice. Test lemon juice, vinegar, water and baking soda water, and record the colours!","在大人陪同下，把紫甘蓝切碎泡在热水里，滤出紫色汁液。测试柠檬汁、白醋、清水和小苏打水，记录颜色变化！")}
+]});
+
+// ===== Build It!: technology & engineering strand of the 2022 national science standard =====
+SERIES.push({id:'eng',icon:'gear',color:'#F08A24',t:T("Build It!","动手造"),
+ desc:T("The design process, strong shapes and bridges, simple machines, circuits, skyscrapers and a smart device you can build.","工程设计流程、稳固结构与桥梁、简单机械、电路、摩天大楼，还有一个可以动手做的智能装置。"),
+ grade:T("Technology and engineering, from the 2022 national science curriculum standard","对应2022版义务教育科学课程标准“技术与工程”"),
+ episodes:[
+// ---------- E1 ----------
+{t:T("Think Like an Engineer","像工程师一样思考"),topic:T("The engineering design process","工程设计流程"),
+panels:[
+{bg:'room',props:[['desk',285],['stand',285]],cast:[['leo',140,'worried','idle']],fx:[['sweat','leo']],
+ say:[['leo',"My phone keeps falling over when I watch videos. So annoying!","我看视频时手机老是倒，烦死了！"],
+      ['nar',"Bit pops out of the laptop.","比特从笔记本电脑里蹦了出来。"]]},
+{bg:'room',holo:{t:'list',num:true,size:10,title:T("The design process","工程设计流程"),items:[{l:T("Ask: what's the problem?","明确问题：要解决什么？")},{l:T("Imagine: lots of ideas","构思：想出很多点子")},{l:T("Plan: sketch the best one","设计：画出最好的方案")},{l:T("Build a prototype","制作原型")},{l:T("Test it","测试")},{l:T("Improve, then go round again","改进，再来一轮")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"That's a problem, and engineers love problems! They follow a loop: ask, imagine, plan, build, test, improve. Then go round again.","这是个问题，工程师最爱解决问题了！他们按一个循环工作：明确问题、构思、设计、制作、测试、改进，然后再来一轮。"]]},
+{bg:'room',holo:{t:'list',title:T("Requirements","设计要求"),items:[{i:'check',l:T("Holds the phone at a good viewing angle","让手机保持合适的观看角度")},{i:'check',l:T("Made from cardboard I already have","用家里现有的纸板制作")},{i:'check',l:T("Folds flat for my school bag","能折叠放进书包")},{i:'check',l:T("Costs ¥0","零成本")}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'talk','present']],
+ say:[['bit',"First, write down what success looks like. These are your requirements and constraints.","先写下什么样算成功。这些就是设计要求和限制条件。"]]},
+{bg:'workshop',props:[['stand',205]],cast:[['leo',95,'grin','point'],['mia',305,'smirk','idle']],
+ say:[['nar',"Leo sketches three ideas and builds the simplest one first.","乐乐画了三个方案草图，先做了最简单的一个。"],
+      ['mia',"It's... leaning a bit.","它……有点歪。"]]},
+{bg:'workshop',holo:{t:'vs',title:T("Test and improve","测试与改进"),a:{l:T("Version 1: tips over backwards","第1版：向后翻倒"),ok:false},b:{l:T("Version 2: wider base and a triangle brace","第2版：加宽底座，加三角形支撑"),ok:true}},
+ cast:[['leo',54,'determined','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Failure isn't the end. It's information! Every test tells you what to fix.","失败不是终点，而是信息！每次测试都告诉你该改进什么。"]]},
+{bg:'room',props:[['desk',285],['stand',285]],cast:[['leo',140,'grin','cheer'],['bit',345,'happy','wave',{y:80}]],
+ say:[['leo',"Version 2 works! And I used a triangle, just like in math class.","第2版成功了！我还用了三角形，跟数学课学的一样。"],
+      ['bit',"Math plus making: that's engineering.","数学加动手，这就是工程。"]]}
+],
+terms:[["Engineering","工程","Using science and math to design solutions to real problems.","运用科学和数学，为实际问题设计解决方案。"],
+ ["Requirements","设计要求","What the design must do.","设计必须达到的目标。"],
+ ["Constraints","限制条件","Limits such as cost, time and materials.","成本、时间、材料等方面的限制。"],
+ ["Prototype","原型","An early model built to test an idea.","用来测试想法的早期模型。"]],
+tryIt:T("Design a phone or tablet stand from one sheet of cardboard. Test it, write down one problem, then build version 2.","用一张纸板设计一个手机或平板支架。测试它，写下一个问题，再做出第2版。")},
+
+// ---------- E2 ----------
+{t:T("Bridges and Strong Shapes","桥梁与稳固结构"),topic:T("Structures","结构"),
+panels:[
+{bg:'city',cast:[['leo',110,'think','point'],['mia',220,'happy','idle'],['bit',330,'talk','idle',{y:96}]],
+ say:[['nar',"Leo and Mia walk along the river, looking at the bridges.","乐乐和米娅沿着江边散步，看着江上的大桥。"],
+      ['leo',"How does a bridge hold up so many cars?","一座桥怎么撑得住那么多车？"]]},
+{bg:'city',holo:{t:'truss',title:T("Why triangles?","为什么用三角形？")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Remember triangle stability? Bridges use triangles so forces spread out and the shape can't squash.","还记得三角形的稳定性吗？桥梁用三角形结构，让力分散开，形状也不会被压扁。"]]},
+{bg:'city',holo:{t:'bridges',title:T("Bridge types","桥的类型")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"The Lupu Bridge is an arch, and the Nanpu Bridge hangs from cables!","卢浦大桥是拱桥，南浦大桥用的是斜拉索！"],
+      ['bit',"Exactly. Each design moves the weight to the ground in a different way.","没错。每种设计用不同的方式把重量传到地面。"]]},
+{bg:'workshop',props:[['paperbridge',205]],cast:[['leo',90,'grin','point'],['mia',315,'surprised','idle']],
+ say:[['nar',"Challenge: build a bridge from one sheet of paper that holds as many coins as possible.","挑战：用一张纸搭一座桥，看能承受多少枚硬币。"],
+      ['mia',"A flat sheet only held 2 coins...","平铺的纸只放得下2枚硬币……"]]},
+{bg:'workshop',holo:{t:'compare',title:T("Our paper bridge test","我们的纸桥测试"),items:[{l:T("Flat sheet: 2 coins","平铺：2枚"),v:2,txt:'2',c:'#FF5D5D'},{l:T("Folded into zigzags: 40 coins","折成波浪形：40枚"),v:40,txt:'40',c:'#22B8A7'}]},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"Folding it into zigzags made it 20 times stronger!","折成波浪形，承重提高了20倍！"],
+      ['bit',"Shape matters as much as material.","形状和材料一样重要。"]]},
+{bg:'class',cast:[['leo',85,'happy','idle'],['mia',200,'grin','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"Engineers test models before building the real thing. Breaking paper is much cheaper than breaking steel!","工程师在建造真东西之前先测试模型。弄坏纸可比弄坏钢材便宜多了！"]]}
+],
+terms:[["Structure","结构","Parts arranged to hold a shape and carry weight.","为保持形状、承受重量而组合起来的部件。"],
+ ["Load","荷载","The weight or force a structure must carry.","结构需要承受的重量或力。"],
+ ["Truss","桁架","A frame made of triangles.","由三角形组成的框架结构。"],
+ ["Arch","拱","A curved shape that pushes forces outward into its supports.","把力向两侧传到支撑处的弧形结构。"]],
+tryIt:T("Paper bridge challenge: span a 20 cm gap between two piles of books with one sheet of A4 paper. Try flat, folded and rolled designs and count the coins each one holds!","纸桥挑战：用一张A4纸跨过两摞书之间20厘米的空隙，试试平铺、折叠、卷筒等方案，数一数各能承受多少枚硬币！")},
+
+// ---------- E3 ----------
+{t:T("Simple Machines","简单机械"),topic:T("Levers, pulleys and ramps","杠杆、滑轮与斜面"),
+panels:[
+{bg:'workshop',props:[['tin',210]],cast:[['leo',110,'worried','idle'],['bit',320,'talk','idle',{y:90}]],fx:[['sweat','leo']],
+ say:[['leo',"This paint tin lid is stuck tight!","这个油漆罐的盖子卡得死死的！"],
+      ['bit',"Use a screwdriver as a lever. A small push becomes a big force!","用螺丝刀当杠杆。小小一撬，力量大增！"]]},
+{bg:'workshop',holo:{t:'lever',title:T("The lever rule","杠杆原理"),foot:'2 kg × 1 m = 1 kg × 2 m'},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The farther from the pivot you push, the less force you need. That's why long handles help.","离支点越远，需要的力就越小。所以长柄工具更省力。"]]},
+{bg:'workshop',holo:{t:'list',title:T("Levers everywhere","生活中的杠杆"),items:[{i:'check',l:T("Scissors","剪刀")},{i:'check',l:T("Seesaw","跷跷板")},{i:'check',l:T("Bottle opener","开瓶器")},{i:'check',l:T("Chopsticks","筷子")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['mia',"Even chopsticks are levers?","连筷子都是杠杆？"],
+      ['bit',"Yes! Some levers save force, some save distance.","是的！有的杠杆省力，有的杠杆省距离。"]]},
+{bg:'workshop',holo:{t:'pulley',title:T("Pulleys","滑轮")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A fixed pulley changes the direction you pull. A movable pulley halves the force you need.","定滑轮改变用力的方向，动滑轮可以省一半的力。"]]},
+{bg:'class',holo:{t:'ramp',title:T("Ramps","斜面")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A ramp lets you raise something with less force by going a longer way.","斜面让你走更长的路，用更小的力把东西抬高。"],
+      ['leo',"Like the wheelchair ramp at school!","就像学校里的无障碍坡道！"]]},
+{bg:'workshop',props:[['tin',210]],cast:[['leo',110,'grin','cheer'],['bit',320,'happy','wave',{y:90}]],
+ say:[['leo',"The lid's off! Simple machines don't give you free energy, but they make the job easier.","盖子打开了！简单机械不会凭空产生能量，但能让活儿干起来更轻松。"],
+      ['bit',"Exactly. You trade distance for force.","正是。你是用距离换力。"]]}
+],
+terms:[["Lever","杠杆","A bar that turns around a fixed point.","绕固定点转动的硬棒。"],
+ ["Fulcrum","支点","The point a lever turns around.","杠杆绕着转动的点。"],
+ ["Pulley","滑轮","A wheel and rope that change the direction of a pull or reduce the force.","带绳子的轮子，可以改变力的方向或省力。"],
+ ["Inclined plane","斜面","A ramp: less force over a longer distance.","坡面：用更长的距离换取更小的力。"]],
+tryIt:T("Make a lever from a ruler, with a pencil underneath as the fulcrum. Put coins at different distances. Can 1 coin balance 2 coins?","用一把尺子和下面垫着的一支铅笔（当支点）做杠杆。在不同位置放硬币，1枚硬币能和2枚硬币平衡吗？")},
+
+// ---------- E4 ----------
+{t:T("Making Electricity Flow","让电流动起来"),topic:T("Circuits","电路"),
+panels:[
+{bg:'workshop',props:[['kit',205]],cast:[['leo',95,'grin','point'],['mia',310,'think','think']],
+ say:[['nar',"Leo has a battery, two wires and a small bulb.","乐乐有一节电池、两根导线和一个小灯泡。"],
+      ['leo',"How do I make it light up?","怎么让它亮起来？"]]},
+{bg:'workshop',holo:{t:'circuit',kind:'simple',title:T("A complete circuit","闭合电路")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Electricity needs a complete loop: out of the battery, through the bulb and back. If there's any gap, it stops.","电流需要一条完整的回路：从电池出发，经过灯泡，再回到电池。有任何断开，电流就停了。"]]},
+{bg:'workshop',holo:{t:'list',title:T("Conductors and insulators","导体和绝缘体"),items:[{i:'check',l:T("Copper wire: conductor","铜线：导体")},{i:'check',l:T("Steel spoon: conductor","钢勺：导体")},{i:'cross',l:T("Plastic ruler: insulator","塑料尺：绝缘体")},{i:'cross',l:T("Rubber eraser: insulator","橡皮：绝缘体")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Metals let electricity through: they're conductors. Plastic and rubber stop it: insulators. That's why wires have plastic coats.","金属能导电，是导体；塑料和橡胶不导电，是绝缘体。所以电线外面包着塑料皮。"]]},
+{bg:'workshop',holo:{t:'circuit',kind:'both',title:T("Series and parallel","串联和并联")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"In series there's one path: remove one bulb and both go out. In parallel, each bulb has its own path.","串联只有一条路径：拧下一个灯泡，两个都灭。并联时每个灯泡都有自己的路径。"],
+      ['leo',"So the lights at home must be in parallel!","所以家里的灯一定是并联的！"]]},
+{bg:'workshop',holo:{t:'big',title:T("Safety first!","安全第一！"),rows:[{s:T("Small batteries (1.5 V): OK to experiment","小电池（1.5伏）：可以做实验"),size:11},{s:T("Wall sockets (220 V): NEVER","墙上插座（220伏）：绝对不碰"),size:14,fill:'#C2416B'},{s:T("Never touch switches with wet hands","不要用湿手碰开关"),size:11}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Home electricity is about 150 times the voltage of a small battery and can seriously hurt you. Only experiment with small batteries.","家庭电路的电压大约是小电池的150倍，会造成严重伤害。只能用小电池做实验。"]]},
+{bg:'workshop',props:[['kit',205]],cast:[['leo',95,'grin','cheer'],['mia',310,'happy','idle']],fx:[['sparkles',229,150]],
+ say:[['nar',"Leo adds a switch made from a paper clip.","乐乐用回形针做了一个开关。"],
+      ['leo',"Click: on! Click: off! I'm an electrical engineer!","咔哒，亮！咔哒，灭！我是电气工程师啦！"]]}
+],
+terms:[["Circuit","电路","A complete loop that electricity can flow around.","电流能够流通的完整回路。"],
+ ["Conductor","导体","A material that lets electricity flow, like copper.","能导电的材料，比如铜。"],
+ ["Insulator","绝缘体","A material that blocks electricity, like plastic.","不容易导电的材料，比如塑料。"],
+ ["Series and parallel","串联与并联","One shared path, or separate paths for each part.","所有元件共用一条路径，或每个元件各有一条路径。"]],
+tryIt:T("With an adult, build a circuit with a 1.5 V battery, a small bulb, wires and a paper-clip switch. Test which objects conduct. Never join the two ends of a battery directly with a wire.","在大人陪同下，用1.5伏电池、小灯泡、导线和回形针开关搭一个电路，测试哪些物品能导电。千万不要用导线直接连接电池两端。")},
+
+// ---------- E5 ----------
+{t:T("Tall Towers and Wild Winds","高楼与大风"),topic:T("Skyscrapers and wind","高层建筑与风"),
+panels:[
+{bg:'city',cast:[['leo',115,'surprised','point'],['bit',290,'talk','idle']],
+ say:[['leo',"The Shanghai Tower is 632 metres tall! Why doesn't the wind blow it over?","上海中心大厦有632米高！风为什么吹不倒它？"],
+      ['bit',"Engineers designed it to handle strong typhoon winds.","工程师专门设计它来抵御强台风。"]]},
+{bg:'city',holo:{t:'tower',wind:true,title:T("A twisting shape","螺旋上升的外形")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The tower twists as it rises. That breaks up the wind, and its designers say it cuts the wind load by about a quarter.","大厦边升高边旋转，能打乱风的作用。设计师说，这让风荷载减少了约四分之一。"]]},
+{bg:'city',holo:{t:'tower',damper:true,title:T("A giant pendulum","巨型阻尼器")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Near the top hangs a damper of about 1,000 tonnes. When the building sways, it swings the other way and calms the motion.","大厦顶部附近装有约1000吨重的阻尼器。大楼晃动时，它向相反方向摆动，让晃动减小。"]]},
+{bg:'class',cast:[['mia',85,'think','think'],['leo',200,'surprised','idle'],['bit',322,'talk','idle']],
+ say:[['mia',"So skyscrapers are designed to bend a little, not to be totally stiff?","所以摩天大楼被设计成可以稍微弯一点，而不是完全僵硬？"],
+      ['bit',"Right. A little flexibility is much safer than cracking.","对。有一点弹性比开裂安全得多。"]]},
+{bg:'city',holo:{t:'list',title:T("Engineers also think about...","工程师还要考虑……"),items:[{i:'user',l:T("People: safe exits and lifts","人：安全出口和电梯")},{i:'bulb',l:T("Energy: saving electricity","能源：节约用电")},{i:'map',l:T("Ground: Shanghai's soft soil","地基：上海的软土")},{i:'warn',l:T("Weather: typhoons and heavy rain","天气：台风和暴雨")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Shanghai's ground is soft, so very tall buildings stand on deep foundations made of long piles.","上海的地基比较软，所以超高层建筑要打很深的桩基础。"]]},
+{bg:'city',cast:[['leo',115,'determined','point'],['bit',290,'happy','wave']],
+ say:[['leo',"Maybe I'll design a skyscraper one day!","也许有一天我也会设计摩天大楼！"],
+      ['bit',"Start with a tower of paper cups this weekend!","这周末先用纸杯搭座塔吧！"]]}
+],
+terms:[["Wind load","风荷载","The push of the wind on a building.","风对建筑物产生的作用力。"],
+ ["Damper","阻尼器","A device that reduces swaying or shaking.","减少晃动或振动的装置。"],
+ ["Foundation","地基","The underground part that spreads a building's weight into the ground.","把建筑重量分散到地下的部分。"]],
+tryIt:T("Build the tallest tower you can from 20 paper cups or index cards. Then point a fan at it. How can you make it stand up to the wind?","用20个纸杯或卡片搭一座尽可能高的塔，再用电风扇对着吹。怎样才能让它不被吹倒？")},
+
+// ---------- E6 ----------
+{t:T("The Smart Plant Helper","智能浇花助手"),topic:T("Sensors, control and feedback","传感器、控制与反馈"),
+panels:[
+{bg:'room',props:[['desk',265],['plant',265,'droop']],cast:[['leo',120,'worried','idle'],['bit',350,'talk','idle',{y:80}]],
+ say:[['nar',"Leo's desk plant is drooping again.","乐乐书桌上的植物又蔫了。"],
+      ['leo',"I keep forgetting to water it!","我老是忘记给它浇水！"],
+      ['bit',"Let's build a system that remembers for you.","我们造一个能替你记住的系统吧。"]]},
+{bg:'room',holo:{t:'flow',title:T("Sense → decide → act","感知 → 判断 → 执行"),steps:[{i:'drop',l:T("Sensor: is the soil dry?","传感器：土壤干了吗？")},{i:'chip',l:T("Controller decides","控制器做判断")},{i:'gear',l:T("Pump waters the plant","水泵浇水")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Every smart device has three parts: a sensor to measure, a controller to decide, and an actuator to act.","每个智能装置都有三部分：测量的传感器、做判断的控制器、执行动作的执行器。"],
+      ['leo',"It's input, process, output, like in my very first lesson!","这就是输入、处理、输出，跟我第一课学的一样！"]]},
+{bg:'workshop',holo:{t:'code',title:T("The control rule","控制规则"),lines:['if soil < 30:','    pump_on()','else:','    pump_off()']},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The controller runs a simple rule: if the soil moisture drops below 30%, turn on the pump.","控制器执行一条简单规则：土壤湿度低于30%，就打开水泵。"]]},
+{bg:'workshop',holo:{t:'cycle',title:T("Feedback","反馈"),items:[{i:'eye',l:T("Measure","测量")},{i:'chip',l:T("Decide","判断")},{i:'gear',l:T("Act","执行")}],center:T("feedback loop","反馈回路")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"After watering, the sensor measures again. That loop is called feedback. Your body does it too, like sweating when you get hot.","浇完水后，传感器再测一次，这个循环叫“反馈”。你的身体也会这样，比如热了就出汗。"]]},
+{bg:'workshop',props:[['plant',205,'happy']],cast:[['leo',95,'grin','point'],['mia',310,'happy','idle']],
+ say:[['nar',"One week later, the plant is green and healthy again.","一周后，植物又绿又精神。"],
+      ['mia',"Math for the rule, physics for the pump, chemistry for the soil, engineering for the build!","规则用数学，水泵用物理，土壤用化学，制作靠工程！"]]},
+{bg:'city',holo:{t:'grid',title:T("Everything connects","知识都是相通的"),items:[T("Math","数学"),T("Physics","物理"),T("Chemistry","化学"),T("Engineering","工程"),T("Coding","编程"),T("AI","人工智能")]},
+ cast:[['leo',54,'happy','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Every subject is a tool. Put them together and you can build almost anything.","每门学科都是一种工具。把它们组合起来，你几乎能造出任何东西。"],
+      ['nar',"To be continued...","未完待续……"]]}
+],
+terms:[["Sensor","传感器","A device that measures something, like temperature or moisture.","测量温度、湿度等的装置。"],
+ ["Actuator","执行器","The part that acts: a motor, a pump or a light.","执行动作的部分，比如电机、水泵、灯。"],
+ ["Feedback","反馈","Measuring the result and adjusting again.","测量结果后再次调整。"],
+ ["System","系统","Parts working together for one purpose.","为同一目标协同工作的各个部分。"]],
+tryIt:T("Find 3 devices at home that use sensors (hint: automatic lights, fridges, phones). For each one, name the sensor, the controller and what it does.","在家里找出3个用到传感器的装置（提示：感应灯、冰箱、手机），说出它们的传感器、控制器和执行的动作。")}
+]});
 
 // ===== Drawing engine =====
 let MODE='both';
@@ -620,7 +1397,7 @@ function icon(name,cx,cy,s=1){
     case 'pen': g=`<path d="M-9 9 L-7 3 L5 -9 L9 -5 L-3 7 Z" fill="#FFD84D" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-9 9 L-7 3 L-3 7 Z" fill="#F5CBA7" stroke="${I}" stroke-width="1.2"/>`;break;
     case 'gear': g=`<g fill="#8A97A8" stroke="${I}" stroke-width="1.4">${[0,45,90,135].map(a=>`<rect x="-2.5" y="-11" width="5" height="22" rx="1" transform="rotate(${a})"/>`).join('')}<circle r="7.5"/></g><circle r="3" fill="#fff" stroke="${I}" stroke-width="1.4"/>`;break;
     case 'laptop': g=`<rect x="-10" y="-9" width="20" height="13" rx="2" fill="#13213C" stroke="${I}" stroke-width="1.5"/><rect x="-7.5" y="-6.5" width="15" height="8" fill="#7DF9FF" opacity=".6"/><path d="M-13 6 L13 6 L11 4 L-11 4 Z" fill="#AEB6C6" stroke="${I}" stroke-width="1.4"/>`;break;
-    default: g=`<circle r="6" fill="${HL}"/>`;
+    default: g=(typeof ICON2!=='undefined'&&ICON2[name])?ICON2[name]():`<circle r="6" fill="${HL}"/>`;
   }
   return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
 }
@@ -641,6 +1418,7 @@ function pic(name,cx,cy,s=1){
     case 'medicine': g=`<rect x="-8" y="-9" width="16" height="22" rx="3" fill="#FFB347" stroke="${I}" stroke-width="1.6"/><rect x="-9.5" y="-15" width="19" height="7" rx="1.5" fill="#fff" stroke="${I}" stroke-width="1.6"/><rect x="-8" y="-3" width="16" height="10" fill="#fff"/><path d="M0 -1.5 L0 5.5 M-3.5 2 L3.5 2" stroke="#E04848" stroke-width="2.2"/>`;break;
     case 'tissue': g=`<path d="M-12 4 L-9 -8 L-2 -12 L6 -9 L12 -2 L10 9 L1 12 L-8 10 Z" fill="#fff" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-6 -4 L0 1 L5 -5 M-3 6 L2 2 L7 5 M-8 2 L-4 0" stroke="#AEB6C6" stroke-width="1.2" fill="none"/>`;break;
     case 'table': g=`<rect x="-19" y="-6" width="38" height="20" rx="2" fill="#B98552" stroke="${I}" stroke-width="1.6"/><path d="M-16 0 Q-4 -2 6 1 T17 0 M-17 7 Q-5 5 5 8 T17 7" stroke="#8A5E38" stroke-width="1.1" fill="none"/>`;break;
+    default: if(typeof PIC2!=='undefined'&&PIC2[name]) g=PIC2[name](); break;
     case 'bananaT': g=pic('table',0,0,1)+`<g transform="translate(0,-4) scale(.8)">${pic('banana',0,0,1)}</g>`;return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
   }
   return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
@@ -787,7 +1565,8 @@ DIAG.cards=(d,B)=>{let s='';const n=d.items.length,cols=d.cols||Math.min(n,3),ro
     s+=pic(it.p,x+cw/2,y+3+picH/2,sc);s+=st(x+cw/2,y+ch-lh-3,it.l,lo).s;
     if(it.m) s+=icon({ok:'check',no:'cross',q:'q'}[it.m],x+cw-9,y+9,0.72);});
   if(d.foot) s+=st(B.x+B.w/2,B.y+B.h-fh+4,d.foot,fo).s;return s;};
-DIAG.cycle=(d,B)=>{let s='';const n=d.items.length,cx=B.x+B.w/2,cy=B.y+B.h/2-4,R=Math.min(B.w*0.34,B.h*0.36),r=16;
+DIAG.cycle=(d,B)=>{let s='';const n=d.items.length,cx=B.x+B.w/2,r=16;let cy=B.y+B.h/2-4,R=Math.min(B.w*0.34,B.h*0.36);
+  if(n===3){const lo0={size:10.5,maxW:70};const lt=stH(d.items[0].l,lo0),lb=Math.max(stH(d.items[1].l,lo0),stH(d.items[2].l,lo0));R=Math.min(B.w*0.34,(B.h-2*r-6-lt-lb)/1.5);cy=B.y+lt+3+r+R;}
   const ang=i=>(-90+360*i/n)*Math.PI/180;const dA=(r+6)/R;
   for(let i=0;i<n;i++){const a1=ang(i)+dA,a2=ang(i+1)-dA;const p1=[cx+R*Math.cos(a1),cy+R*Math.sin(a1)],p2=[cx+R*Math.cos(a2),cy+R*Math.sin(a2)];
     s+=`<path d="M${n1(p1[0])} ${n1(p1[1])} A${n1(R)} ${n1(R)} 0 0 1 ${n1(p2[0])} ${n1(p2[1])}" fill="none" stroke="${HL}" stroke-width="2.4"/>`+ah(p2[0],p2[1],a2+Math.PI/2,HL,8);}
@@ -910,7 +1689,7 @@ function face(e){
 }
 function arm(pts,L){const p=pts.map(q=>q.join(',')).join(' ');const h=pts[2];
   return `<polyline points="${p}" fill="none" stroke="${INK}" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><polyline points="${p}" fill="none" stroke="${L.jacket}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${h[0]}" cy="${h[1]}" r="6.5" fill="${L.skin}" stroke="${INK}" stroke-width="2.5"/>`;}
-function person(who,x,y,f,s,expr,pose){
+function person(who,x,y,f,s,expr,pose,gog){
   const L=LOOK[who],P=POSES[pose]||POSES.idle,W=`stroke="${INK}" stroke-width="2.5"`;
   let g=`<g transform="translate(${x},${y}) scale(${n1(f*s*100)/100},${n1(s*100)/100})" stroke-linejoin="round">`;
   g+=`<ellipse cx="0" cy="0" rx="32" ry="5" fill="#000" opacity=".12"/>`;
@@ -926,6 +1705,7 @@ function person(who,x,y,f,s,expr,pose){
   g+=`<circle cx="2" cy="-150" r="33" fill="${L.skin}" ${W}/>`;
   g+=face(expr)+L.hairF(L);
   if(L.glasses) g+=`<g fill="#fff" fill-opacity=".18" stroke="${INK}" stroke-width="2"><circle cx="-8" cy="-147" r="8.5"/><circle cx="14" cy="-147" r="8.5"/></g><path d="M0.5 -148 L5.5 -148 M-16.5 -148 L-29 -150" stroke="${INK}" stroke-width="2" fill="none"/>`;
+  if(gog) g+=`<rect x="-22" y="-158" width="48" height="21" rx="9" fill="#BFE8FF" fill-opacity=".55" stroke="${INK}" stroke-width="2.5"/><path d="M-22 -150 L-31 -152 M26 -150 L35 -152" stroke="${INK}" stroke-width="3"/>`;
   return g+'</g>';}
 function bit(x,y,f,s,expr,pose){
   const T1=TEAL,TD='#178F82',C='#7DF9FF';
@@ -1040,6 +1820,7 @@ function prop(p){const [k,x,a]=p;
       [['#8B5A2B',34],['#2D6CDF',30],['#3A3A44',27],['#E04848',22]].forEach(([c,h],i)=>{s+=`<rect x="${x-30+i*16}" y="${186-h}" width="11" height="${h}" fill="${c}" stroke="${INK}" stroke-width="1.2"/>`;});
       s+=`<g transform="translate(${x-60},130) scale(.9)">${pic('banana',0,0,0.7)}</g><g transform="translate(${x-60},165) scale(.9)">${pic('bottle',0,0,0.6)}</g><g transform="translate(${x+60},140) scale(.9)">${pic('tissue',0,0,0.7)}</g>`;return s;}
     case 'medal': {const y=a;return `<path d="M${x-12} ${y-34} L${x-4} ${y-8} L${x+4} ${y-8} L${x-4} ${y-34} Z" fill="#2F6FD6" stroke="${INK}" stroke-width="2"/><path d="M${x+12} ${y-34} L${x+4} ${y-8} L${x-4} ${y-8} L${x+4} ${y-34} Z" fill="#FF5D5D" stroke="${INK}" stroke-width="2"/><circle cx="${x}" cy="${y+6}" r="18" fill="#FFC83D" stroke="${INK}" stroke-width="2.5"/><circle cx="${x}" cy="${y+6}" r="12" fill="none" stroke="#E0A21B" stroke-width="2"/>${star(x,y+6,8,'#fff')}`;}
+    default: if(typeof PROP2!=='undefined'&&PROP2[k]) return PROP2[k](x,a,p); break;
     case 'phone': {const y=a;return `<g transform="rotate(-12 ${x} ${y})"><rect x="${x-7}" y="${y-12}" width="14" height="24" rx="3" fill="#2B2F45" stroke="${INK}" stroke-width="2"/><rect x="${x-5}" y="${y-9}" width="10" height="17" fill="#7DF9FF"/></g>`;}
   }
   return '';}
@@ -1070,10 +1851,10 @@ function artSVG(p){
     if(b&&b[3]==='present'){const f=facing(b),o=b[4]||{},s=o.s||1.05,by=o.y||108;const ex=f<0?HOLO.x+HOLO.w:HOLO.x;const fx=b[1]+f*20*s;
       svg+=`<polygon points="${n1(fx)},${n1(by-6)} ${ex},${HOLO.y+26} ${ex},${HOLO.y+HOLO.h-26}" fill="#7DF9FF" opacity=".28"/>`;}
     svg+=holo(p.holo);}
-  const front=['phone','medal'];
+  const front=(typeof FRONT_PROPS!=='undefined')?FRONT_PROPS:['phone','medal'];
   (p.props||[]).filter(q=>!front.includes(q[0])).forEach(q=>svg+=prop(q));
   (p.cast||[]).forEach(c=>{const [who,x,e,pose,o={}]=c;const f=facing(c);
-    if(who==='bit') svg+=bit(x,o.y||108,f,o.s||1.05,e,pose); else svg+=person(who,x,242,f,o.s||LOOK[who].s,e,pose);});
+    if(who==='bit') svg+=bit(x,o.y||108,f,o.s||1.05,e,pose); else svg+=person(who,x,242,f,o.s||LOOK[who].s,e,pose,o.g);});
   (p.props||[]).filter(q=>front.includes(q[0])).forEach(q=>svg+=prop(q));
   (p.fx||[]).forEach(f=>svg+=fxDraw(f,cm));
   return `<svg class="art" viewBox="0 0 400 250" aria-hidden="true" focusable="false">${svg}</svg>`;}
@@ -1086,6 +1867,279 @@ function bubbles(p){const cm={};(p.cast||[]).forEach(c=>cm[c[0]]=c);
     return `<div class="b ${side}"><span class="who" style="--c:${N.c}">${esc(name)}</span>${body}</div>`;}).join('');}
 function panelHTML(p,i){return `<figure class="panel" style="--top:${SCENES[p.bg].top}"><span class="pn">${i+1}</span><div class="bubbles">${bubbles(p)}</div>${artSVG(p)}</figure>`;}
 
+// ===== Science & math extension: extra icons, pictures, diagrams, scenes and props =====
+const BLUE='#2F6FD6', CORAL='#FF5D5D', GOLD='#FFC83D', GREEN='#2BAE66', ORANGE='#F08A24';
+
+// ---------- extra icons (±11 box) ----------
+const ICON2={
+  user:()=>`<circle cx="0" cy="-5" r="5" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/><path d="M-9 10 Q-9 1 0 1 Q9 1 9 10 Z" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/>`,
+  speaker:()=>`<path d="M-10 -4 L-5 -4 L2 -10 L2 10 L-5 4 L-10 4 Z" fill="#2B3A55" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 -5 Q9 0 5 5 M7 -9 Q14 0 7 9" stroke="${INK}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`,
+  ear:()=>`<path d="M5 9 Q0 11 -1 6 Q-2 2 -5 0 Q-9 -4 -6 -8 Q-2 -12 4 -10 Q9 -8 9 -2 Q9 2 6 4 Q4 6 5 9 Z" fill="#F5CBA7" stroke="${INK}" stroke-width="1.5"/><path d="M-2 -5 Q2 -8 5 -4 Q6 0 2 1" stroke="${INK}" stroke-width="1.3" fill="none"/>`,
+  wave:()=>`<path d="M-11 0 Q-8 -8 -5 0 T1 0 T7 0 T11 -3" stroke="${HL}" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M-11 6 Q-8 1 -5 6 T1 6 T7 6" stroke="${HL}" stroke-width="1.4" fill="none" opacity=".6"/>`,
+  drop:()=>`<path d="M0 -11 C6 -3 8 1 8 4 A8 8 0 0 1 -8 4 C-8 1 -6 -3 0 -11 Z" fill="#7CC6F5" stroke="${INK}" stroke-width="1.5"/><path d="M-3 3 Q-3 6 0 7" stroke="#fff" stroke-width="1.5" fill="none"/>`,
+  bubbles:()=>`<circle cx="-4" cy="3" r="6" fill="#E6F7FF" stroke="${INK}" stroke-width="1.4"/><circle cx="5" cy="-4" r="4.5" fill="#E6F7FF" stroke="${INK}" stroke-width="1.4"/><circle cx="6" cy="6" r="3" fill="#E6F7FF" stroke="${INK}" stroke-width="1.3"/>`,
+  flame:()=>`<path d="M0 11 C-8 11 -10 3 -6 -3 C-5 1 -3 2 -2 1 C-4 -5 0 -9 2 -11 C3 -6 8 -3 8 3 C8 8 5 11 0 11 Z" fill="${ORANGE}" stroke="${INK}" stroke-width="1.4"/><path d="M0 10 C-3 10 -4 6 -2 3 C-1 5 1 4 2 2 C4 5 4 10 0 10 Z" fill="#FFE45C"/>`,
+  leaf:()=>`<path d="M-9 9 C-10 -4 -2 -10 10 -10 C10 2 4 10 -9 9 Z" fill="#6CC56A" stroke="${INK}" stroke-width="1.5"/><path d="M-9 9 L5 -5" stroke="${INK}" stroke-width="1.2"/>`,
+  palette:()=>`<path d="M0 -10 C8 -10 11 -4 11 0 C11 4 7 4 5 4 C3 4 2 6 3 8 C4 10 2 11 0 11 C-7 11 -11 6 -11 0 C-11 -6 -6 -10 0 -10 Z" fill="#F3E3C8" stroke="${INK}" stroke-width="1.4"/><circle cx="-5" cy="-3" r="2.2" fill="${CORAL}"/><circle cx="1" cy="-6" r="2.2" fill="${GOLD}"/><circle cx="6" cy="-2" r="2.2" fill="${BLUE}"/><circle cx="-5" cy="4" r="2.2" fill="${GREEN}"/>`,
+  solid:()=>`<rect x="-9" y="-2" width="8" height="8" fill="#fff" stroke="${INK}" stroke-width="1.3"/><rect x="1" y="-2" width="8" height="8" fill="#fff" stroke="${INK}" stroke-width="1.3"/><rect x="-4" y="-10" width="8" height="8" fill="#fff" stroke="${INK}" stroke-width="1.3"/>`,
+  bike:()=>`<circle cx="-6" cy="4" r="5" fill="none" stroke="${INK}" stroke-width="1.6"/><circle cx="7" cy="4" r="5" fill="none" stroke="${INK}" stroke-width="1.6"/><path d="M-6 4 L-1 -4 L5 -4 L7 4 M-1 -4 L1 4 L5 -4 M-3 -7 L1 -7" stroke="${CORAL}" stroke-width="1.6" fill="none"/>`,
+  train:()=>`<path d="M-11 6 L-11 -2 Q-11 -7 -4 -7 L6 -7 Q11 -7 11 0 L11 6 Z" fill="#fff" stroke="${INK}" stroke-width="1.5"/><path d="M4 -6 Q10 -6 10 -1 L4 -1 Z" fill="#7DF9FF"/><line x1="-11" y1="2" x2="11" y2="2" stroke="${CORAL}" stroke-width="2"/><line x1="-12" y1="9" x2="12" y2="9" stroke="${INK}" stroke-width="1.6"/>`,
+  ruler:()=>`<rect x="-11" y="-4" width="22" height="8" fill="${GOLD}" stroke="${INK}" stroke-width="1.4"/>`+[-8,-4,0,4,8].map(x=>`<line x1="${x}" y1="-4" x2="${x}" y2="${x%8===0?1:-1}" stroke="${INK}" stroke-width="1"/>`).join(''),
+};
+
+// ---------- extra pictures (±20 x ±16) ----------
+const PIC2={
+  apple:()=>`<path d="M0 -8 C-6 -13 -15 -9 -14 0 C-13 9 -6 14 0 11 C6 14 13 9 14 0 C15 -9 6 -13 0 -8 Z" fill="${CORAL}" stroke="${INK}" stroke-width="1.6"/><path d="M0 -8 Q1 -13 4 -15" stroke="${INK}" stroke-width="1.8" fill="none"/><path d="M2 -12 Q8 -16 10 -11 Q6 -9 2 -12 Z" fill="#6CC56A" stroke="${INK}" stroke-width="1.2"/>`,
+  orange:()=>`<circle cx="0" cy="1" r="13" fill="${ORANGE}" stroke="${INK}" stroke-width="1.6"/><circle cx="-4" cy="-3" r="1" fill="#C96A12"/><circle cx="4" cy="3" r="1" fill="#C96A12"/><circle cx="2" cy="-6" r="1" fill="#C96A12"/><path d="M0 -12 L2 -15" stroke="${INK}" stroke-width="1.6"/>`,
+  ice:()=>`<rect x="-11" y="-10" width="20" height="18" rx="3" fill="#D8F3FF" stroke="${INK}" stroke-width="1.6"/><path d="M-7 -6 L-2 -6" stroke="#fff" stroke-width="2"/><path d="M-14 12 Q-4 8 4 12 T16 12" fill="none" stroke="#7CC6F5" stroke-width="2.2"/>`,
+  toast:()=>`<path d="M-12 12 L-12 -4 Q-15 -12 -6 -13 L6 -13 Q15 -12 12 -4 L12 12 Z" fill="#D9A15A" stroke="${INK}" stroke-width="1.6"/><path d="M-8 9 L-8 -3 Q-10 -9 -4 -9 L4 -9 Q10 -9 8 -3 L8 9 Z" fill="#5A3A1E"/>`,
+  egg:()=>`<path d="M-15 2 Q-16 -9 -5 -10 Q2 -15 9 -9 Q17 -6 14 4 Q12 13 0 12 Q-14 13 -15 2 Z" fill="#fff" stroke="${INK}" stroke-width="1.6"/><circle cx="0" cy="0" r="6" fill="#FFC83D" stroke="${INK}" stroke-width="1.3"/>`,
+  paper:()=>`<path d="M-14 -11 L-2 -11 L-4 -4 L0 2 L-3 12 L-14 12 Z" fill="#fff" stroke="${INK}" stroke-width="1.5"/><path d="M2 -11 L14 -11 L14 12 L1 12 L4 2 L0 -4 Z" fill="#fff" stroke="${INK}" stroke-width="1.5"/><path d="M-11 -6 L-6 -6 M-11 -1 L-6 -1 M6 -6 L11 -6 M6 4 L11 4" stroke="#AEB6C6" stroke-width="1.2"/>`,
+  nail:()=>`<rect x="-15" y="-3" width="26" height="6" fill="#B9601F" stroke="${INK}" stroke-width="1.5"/><path d="M11 -3 L17 0 L11 3 Z" fill="#8A97A8" stroke="${INK}" stroke-width="1.3"/><rect x="-18" y="-7" width="4" height="14" rx="1" fill="#8A97A8" stroke="${INK}" stroke-width="1.4"/><circle cx="-6" cy="0" r="1.6" fill="#7A3A10"/><circle cx="3" cy="-1" r="1.4" fill="#7A3A10"/>`,
+  leaf:()=>`<path d="M-13 10 C-15 -6 -3 -13 13 -12 C13 3 4 12 -13 10 Z" fill="${GOLD}" stroke="${INK}" stroke-width="1.6"/><path d="M-13 10 L7 -6 M-5 3 L-6 -4 M1 -2 L6 1" stroke="#B9601F" stroke-width="1.3" fill="none"/>`,
+  cupR:()=>cup('#FF8FB1'), cupP:()=>cup('#8E5BC8'), cupG:()=>cup('#3FB8A0'),
+};
+function cup(c){return `<path d="M-10 -12 L10 -12 L8 13 L-8 13 Z" fill="#fff" fill-opacity=".6" stroke="${INK}" stroke-width="1.6"/><path d="M-9 -4 L9 -4 L8 13 L-8 13 Z" fill="${c}"/><path d="M-10 -12 L10 -12 L8 13 L-8 13 Z" fill="none" stroke="${INK}" stroke-width="1.6"/>`;}
+
+// ---------- helpers ----------
+const lineS=(x1,y1,x2,y2,c=INK,w=2,extra='')=>`<line x1="${n1(x1)}" y1="${n1(y1)}" x2="${n1(x2)}" y2="${n1(y2)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round" ${extra}/>`;
+function wedge(cx,cy,r,a1,a2,fill){const p1=[cx+r*Math.cos(a1),cy+r*Math.sin(a1)],p2=[cx+r*Math.cos(a2),cy+r*Math.sin(a2)];const large=Math.abs(a2-a1)>Math.PI?1:0;
+  return `<path d="M${n1(cx)} ${n1(cy)} L${n1(p1[0])} ${n1(p1[1])} A${r} ${r} 0 ${large} 1 ${n1(p2[0])} ${n1(p2[1])} Z" fill="${fill}" stroke="${INK}" stroke-width="1.2"/>`;}
+function footOf(d,B,size=10.5){const fo={size,maxW:B.w,fill:HOT};const h=d.foot?stH(d.foot,fo)+4:0;return {h,draw:()=>d.foot?st(B.x+B.w/2,B.y+B.h-h+4,d.foot,fo).s:''};}
+function seeded(n){let s=n*9301+49297;return()=>{s=(s*9301+49297)%233280;return s/233280;};}
+
+// ---------- math diagrams ----------
+DIAG.area=(d,B)=>{let s='';const F=footOf(d,B,11);const S=Math.min(B.w-34,B.h-F.h-16),x0=B.x+(B.w-S)/2+8,y0=B.y+12,a=S*0.62,b=S-a;
+  [[x0,y0,a,a,'#CFF5EF','a²'],[x0+a,y0,b,a,'#FFE7A3','ab'],[x0,y0+a,a,b,'#FFE7A3','ab'],[x0+a,y0+a,b,b,'#FFD6D6','b²']].forEach(([x,y,w,h,c,l])=>{
+    s+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" fill="${c}" stroke="${INK}" stroke-width="1.6"/><text x="${n1(x+w/2)}" y="${n1(y+h/2+5)}" font-size="${w>40?16:12}" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-mono">${l}</text>`;});
+  const T2=(x,y,t)=>`<text x="${n1(x)}" y="${n1(y)}" font-size="12" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-mono">${t}</text>`;
+  s+=T2(x0+a/2,y0-3,'a')+T2(x0+a+b/2,y0-3,'b')+T2(x0-9,y0+a/2+4,'a')+T2(x0-9,y0+a+b/2+4,'b');
+  return s+F.draw();};
+DIAG.tiles=(d,B)=>{let s='';const p=d.p,q=d.q,F=footOf(d,B,10.5);const u=13,X=Math.min(62,B.h-F.h-p*u-34),W=X+q*u,H=X+p*u,x0=B.x+(B.w-W)/2+10,y0=B.y+20;
+  const R=(x,y,w,h,c)=>`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" fill="${c}" stroke="${INK}" stroke-width="1.3"/>`;
+  s+=R(x0,y0,X,X,'#CFF5EF')+`<text x="${n1(x0+X/2)}" y="${n1(y0+X/2+6)}" font-size="16" text-anchor="middle" font-weight="700" class="sv-mono" fill="${INK}">x²</text>`;
+  for(let i=0;i<q;i++) s+=R(x0+X+i*u,y0,u,X,'#FFE7A3');
+  for(let j=0;j<p;j++) s+=R(x0,y0+X+j*u,X,u,'#FFE7A3');
+  for(let i=0;i<q;i++) for(let j=0;j<p;j++) s+=R(x0+X+i*u,y0+X+j*u,u,u,'#FFD6D6');
+  s+=`<text x="${n1(x0+W/2)}" y="${n1(y0-6)}" font-size="12" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-mono">x + ${q}</text>`;
+  s+=`<text transform="translate(${n1(x0-8)},${n1(y0+H/2)}) rotate(-90)" font-size="12" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-mono">x + ${p}</text>`;
+  return s+F.draw();};
+DIAG.sqrt2=(d,B)=>{let s='';const F=footOf(d,B,11);const G=Math.min(B.w*0.62,B.h-F.h-10),c=G/2,x0=B.x+(B.w-G)/2,y0=B.y+4;
+  s+=`<rect x="${n1(x0)}" y="${n1(y0)}" width="${n1(G)}" height="${n1(G)}" fill="#fff" stroke="${INK}" stroke-width="1.6"/>`+lineS(x0+c,y0,x0+c,y0+G,'#B9D7DD',1.4)+lineS(x0,y0+c,x0+G,y0+c,'#B9D7DD',1.4);
+  s+=`<path d="M${n1(x0+c)} ${n1(y0)} L${n1(x0+G)} ${n1(y0+c)} L${n1(x0+c)} ${n1(y0+G)} L${n1(x0)} ${n1(y0+c)} Z" fill="#FFD6D6" fill-opacity=".85" stroke="${HOT}" stroke-width="2.4"/>`;
+  s+=st(x0+c,y0+c-stH(T("area = 2","面积 = 2"),{size:10.5})/2,T("area = 2","面积 = 2"),{size:10.5,fill:HOT}).s;
+  s+=`<text x="${n1(x0+c/2)}" y="${n1(y0+G+12)}" font-size="11" text-anchor="middle" font-weight="700" class="sv-mono" fill="${HT}">1</text>`;
+  s+=`<text x="${n1(x0+G*0.86)}" y="${n1(y0+G*0.2)}" font-size="13" text-anchor="start" font-weight="700" class="sv-mono" fill="${HOT}">√2</text>`;
+  return s+F.draw();};
+DIAG.numline2=(d,B)=>{let s='';const lo=d.min,hi=d.max,x0=B.x+8,x1=B.x+B.w-8,y=B.y+B.h*0.5,mp=v=>x0+(v-lo)/(hi-lo)*(x1-x0);
+  s+=arrow(x0-4,y,x1+6,y,INK,2);for(let v=lo;v<=hi;v++) s+=lineS(mp(v),y-4,mp(v),y+4,INK,1.6)+`<text x="${n1(mp(v))}" y="${n1(y+16)}" font-size="9.5" text-anchor="middle" class="sv-mono" fill="${ZH_T}">${v<0?'−'+(-v):v}</text>`;
+  d.pts.forEach((p,i)=>{const x=mp(p.v),c=p.irr?CORAL:BLUE,up=i%2===0;s+=`<circle cx="${n1(x)}" cy="${n1(y)}" r="5" fill="${c}" stroke="${INK}" stroke-width="1.4"/>`+lineS(x,y-6,x,up?y-24:y-14,c,1.4)+`<text x="${n1(x)}" y="${n1(up?y-28:y-18)}" font-size="13" text-anchor="middle" font-weight="700" class="sv-mono" fill="${c}">${p.l}</text>`;});
+  const lo2={size:10,a:'start'};s+=`<circle cx="${B.x+6}" cy="${n1(B.y+B.h-22)}" r="5" fill="${BLUE}"/>`+st(B.x+15,B.y+B.h-30,T("Rational","有理数"),{...lo2,fill:BLUE}).s;
+  s+=`<circle cx="${n1(B.x+B.w/2+6)}" cy="${n1(B.y+B.h-22)}" r="5" fill="${CORAL}"/>`+st(B.x+B.w/2+15,B.y+B.h-30,T("Irrational","无理数"),{...lo2,fill:CORAL}).s;return s;};
+DIAG.angles=(d,B)=>{let s='';const F=footOf(d,B,10);const H=B.h-F.h,y1=B.y+H*0.32,y2=B.y+H*0.72,xa=B.x+B.w*0.22,ya=B.y+H-4,xb=B.x+B.w*0.72,yb=B.y+6;
+  const ix=yy=>xa+(xb-xa)*(ya-yy)/(ya-yb);[y1,y2].forEach(yy=>{s+=lineS(B.x,yy,B.x+B.w,yy,INK,2.2)+`<path d="M${n1(B.x+B.w-26)} ${n1(yy-4)} L${n1(B.x+B.w-20)} ${n1(yy)} L${n1(B.x+B.w-26)} ${n1(yy+4)}" stroke="${INK}" stroke-width="1.8" fill="none"/>`;});
+  const t=Math.atan2(ya-yb,xb-xa);[[y1,'1'],[y2,'2']].forEach(([yy,l])=>{const x=ix(yy);s+=wedge(x,yy,16,-t,0,'#FFB8C6');s+=`<text x="${n1(x+20)}" y="${n1(yy-6)}" font-size="12" font-weight="700" class="sv-mono" fill="${HOT}">${l}</text>`;});
+  s+=lineS(xa,ya,xb,yb,BLUE,2.4);return s+F.draw();};
+DIAG.tri=(d,B)=>{let s='';const F=footOf(d,B,10.5);const H=B.h-F.h,ty=B.y+4;const A=[B.x+14,ty+H*0.5],Bv=[B.x+B.w-14,ty+H*0.5],C=[B.x+B.w*0.38,ty];const cols=['#FFB8C6','#FFE45C','#9FD4F7'];
+  const ang=(V,P,Q)=>{const a1=Math.atan2(P[1]-V[1],P[0]-V[0]),a2=Math.atan2(Q[1]-V[1],Q[0]-V[0]);let dA=a2-a1;while(dA<0)dA+=2*Math.PI;if(dA>Math.PI){return [a2,a1+2*Math.PI-0]} return [a1,a2];};
+  const angs=[];[[A,Bv,C],[Bv,C,A],[C,A,Bv]].forEach(([V,P,Q],i)=>{let [a1,a2]=ang(V,P,Q);if(a2<a1)a2+=2*Math.PI;angs.push(a2-a1);s+=wedge(V[0],V[1],15,a1,a2,cols[i]);});
+  s+=`<path d="M${n1(A[0])} ${n1(A[1])} L${n1(Bv[0])} ${n1(Bv[1])} L${n1(C[0])} ${n1(C[1])} Z" fill="none" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>`;
+  const px=B.x+B.w/2,py=ty+H-6;s+=lineS(px-60,py,px+60,py,INK,2);let a=Math.PI;angs.forEach((g,i)=>{s+=wedge(px,py,26,a,a+g,cols[i]);a+=g;});
+  s+=`<text x="${n1(px)}" y="${n1(py-30)}" font-size="11" text-anchor="middle" font-weight="700" class="sv-mono" fill="${HOT}">180°</text>`;
+  s+=arrow(px,ty+H*0.5+10,px,py-32,HL,1.8);return s+F.draw();};
+DIAG.truss=(d,B)=>{let s='';const cw=B.w/2,lo={size:9.5,maxW:cw-6,fill:INK};const lh=Math.max(stH(T("Square: squashes","正方形：会变形"),lo),stH(T("Triangle: stays firm","三角形：保持稳固"),lo));
+  const base=B.y+B.h-lh-8,side=Math.min(cw-30,base-B.y-26);
+  const sx=B.x+(cw-side)/2,sy=base-side;s+=`<rect x="${n1(sx)}" y="${n1(sy)}" width="${n1(side)}" height="${n1(side)}" fill="none" stroke="${INK}" stroke-width="2.4"/>`;
+  s+=`<path d="M${n1(sx)} ${n1(base)} L${n1(sx+side)} ${n1(base)} L${n1(sx+side+side*0.45)} ${n1(sy+side*0.15)} L${n1(sx+side*0.45)} ${n1(sy+side*0.15)} Z" fill="none" stroke="${CORAL}" stroke-width="2" stroke-dasharray="4 3"/>`;
+  s+=arrow(sx-10,sy+6,sx+12,sy+6,CORAL,2.4)+icon('cross',sx+side+8,sy-4,0.7);
+  const tx=B.x+cw+cw/2;s+=`<path d="M${n1(tx-side/2-4)} ${n1(base)} L${n1(tx+side/2+4)} ${n1(base)} L${n1(tx)} ${n1(sy)} Z" fill="none" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>`+arrow(tx-24,sy+6,tx-4,sy+6,CORAL,2.4)+icon('check',tx+side/2+8,sy-4,0.7);
+  s+=st(B.x+cw/2,base+6,T("Square: squashes","正方形：会变形"),lo).s+st(B.x+cw*1.5,base+6,T("Triangle: stays firm","三角形：保持稳固"),lo).s;return s;};
+DIAG.coords=(d,B)=>{let s='';const [xa,xb]=d.xr||[0,6],[ya,yb]=d.yr||[0,5];const nx=xb-xa,ny=yb-ya;const c=Math.min((B.w-16)/nx,(B.h-14)/ny);const W=c*nx,H=c*ny,x0=B.x+(B.w-W)/2+4,y0=B.y+4;
+  const X=v=>x0+(v-xa)*c,Y=v=>y0+(yb-v)*c;
+  for(let v=xa;v<=xb;v++) s+=lineS(X(v),y0,X(v),y0+H,'#C9DDE2',1);for(let v=ya;v<=yb;v++) s+=lineS(x0,Y(v),x0+W,Y(v),'#C9DDE2',1);
+  s+=arrow(x0,Y(0),x0+W+6,Y(0),INK,1.8)+arrow(X(0),y0+H,X(0),y0-4,INK,1.8);
+  s+=`<text x="${n1(x0+W+4)}" y="${n1(Y(0)+12)}" font-size="10" font-weight="700" class="sv-mono" fill="${INK}">x</text><text x="${n1(X(0)+5)}" y="${n1(y0+4)}" font-size="10" font-weight="700" class="sv-mono" fill="${INK}">y</text><text x="${n1(X(0)-7)}" y="${n1(Y(0)+11)}" font-size="9" class="sv-mono" fill="${ZH_T}">O</text>`;
+  for(let v=xa;v<=xb;v++) if(v) s+=`<text x="${n1(X(v))}" y="${n1(Y(0)+11)}" font-size="8" text-anchor="middle" class="sv-mono" fill="${ZH_T}">${v<0?'−'+(-v):v}</text>`;
+  for(let v=ya;v<=yb;v++) if(v) s+=`<text x="${n1(X(0)-4)}" y="${n1(Y(v)+3)}" font-size="8" text-anchor="end" class="sv-mono" fill="${ZH_T}">${v<0?'−'+(-v):v}</text>`;
+  if(d.walk) s+=`<path d="M${n1(X(0))} ${n1(Y(0))} L${n1(X(d.walk[0]))} ${n1(Y(0))} L${n1(X(d.walk[0]))} ${n1(Y(d.walk[1]))}" fill="none" stroke="${HOT}" stroke-width="2.4" stroke-dasharray="5 3"/>`;
+  if(d.poly) s+=`<polygon points="${d.poly.map(p=>n1(X(p[0]))+','+n1(Y(p[1]))).join(' ')}" fill="#FFE7A3" fill-opacity=".8" stroke="${INK}" stroke-width="2"/>`;
+  (d.pts||[]).forEach(p=>{const x=X(p.x),y=Y(p.y);s+=`<circle cx="${n1(x)}" cy="${n1(y)}" r="5" fill="${p.c||CORAL}" stroke="${INK}" stroke-width="1.4"/>`;
+    if(p.l){const o={size:9,a:p.x>=xb-1?'end':'start',fill:INK,maxW:70};s+=st(x+(o.a==='end'?-6:6),y-stH(p.l,o)-1,p.l,o).s;}});
+  return s;};
+
+// ---------- physics diagrams ----------
+DIAG.wave=(d,B)=>{let s='';const rh=B.h/d.rows.length;d.rows.forEach((r,i)=>{const y=B.y+rh*i;const lo={size:10,a:'start',maxW:B.w};const lh=stH(r.l,lo);s+=st(B.x,y+1,r.l,lo).s;
+  const cy=y+lh+(rh-lh)/2,amp=(rh-lh)*0.36*r.a;let p='';for(let k=0;k<=80;k++){const x=B.x+B.w*k/80,yy=cy-amp*Math.sin(k/80*r.f*2*Math.PI);p+=(k?'L':'M')+n1(x)+' '+n1(yy);}
+  s+=lineS(B.x,cy,B.x+B.w,cy,'#C9DDE2',1)+`<path d="${p}" fill="none" stroke="${r.c||HL}" stroke-width="2.4"/>`;});return s;};
+DIAG.light=(d,B)=>{let s='';const F=footOf(d,B,10.5);const H=B.h-F.h,cx=B.x+B.w/2;
+  if(d.kind==='reflect'){const ym=B.y+H-12;s+=`<rect x="${B.x+8}" y="${n1(ym)}" width="${B.w-16}" height="6" fill="#BFD9E6" stroke="${INK}" stroke-width="1.6"/>`;for(let x=B.x+12;x<B.x+B.w-8;x+=8) s+=lineS(x,ym+6,x-5,ym+12,INK,1);
+    s+=lineS(cx,B.y+4,cx,ym,ZH_T,1.4,'stroke-dasharray="4 3"');const L=[cx-62,B.y+12],R=[cx+62,B.y+12];
+    s+=lineS(L[0],L[1],cx,ym,GOLD,3)+ah((L[0]+cx)/2,(L[1]+ym)/2,Math.atan2(ym-L[1],cx-L[0]),'#E0A21B',8)+lineS(cx,ym,R[0],R[1],GOLD,3)+ah((R[0]+cx)/2,(R[1]+ym)/2,Math.atan2(R[1]-ym,R[0]-cx),'#E0A21B',8);
+    const ai=Math.atan2(L[1]-ym,L[0]-cx),ar=Math.atan2(R[1]-ym,R[0]-cx);s+=wedge(cx,ym,26,ai,-Math.PI/2,'#FFB8C6')+wedge(cx,ym,26,-Math.PI/2,ar,'#9FD4F7');
+    s+=`<text x="${n1(cx-14)}" y="${n1(ym-30)}" font-size="11" font-weight="700" class="sv-mono" fill="${HOT}" text-anchor="middle">i</text><text x="${n1(cx+14)}" y="${n1(ym-30)}" font-size="11" font-weight="700" class="sv-mono" fill="${BLUE}" text-anchor="middle">r</text>`;}
+  if(d.kind==='refract'){const yw=B.y+H*0.42;s+=`<rect x="${B.x}" y="${n1(yw)}" width="${B.w}" height="${n1(B.y+H-yw)}" fill="#BFE8FF"/>`+lineS(B.x,yw,B.x+B.w,yw,BLUE,1.6);
+    const O=[B.x+B.w*0.3,B.y+H-14],S=[B.x+B.w*0.5,yw],E=[B.x+B.w*0.92,B.y+8];const seen=[S[0]-(E[0]-S[0])*((O[1]-yw)/(yw-E[1]))*0.62,O[1]-(O[1]-yw)*0.42];
+    s+=lineS(S[0],S[1]-24,S[0],S[1]+30,ZH_T,1.2,'stroke-dasharray="3 3"');
+    s+=lineS(O[0],O[1],S[0],S[1],GOLD,3)+lineS(S[0],S[1],E[0],E[1],GOLD,3)+ah((S[0]+E[0])/2,(S[1]+E[1])/2,Math.atan2(E[1]-S[1],E[0]-S[0]),'#E0A21B',8);
+    s+=lineS(S[0],S[1],seen[0],seen[1],GOLD,1.6,'stroke-dasharray="4 3" opacity=".9"');
+    s+=`<circle cx="${n1(O[0])}" cy="${n1(O[1])}" r="5" fill="${CORAL}" stroke="${INK}" stroke-width="1.4"/><circle cx="${n1(seen[0])}" cy="${n1(seen[1])}" r="5" fill="#fff" stroke="${CORAL}" stroke-width="1.8" stroke-dasharray="2 2"/>`+icon('eye',E[0]-4,E[1]+6,0.8);
+    s+=st(O[0]+8,O[1]-12,T("Real","实际位置"),{size:9,a:'start',fill:INK}).s+st(seen[0]+4,seen[1]-8-stH(T("Seen","看起来"),{size:9}),T("Seen","看起来"),{size:9,fill:HOT}).s;}
+  if(d.kind==='lens'){const cy=B.y+H/2,lx=cx,lh=Math.min(H*0.42,48);s+=`<path d="M${lx} ${n1(cy-lh)} Q${lx+14} ${n1(cy)} ${lx} ${n1(cy+lh)} Q${lx-14} ${n1(cy)} ${lx} ${n1(cy-lh)} Z" fill="#CFEFFF" stroke="${INK}" stroke-width="2"/>`;
+    const fx=lx+B.w*0.32;s+=lineS(B.x,cy,B.x+B.w,cy,'#C9DDE2',1.2);[-0.7,0,0.7].forEach(k=>{const yy=cy+k*lh;s+=lineS(B.x+4,yy,lx,yy,GOLD,2.6)+lineS(lx,yy,fx,cy,GOLD,2.6)+lineS(fx,cy,fx+(fx-lx)*0.35,cy+(cy-yy)*0.35,GOLD,1.4,'opacity=".6"');});
+    s+=ah(B.x+30,cy-0.7*lh,0,'#E0A21B',7)+`<circle cx="${n1(fx)}" cy="${n1(cy)}" r="4.5" fill="${CORAL}" stroke="${INK}" stroke-width="1.3"/>`+st(fx,cy+8,T("Focus","焦点"),{size:9.5,fill:HOT}).s;}
+  if(d.kind==='prism'){const cy=B.y+H*0.55,pw=60;const P=[[cx,cy-pw*0.55],[cx-pw/2,cy+pw*0.35],[cx+pw/2,cy+pw*0.35]];
+    const hit=[cx-pw*0.26,cy-pw*0.08],out=[cx+pw*0.24,cy-pw*0.02];s+=lineS(B.x+2,cy-8,hit[0],hit[1],'#FFFFFF',5)+lineS(B.x+2,cy-8,hit[0],hit[1],'#8A97A8',1.2,'opacity=".4"')+lineS(hit[0],hit[1],out[0],out[1],'#fff',3);
+    s+=`<polygon points="${P.map(p=>n1(p[0])+','+n1(p[1])).join(' ')}" fill="#E6F7FF" fill-opacity=".7" stroke="${INK}" stroke-width="2"/>`;
+    ['#E53935','#FB8C00','#FDD835','#43A047','#1E88E5','#3949AB','#8E24AA'].forEach((c,i)=>{s+=lineS(out[0],out[1],B.x+B.w-2,out[1]-14+i*9,c,2.6);});
+    s+=st(B.x+4,cy-26,T("White light","白光"),{size:9.5,a:'start',fill:INK}).s;}
+  return s+F.draw();};
+DIAG.spectrum=(d,B)=>{let s='';const C=[['#E53935',T("Red","红")],['#FB8C00',T("Orange","橙")],['#FDD835',T("Yellow","黄")],['#43A047',T("Green","绿")],['#1E88E5',T("Blue","蓝")],['#3949AB',T("Indigo","靛")],['#8E24AA',T("Violet","紫")]];
+  const w=B.w/7,lo={size:8,maxW:w+4,fill:INK};const lh=Math.max(...C.map(c=>stH(c[1],lo)));const bh=B.h-lh-14-stH(T("Together they make white","合在一起就是白光"),{size:9.5,maxW:B.w});
+  C.forEach(([c,l],i)=>{s+=`<rect x="${n1(B.x+i*w)}" y="${n1(B.y+4)}" width="${n1(w+0.5)}" height="${n1(bh)}" fill="${c}"/>`;s+=st(B.x+i*w+w/2,B.y+bh+8,l,lo).s;});
+  s+=`<rect x="${B.x}" y="${n1(B.y+4)}" width="${B.w}" height="${n1(bh)}" fill="none" stroke="${INK}" stroke-width="1.6"/>`;
+  const fo={size:9.5,fill:HOT,maxW:B.w};s+=st(B.x+B.w/2,B.y+B.h-stH(T("Together they make white","合在一起就是白光"),fo),T("Together they make white","合在一起就是白光"),fo).s;return s;};
+DIAG.graph=(d,B)=>{let s='';const xo={size:9,fill:ZH_T};const xh=stH(d.xl,xo);const x0=B.x+14,y0=B.y+B.h-xh-6,x1=B.x+B.w-6,y1=B.y+16;
+  s+=arrow(x0,y0,x1,y0,INK,1.8)+arrow(x0,y0,x0,y1-6,INK,1.8);s+=st((x0+x1)/2,y0+3,d.xl,xo).s+st(x0+4,y1-14,d.yl,{size:9,a:'start',fill:ZH_T}).s;
+  d.lines.forEach(L=>{const ex=x0+(x1-x0)*L.x,ey=y0-(y0-y1)*L.y;s+=lineS(x0,y0,ex,ey,L.c,3);s+=st(ex-4,ey-stH(L.l,{size:9.5})-2,L.l,{size:9.5,a:'end',fill:L.c}).s;});return s;};
+DIAG.forces=(d,B)=>{let s='';const cx=B.x+B.w/2,gy=B.y+B.h*0.66,bw=46,bh=34;s+=lineS(B.x,gy,B.x+B.w,gy,INK,2);for(let x=B.x+4;x<B.x+B.w;x+=10) s+=lineS(x,gy,x-6,gy+6,INK,1);
+  s+=`<rect x="${n1(cx-bw/2)}" y="${n1(gy-bh)}" width="${bw}" height="${bh}" rx="3" fill="#E8C48E" stroke="${INK}" stroke-width="2"/>`;const mY=gy-bh/2,o={size:9.5,fill:INK};
+  s+=arrow(cx+bw/2,mY,cx+bw/2+40,mY,CORAL,3)+st(cx+bw/2+22,mY+6,T("Push","推力"),{...o,fill:CORAL}).s;
+  s+=arrow(cx-bw/2,gy-6,cx-bw/2-34,gy-6,ORANGE,3)+st(cx-bw/2-18,gy-6-stH(T("Friction","摩擦力"),o)-6,T("Friction","摩擦力"),{...o,fill:'#B45F06'}).s;
+  s+=arrow(cx,mY,cx,gy+30,BLUE,3)+st(cx+8,gy+12,T("Gravity","重力"),{...o,a:'start',fill:BLUE}).s;
+  s+=arrow(cx,gy-bh,cx,gy-bh-34,TEAL,3)+st(cx+8,gy-bh-36,T("Support","支持力"),{...o,a:'start',fill:'#0F8576'}).s;return s;};
+DIAG.tower=(d,B)=>{let s='';const gx=B.x+B.w*0.55,gy=B.y+B.h-6,top=B.y+6,bw=46,tw2=14;
+  s+=lineS(B.x,gy,B.x+B.w,gy,INK,2);s+=`<path d="M${n1(gx-bw/2)} ${n1(gy)} Q${n1(gx-bw/2+4)} ${n1((gy+top)/2)} ${n1(gx-tw2/2)} ${n1(top)} L${n1(gx+tw2/2+4)} ${n1(top+6)} Q${n1(gx+bw/2-2)} ${n1((gy+top)/2)} ${n1(gx+bw/2)} ${n1(gy)} Z" fill="#9FB8D9" stroke="${INK}" stroke-width="2"/>`;
+  for(let k=1;k<8;k++){const y=gy-(gy-top)*k/8,hw=(bw/2)-(bw/2-tw2/2)*k/8;s+=`<path d="M${n1(gx-hw)} ${n1(y+3)} Q${n1(gx)} ${n1(y-3)} ${n1(gx+hw)} ${n1(y+1)}" stroke="#fff" stroke-width="1.3" fill="none" opacity=".8"/>`;}
+  if(d.wind) for(let k=0;k<3;k++){const y=top+30+k*34;s+=arrow(B.x+4,y,gx-bw/2-6+k*3,y,HL,2.4)+`<path d="M${n1(B.x+10)} ${n1(y+8)} q8 -4 16 0" stroke="${HL}" stroke-width="1.4" fill="none"/>`;}
+  if(d.damper){const py=top+22;s+=lineS(gx,py-10,gx-6,py+10,INK,1.6)+`<circle cx="${n1(gx-6)}" cy="${n1(py+14)}" r="7" fill="${GOLD}" stroke="${INK}" stroke-width="1.6"/>`;
+    s+=`<path d="M${n1(gx-18)} ${n1(py+26)} Q${n1(gx-6)} ${n1(py+32)} ${n1(gx+6)} ${n1(py+26)}" stroke="${HOT}" stroke-width="1.6" fill="none"/>`+ah(gx+6,py+26,-0.5,HOT,6);
+    s+=lineS(gx+10,py+14,B.x+B.w-58,py+14,HOT,1.2,'stroke-dasharray="3 2"')+st(B.x+B.w-2,py+2,T("~1,000 t damper","约1000吨阻尼器"),{size:9,a:'end',fill:HOT,maxW:56}).s;}
+  s+=st(gx,gy-stH(T("632 m","632米"),{size:10})-4,T("632 m","632米"),{size:10,fill:INK}).s;return s;};
+
+// ---------- chemistry diagrams ----------
+DIAG.donut=(d,B)=>{let s='';const r=Math.min(44,B.h/2-6),ri=r*0.55,cx=B.x+r+2,cy=B.y+B.h/2;const tot=d.segs.reduce((a,g)=>a+g.v,0);let a=-Math.PI/2;
+  d.segs.forEach(g=>{const a2=a+2*Math.PI*g.v/tot;const p=(rr,t)=>[cx+rr*Math.cos(t),cy+rr*Math.sin(t)];const L=(a2-a)>Math.PI?1:0;const [o1,o2,i1,i2]=[p(r,a),p(r,a2),p(ri,a2),p(ri,a)];
+    s+=`<path d="M${n1(o1[0])} ${n1(o1[1])} A${r} ${r} 0 ${L} 1 ${n1(o2[0])} ${n1(o2[1])} L${n1(i1[0])} ${n1(i1[1])} A${n1(ri)} ${n1(ri)} 0 ${L} 0 ${n1(i2[0])} ${n1(i2[1])} Z" fill="${g.c}" stroke="${INK}" stroke-width="1.4"/>`;a=a2;});
+  const lx=B.x+2*r+12,lw=B.x+B.w-lx-14;const lo={size:9.5,a:'start',fill:INK,maxW:lw};const hs=d.segs.map(g=>stH(g.l,lo));const tot2=hs.reduce((x,y)=>x+y,0)+8*(hs.length-1);let y=cy-tot2/2;
+  d.segs.forEach((g,i)=>{s+=`<rect x="${n1(lx)}" y="${n1(y+2)}" width="10" height="10" fill="${g.c}" stroke="${INK}" stroke-width="1.2"/>`+st(lx+14,y,g.l,lo).s;y+=hs[i]+8;});return s;};
+DIAG.states=(d,B)=>{let s='';const cw=B.w/3,lo={size:9,maxW:cw,fill:INK};const L=[T("Ice (solid)","冰（固态）"),T("Water (liquid)","水（液态）"),T("Steam (gas)","水蒸气（气态）")];
+  const lh=Math.max(...L.map(l=>stH(l,lo)));const bs=Math.min(cw-14,B.h-lh-26),by=B.y+14;const rnd=seeded(7);
+  for(let i=0;i<3;i++){const bx=B.x+cw*i+(cw-bs)/2;s+=`<rect x="${n1(bx)}" y="${n1(by)}" width="${n1(bs)}" height="${n1(bs)}" rx="4" fill="#fff" stroke="${HL}" stroke-width="1.6"/>`;
+    const pts=[];if(i===0){for(let r=0;r<4;r++)for(let c=0;c<4;c++)pts.push([bx+bs*(0.17+c*0.22),by+bs*(0.17+r*0.22)]);}
+    else if(i===1){for(let k=0;k<13;k++)pts.push([bx+bs*(0.15+rnd()*0.7),by+bs*(0.38+rnd()*0.5)]);} else {for(let k=0;k<6;k++)pts.push([bx+bs*(0.12+rnd()*0.76),by+bs*(0.12+rnd()*0.76)]);}
+    pts.forEach(p=>{s+=`<circle cx="${n1(p[0])}" cy="${n1(p[1])}" r="${n1(bs*0.07)}" fill="#7CC6F5" stroke="${INK}" stroke-width="1"/>`;});
+    s+=st(bx+bs/2,by+bs+4,L[i],lo).s;if(i<2) s+=arrow(bx+bs+1,by-6,bx+bs+(cw-bs)-1,by-6,HOT,1.6)+`<text x="${n1(bx+bs+(cw-bs)/2)}" y="${n1(by-10)}" font-size="8.5" text-anchor="middle" font-weight="700" class="sv-mono" fill="${HOT}">${i?'100°C':'0°C'}</text>`;}
+  return s;};
+DIAG.tubes=(d,B)=>{let s='';const lo={size:9.5,fill:INK,maxW:80};const lh=stH(T("Hydrogen ×2","氢气 ×2"),lo);const by=B.y+B.h-lh-6,ty=B.y+6,tw=26,th=by-ty-22;
+  s+=`<rect x="${B.x+6}" y="${n1(by-30)}" width="${B.w-12}" height="28" rx="3" fill="#BFE8FF" stroke="${INK}" stroke-width="1.6"/>`;
+  [[B.x+B.w*0.3,0.62,T("Hydrogen ×2","氢气 ×2")],[B.x+B.w*0.7,0.31,T("Oxygen ×1","氧气 ×1")]].forEach(([x,f,l])=>{
+    s+=`<path d="M${n1(x-tw/2)} ${n1(by-6)} L${n1(x-tw/2)} ${n1(ty+tw/2)} A${tw/2} ${tw/2} 0 0 1 ${n1(x+tw/2)} ${n1(ty+tw/2)} L${n1(x+tw/2)} ${n1(by-6)}" fill="#BFE8FF" stroke="${INK}" stroke-width="1.6"/>`;
+    s+=`<path d="M${n1(x-tw/2+1.5)} ${n1(ty+th*f)} L${n1(x-tw/2+1.5)} ${n1(ty+tw/2)} A${tw/2-1.5} ${tw/2-1.5} 0 0 1 ${n1(x+tw/2-1.5)} ${n1(ty+tw/2)} L${n1(x+tw/2-1.5)} ${n1(ty+th*f)} Z" fill="#fff"/>`;
+    for(let k=0;k<3;k++) s+=`<circle cx="${n1(x-5+k*5)}" cy="${n1(by-14-k*7)}" r="2" fill="#fff" stroke="${HL}" stroke-width=".8"/>`;
+    s+=st(x,by+4,l,lo).s;});
+  s+=`<rect x="${n1(B.x+B.w/2-9)}" y="${n1(ty+8)}" width="18" height="12" fill="#2B3A55" stroke="${INK}" stroke-width="1.4"/><text x="${n1(B.x+B.w/2)}" y="${n1(ty+17)}" font-size="8" text-anchor="middle" fill="#FFD84D" class="sv-mono">+ −</text>`;return s;};
+const MOL={H2O:{f:'H₂O',n:T("Water","水"),a:[[0,0,11,CORAL],[-11,8,7,'#fff'],[11,8,7,'#fff']]},O2:{f:'O₂',n:T("Oxygen","氧气"),a:[[-8,0,11,CORAL],[8,0,11,CORAL]]},
+  CO2:{f:'CO₂',n:T("Carbon dioxide","二氧化碳"),a:[[-17,0,10,CORAL],[17,0,10,CORAL],[0,0,11,'#3A3A44']]},H2:{f:'H₂',n:T("Hydrogen","氢气"),a:[[-6,0,7,'#fff'],[6,0,7,'#fff']]}};
+DIAG.mol=(d,B)=>{let s='';const n=d.items.length,cw=B.w/n,F=footOf(d,B,10.5);const big=n===1?1.9:1;const cy=B.y+(B.h-F.h)*0.4;
+  d.items.forEach((k,i)=>{const M=MOL[k],cx=B.x+cw*(i+.5);M.a.forEach(([x,y,r,c])=>{s+=`<circle cx="${n1(cx+x*big)}" cy="${n1(cy+y*big)}" r="${n1(r*big)}" fill="${c}" stroke="${INK}" stroke-width="1.6"/>`;});
+    const fy=cy+22*big;s+=`<text x="${n1(cx)}" y="${n1(fy+4)}" font-size="${n===1?18:13}" text-anchor="middle" font-weight="700" class="sv-mono" fill="${INK}">${M.f}</text>`;s+=st(cx,fy+8,M.n,{size:9.5,maxW:cw}).s;});
+  return s+F.draw();};
+DIAG.beakers=(d,B)=>{let s='';const n=d.items.length,cw=B.w/n,F=footOf(d,B,10);const lo={size:10,maxW:cw};const lh=stH(d.items[0].l,lo);const bh=B.h-F.h-lh-12,bw=Math.min(cw-20,bh*0.85);
+  d.items.forEach((it,i)=>{const cx=B.x+cw*(i+.5),x=cx-bw/2,y=B.y+4;s+=`<rect x="${n1(x)}" y="${n1(y+bh*0.18)}" width="${n1(bw)}" height="${n1(bh*0.82)}" fill="#DFF4FF"/>`;
+    const rnd=seeded(i+3);for(let k=0;k<26;k++){const t=rnd(),ang=rnd()*Math.PI;const rr=t*it.spread*bw*0.55;const px=cx+rr*Math.cos(ang)*(rnd()>.5?1:-1),py=y+bh*0.24+rr*Math.sin(ang)*1.3;
+      if(px>x+3&&px<x+bw-3&&py<y+bh-3) s+=`<circle cx="${n1(px)}" cy="${n1(py)}" r="2.2" fill="#3949AB" opacity="${n1(1-t*0.6)}"/>`;}
+    s+=`<path d="M${n1(x)} ${n1(y)} L${n1(x)} ${n1(y+bh)} L${n1(x+bw)} ${n1(y+bh)} L${n1(x+bw)} ${n1(y)}" fill="none" stroke="${INK}" stroke-width="2"/>`;s+=st(cx,y+bh+5,it.l,lo).s;});
+  return s+F.draw();};
+DIAG.elements=(d,B)=>{let s='';const E=[[1,'H',T("Hydrogen","氢")],[6,'C',T("Carbon","碳")],[7,'N',T("Nitrogen","氮")],[8,'O',T("Oxygen","氧")],[11,'Na',T("Sodium","钠")],[26,'Fe',T("Iron","铁")]];
+  const cols=3,gap=6,cw=(B.w-gap*2)/3,ch=(B.h-gap)/2;E.forEach(([z,sym,nm],i)=>{const x=B.x+(i%cols)*(cw+gap),y=B.y+Math.floor(i/cols)*(ch+gap);
+    s+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(cw)}" height="${n1(ch)}" rx="5" fill="${['#FFE7A3','#CFF5EF','#DCE6FF','#FFD6D6','#E9DCFF','#E3E8EF'][i]}" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=`<text x="${n1(x+5)}" y="${n1(y+11)}" font-size="9" class="sv-mono" fill="${ZH_T}">${z}</text><text x="${n1(x+cw/2)}" y="${n1(y+ch*0.5+4)}" font-size="20" text-anchor="middle" font-weight="700" class="sv-mono" fill="${INK}">${sym}</text>`;
+    const lo={size:8.5,maxW:cw-4,fill:INK};s+=st(x+cw/2,y+ch-stH(nm,lo)-3,nm,lo).s;});return s;};
+DIAG.ph=(d,B)=>{let s='';const cols=['#D32F2F','#E53935','#F4511E','#FB8C00','#FFB300','#FDD835','#C0CA33','#7CB342','#43A047','#00897B','#039BE5','#1E88E5','#3949AB','#5E35B1','#8E24AA'];
+  const w=B.w/15,sy=B.y+B.h*0.46,sh=20;cols.forEach((c,i)=>{s+=`<rect x="${n1(B.x+i*w)}" y="${n1(sy)}" width="${n1(w+0.4)}" height="${sh}" fill="${c}"/>`;if(i%2===0) s+=`<text x="${n1(B.x+i*w+w/2)}" y="${n1(sy+14)}" font-size="8.5" text-anchor="middle" font-weight="700" fill="#fff" class="sv-mono">${i}</text>`;});
+  s+=`<rect x="${B.x}" y="${n1(sy)}" width="${B.w}" height="${sh}" fill="none" stroke="${INK}" stroke-width="1.6"/>`;
+  d.items.forEach((it,i)=>{const x=B.x+(it.v+0.5)*w,row=i%2;const ly=sy-8-row*22;s+=lineS(x,sy,x,ly+2,INK,1.2);const lo={size:8.5,fill:INK,maxW:60};s+=st(x,ly-stH(it.l,lo),it.l,lo).s;});
+  const lo={size:9.5,maxW:70};s+=st(B.x+2,sy+sh+5,T("Acidic","酸性"),{...lo,a:'start',fill:'#D32F2F'}).s+st(B.x+7.5*w,sy+sh+5,T("Neutral","中性"),{...lo,fill:'#43A047'}).s+st(B.x+B.w-2,sy+sh+5,T("Basic","碱性"),{...lo,a:'end',fill:'#5E35B1'}).s;return s;};
+
+// ---------- engineering diagrams ----------
+DIAG.bridges=(d,B)=>{let s='';const L=[T("Beam: simple and short","梁桥：简单、跨度短"),T("Arch: pushes into the banks","拱桥：把力传给两岸"),T("Cable-stayed: towers hold cables","斜拉桥：桥塔拉住钢索")];
+  const rh=B.h/3,dw=72;L.forEach((l,i)=>{const y=B.y+rh*i,cy=y+rh*0.6,x=B.x;
+    if(i===0) s+=`<rect x="${x+8}" y="${n1(cy)}" width="8" height="${n1(rh*0.3)}" fill="#8A97A8" stroke="${INK}" stroke-width="1.2"/><rect x="${x+dw-16}" y="${n1(cy)}" width="8" height="${n1(rh*0.3)}" fill="#8A97A8" stroke="${INK}" stroke-width="1.2"/>`;
+    if(i===1) s+=`<path d="M${x+4} ${n1(cy+rh*0.3)} Q${x+dw/2} ${n1(cy-rh*0.42)} ${x+dw-4} ${n1(cy+rh*0.3)}" fill="none" stroke="${CORAL}" stroke-width="3"/>`;
+    if(i===2){s+=lineS(x+dw/2,cy,x+dw/2,cy-rh*0.55,INK,3);[-1,1].forEach(k=>[0.15,0.32,0.48].forEach(f=>{s+=lineS(x+dw/2,cy-rh*0.5,x+dw/2+k*dw*f,cy,HL,1.3);}));}
+    s+=`<rect x="${x}" y="${n1(cy-3)}" width="${dw}" height="5" fill="${INK}"/>`;const lo={size:9.5,a:'start',maxW:B.w-dw-10,fill:INK};s+=st(x+dw+8,cy-stH(l,lo)/2-2,l,lo).s;});return s;};
+DIAG.lever=(d,B)=>{let s='';const F=footOf(d,B,11);const cx=B.x+B.w/2,by=B.y+(B.h-F.h)*0.62,u=Math.min(38,B.w/5);
+  s+=`<path d="M${n1(cx)} ${n1(by+2)} L${n1(cx-14)} ${n1(by+26)} L${n1(cx+14)} ${n1(by+26)} Z" fill="${GOLD}" stroke="${INK}" stroke-width="1.6"/><rect x="${n1(cx-2.3*u)}" y="${n1(by-4)}" width="${n1(4.6*u)}" height="6" rx="2" fill="#B98552" stroke="${INK}" stroke-width="1.6"/>`;
+  const box=(x,h,l)=>`<rect x="${n1(x-12)}" y="${n1(by-4-h)}" width="24" height="${h}" fill="${l==='2'?CORAL:BLUE}" stroke="${INK}" stroke-width="1.5"/><text x="${n1(x)}" y="${n1(by-4-h/2+4)}" font-size="11" text-anchor="middle" font-weight="700" fill="#fff" class="sv-mono">${l} kg</text>`;
+  s+=box(cx-u,30,'2')+box(cx+2*u,20,'1');
+  s+=`<path d="M${n1(cx)} ${n1(by+34)} L${n1(cx-u)} ${n1(by+34)} M${n1(cx)} ${n1(by+34)} L${n1(cx+2*u)} ${n1(by+34)}" stroke="${HT}" stroke-width="1.2"/><text x="${n1(cx-u/2)}" y="${n1(by+46)}" font-size="10" text-anchor="middle" class="sv-mono" fill="${HT}">1 m</text><text x="${n1(cx+u)}" y="${n1(by+46)}" font-size="10" text-anchor="middle" class="sv-mono" fill="${HT}">2 m</text>`;
+  return s+F.draw();};
+DIAG.pulley=(d,B)=>{let s='';const cw=B.w/2,lo={size:9,maxW:cw-4,fill:INK};const L=[T("Fixed: changes direction","定滑轮：改变方向"),T("Movable: half the force","动滑轮：省一半力")];const lh=Math.max(...L.map(l=>stH(l,lo)));const bot=B.y+B.h-lh-6;
+  s+=`<rect x="${B.x}" y="${B.y}" width="${B.w}" height="5" fill="#8A97A8"/>`;
+  {const cx=B.x+cw/2,py=B.y+26,r=12;s+=lineS(cx,B.y+5,cx,py,INK,1.6)+lineS(cx-r,py,cx-r,bot-26,INK,1.6)+lineS(cx+r,py,cx+r,bot-8,INK,1.6)+`<circle cx="${n1(cx)}" cy="${py}" r="${r}" fill="#fff" stroke="${INK}" stroke-width="2"/><circle cx="${n1(cx)}" cy="${py}" r="2.5" fill="${INK}"/>`;
+    s+=`<rect x="${n1(cx-r-10)}" y="${n1(bot-26)}" width="20" height="18" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/>`+arrow(cx+r,bot-26,cx+r,bot-6,CORAL,2.4);}
+  {const cx=B.x+cw*1.5,py=bot-40,r=12;s+=lineS(cx-r,B.y+5,cx-r,py,INK,1.6)+lineS(cx+r,py,cx+r,B.y+24,INK,1.6)+`<circle cx="${n1(cx)}" cy="${n1(py)}" r="${r}" fill="#fff" stroke="${INK}" stroke-width="2"/><circle cx="${n1(cx)}" cy="${n1(py)}" r="2.5" fill="${INK}"/>`+lineS(cx,py,cx,py+16,INK,1.6);
+    s+=`<rect x="${n1(cx-10)}" y="${n1(py+16)}" width="20" height="18" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/>`+arrow(cx+r,B.y+44,cx+r,B.y+18,CORAL,2.4);}
+  s+=st(B.x+cw/2,bot+4,L[0],lo).s+st(B.x+cw*1.5,bot+4,L[1],lo).s;return s;};
+DIAG.ramp=(d,B)=>{let s='';const lo={size:9.5,maxW:B.w,fill:INK};const L=[T("Steep: short path, big force","陡坡：路程短，费力"),T("Gentle: long path, small force","缓坡：路程长，省力")];
+  const rh=B.h/2;L.forEach((l,i)=>{const lh=stH(l,lo),y0=B.y+rh*i+rh-lh-4,run=i?B.w-30:B.w*0.42,hgt=rh-lh-14,x0=B.x+4;
+    s+=`<path d="M${x0} ${n1(y0)} L${n1(x0+run)} ${n1(y0)} L${n1(x0+run)} ${n1(y0-hgt)} Z" fill="#E8C48E" stroke="${INK}" stroke-width="1.6"/>`;
+    const t=0.45,bx=x0+run*t,byy=y0-hgt*t,ang=Math.atan2(-hgt,run);s+=`<g transform="translate(${n1(bx)},${n1(byy)}) rotate(${n1(ang*180/Math.PI)})"><rect x="-8" y="-14" width="16" height="14" fill="${BLUE}" stroke="${INK}" stroke-width="1.4"/></g>`;
+    const fl=i?20:40;s+=arrow(bx+4,byy-10,bx+4+fl*Math.cos(ang),byy-10+fl*Math.sin(ang),CORAL,i?2:3.4);s+=st(B.x+B.w/2,y0+3,l,lo).s;});return s;};
+function battery(x,y){return `<line x1="${x}" y1="${y-9}" x2="${x}" y2="${y+9}" stroke="${INK}" stroke-width="2.4"/><line x1="${x+6}" y1="${y-5}" x2="${x+6}" y2="${y+5}" stroke="${INK}" stroke-width="4"/>`;}
+function bulbS(x,y,lit){return (lit?`<circle cx="${x}" cy="${y}" r="13" fill="#FFE45C" opacity=".45"/>`:'')+`<circle cx="${x}" cy="${y}" r="8" fill="${lit?'#FFE45C':'#fff'}" stroke="${INK}" stroke-width="1.8"/><path d="M${x-5} ${y-5} L${x+5} ${y+5} M${x+5} ${y-5} L${x-5} ${y+5}" stroke="${INK}" stroke-width="1.3"/>`;}
+DIAG.circuit=(d,B)=>{let s='';const W=(x1,y1,x2,y2)=>lineS(x1,y1,x2,y2,INK,2);
+  const loop=(x,y,w,h,par,lab)=>{let g='';const lo={size:9.5,maxW:w+8,fill:INK};const lh=lab?stH(lab,lo):0;h-=lh+6;
+    g+=W(x,y,x,y+h/2-11)+battery(x-3,y+h/2)+W(x,y+h/2+11,x,y+h)+W(x,y+h,x+w,y+h)+W(x+w,y+h,x+w,y);
+    if(!par){g+=W(x,y,x+w*0.3-8,y)+bulbS(x+w*0.3,y,true)+W(x+w*0.3+8,y,x+w*0.7-8,y)+bulbS(x+w*0.7,y,true)+W(x+w*0.7+8,y,x+w,y);}
+    else{const y2=y+h*0.42;g+=W(x,y,x+w*0.5-8,y)+bulbS(x+w*0.5,y,true)+W(x+w*0.5+8,y,x+w,y)+W(x,y2,x+w*0.5-8,y2)+bulbS(x+w*0.5,y2,true)+W(x+w*0.5+8,y2,x+w,y2);}
+    g+=`<circle cx="${n1(x+w*0.5)}" cy="${n1(y+h)}" r="3" fill="#fff" stroke="${INK}" stroke-width="1.4"/>`;
+    if(lab) g+=st(x+w/2,y+h+8,lab,lo).s;return g;};
+  if(d.kind==='simple'){const x=B.x+30,y=B.y+16,w=B.w-60,h=B.h-28;s+=W(x,y,x,y+h/2-11)+battery(x-3,y+h/2)+W(x,y+h/2+11,x,y+h)+W(x,y+h,x+w,y+h)+W(x+w,y+h,x+w,y)+W(x,y,x+w/2-8,y)+bulbS(x+w/2,y,true)+W(x+w/2+8,y,x+w,y);
+    s+=st(x-10,y+h/2+14,T("Battery","电池"),{size:9.5,a:'end',fill:INK}).s.replace(/x="[^"]+"/,`x="${n1(x+14)}"`).replace('text-anchor="end"','text-anchor="start"');
+    s+=st(x+w/2,y+12,T("Bulb","灯泡"),{size:9.5,fill:INK}).s;[[x+w,y+h*0.25,0],[x+w*0.75,y+h,1],[x,y+h*0.8,2]].forEach(([ax,ay,k])=>{s+=ah(ax,ay,[Math.PI/2,Math.PI,-Math.PI/2][k],HOT,8);});}
+  else{const cw=B.w/2;s+=loop(B.x+10,B.y+8,cw-24,B.h-8,false,T("Series: one path","串联：一条路径"))+loop(B.x+cw+12,B.y+8,cw-24,B.h-8,true,T("Parallel: two paths","并联：两条路径"));}
+  return s;};
+
+// ---------- scenes ----------
+function lab(){let s=`<rect width="400" height="250" fill="#E3EEF2"/>`;
+  s+=`<rect x="20" y="30" width="150" height="8" fill="#A8754A" stroke="${INK}" stroke-width="2"/><rect x="20" y="86" width="150" height="8" fill="#A8754A" stroke="${INK}" stroke-width="2"/>`;
+  [[34,'#FF8FB1'],[62,'#7CC6F5'],[92,'#FFE45C'],[124,'#3FB8A0'],[150,'#C9A2F0']].forEach(([x,c],i)=>{const y=i%2?86:30;s+=`<path d="M${x-6} ${y} L${x-6} ${y-14} L${x-10} ${y-26} L${x+10} ${y-26} L${x+6} ${y-14} L${x+6} ${y}" fill="#fff" fill-opacity=".7" stroke="${INK}" stroke-width="1.6" transform="scale(1,1)"/><rect x="${x-6}" y="${y-10}" width="12" height="10" fill="${c}"/>`;});
+  [[40,86,'#FFE45C'],[104,86,'#FF8FB1'],[80,30,'#3FB8A0']].forEach(([x,y,c])=>{s+=`<rect x="${x-7}" y="${y-22}" width="14" height="22" rx="3" fill="#fff" fill-opacity=".7" stroke="${INK}" stroke-width="1.5"/><rect x="${x-7}" y="${y-10}" width="14" height="10" fill="${c}"/>`;});
+  s+=`<rect x="300" y="26" width="72" height="92" fill="#fff" stroke="${INK}" stroke-width="2.5"/><rect x="300" y="26" width="72" height="20" fill="#FFD84D" stroke="${INK}" stroke-width="2.5"/><text x="336" y="41" font-size="11" text-anchor="middle" class="sv-disp" fill="${INK}">SAFETY</text>`;
+  s+=`<path d="M312 72 Q312 62 322 62 L350 62 Q360 62 360 72 Q360 82 350 82 L342 82 Q336 76 330 82 L322 82 Q312 82 312 72 Z" fill="#9FD4F7" stroke="${INK}" stroke-width="2"/><text x="336" y="106" font-size="11" text-anchor="middle" class="sv-zhd" fill="${HOT}">安全第一</text>`;
+  s+=`<rect x="0" y="176" width="400" height="74" fill="#C9D3DE"/><rect x="-2" y="166" width="404" height="11" fill="#2B3A55" stroke="${INK}" stroke-width="2.5"/>`;
+  for(let x=10;x<400;x+=98) s+=`<rect x="${x}" y="188" width="86" height="54" rx="3" fill="none" stroke="#9AA6B4" stroke-width="2"/><rect x="${x+36}" y="196" width="14" height="4" rx="2" fill="#9AA6B4"/>`;return s;}
+function workshop(){let s=`<rect width="400" height="250" fill="#F1E6D6"/>`;
+  s+=`<rect x="24" y="22" width="190" height="110" fill="#D9B98E" stroke="${INK}" stroke-width="2.5"/>`;for(let x=36;x<214;x+=14) for(let y=32;y<132;y+=14) s+=`<circle cx="${x}" cy="${y}" r="1.4" fill="#A8875E"/>`;
+  s+=`<g stroke="${INK}" stroke-width="2"><rect x="44" y="40" width="10" height="44" rx="2" fill="#A8754A"/><rect x="34" y="34" width="30" height="12" rx="2" fill="#8A97A8"/>`;
+  s+=`<path d="M84 44 L120 44 L120 56 L84 72 Z" fill="#C9CCD6"/><rect x="118" y="40" width="12" height="20" rx="3" fill="${CORAL}"/>`;
+  s+=`<rect x="146" y="40" width="8" height="58" rx="2" fill="#8A97A8"/><circle cx="150" cy="40" r="9" fill="none"/><rect x="170" y="38" width="14" height="80" fill="${GOLD}"/></g>`;
+  s+=`<rect x="250" y="40" width="120" height="8" fill="#A8754A" stroke="${INK}" stroke-width="2"/><rect x="262" y="16" width="30" height="24" fill="#E8C48E" stroke="${INK}" stroke-width="2"/><rect x="300" y="22" width="24" height="18" fill="#9FD4F7" stroke="${INK}" stroke-width="2"/><rect x="332" y="12" width="28" height="28" fill="#FFD6D6" stroke="${INK}" stroke-width="2"/>`;
+  s+=`<rect x="0" y="176" width="400" height="74" fill="#C99D6E"/><rect x="-2" y="164" width="404" height="13" fill="#B98552" stroke="${INK}" stroke-width="2.5"/>`;for(let x=60;x<400;x+=110) s+=`<rect x="${x}" y="177" width="10" height="73" fill="#8A5E38" stroke="${INK}" stroke-width="2"/>`;return s;}
+SCENES.lab={top:'#E3EEF2',draw:lab};SCENES.workshop={top:'#F1E6D6',draw:workshop};
+
+// ---------- extra props ----------
+const PROP2={
+  glass:(x)=>`<path d="M${x-16} 118 L${x+16} 118 L${x+13} 166 L${x-13} 166 Z" fill="#E6F7FF" fill-opacity=".6" stroke="${INK}" stroke-width="2"/><path d="M${x-15} 134 L${x+15} 134 L${x+13} 166 L${x-13} 166 Z" fill="#9FD4F7" opacity=".8"/><line x1="${x-22}" y1="104" x2="${x-2}" y2="134" stroke="${GOLD}" stroke-width="5" stroke-linecap="round"/><line x1="${x+1}" y1="134" x2="${x+10}" y2="160" stroke="${GOLD}" stroke-width="5" stroke-linecap="round"/><path d="M${x-16} 118 L${x+16} 118 L${x+13} 166 L${x-13} 166 Z" fill="none" stroke="${INK}" stroke-width="2"/>`,
+  rainbow:()=>['#E53935','#FB8C00','#FDD835','#43A047','#1E88E5','#3949AB','#8E24AA'].map((c,i)=>`<path d="M${70+i*5} 150 A${130-i*5} ${110-i*5} 0 0 1 ${330-i*5} 150" fill="none" stroke="${c}" stroke-width="5" opacity=".8"/>`).join(''),
+  jar:(x)=>`<rect x="${x-5}" y="140" width="10" height="26" fill="#fff" stroke="${INK}" stroke-width="1.6"/><path d="M${x} 140 q-4 -8 1 -14 q-6 -8 0 -16" stroke="#9AA3B5" stroke-width="1.8" fill="none"/><path d="M${x-22} 166 L${x-22} 120 Q${x-22} 100 ${x} 100 Q${x+22} 100 ${x+22} 120 L${x+22} 166" fill="#E6F7FF" fill-opacity=".45" stroke="${INK}" stroke-width="2"/>`,
+  electro:(x)=>`<rect x="${x-30}" y="134" width="60" height="32" fill="#BFE8FF" stroke="${INK}" stroke-width="2"/><rect x="${x-20}" y="104" width="10" height="50" rx="5" fill="#fff" fill-opacity=".7" stroke="${INK}" stroke-width="1.6"/><rect x="${x+10}" y="104" width="10" height="50" rx="5" fill="#fff" fill-opacity=".7" stroke="${INK}" stroke-width="1.6"/><rect x="${x+38}" y="150" width="22" height="16" fill="#2B3A55" stroke="${INK}" stroke-width="1.6"/><path d="M${x-15} 158 Q${x} 176 ${x+40} 160 M${x+15} 158 Q${x+30} 170 ${x+52} 152" stroke="${CORAL}" stroke-width="1.6" fill="none"/>`,
+  fizzcup:(x)=>`<path d="M${x-16} 126 L${x+16} 126 L${x+12} 166 L${x-12} 166 Z" fill="#fff" stroke="${INK}" stroke-width="2"/>`+[[-10,124,7],[-2,118,8],[8,122,7],[2,110,6],[-8,112,5],[12,114,4]].map(([dx,y,r])=>`<circle cx="${x+dx}" cy="${y}" r="${r}" fill="#F7F3E8" stroke="${INK}" stroke-width="1.3"/>`).join(''),
+  plant:(x,a)=>{const droop=a==='droop';return `<path d="M${x-16} 140 L${x+16} 140 L${x+12} 166 L${x-12} 166 Z" fill="#D9774A" stroke="${INK}" stroke-width="2"/>`+(droop?`<path d="M${x} 140 Q${x+2} 120 ${x+14} 116 M${x} 140 Q${x-4} 124 ${x-16} 124" stroke="#7FA05A" stroke-width="3" fill="none"/><ellipse cx="${x+18}" cy="${122}" rx="8" ry="4" fill="#A9B86A" stroke="${INK}" stroke-width="1.4" transform="rotate(40 ${x+18} 122)"/><ellipse cx="${x-20}" cy="${130}" rx="8" ry="4" fill="#A9B86A" stroke="${INK}" stroke-width="1.4" transform="rotate(-40 ${x-20} 130)"/>`
+      :`<path d="M${x} 140 L${x} 108 M${x} 124 Q${x+10} 116 ${x+16} 104 M${x} 128 Q${x-10} 118 ${x-16} 108" stroke="#3E8E3A" stroke-width="3" fill="none"/>`+[[x,102],[x+18,100],[x-18,104],[x+10,116],[x-10,118]].map(([px,py])=>`<ellipse cx="${px}" cy="${py}" rx="9" ry="5" fill="#6CC56A" stroke="${INK}" stroke-width="1.4"/>`).join(''))+`<rect x="${x+20}" y="146" width="10" height="20" rx="2" fill="#2B3A55" stroke="${INK}" stroke-width="1.4"/><line x1="${x+25}" y1="146" x2="${x+12}" y2="152" stroke="${CORAL}" stroke-width="1.6"/>`;},
+  paperbridge:(x)=>`<rect x="${x-62}" y="134" width="30" height="32" fill="#2F6FD6" stroke="${INK}" stroke-width="1.8"/><rect x="${x+32}" y="134" width="30" height="32" fill="${CORAL}" stroke="${INK}" stroke-width="1.8"/><path d="M${x-36} 134 `+[...Array(9)].map((_,i)=>`L${x-32+i*8} ${i%2?140:134}`).join(' ')+` L${x+36} 134" fill="none" stroke="${INK}" stroke-width="1.8"/>`+[-16,-4,8].map(dx=>`<ellipse cx="${x+dx}" cy="130" rx="6" ry="2.5" fill="${GOLD}" stroke="${INK}" stroke-width="1.2"/>`).join(''),
+  tin:(x)=>`<rect x="${x-20}" y="134" width="40" height="32" fill="#2F6FD6" stroke="${INK}" stroke-width="2"/><ellipse cx="${x}" cy="134" rx="20" ry="5" fill="#8A97A8" stroke="${INK}" stroke-width="2"/><line x1="${x+14}" y1="132" x2="${x+44}" y2="112" stroke="${CORAL}" stroke-width="4" stroke-linecap="round"/>`,
+  kit:(x)=>`<rect x="${x-34}" y="152" width="26" height="12" rx="2" fill="${GOLD}" stroke="${INK}" stroke-width="1.6"/><rect x="${x-10}" y="155" width="3" height="6" fill="${INK}"/>`+bulbS(x+24,150,false)+`<path d="M${x-34} 158 Q${x-50} 140 ${x+16} 150 M${x-7} 158 Q${x+10} 172 ${x+30} 154" stroke="${CORAL}" stroke-width="1.8" fill="none"/>`,
+  stand:(x)=>`<path d="M${x-20} 166 L${x+18} 166 L${x-2} 126 Z" fill="#D9B98E" stroke="${INK}" stroke-width="2"/><rect x="${x-10}" y="118" width="16" height="30" rx="3" fill="#2B2F45" stroke="${INK}" stroke-width="2" transform="rotate(-18 ${x-2} 133)"/>`,
+  lemon:(x,y)=>`<ellipse cx="${x}" cy="${y}" rx="11" ry="8" fill="#FFE45C" stroke="${INK}" stroke-width="1.8"/><path d="M${x+10} ${y-2} l4 -1" stroke="${INK}" stroke-width="1.6"/>`,
+  cabbage:(x,y)=>`<g transform="translate(${x},${y}) scale(.75)">${cup('#8E5BC8')}</g>`,
+  paper:(x,y)=>`<g transform="rotate(-8 ${x} ${y})"><rect x="${x-12}" y="${y-14}" width="24" height="28" fill="#FFF3D6" stroke="${INK}" stroke-width="1.6"/><path d="M${x-7} ${y-6} L${x+7} ${y-6} M${x-7} ${y} L${x+5} ${y} M${x-7} ${y+6} L${x+3} ${y+6}" stroke="#C9A27A" stroke-width="1.4"/><circle cx="${x+5}" cy="${y+7}" r="2.5" fill="${CORAL}"/></g>`,
+  ptri:(x,y)=>`<path d="M${x-12} ${y+10} L${x+14} ${y+10} L${x} ${y-14} Z" fill="#FFD6D6" stroke="${INK}" stroke-width="1.8"/>`,
+  band:(x,y)=>`<path d="M${x-14} ${y} Q${x} ${y-6} ${x+14} ${y} Q${x} ${y+6} ${x-14} ${y}" fill="none" stroke="${ORANGE}" stroke-width="2.6"/><path d="M${x+18} ${y-6} q3 6 0 12 M${x+22} ${y-9} q5 9 0 18" stroke="${INK}" stroke-width="1.4" fill="none"/>`,
+};
+const FRONT_PROPS=['phone','medal','lemon','cabbage','paper','ptri','band'];
+
 
 const CAST=[
   {k:'leo',name:NAMES.leo,bio:T("13, lives in Shanghai. Loves football and video games. Curious about everything.","13岁，住在上海。爱踢足球、爱打游戏，对什么都好奇。")},
@@ -1093,44 +2147,54 @@ const CAST=[
   {k:'mia',name:NAMES.mia,bio:T("Leo's classmate. Sharp and skeptical. Always asks: how do you know?","乐乐的同学。聪明、爱质疑，总爱问：你怎么知道？")},
 ];
 const UI={
-  tag:T("13 comic episodes for curious 13-year-olds: from zeros and ones to AI agents.","写给13岁好奇少年的13集漫画：从0和1一路讲到AI智能体。"),
-  cast:T("Meet the cast","主要角色"),eps:T("Episodes","全部剧集"),terms:T("Key words","关键词"),tryIt:T("Try it","动手试试"),
-  prev:T("Previous","上一集"),next:T("Next","下一集"),
+  tag:T("Comic series for curious 13-year-olds: AI, math, physics, chemistry and engineering, linked to what they learn at school.","写给13岁好奇少年的系列漫画：人工智能、数学、物理、化学和工程，紧扣校内所学。"),
+  cast:T("Meet the cast","主要角色"),series:T("Series","系列"),eps:T("Episodes","剧集"),terms:T("Key words","关键词"),tryIt:T("Try it","动手试试"),
+  prev:T("Previous","上一集"),next:T("Next","下一集"),episodes:T("episodes","集"),
   note:T("Parents: read one episode a week together, then do the activity.","家长小贴士：每周一起读一集，再完成这个小活动。"),
-  foot:T("Leo, Bit and Mia are original characters. Fun facts checked in 2026.","乐乐、比特和米娅均为原创角色。文中知识点核对于2026年。"),
+  parents:T("For parents: how it links to school","给家长：与校内课程的对应"),
+  thS:T("Series","系列"),thL:T("Links to","对应课程"),thT:T("Topics","内容"),
+  foot:T("Leo, Bit and Mia are original characters. Curriculum links checked against Shanghai's 2024–2026 textbook lists and the 2022 national curriculum standards.","乐乐、比特和米娅均为原创角色。课程对应关系参照上海2024—2026年教学用书目录及2022年版义务教育课程标准。"),
 };
-let CUR=0;
-try{const m=localStorage.getItem('lb-mode');if(m==='en'||m==='zh'||m==='both')MODE=m;const e=parseInt(localStorage.getItem('lb-ep'),10);if(e>=0&&e<EPISODES.length)CUR=e;}catch(e){}
-const hm=/^#ep(\d+)$/.exec(location.hash);if(hm){const e=parseInt(hm[1],10)-1;if(e>=0&&e<EPISODES.length)CUR=e;}
+let SI=0,CUR=0;
+const findS=id=>SERIES.findIndex(s=>s.id===id);
+try{const m=localStorage.getItem('lb-mode');if(m==='en'||m==='zh'||m==='both')MODE=m;
+  const ss=findS(localStorage.getItem('lb-series')||'');if(ss>=0)SI=ss;const e=parseInt(localStorage.getItem('lb-ep'),10);if(e>=0&&e<SERIES[SI].episodes.length)CUR=e;}catch(e){}
+(function(){const h=location.hash;let m=/^#ep(\d+)$/.exec(h);if(m){SI=0;CUR=Math.min(SERIES[0].episodes.length,Math.max(1,+m[1]))-1;return;}
+  m=/^#([a-z]+)-(\d+)$/.exec(h);if(m){const s=findS(m[1]);if(s>=0){SI=s;CUR=Math.min(SERIES[s].episodes.length,Math.max(1,+m[2]))-1;}}})();
 
 function portrait(k){if(k==='bit') return `<svg viewBox="-56 -60 112 128" aria-hidden="true">${bit(0,0,1,1.25,'happy','wave')}</svg>`;
   return `<svg viewBox="-62 -212 124 220" aria-hidden="true">${person(k,0,0,1,1,k==='mia'?'smirk':'happy',k==='leo'?'wave':'idle')}</svg>`;}
 function epNo(i){return MODE==='zh'?`<span class="zh">第${i+1}集</span>`:MODE==='en'?`<span class="en">EPISODE ${i+1}</span>`:`<span class="en">EPISODE ${i+1}</span><span class="zh">第${i+1}集</span>`;}
+function cnt(n){return MODE==='zh'?`${n}集`:MODE==='en'?`${n} episodes`:`${n} episodes · ${n}集`;}
 function render(){
   const app=document.getElementById('app');document.documentElement.lang=MODE==='zh'?'zh-CN':'en';
   document.body.className='mode-'+MODE;
-  const E=EPISODES[CUR];
+  const S=SERIES[SI],E=S.episodes[CUR];
   const langs=[['both','EN + 中文'],['en','English'],['zh','中文']].map(([m,l])=>`<button type="button" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('');
-  let h=`<header class="mast"><div><h1 class="logo">Leo &amp; Bit</h1><p class="logo-zh">乐乐和比特的AI大冒险</p><p class="tag">${hx(UI.tag)}</p><div class="langs" role="group" aria-label="Language">${langs}</div></div>
+  let h=`<header class="mast"><div><h1 class="logo">Leo &amp; Bit</h1><p class="logo-zh">乐乐和比特的科学大冒险</p><p class="tag">${hx(UI.tag)}</p><div class="langs" role="group" aria-label="Language">${langs}</div></div>
     <svg class="mast-art" viewBox="0 -215 260 225" aria-hidden="true">${person('leo',80,0,1,1,'grin','point')}${bit(200,-120,-1,1.3,'happy','wave')}</svg></header>`;
   h+=`<h2 class="sh">${hx(UI.cast)}</h2><div class="cast">${CAST.map(c=>`<div class="cc" style="--c:${c.name.c}">${portrait(c.k)}<div><h3>${hx(c.name)}</h3><p>${hx(c.bio)}</p></div></div>`).join('')}</div>`;
-  h+=`<h2 class="sh">${hx(UI.eps)}</h2><nav class="eps" aria-label="Episodes">${EPISODES.map((e,i)=>`<button type="button" class="ep-btn" data-ep="${i}" aria-current="${i===CUR}"><span class="num">${i+1}</span><span class="tt">${hx(e.t)}</span></button>`).join('')}</nav>`;
-  h+=`<section id="episode"><div class="ep-head"><span class="ep-no">${epNo(CUR)}</span><h2 class="ep-title">${hx(E.t)}</h2><span class="ep-topic">${hx(E.topic)}</span></div>`;
+  h+=`<h2 class="sh">${hx(UI.series)}</h2><nav class="series" aria-label="Series">${SERIES.map((s,i)=>`<button type="button" class="sr-btn" data-series="${i}" aria-current="${i===SI}" style="--c:${s.color}"><span class="band"><svg viewBox="-13 -13 26 26" aria-hidden="true"><circle r="12.5" fill="#fff" stroke="#17182B" stroke-width="1.5"/>${icon(s.icon,0,0,0.85)}</svg><b>${hx(s.t)}</b></span><span class="meta">${hx(s.grade)}<span class="cnt">${cnt(s.episodes.length)}</span></span></button>`).join('')}</nav>`;
+  h+=`<h2 class="sh">${hx(S.t)}</h2><p class="grade">${hx(S.desc)}</p><nav class="eps" aria-label="Episodes" style="margin-top:12px;--sc:${S.color}">${S.episodes.map((e,i)=>`<button type="button" class="ep-btn" data-ep="${i}" aria-current="${i===CUR}"><span class="num">${i+1}</span><span class="tt">${hx(e.t)}</span></button>`).join('')}</nav>`;
+  h+=`<section id="episode" style="--sc:${S.color}"><div class="ep-head"><span class="ep-no">${epNo(CUR)}</span><h2 class="ep-title">${hx(E.t)}</h2><span class="ep-topic">${hx(E.topic)}</span></div>`;
   h+=`<div class="grid">${E.panels.map(panelHTML).join('')}</div>`;
   h+=`<div class="after"><div class="box"><h3>${hx(UI.terms)}</h3><dl class="terms">${E.terms.map(t=>`<div class="term"><dt>${hx({en:t[0],zh:t[1]})}</dt><dd>${hx({en:t[2],zh:t[3]})}</dd></div>`).join('')}</dl></div>
     <div class="box try"><h3>${hx(UI.tryIt)}</h3><p>${hx(E.tryIt)}</p><div class="note">${hx(UI.note)}</div></div></div>`;
-  const pv=EPISODES[CUR-1],nx=EPISODES[CUR+1];
-  h+=`<div class="nav"><button type="button" data-go="${CUR-1}" ${pv?'':'disabled'}><small>← ${hx(UI.prev)}</small>${pv?hx(pv.t):''}</button><button type="button" data-go="${CUR+1}" ${nx?'':'disabled'}><small>${hx(UI.next)} →</small>${nx?hx(nx.t):''}</button></div></section>`;
+  const pv=neighbour(-1),nx=neighbour(1);const lab=(n)=>n?`${n.si!==SI?hx(SERIES[n.si].t)+' · ':''}${hx(SERIES[n.si].episodes[n.e].t)}`:'';
+  h+=`<div class="nav"><button type="button" data-go="${pv?pv.si+':'+pv.e:''}" ${pv?'':'disabled'}><small>← ${hx(UI.prev)}</small>${lab(pv)}</button><button type="button" data-go="${nx?nx.si+':'+nx.e:''}" ${nx?'':'disabled'}><small>${hx(UI.next)} →</small>${lab(nx)}</button></div></section>`;
+  h+=`<h2 class="sh">${hx(UI.parents)}</h2><div class="map-wrap"><table class="map"><thead><tr><th>${hx(UI.thS)}</th><th>${hx(UI.thL)}</th><th>${hx(UI.thT)}</th></tr></thead><tbody>${SERIES.map(s=>`<tr><td>${hx(s.t)}</td><td>${hx(s.grade)}</td><td>${hx(s.desc)}</td></tr>`).join('')}</tbody></table></div>`;
   h+=`<p class="foot">${hx(UI.foot)}</p>`;
   app.innerHTML=h;
 }
-function go(i,scroll){CUR=i;try{localStorage.setItem('lb-ep',String(i));}catch(e){}
-  try{history.replaceState(null,'','#ep'+(i+1));}catch(e){}
-  render();if(scroll){const el=document.getElementById('episode');if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}}
+function neighbour(d){let si=SI,e=CUR+d;if(e<0){si--;if(si<0)return null;e=SERIES[si].episodes.length-1;}else if(e>=SERIES[si].episodes.length){si++;if(si>=SERIES.length)return null;e=0;}return {si,e};}
+function go(si,e,scroll,target){SI=si;CUR=e;try{localStorage.setItem('lb-series',SERIES[si].id);localStorage.setItem('lb-ep',String(e));}catch(err){}
+  try{history.replaceState(null,'','#'+SERIES[si].id+'-'+(e+1));}catch(err){}
+  render();if(scroll){const el=document.getElementById(target||'episode');if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}}
 document.addEventListener('click',ev=>{const t=ev.target.closest('button');if(!t)return;
   if(t.dataset.mode){MODE=t.dataset.mode;try{localStorage.setItem('lb-mode',MODE);}catch(e){}render();}
-  else if(t.dataset.ep!==undefined) go(+t.dataset.ep,true);
-  else if(t.dataset.go!==undefined) go(+t.dataset.go,true);});
+  else if(t.dataset.series!==undefined){go(+t.dataset.series,0,false);}
+  else if(t.dataset.ep!==undefined) go(SI,+t.dataset.ep,true);
+  else if(t.dataset.go){const [a,b]=t.dataset.go.split(':');go(+a,+b,true);}});
 render();
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>render());
 </script>
