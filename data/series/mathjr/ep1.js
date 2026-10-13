@@ -1,0 +1,31 @@
+// mathjr · episode 1 (script marker MJ1)
+LBC.registerEpisode('mathjr',1,
+{t:T("The Double-Discount Mystery","双重折扣之谜"),topic:T("Percentages and discounts","百分比与打折"),
+panels:[
+{bg:'city',cast:[['leo',85,'surprised','point'],['mia',200,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"Saturday on Nanjing Road. Two shops sell the same ¥20 bubble tea.","周六，南京路上。两家店卖同一款20元的奶茶。"],
+      ['leo',"Shop A: 20% off, then ANOTHER 10% off! Shop B: only 30% off. A is the same deal, right?","A店：先打八折，再打九折！B店：只打七折。A店不是一样划算吗？"],
+      ['mia',"Hmm... 20 + 10 = 30. Sounds the same to me.","嗯……20加10等于30，听起来一样啊。"]]},
+{bg:'city',holo:{t:'big',title:T("Percent = out of 100","百分比 = 每一百份里有几份"),rows:[{s:'3/4 = 0.75 = 75%',size:18,mono:true},{s:T("20% off = pay 80% (打八折)","打八折 = 付原价的80%"),size:14,fill:'#C2416B'},{s:'80% = 0.8',size:16,mono:true}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Detectives, first clue: 'percent' means 'out of a hundred'. A fraction, a decimal and a percent can all describe the same amount.","侦探们，第一条线索：百分比就是“每一百份里占几份”。分数、小数和百分数可以表示同一个量。"]]},
+{bg:'city',holo:{t:'table',title:T("Follow the money","跟着钱走"),head:[T("Step","步骤"),T("Shop A","A店"),T("Shop B","B店")],rows:[[T("Start","原价"),'¥20.00','¥20.00'],[T("1st","第一次"),'×0.8 → ¥16','×0.7 → ¥14'],[T("2nd","第二次"),'×0.9 → ¥14.40','—']],note:T("Shop B is 40 fen cheaper!","B店便宜4角！")},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"The second discount is taken from the NEW price, ¥16, not from ¥20.","第二次折扣是在新价格16元上打的，不是在20元上。"],
+      ['mia',"So the 10% only saves ¥1.60, not ¥2!","所以那10%只省了1.6元，不是2元！"]]},
+{bg:'city',holo:{t:'vs',title:T("Can you add discounts?","折扣能直接相加吗？"),a:{l:T("20% off + 10% off = 30% off","八折加九折 = 七折"),ok:false},b:{l:T("0.8 × 0.9 = 0.72, pay 72%, so 28% off","0.8 × 0.9 = 0.72，付72%，相当于七二折"),ok:true}},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"Got it! You multiply discounts. You can't add them!","明白了！折扣要相乘，不能相加！"]]},
+{bg:'city',holo:{t:'donut',title:T("Shop A: where does ¥20 go?","A店：20元怎么分？"),segs:[{v:72,c:'#2F6FD6',l:T("Pay 72%: ¥14.40","付72%：¥14.40")},{v:28,c:'#FFD84D',l:T("Save 28%: ¥5.60","省28%：¥5.60")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Check: 72% + 28% = 100%, and ¥14.40 + ¥5.60 = ¥20. The whole price is always 100%.","验算：72% + 28% = 100%，14.40元 + 5.60元 = 20元。原价永远是100%。"]]},
+{bg:'city',cast:[['leo',85,'grin','cheer'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['mia',"Shop B it is. Case closed!","去B店。结案！"],
+      ['leo',"Next time a sign says 'extra 10% off', I'm multiplying first.","下次看到“再打九折”，我先乘一乘。"],
+      ['bit',"Next time, Math Detectives Junior: the mystery of negative numbers!","小小数学侦探下一集：负数之谜！"]]}
+],
+terms:[["Percent","百分数（百分比）","A number out of 100: 75% = 75/100 = 0.75.","表示一个数是另一个数的百分之几：75% = 75/100 = 0.75。"],
+ ["Discount","折扣（打折）","Paying only part of the price. 20% off means you pay 80% (打八折).","只付原价的一部分。打八折就是付原价的80%，便宜20%。"],
+ ["Successive discounts","连续打折","Discounts taken one after another. Multiply the decimals (0.8 × 0.9 = 0.72); don't add the percents.","一个接一个的折扣。要把小数相乘（0.8 × 0.9 = 0.72），不能把百分数相加。"]],
+tryIt:T("Price detective: with an adult, look at sale signs in a shop or online flyer. Pick 3 items and work out the sale price with a calculator. If there's a 'buy more, save more' or double discount, find the real total percent off. Which deal is actually best?","价格侦探：在大人陪同下，看看商店里或网上宣传单上的促销标签。挑3件商品，用计算器算出折后价。如果有“满减”或双重折扣，算出真正便宜了百分之几。哪个优惠才是最划算的？")}
+);
