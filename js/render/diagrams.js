@@ -142,6 +142,7 @@ DIAG.cards=(d,B)=>{let s='';const n=d.items.length,cols=d.cols||Math.min(n,3),ro
   if(d.foot) s+=st(B.x+B.w/2,B.y+B.h-fh+4,d.foot,fo).s;return s;};
 DIAG.cycle=(d,B)=>{let s='';const n=d.items.length,cx=B.x+B.w/2,r=16;let cy=B.y+B.h/2-4,R=Math.min(B.w*0.34,B.h*0.36);
   if(n===3){const lo0={size:10.5,maxW:70};const lt=stH(d.items[0].l,lo0),lb=Math.max(stH(d.items[1].l,lo0),stH(d.items[2].l,lo0));R=Math.min(B.w*0.34,(B.h-2*r-6-lt-lb)/1.5);cy=B.y+lt+3+r+R;}
+  if(n===4){const lo0={size:10.5,maxW:70};const lt=stH(d.items[0].l,lo0),lb=stH(d.items[2].l,lo0);R=Math.min(B.w*0.34,(B.h-2*r-6-lt-lb)/2);cy=B.y+lt+3+r+R;}
   const ang=i=>(-90+360*i/n)*Math.PI/180;const dA=(r+6)/R;
   for(let i=0;i<n;i++){const a1=ang(i)+dA,a2=ang(i+1)-dA;const p1=[cx+R*Math.cos(a1),cy+R*Math.sin(a1)],p2=[cx+R*Math.cos(a2),cy+R*Math.sin(a2)];
     s+=`<path d="M${n1(p1[0])} ${n1(p1[1])} A${n1(R)} ${n1(R)} 0 0 1 ${n1(p2[0])} ${n1(p2[1])}" fill="none" stroke="${HL}" stroke-width="2.4"/>`+ah(p2[0],p2[1],a2+Math.PI/2,HL,8);}
@@ -214,6 +215,7 @@ function holo(d){const x=d.x??HOLO.x,y=d.y??HOLO.y,w=d.w??HOLO.w,h=d.h??HOLO.h;
   let top=y+9;
   if(d.title){const o={size:12,fill:HT,maxW:w-36};const m=st(x+w/2,top,d.title,o);s+=m.s;top+=m.h+4;s+=`<line x1="${x+16}" y1="${n1(top)}" x2="${x+w-16}" y2="${n1(top)}" stroke="${HL}" stroke-width="1.2" stroke-dasharray="3 3"/>`;top+=6;}
   const B={x:x+10,y:top,w:w-20,h:y+h-9-top};
+  if(!DIAG[d.t]) console.warn('LBC: unknown diagram',d.t);
   s+=(DIAG[d.t]||(()=>''))(d,B);
   return s+'</g>';}
 

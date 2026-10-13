@@ -21,6 +21,8 @@ Each episode ends with key words and a hands-on activity for kids and parents.
 
 ## Project structure
 
+This repository is published automatically from the private source repo. Don't edit it directly; changes made here are overwritten on the next deploy.
+
 A static site served by GitHub Pages. No build step: `index.html` loads plain `<script>` files in order,
 and they share global names (classic scripts, not modules).
 

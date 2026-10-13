@@ -33,7 +33,7 @@ function icon(name,cx,cy,s=1){
     case 'pen': g=`<path d="M-9 9 L-7 3 L5 -9 L9 -5 L-3 7 Z" fill="#FFD84D" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-9 9 L-7 3 L-3 7 Z" fill="#F5CBA7" stroke="${I}" stroke-width="1.2"/>`;break;
     case 'gear': g=`<g fill="#8A97A8" stroke="${I}" stroke-width="1.4">${[0,45,90,135].map(a=>`<rect x="-2.5" y="-11" width="5" height="22" rx="1" transform="rotate(${a})"/>`).join('')}<circle r="7.5"/></g><circle r="3" fill="#fff" stroke="${I}" stroke-width="1.4"/>`;break;
     case 'laptop': g=`<rect x="-10" y="-9" width="20" height="13" rx="2" fill="#13213C" stroke="${I}" stroke-width="1.5"/><rect x="-7.5" y="-6.5" width="15" height="8" fill="#7DF9FF" opacity=".6"/><path d="M-13 6 L13 6 L11 4 L-11 4 Z" fill="#AEB6C6" stroke="${I}" stroke-width="1.4"/>`;break;
-    default: g=(typeof ICON2!=='undefined'&&ICON2[name])?ICON2[name]():`<circle r="6" fill="${HL}"/>`;
+    default: if(typeof ICON2!=='undefined'&&ICON2[name]) g=ICON2[name](); else {console.warn('LBC: unknown icon',name);g=`<circle r="6" fill="${HL}"/>`;}
   }
   return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
 }
@@ -54,7 +54,7 @@ function pic(name,cx,cy,s=1){
     case 'medicine': g=`<rect x="-8" y="-9" width="16" height="22" rx="3" fill="#FFB347" stroke="${I}" stroke-width="1.6"/><rect x="-9.5" y="-15" width="19" height="7" rx="1.5" fill="#fff" stroke="${I}" stroke-width="1.6"/><rect x="-8" y="-3" width="16" height="10" fill="#fff"/><path d="M0 -1.5 L0 5.5 M-3.5 2 L3.5 2" stroke="#E04848" stroke-width="2.2"/>`;break;
     case 'tissue': g=`<path d="M-12 4 L-9 -8 L-2 -12 L6 -9 L12 -2 L10 9 L1 12 L-8 10 Z" fill="#fff" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-6 -4 L0 1 L5 -5 M-3 6 L2 2 L7 5 M-8 2 L-4 0" stroke="#AEB6C6" stroke-width="1.2" fill="none"/>`;break;
     case 'table': g=`<rect x="-19" y="-6" width="38" height="20" rx="2" fill="#B98552" stroke="${I}" stroke-width="1.6"/><path d="M-16 0 Q-4 -2 6 1 T17 0 M-17 7 Q-5 5 5 8 T17 7" stroke="#8A5E38" stroke-width="1.1" fill="none"/>`;break;
-    default: if(typeof PIC2!=='undefined'&&PIC2[name]) g=PIC2[name](); break;
+    default: if(typeof PIC2!=='undefined'&&PIC2[name]) g=PIC2[name](); else console.warn('LBC: unknown picture',name); break;
     case 'bananaT': g=pic('table',0,0,1)+`<g transform="translate(0,-4) scale(.8)">${pic('banana',0,0,1)}</g>`;return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
   }
   return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
@@ -63,6 +63,7 @@ function pic(name,cx,cy,s=1){
 
 // ---------- extra icons (±11 box) ----------
 const ICON2={
+  ice:()=>`<rect x="-10" y="-10" width="20" height="20" rx="4" fill="#D8F3FF" stroke="${INK}" stroke-width="1.6"/><path d="M-6 -6 L0 -6 M-6 -2 L-3 -2" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M4 3 L7 6" stroke="#7CC6F5" stroke-width="1.6" stroke-linecap="round"/>`,
   user:()=>`<circle cx="0" cy="-5" r="5" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/><path d="M-9 10 Q-9 1 0 1 Q9 1 9 10 Z" fill="${BLUE}" stroke="${INK}" stroke-width="1.5"/>`,
   speaker:()=>`<path d="M-10 -4 L-5 -4 L2 -10 L2 10 L-5 4 L-10 4 Z" fill="#2B3A55" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 -5 Q9 0 5 5 M7 -9 Q14 0 7 9" stroke="${INK}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`,
   ear:()=>`<path d="M5 9 Q0 11 -1 6 Q-2 2 -5 0 Q-9 -4 -6 -8 Q-2 -12 4 -10 Q9 -8 9 -2 Q9 2 6 4 Q4 6 5 9 Z" fill="#F5CBA7" stroke="${INK}" stroke-width="1.5"/><path d="M-2 -5 Q2 -8 5 -4 Q6 0 2 1" stroke="${INK}" stroke-width="1.3" fill="none"/>`,

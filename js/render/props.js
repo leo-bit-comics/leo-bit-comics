@@ -20,7 +20,7 @@ function prop(p){const [k,x,a]=p;
       [['#8B5A2B',34],['#2D6CDF',30],['#3A3A44',27],['#E04848',22]].forEach(([c,h],i)=>{s+=`<rect x="${x-30+i*16}" y="${186-h}" width="11" height="${h}" fill="${c}" stroke="${INK}" stroke-width="1.2"/>`;});
       s+=`<g transform="translate(${x-60},130) scale(.9)">${pic('banana',0,0,0.7)}</g><g transform="translate(${x-60},165) scale(.9)">${pic('bottle',0,0,0.6)}</g><g transform="translate(${x+60},140) scale(.9)">${pic('tissue',0,0,0.7)}</g>`;return s;}
     case 'medal': {const y=a;return `<path d="M${x-12} ${y-34} L${x-4} ${y-8} L${x+4} ${y-8} L${x-4} ${y-34} Z" fill="#2F6FD6" stroke="${INK}" stroke-width="2"/><path d="M${x+12} ${y-34} L${x+4} ${y-8} L${x-4} ${y-8} L${x+4} ${y-34} Z" fill="#FF5D5D" stroke="${INK}" stroke-width="2"/><circle cx="${x}" cy="${y+6}" r="18" fill="#FFC83D" stroke="${INK}" stroke-width="2.5"/><circle cx="${x}" cy="${y+6}" r="12" fill="none" stroke="#E0A21B" stroke-width="2"/>${star(x,y+6,8,'#fff')}`;}
-    default: if(typeof PROP2!=='undefined'&&PROP2[k]) return PROP2[k](x,a,p); break;
+    default: if(typeof PROP2!=='undefined'&&PROP2[k]) return PROP2[k](x,a,p); console.warn('LBC: unknown prop',k); break;
     case 'phone': {const y=a;return `<g transform="rotate(-12 ${x} ${y})"><rect x="${x-7}" y="${y-12}" width="14" height="24" rx="3" fill="#2B2F45" stroke="${INK}" stroke-width="2"/><rect x="${x-5}" y="${y-9}" width="10" height="17" fill="#7DF9FF"/></g>`;}
   }
   return '';}

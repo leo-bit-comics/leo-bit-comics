@@ -12,7 +12,7 @@ panels:[
  cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
  say:[['bit',"When sweat evaporates, it takes heat from your skin. But when the air is already this full of vapour, sweat can't evaporate fast enough.","汗水蒸发时会从皮肤带走热量。可空气里水蒸气已经这么多时，汗就蒸发不了那么快。"],
       ['leo',"So it's not just hot. It's hot AND wet!","所以不只是热，是又热又湿！"]]},
-{bg:'kitchen',props:[['glass',205]],holo:{t:'list',title:T("Where do the drops come from?","水珠从哪里来？"),items:[{i:'ice',l:T("Ice makes the glass cold","冰让杯子变冷")},{i:'wave',l:T("Air touching it cools below the dew point","贴着杯子的空气降到露点以下")},{i:'drop',l:T("Vapour condenses into drops","水蒸气凝结成水珠")}]},
+{bg:'kitchen',holo:{t:'list',title:T("Where do the drops come from?","水珠从哪里来？"),items:[{i:'ice',l:T("Ice makes the glass cold","冰让杯子变冷")},{i:'wave',l:T("Air touching it cools below the dew point","贴着杯子的空气降到露点以下")},{i:'drop',l:T("Vapour condenses into drops","水蒸气凝结成水珠")}]},
  cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
  say:[['leo',"My iced drink is 'sweating' too! Is water leaking through the glass?","我的冰饮料也在“出汗”！是水从杯子里渗出来了吗？"],
       ['bit',"Nope! That water came from the air. Cool air below its dew point and the vapour turns back into liquid. That's condensation.","不是！这些水来自空气。空气冷却到露点以下，水蒸气就会变回液体。这叫凝结。"]]},
