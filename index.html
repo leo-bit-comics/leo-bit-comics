@@ -2153,6 +2153,7 @@ const UI={
   note:T("Parents: read one episode a week together, then do the activity.","家长小贴士：每周一起读一集，再完成这个小活动。"),
   parents:T("For parents: how it links to school","给家长：与校内课程的对应"),
   thS:T("Series","系列"),thL:T("Links to","对应课程"),thT:T("Topics","内容"),
+  ai:T("These comics are AI-generated and may contain errors.","本漫画内容由AI生成，可能存在错误。"),
   foot:T("Leo, Bit and Mia are original characters. Curriculum links checked against Shanghai's 2024–2026 textbook lists and the 2022 national curriculum standards.","乐乐、比特和米娅均为原创角色。课程对应关系参照上海2024—2026年教学用书目录及2022年版义务教育课程标准。"),
 };
 let SI=0,CUR=0;
@@ -2184,6 +2185,7 @@ function render(){
   h+=`<div class="nav"><button type="button" data-go="${pv?pv.si+':'+pv.e:''}" ${pv?'':'disabled'}><small>← ${hx(UI.prev)}</small>${lab(pv)}</button><button type="button" data-go="${nx?nx.si+':'+nx.e:''}" ${nx?'':'disabled'}><small>${hx(UI.next)} →</small>${lab(nx)}</button></div></section>`;
   h+=`<h2 class="sh">${hx(UI.parents)}</h2><div class="map-wrap"><table class="map"><thead><tr><th>${hx(UI.thS)}</th><th>${hx(UI.thL)}</th><th>${hx(UI.thT)}</th></tr></thead><tbody>${SERIES.map(s=>`<tr><td>${hx(s.t)}</td><td>${hx(s.grade)}</td><td>${hx(s.desc)}</td></tr>`).join('')}</tbody></table></div>`;
   h+=`<p class="foot">${hx(UI.foot)}</p>`;
+  h+=`<p class="foot">${hx(UI.ai)}</p>`;
   app.innerHTML=h;
 }
 function neighbour(d){let si=SI,e=CUR+d;if(e<0){si--;if(si<0)return null;e=SERIES[si].episodes.length-1;}else if(e>=SERIES[si].episodes.length){si++;if(si>=SERIES.length)return null;e=0;}return {si,e};}
