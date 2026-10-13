@@ -11,6 +11,11 @@ const UI={
   parents:T("For parents: how it links to school","给家长：与校内课程的对应"),
   thS:T("Series","系列"),thL:T("Links to","对应课程"),thT:T("Topics","内容"),
   ai:T("These comics are AI-generated and may contain errors.","本漫画内容由AI生成，可能存在错误。"),
+  // navigation (js/app.js)
+  home:T("Home","首页"),contents:T("Contents","目录"),close:T("Close","关闭"),lang:T("Language","语言"),where:T("You are here","当前位置"),
+  tagShort:T("Comics for curious minds","给好奇心的漫画"),cont:T("Continue reading","继续阅读"),start:T("Start reading","开始阅读"),
+  overview:T("Series overview","系列简介"),allEps:T("All episodes","全部剧集"),other:T("Other series","其他系列"),
+  readMark:T("read","已读"),loading:T("Loading the episode…","正在加载本集……"),
   foot:T("Leo, Bit and Mia are original characters. Curriculum links checked against Shanghai's 2024–2026 textbook lists and the 2022 national curriculum standards.","乐乐、比特和米娅均为原创角色。课程对应关系参照上海2024—2026年教学用书目录及2022年版义务教育课程标准。"),
 };
 function epNo(i){return MODE==='zh'?`<span class="zh">第${i+1}集</span>`:MODE==='en'?`<span class="en">EPISODE ${i+1}</span>`:`<span class="en">EPISODE ${i+1}</span><span class="zh">第${i+1}集</span>`;}

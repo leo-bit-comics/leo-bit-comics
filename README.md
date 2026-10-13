@@ -45,15 +45,28 @@ js/render/characters.js    poses, faces, person(), bit()
 js/render/backgrounds.js   scenes (SCENES)
 js/render/props.js         props/effects (prop, PROP2, FRONT_PROPS, fxDraw)
 js/render/panel.js         NAMES, artSVG, speech bubbles, panelHTML
-js/app.js                  cast, page render, routing, navigation, click handling (loaded last)
+js/app.js                  views (home / series / episode), hash routing, top bar, contents drawer, phone dock (loaded last)
 templates/                 copy-and-edit templates (not loaded by the site)
 ```
 
 Load order matters: `i18n.js` → `core.js` → `manifest.js` → series files → render files → `app.js`
 (→ the current episode, on demand).
 
-URLs: `#<series-id>-<n>` (e.g. `#earth-1`); legacy `#ep<n>` opens AI & Computers episode n.
-localStorage keys: `lb-mode`, `lb-series`, `lb-ep`. Keep series ids stable, they are part of links.
+URLs: `#home` (or none) = home page · `#<series-id>` = series page (e.g. `#earth`) · `#<series-id>-<n>` = episode
+(e.g. `#earth-1`); legacy `#ep<n>` opens AI & Computers episode n. Keep series ids stable, they are part of links.
+localStorage keys: `lb-mode` (language), `lb-series` + `lb-ep` (last episode opened), `lb-read` (episodes read).
+
+### Navigation
+
+`index.html` has four landmarks: `#bar` (sticky top bar: home, breadcrumb, language, Contents button, reading
+progress line), `#app` (the current view), `#dock` (phone-only bottom bar in the reader: previous · contents ·
+next) and `#toc` (the contents drawer, a modal `<dialog>`: side sheet on desktop, bottom sheet on phones).
+All of it is drawn by `js/app.js` and styled in the NAVIGATION section of `css/styles.css`. Every link is a real
+`<a href="#...">`, so the browser back button works; `hashchange` calls `route()`. Arrow keys ← → move between
+episodes. An episode is marked read when the reader scrolls past 85% of it.
+
+Episode and series data must not add their own navigation; the menus, breadcrumb and next/previous links are built
+from each series' `titles` list automatically.
 
 ## How to add a series
 

@@ -16,7 +16,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Luckiest+Guy&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700&display=swap">
 </head>
 <body>
-<div class="wrap" id="app"></div>
+<a class="skip" href="#app">Skip to content · 跳到正文</a>
+<header id="bar" class="bar" hidden></header>
+<main class="wrap" id="app" tabindex="-1"></main>
+<nav id="dock" class="dock" aria-label="Episode navigation" hidden></nav>
+<dialog id="toc" class="toc" aria-label="Contents · 目录"></dialog>
 <!-- Deferred scripts run in this order after parsing. Episode files data/series/<id>/ep<N>.js are not listed:
      js/core.js loads them on demand. Only series files (with their titles list) go here. -->
 
