@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A bilingual (English / 简体中文) comic in 13 episodes: Leo and his robot Bit explore computers, data, AI, large language models and agents.">
+<meta property="og:title" content="Leo &amp; Bit's AI Adventure">
+<meta property="og:description" content="A bilingual (English / 简体中文) comic in 13 episodes: Leo and his robot Bit explore computers, data, AI, large language models and agents.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='14' width='48' height='40' rx='14' fill='%2322B8A7' stroke='%2317182B' stroke-width='4'/%3E%3Crect x='16' y='22' width='32' height='20' rx='7' fill='%2313213C'/%3E%3Ccircle cx='26' cy='32' r='4' fill='%237DF9FF'/%3E%3Ccircle cx='38' cy='32' r='4' fill='%237DF9FF'/%3E%3Cline x1='32' y1='14' x2='32' y2='6' stroke='%2317182B' stroke-width='4'/%3E%3Ccircle cx='32' cy='6' r='4' fill='%23FFD84D'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Leo &amp; Bit's AI Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Luckiest+Guy&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700&display=swap">
+<style>
+/* Layout: a comic-book reader. Masthead + language switch, cast strip, episode picker, then one episode at a time as a 2-column panel grid with a glossary and an activity box. */
+:root{
+  --ink:#17182B; --paper:#FFFFFF; --page:#E7EDF6; --dot:#CFD9EA;
+  --leo:#2F6FD6; --bit:#22B8A7; --cap:#FFD84D; --hot:#C2416B; --zh:#3A4766; --muted:#56607A;
+  --f-display:"Luckiest Guy","Arial Black",Impact,sans-serif;
+  --f-zhd:"ZCOOL KuaiLe","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --f-en:"Comic Neue","Comic Sans MS","Chalkboard SE","Trebuchet MS",sans-serif;
+  --f-zh:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--page) radial-gradient(var(--dot) 1.1px,transparent 1.4px) 0 0/14px 14px;color:var(--ink);font-family:var(--f-en);font-size:15px}
+.sv-en{font-family:var(--f-en)} .sv-zh{font-family:var(--f-zh)} .sv-mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace} .sv-disp{font-family:var(--f-display)} .sv-zhd{font-family:var(--f-zhd)}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:16px;padding-block:20px 64px}
+.en{display:block} .zh{display:block;font-family:var(--f-zh)}
+.mode-en .zh,.mode-zh .en{display:none}
+
+/* masthead */
+.mast{display:grid;grid-template-columns:1fr auto;gap:16px 24px;align-items:center;background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;position:relative;overflow:hidden}
+.mast::before{content:"";position:absolute;inset:0;background:radial-gradient(#FFE7A3 1.6px,transparent 2px) 0 0/10px 10px;opacity:.55;pointer-events:none}
+.mast>*{position:relative;min-width:0}
+.logo{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(40px,7vw,72px);line-height:.95;letter-spacing:1px;color:var(--cap);-webkit-text-stroke:2.5px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink);text-wrap:balance}
+.logo-zh{font-family:var(--f-zhd);font-size:clamp(26px,4vw,38px);color:var(--ink);margin:6px 0 0}
+.tag{margin:10px 0 0;color:var(--muted);font-weight:700;max-width:52ch;line-height:1.4}
+.tag .zh{font-weight:500}
+.mast-art{width:190px;max-width:100%}
+.langs{display:inline-flex;border:2.5px solid var(--ink);background:#fff;box-shadow:3px 3px 0 var(--ink);margin-top:14px}
+.langs button{font:inherit;font-weight:700;border:0;background:transparent;padding:7px 14px;cursor:pointer;color:var(--ink)}
+.langs button+button{border-left:2.5px solid var(--ink)}
+.langs button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.langs button:focus-visible,.ep-btn:focus-visible,.nav button:focus-visible{outline:3px solid var(--leo);outline-offset:2px}
+
+/* section heads */
+.sh{display:flex;align-items:baseline;gap:10px;margin:34px 0 12px;font-family:var(--f-display);font-weight:400;font-size:22px;letter-spacing:.5px}
+.sh .zh{font-family:var(--f-zhd);font-size:20px;display:inline}
+.sh .en{display:inline}
+.mode-both .sh .zh::before{content:"· ";color:var(--muted)}
+
+/* cast */
+.cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cc{background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:center;padding:10px 12px;min-width:0}
+.cc svg{width:84px;height:96px}
+.cc h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.5px;color:var(--c)}
+.cc h3 .zh{font-family:var(--f-zhd);font-size:18px;color:var(--ink)}
+.mode-both .cc h3 .en,.mode-both .cc h3 .zh{display:inline}.mode-both .cc h3 .zh{margin-left:6px}
+.cc p{margin:4px 0 0;font-size:14px;line-height:1.35;font-weight:700}
+.cc p .zh{font-weight:500;color:var(--zh);font-size:13.5px;margin-top:2px}
+
+/* episode picker */
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px}
+.ep-btn{font:inherit;text-align:left;cursor:pointer;background:#fff;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 10px;display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;color:var(--ink);min-width:0;transition:transform .12s}
+.ep-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.ep-btn .num{font-family:var(--f-display);font-size:22px;width:34px;height:34px;display:grid;place-items:center;background:var(--page);border:2px solid var(--ink);border-radius:50%}
+.ep-btn .tt{font-weight:700;font-size:13.5px;line-height:1.2;min-width:0}
+.ep-btn .tt .zh{font-weight:500;font-size:12.5px;color:var(--zh)}
+.ep-btn[aria-current="true"]{background:var(--cap)}
+.ep-btn[aria-current="true"] .num{background:#fff}
+
+/* episode */
+.ep-head{margin:36px 0 16px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:flex-end}
+.ep-no{font-family:var(--f-display);font-size:18px;background:var(--ink);color:var(--cap);padding:6px 12px;transform:rotate(-3deg);letter-spacing:1px}
+.ep-no .zh{font-family:var(--f-zhd);color:#fff;font-size:15px}
+.ep-title{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1;letter-spacing:.5px;text-wrap:balance}
+.ep-title .zh{font-family:var(--f-zhd);font-size:.72em;margin-top:6px;color:var(--hot)}
+.ep-topic{border:2.5px solid var(--ink);background:#fff;padding:5px 10px;font-weight:700;font-size:14px;border-radius:999px}
+.mode-both .ep-topic .en,.mode-both .ep-topic .zh{display:inline}.mode-both .ep-topic .zh::before{content:" / ";color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.panel{margin:0;background:var(--top);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);display:flex;flex-direction:column;overflow:hidden;min-width:0;position:relative}
+.pn{position:absolute;top:0;left:0;background:var(--ink);color:#fff;font-family:var(--f-display);font-size:13px;padding:2px 7px 0;z-index:3}
+.bubbles{display:flex;flex-direction:column;gap:13px;padding:12px 12px 14px;position:relative;z-index:2}
+.art{display:block;width:100%;height:auto;margin-top:auto}
+.b{background:#fff;border:2.5px solid var(--ink);border-radius:18px;padding:8px 13px 9px;max-width:90%;position:relative;line-height:1.3;font-weight:700;font-size:15.5px}
+.b::after{content:"";position:absolute;bottom:-9px;width:14px;height:14px;background:#fff;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+.b.l{align-self:flex-start}.b.l::after{left:24px}
+.b.r{align-self:flex-end}.b.r::after{right:24px}
+.b.c{align-self:center}.b.c::after{left:calc(50% - 7px)}
+.b .who{display:inline-block;font-family:var(--f-en);font-size:11.5px;letter-spacing:.4px;text-transform:uppercase;color:#fff;background:var(--c);border-radius:999px;padding:1px 8px;margin:0 0 4px -2px}
+.mode-zh .b .who{text-transform:none}
+.b .zh,.cap .zh{font-weight:500;font-size:14.5px;color:var(--zh);line-height:1.5}
+.mode-both .b .zh{border-top:1.5px dashed #C8D0E0;margin-top:5px;padding-top:4px}
+.mode-zh .b .zh,.mode-zh .cap .zh{color:var(--ink);font-size:15.5px}
+.cap{align-self:flex-start;max-width:92%;background:var(--cap);border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink);padding:5px 11px;font-size:14px;font-weight:700;line-height:1.3;margin-left:22px}
+.mode-both .cap .zh{margin-top:2px;font-size:13.5px}
+.panel[style*="#0E1A33"] .cap{box-shadow:2px 2px 0 #7DF9FF}
+
+/* glossary + activity */
+.after{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;margin-top:26px}
+.box{background:#fff;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:16px 18px;min-width:0}
+.box h3{margin:0 0 10px;font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.5px}
+.box h3 .zh{font-family:var(--f-zhd);font-size:18px}
+.mode-both .box h3 .en,.mode-both .box h3 .zh{display:inline}.mode-both .box h3 .zh::before{content:" · ";color:var(--muted)}
+.terms{display:grid;gap:10px;margin:0}
+.term{display:grid;grid-template-columns:minmax(0,10em) minmax(0,1fr);gap:4px 14px;padding-top:10px;border-top:2px dotted #C8D0E0}
+.term:first-child{border-top:0;padding-top:0}
+.term dt{font-weight:700;color:var(--leo);font-size:15px;line-height:1.3}
+.term dt .zh{color:var(--hot);font-weight:700;font-size:14.5px}
+.term dd{margin:0;font-size:14.5px;line-height:1.4}
+.term dd .zh{color:var(--zh);font-size:14px;margin-top:2px}
+.try{background:var(--cap)}
+.try p{margin:0;font-weight:700;line-height:1.45;font-size:15.5px}
+.try p .zh{font-weight:500;margin-top:8px;color:var(--ink)}
+.try .note{margin-top:14px;font-size:13px;font-weight:700;color:#5a4a10;border-top:2px dashed var(--ink);padding-top:10px}
+.try .note .zh{font-weight:500;margin-top:2px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
+.nav button{font:inherit;font-weight:700;cursor:pointer;background:#fff;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:10px 16px;color:var(--ink);max-width:48%;text-align:left}
+.nav button:last-child{text-align:right;margin-left:auto}
+.nav button[disabled]{visibility:hidden}
+.nav small{display:block;font-size:12px;color:var(--muted)}
+.nav .zh{font-weight:500}
+.foot{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;font-weight:700}
+.foot .zh{font-weight:500}
+
+@media (max-width:820px){.cast{grid-template-columns:1fr}.after{grid-template-columns:1fr}}
+@media (max-width:700px){.grid{grid-template-columns:1fr}.mast{grid-template-columns:1fr}.mast-art{display:none}.b{font-size:15px}.term{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.ep-btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+// ===== Script: 13 episodes, 6 panels each. cast: [who, x, expression, pose, opts] =====
+const T=(en,zh)=>({en,zh});
+const EPISODES=[
+// ---------- 1 ----------
+{t:T("Meet Bit","遇见比特"),topic:T("What is a computer?","计算机是什么？"),
+panels:[
+{bg:'room-night',props:[['desk',292],['laptop',292,'glow']],cast:[['leo',160,'worried','idle']],fx:[['sweat','leo']],
+ say:[['nar',"Shanghai. Friday, 9 p.m.","上海，周五晚上九点。"],
+      ['leo',"The science fair is in 12 weeks and I still have NO idea what to build...","科学节还有12周，我还完全不知道该做什么……"]]},
+{bg:'burst',cast:[['leo',95,'surprised','cheer'],['bit',290,'happy','wave',{y:118}]],fx:[['!','leo'],['sparkles',290,110]],
+ say:[['bit',"Hi! I'm Bit, the smallest piece of information in a computer. I live in your laptop!","嗨！我是比特，计算机里最小的信息单位。我就住在你的笔记本电脑里！"],
+      ['leo',"A ROBOT just came out of my laptop?!","我的电脑里……蹦出来一个机器人？！"]]},
+{bg:'room-night',holo:{t:'flow',title:T("What a computer does","计算机做什么"),steps:[{i:'key',l:T("Input","输入")},{i:'chip',l:T("Process","处理")},{i:'screen',l:T("Output","输出")}],foot:T("Keyboard → CPU → Screen","键盘 → CPU → 屏幕")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['leo',"Okay... so what IS a computer, really?","好吧……那计算机到底是什么？"],
+      ['bit',"A machine that follows instructions to turn input into output. Super, super fast.","一台按照指令工作的机器：把输入变成输出，而且超级快。"]]},
+{bg:'room-night',holo:{t:'list',title:T("Main parts","主要部件"),items:[{i:'chip',l:T("CPU: the brain that calculates","CPU：负责计算的“大脑”")},{i:'desk',l:T("Memory (RAM): the desk for work in progress","内存：放正在做的事的“书桌”")},{i:'shelf',l:T("Storage: the bookshelf that keeps files","硬盘：长期保存文件的“书架”")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The CPU does billions of tiny steps every second.","CPU每秒能完成几十亿个小步骤。"],
+      ['leo',"Billions? Every SECOND?!","几十亿？每一秒？！"]]},
+{bg:'room-night',holo:{t:'flow',title:T("Playing a game","玩游戏的时候"),steps:[{i:'key',l:T("Press W","按下W")},{i:'chip',l:T("Run game code","运行游戏代码")},{i:'game',l:T("Player moves","角色前进")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"So when I press W in my game...","所以我在游戏里按下W键的时候……"],
+      ['bit',"The keyboard sends a signal, the CPU runs the game's instructions, and the screen draws you moving. Input, process, output!","键盘发出信号，CPU执行游戏指令，屏幕画出你向前走。输入、处理、输出！"]]},
+{bg:'room-night',cast:[['leo',125,'determined','point'],['bit',285,'wink','wave']],
+ say:[['leo',"Bit, help me build an AI for the science fair!","比特，帮我做一个AI去参加科学节吧！"],
+      ['bit',"Deal! But first you need to know how computers think. Lesson one tomorrow: zeros and ones.","成交！不过你得先弄懂计算机是怎么“思考”的。明天第一课：0和1。"]]}
+],
+terms:[["Input / Output","输入 / 输出","Information going in (keyboard, mic, camera) and coming out (screen, speaker).","进入计算机的信息（键盘、麦克风、摄像头）和出来的信息（屏幕、音箱）。"],
+ ["CPU","中央处理器（CPU）","The chip that carries out instructions, billions every second.","执行指令的芯片，每秒执行几十亿条。"],
+ ["Memory (RAM)","内存","Fast, temporary space for what is running now. Cleared when the power goes off.","存放正在运行内容的高速临时空间，断电就清空。"],
+ ["Storage","存储（硬盘）","Keeps your files even when the power is off.","断电后也能保存文件。"]],
+tryIt:T("Walk around your home and list 5 input devices and 5 output devices. Is a touchscreen input or output?","在家里找一找：列出5个输入设备和5个输出设备。触摸屏算输入还是输出？")},
+
+// ---------- 2 ----------
+{t:T("Zeros and Ones","0和1的秘密"),topic:T("Binary","二进制"),
+panels:[
+{bg:'kitchen',props:[['table',205],['bowl',205,172]],cast:[['leo',100,'surprised','idle'],['bit',300,'talk','wave',{y:100}]],
+ say:[['nar',"Saturday breakfast.","周六早餐时间。"],
+      ['bit',"Everything in a computer is stored as 0s and 1s.","计算机里的一切，都是用0和1存起来的。"],
+      ['leo',"Everything? Even my photos and game saves?","一切？连我的照片和游戏存档也是？"]]},
+{bg:'kitchen',holo:{t:'bulbs',title:T("One switch = one bit","一个开关 = 一个比特"),bits:'01',caps:[T("OFF","关"),T("ON","开")]},
+ cast:[['leo',54,'think','think'],['bit',356,'happy','present']],
+ say:[['bit',"Inside the chip are billions of tiny switches. Off means 0, on means 1. One switch is one bit. That's me!","芯片里有几十亿个微小的开关。关代表0，开代表1。一个开关就是一个比特——就是我！"]]},
+{bg:'kitchen',holo:{t:'bulbs',title:T("8 bits = 1 byte","8个比特 = 1个字节"),bits:'10110010',pv:true,foot:T("2⁸ = 256 patterns","2⁸ = 256 种组合")},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"Put 8 bits together and you get a byte. 8 switches can make 256 different patterns.","把8个比特放在一起，就是1个字节。8个开关能组成256种不同的图案。"],
+      ['leo',"2×2×2×2×2×2×2×2... that's 256!","2×2×2×2×2×2×2×2……正好256！"]]},
+{bg:'kitchen',holo:{t:'big',title:T("Letters are numbers","文字也是数字"),rows:[{s:'A = 65',size:22},{s:'= 01000001',size:15,mono:true,fill:'#C2416B'},{s:'中 = 20013',size:22}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Computers agree on codes. 65 means the letter A. Chinese characters use bigger numbers: in Unicode, 中 is 20013.","计算机之间约定好了编码：65代表字母A。汉字用更大的数字，在Unicode里，“中”是20013。"]]},
+{bg:'kitchen',holo:{t:'pixels',title:T("A photo = a grid of pixels","照片 = 像素网格")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A picture is a grid of tiny dots called pixels. Each pixel's color is three numbers: red, green and blue.","图片是由很多叫“像素”的小点组成的网格。每个像素的颜色用三个数字表示：红、绿、蓝。"],
+      ['leo',"So a photo is just a giant list of numbers?!","所以一张照片就是一大串数字？！"]]},
+{bg:'class',cast:[['mia',80,'smirk','idle'],['leo',195,'grin','idle'],['bit',320,'happy','wave']],
+ say:[['nar',"Monday, at school. Leo introduces Bit to his classmate Mia.","周一，学校里。乐乐把比特介绍给同学米娅。"],
+      ['mia',"A pocket robot? Fine. But can it count to 1,000 on its fingers?","口袋机器人？好吧。那它能用手指数到1000吗？"],
+      ['bit',"With binary, your 10 fingers can count all the way to 1,023!","用二进制，你的10根手指能一直数到1023！"]]}
+],
+terms:[["Binary","二进制","A way of counting with only two digits: 0 and 1.","只用0和1两个数字的计数方法。"],
+ ["Bit","比特","One 0 or 1, the smallest unit of information.","一个0或1，最小的信息单位。"],
+ ["Byte","字节","8 bits. One English letter usually takes 1 byte.","8个比特。一个英文字母通常占1个字节。"],
+ ["Pixel","像素","One tiny colored dot in a picture.","图片中的一个彩色小点。"]],
+tryIt:T("Count in binary on one hand: thumb = 1, index = 2, middle = 4, ring = 8, pinky = 16. Which fingers do you raise to make 13?","用一只手数二进制：拇指=1，食指=2，中指=4，无名指=8，小指=16。要表示13，该竖起哪几根手指？")},
+
+// ---------- 3 ----------
+{t:T("Step by Step","一步一步来"),topic:T("Algorithms","算法"),
+panels:[
+{bg:'kitchen',props:[['stove',300]],cast:[['leo',150,'happy','hold'],['bit',330,'talk','wave',{y:80}]],
+ say:[['nar',"Leo is cooking tomato and egg stir-fry.","乐乐正在做番茄炒蛋。"],
+      ['bit',"A recipe is an algorithm: clear steps, in order, that solve a problem.","菜谱就是一种算法：按顺序排好的清晰步骤，用来解决一个问题。"]]},
+{bg:'kitchen',holo:{t:'list',num:true,size:10,title:T("Algorithm: tomato & egg","算法：番茄炒蛋"),items:[{l:T("Beat 3 eggs","打散3个鸡蛋")},{l:T("Cut 2 tomatoes","切好2个番茄")},{l:T("Heat the oil","锅里热油")},{l:T("Scramble eggs, set aside","炒熟鸡蛋，盛出")},{l:T("Cook tomatoes, add eggs","炒番茄，倒回鸡蛋")},{l:T("Add salt. Done!","加盐，出锅！")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['leo',"What if I skip step 3?","要是我跳过第3步呢？"],
+      ['bit',"Then you get burnt eggs. Order matters!","那你就会得到一锅焦鸡蛋。顺序很重要！"]]},
+{bg:'class',cast:[['leo',80,'think','think'],['mia',195,'smirk','idle'],['bit',320,'talk','wave']],
+ say:[['bit',"I'm thinking of a number from 1 to 100. I'll tell you higher or lower.","我心里想了一个1到100之间的数字。我会告诉你大了还是小了。"],
+      ['leo',"Um... 3? 4? 5?","嗯……3？4？5？"],
+      ['mia',"Too slow! Guess 50 first, then cut the range in half every time.","太慢了！先猜50，然后每次把范围砍掉一半。"]]},
+{bg:'class',holo:{t:'numline',title:T("Binary search","二分查找"),rows:[[1,100,50,'h'],[51,100,75,'l'],[51,74,62,'h'],[63,74,68,'ok']]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Mia found binary search! You never need more than 7 guesses for 1 to 100.","米娅发现了二分查找！从1到100，最多7次就能猜中。"]]},
+{bg:'class',holo:{t:'compare',title:T("Find 1 number among 1,000,000","在100万个数里找一个"),items:[{l:T("One by one: up to 1,000,000 steps","逐个查找：最多100万步"),v:1000000,txt:'1,000,000',c:'#FF5D5D'},{l:T("Binary search: 20 steps","二分查找：20步"),v:20,txt:'20',c:'#22B8A7'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A good algorithm is correct AND fast. In a million sorted numbers, binary search needs only 20 steps.","好的算法既要正确，也要快。在100万个排好序的数字里，二分查找只需要20步。"],
+      ['mia',"Checking one by one could take a million!","一个一个找，可能要找100万次！"]]},
+{bg:'city',cast:[['leo',115,'happy','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So map apps finding the fastest route and video apps choosing what to show me... those are algorithms too?","那地图软件找最快的路线、视频软件决定给我推荐什么……也都是算法？"],
+      ['bit',"Yep! Algorithms are everywhere.","没错！算法无处不在。"]]}
+],
+terms:[["Algorithm","算法","A clear, step-by-step method to solve a problem.","解决问题的清晰、分步骤的方法。"],
+ ["Binary search","二分查找","Find something in a sorted list by throwing away half the list each time.","在排好序的列表里，每次排除一半来查找。"],
+ ["Efficiency","效率","How many steps, or how much time, an algorithm needs.","一个算法需要多少步骤或多少时间。"]],
+tryIt:T("Write the 'brushing teeth' algorithm so exactly that a robot could follow it. Then ask someone to act it out word for word!","把“刷牙”写成一个算法，要精确到机器人也能照做。然后请家人严格按字面意思表演一遍！")},
+
+// ---------- 4 ----------
+{t:T("Talking to Computers","和电脑对话"),topic:T("Programming","编程"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'talk','wave']],
+ say:[['leo',"How do I give a computer instructions? It doesn't understand Chinese or English.","我怎么给电脑下指令？它又听不懂中文和英文。"],
+      ['bit',"We use a programming language, like Python. People can read it and computers can run it.","用编程语言，比如Python。人能看懂，电脑也能运行。"]]},
+{bg:'room',holo:{t:'code',title:T("Your first program","你的第一个程序"),lines:['print("Hello, Shanghai!")'],out:['Hello, Shanghai!']},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"It printed my message! I'm a programmer!","它把我的话打印出来了！我是程序员啦！"]]},
+{bg:'room',holo:{t:'code',title:T("Variables","变量"),lines:['score = 0','score = score + 3','print(score)'],out:['3']},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A variable is a box with a name. Here, the box called score holds a number we can change.","变量就是一个有名字的盒子。这里名叫score的盒子装着一个可以改变的数字。"]]},
+{bg:'room',holo:{t:'code',title:T("Loops","循环"),lines:['for i in range(3):','    print("Goal!")'],out:['Goal!','Goal!','Goal!']},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"Goal! Goal! Goal!","进球！进球！进球！"],
+      ['bit',"A loop repeats steps for you. 3 times or 3 million, same code!","循环会帮你重复步骤。重复3次还是300万次，代码都一样！"]]},
+{bg:'class',holo:{t:'code',title:T("Decisions","判断"),lines:['if score >= 60:','    print("Pass")','else:','    print("Try again")']},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So the computer makes its own decisions?","所以电脑会自己做决定？"],
+      ['bit',"It checks the rules YOU wrote: if this, then that.","它只是在检查“你”写好的规则：如果这样，就那样。"]]},
+{bg:'room',holo:{t:'code',title:T("Oops!","哎呀！"),lines:['prnt("hi")'],out:["NameError: name 'prnt'","is not defined"],err:true},
+ cast:[['leo',54,'worried','idle'],['bit',356,'error','present']],fx:[['sweat','leo'],['moth',300,40]],
+ say:[['bit',"A bug! Everyone writes them. Read the error, fix it, run it again. That's debugging.","出bug啦！谁都会写出bug。读懂报错，改好，再运行一次。这就叫调试。"],
+      ['nar',"Fun fact: in 1947, engineers found a real moth stuck inside a computer!","冷知识：1947年，工程师真的在一台计算机里发现了一只飞蛾（bug）！"]]}
+],
+terms:[["Program","程序","A list of instructions written in a language a computer can run.","用电脑能运行的语言写成的一组指令。"],
+ ["Variable","变量","A named box that stores a value.","存放数值的、有名字的盒子。"],
+ ["Loop","循环","Code that repeats.","会重复执行的代码。"],
+ ["Bug / Debugging","错误 / 调试","A mistake in code. Debugging means finding and fixing it.","代码里的错误。调试就是找到并修复它。"]],
+tryIt:T("Open an online Python editor and change the loop so it prints your name 10 times. Then make a bug on purpose and read the error message.","打开一个在线Python编辑器，修改循环让它打印你的名字10次。再故意制造一个bug，读一读报错信息。")},
+
+// ---------- 5 ----------
+{t:T("Parcels of Light","光的快递"),topic:T("The internet","互联网"),
+panels:[
+{bg:'room',props:[['desk',285],['laptop',285,'face']],cast:[['leo',140,'happy','wave']],
+ say:[['nar',"Leo video-calls his cousin Jay in Singapore.","乐乐在和新加坡的表哥阿杰视频通话。"],
+      ['leo',"How does my face get to Singapore in less than a second?","我的脸是怎么在不到一秒钟内跑到新加坡的？"]]},
+{bg:'room',holo:{t:'packets',title:T("Data is cut into packets","数据被切成数据包"),foot:T("Each packet: address + number","每个包：地址 + 编号")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Your video is chopped into thousands of small packets, like parcels. Each one has an address.","你的视频被切成成千上万个小数据包，就像快递包裹，每个都写着地址。"]]},
+{bg:'room',holo:{t:'network',title:T("Routers pass packets on","路由器一站站转发")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Every device has an IP address. Routers pass packets along, like couriers at sorting stations.","每台设备都有一个IP地址。路由器把数据包一站一站往下传，就像快递分拣站。"]]},
+{bg:'room',holo:{t:'reorder',title:T("Put back in order","重新排好顺序")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Packets can take different roads and arrive out of order. Jay's computer puts them back together.","数据包可能走不同的路，到达顺序也会乱。阿杰的电脑会把它们重新拼好。"],
+      ['leo',"Like a jigsaw puzzle mailed in lots of envelopes!","就像把拼图分装在很多信封里寄过去！"]]},
+{bg:'room',holo:{t:'cable',title:T("Cables under the sea","海底光缆")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"Do they fly there by satellite?","它们是靠卫星飞过去的吗？"],
+      ['bit',"Mostly not! Most data between countries travels as light through glass cables on the sea floor.","大多数不是！国家之间的数据，大部分是以光的形式，在海底的玻璃光纤里传输的。"]]},
+{bg:'class',cast:[['mia',85,'think','think'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['mia',"So the internet is just computers sending messages to each other?","所以互联网就是电脑之间互相发消息？"],
+      ['bit',"Billions of them! And remember: anything you send can be copied and kept. Think before you post.","几十亿台电脑！还要记住：你发出去的任何东西都可能被复制和保存。发之前先想一想。"]]}
+],
+terms:[["Internet","互联网","A worldwide network of networks connecting billions of devices.","连接几十亿台设备的全球网络。"],
+ ["Packet","数据包","A small chunk of data with an address and a number.","带有地址和编号的一小块数据。"],
+ ["IP address","IP地址","A number that identifies a device on a network.","网络中用来识别设备的号码。"],
+ ["Router","路由器","A device that passes packets toward where they are going.","把数据包转发向目的地的设备。"]],
+tryIt:T("With a parent, check how many devices are connected to your home Wi-Fi. Which ones surprised you?","和爸爸妈妈一起看看：家里的Wi-Fi连着多少台设备？有没有让你意外的？")},
+
+// ---------- 6 ----------
+{t:T("Data Everywhere","数据无处不在"),topic:T("Data","数据"),
+panels:[
+{bg:'field',props:[['ball',178,232]],cast:[['leo',120,'grin','cheer'],['bit',300,'talk','wave',{y:96}]],
+ say:[['nar',"Leo writes down every shot at football practice.","足球训练时，乐乐记下了每一次射门。"],
+      ['bit',"Every shot you take is data!","你的每一次射门都是数据！"],
+      ['leo',"Data? I thought it was just football.","数据？我还以为只是踢球呢。"]]},
+{bg:'field',holo:{t:'table',title:T("Data = recorded facts","数据 = 记录下来的事实"),head:[T("Day","日期"),T("Left foot","左脚"),T("Right foot","右脚")],rows:[[T("Mon","周一"),'2','1'],[T("Tue","周二"),'3','1'],[T("Wed","周三"),'2','2'],[T("Thu","周四"),'4','1']],note:T("Goals scored","进球数")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Data is facts we record. Put it in rows and columns, and it's easy to study.","数据就是我们记录下来的事实。把它排成行和列，就很方便研究了。"]]},
+{bg:'field',holo:{t:'barchart',title:T("Total goals","进球总数"),items:[{l:T("Left","左脚"),v:11},{l:T("Right","右脚"),v:5}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'happy','present']],fx:[['!','leo']],
+ say:[['leo',"Wait... I score more with my LEFT foot?!","等等……我用左脚进的球更多？！"],
+      ['bit',"Data shows patterns you can't see by feel.","数据能揭示你凭感觉看不出来的规律。"]]},
+{bg:'class',cast:[['mia',85,'think','idle'],['leo',200,'surprised','idle'],['bit',322,'talk','wave']],
+ say:[['mia',"Apps collect data about us too: what we watch, what we buy, where we go.","App也在收集我们的数据：看了什么、买了什么、去了哪里。"],
+      ['bit',"Right. Your data is valuable, so privacy matters. Share as little as you need to.","对。你的数据很有价值，所以隐私很重要。能少分享就少分享。"]]},
+{bg:'field',cast:[['leo',110,'worried','idle'],['bit',295,'talk','idle']],fx:[['sweat','leo']],
+ say:[['bit',"Careful: garbage in, garbage out. Did you record every practice?","小心：输入的是垃圾，输出的也是垃圾。你每次训练都记了吗？"],
+      ['leo',"Um... only the days I played well.","呃……只记了踢得好的那几天。"],
+      ['bit',"Then your data is biased. It only tells part of the story.","那你的数据就有偏差了，它只讲了一半的故事。"]]},
+{bg:'room-night',holo:{t:'flow',title:T("Data feeds AI","数据是AI的食物"),steps:[{i:'data',l:T("Data","数据")},{i:'brain',l:T("AI learns","AI学习")},{i:'check',l:T("Predictions","做出预测")}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Data is the food of AI. Next time: what AI really is!","数据是AI的“食物”。下一课：AI到底是什么！"]]}
+],
+terms:[["Data","数据","Recorded facts: numbers, words, images, sounds.","记录下来的事实：数字、文字、图像、声音。"],
+ ["Dataset","数据集","A collection of data, often a table of rows and columns.","一组数据，常常是一张有行有列的表。"],
+ ["Privacy","隐私","Your right to control information about yourself.","你掌控自己个人信息的权利。"],
+ ["Bias","偏差","When data leans one way and misses part of the truth.","数据偏向一边，漏掉了部分真相。"]],
+tryIt:T("Track one thing for 7 days (sleep, steps or minutes of reading). Draw a bar chart. What pattern do you see?","连续7天记录一件事（睡眠、步数或阅读分钟数），画一张柱状图。你发现了什么规律？")},
+
+// ---------- 7 ----------
+{t:T("What Is AI?","什么是人工智能？"),topic:T("Artificial intelligence","人工智能"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'wink','wave']],
+ say:[['leo',"Bit, are you an AI?","比特，你是AI吗？"],
+      ['bit',"Kind of! AI means computers doing things that usually need human intelligence, like seeing, understanding language and making choices.","算是吧！人工智能（AI）就是让计算机做通常需要人类智能的事，比如看东西、理解语言、做选择。"]]},
+{bg:'room',holo:{t:'code',title:T("Old way: write rules","老办法：写规则"),lines:[T('IF has whiskers','如果 有胡须'),T('AND pointy ears','并且 耳朵是尖的'),T('THEN it is a cat','那么 它是猫')]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"The old way: humans write rules. Whiskers plus pointy ears means cat.","老办法：人来写规则。有胡须加尖耳朵，就是猫。"],
+      ['leo',"Easy!","简单！"]]},
+{bg:'class',holo:{t:'cards',cols:2,title:T("The rule breaks","规则失灵了"),items:[{p:'foldcat',l:T("A cat. Rule: not a cat","是猫，规则说不是"),m:'no'},{p:'fox',l:T("A fox. Rule: cat!","是狐狸，规则说是猫"),m:'no'}]},
+ cast:[['mia',54,'smirk','point'],['bit',356,'error','present']],
+ say:[['mia',"A cat with folded ears? A fox with whiskers and pointy ears? Your rule gets both wrong.","折耳猫怎么办？有胡须、有尖耳朵的狐狸呢？你的规则两个都会认错。"],
+      ['bit',"The real world is messy. You can't write a rule for everything.","现实世界太复杂了，不可能为每种情况都写规则。"]]},
+{bg:'room',holo:{t:'flow',title:T("New way: learn from examples","新办法：从例子中学习"),steps:[{i:'photo',l:T("1000s of examples","成千上万个例子")},{i:'brain',l:T("Find patterns","找出规律")},{i:'tag',l:T("“Cat!”","“是猫！”")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The new way: show the computer thousands of examples and let it find the patterns itself. That's machine learning.","新办法：给计算机看成千上万个例子，让它自己找出规律。这就是机器学习。"]]},
+{bg:'room',holo:{t:'list',title:T("AI you already use","你已经在用的AI"),items:[{i:'eye',l:T("Face unlock","刷脸解锁")},{i:'globe',l:T("Translation","翻译")},{i:'play',l:T("Video recommendations","视频推荐")},{i:'mic',l:T("Voice assistants","语音助手")},{i:'map',l:T("Map routes","地图导航")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'happy','present']],
+ say:[['leo',"I use AI every day without even knowing it!","我每天都在用AI，自己都不知道！"]]},
+{bg:'class',cast:[['mia',85,'think','think'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"But AI isn't magic, and it isn't a person. It's math that finds patterns. Very powerful math.","但AI不是魔法，也不是人。它是寻找规律的数学，非常强大的数学。"],
+      ['mia',"So it can be wrong?","所以它也会出错？"],
+      ['bit',"Definitely. Hold on to that question, Mia!","当然会。米娅，这个问题要一直记着！"]]}
+],
+terms:[["Artificial intelligence (AI)","人工智能（AI）","Computers doing tasks that usually need human intelligence.","让计算机完成通常需要人类智能的任务。"],
+ ["Rule-based program","基于规则的程序","A program where humans write every rule by hand.","由人手工写好每一条规则的程序。"],
+ ["Machine learning","机器学习","Computers learning patterns from examples instead of fixed rules.","计算机从例子中学习规律，而不是靠固定规则。"]],
+tryIt:T("List every AI you used today. Hints: camera, maps, keyboard suggestions, video apps...","列出你今天用过的所有AI。提示：相机、地图、输入法联想、视频App……")},
+
+// ---------- 8 ----------
+{t:T("Teaching a Machine","教机器学习"),topic:T("Machine learning","机器学习"),
+panels:[
+{bg:'kitchen',props:[['bins',330]],cast:[['leo',80,'determined','point'],['mia',195,'worried','idle',{f:-1}]],
+ say:[['leo',"Science fair idea: an AI that knows Shanghai garbage sorting!","科学节点子：做一个会上海垃圾分类的AI！"],
+      ['mia',"Even my grandma can't remember which bin a bubble tea cup goes in.","连我奶奶都记不住奶茶杯该扔哪个桶。"]]},
+{bg:'kitchen',holo:{t:'cards',cols:2,title:T("Labelled examples","带标签的例子"),items:[{p:'banana',l:T("Wet waste","湿垃圾")},{p:'bottle',l:T("Recyclable","可回收物")},{p:'medicine',l:T("Hazardous","有害垃圾")},{p:'tissue',l:T("Dry waste","干垃圾")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Step one: collect photos and label each one with the right answer. These are your training examples.","第一步：收集照片，给每张标上正确答案。这些就是训练样本。"]]},
+{bg:'kitchen',holo:{t:'cycle',title:T("Training","训练"),items:[{i:'brain',l:T("Guess","猜")},{i:'check',l:T("Check","对答案")},{i:'gear',l:T("Adjust","调整")}],center:T("× 1000s","重复上千次")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The model guesses, checks the answer, and adjusts itself a little. Then again. Thousands of times.","模型先猜，再对答案，然后把自己调整一点点。再来一遍，重复成千上万次。"]]},
+{bg:'kitchen',holo:{t:'cards',cols:2,title:T("Test on NEW photos","用新照片测试"),items:[{p:'banana',l:T("Wet waste","湿垃圾"),m:'ok'},{p:'bottle',l:T("Recyclable","可回收物"),m:'ok'},{p:'tissue',l:T("Dry waste","干垃圾"),m:'ok'},{p:'medicine',l:T("Guessed dry","猜成干垃圾"),m:'no'}],foot:T("Score: 3 / 4","得分：3 / 4")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Then we test it on photos it has never seen. That shows if it really learned.","然后用它从没见过的照片来测试，这样才知道它是不是真学会了。"],
+      ['leo',"Like an exam with new questions, not the homework questions!","就像考试出新题，而不是考原来的作业题！"]]},
+{bg:'kitchen',holo:{t:'cards',cols:3,title:T("Oops: it learned the table","糟糕：它学会的是桌子"),items:[{p:'bananaT',l:T("Wet","湿垃圾"),m:'ok'},{p:'bananaT',l:T("Wet","湿垃圾"),m:'ok'},{p:'table',l:T("Wet?!","湿垃圾？！"),m:'q'}],foot:T("Every training banana was on the same table","训练用的香蕉都在同一张桌子上")},
+ cast:[['mia',54,'grin','point'],['bit',356,'error','present']],
+ say:[['mia',"Every banana photo was on your kitchen table. Now it thinks the TABLE is wet waste!","所有香蕉照片都是在你家餐桌上拍的。现在它以为“桌子”是湿垃圾！"],
+      ['bit',"Models learn whatever patterns are in the data, even the wrong ones.","数据里有什么规律，模型就学什么，哪怕是错的规律。"]]},
+{bg:'kitchen',cast:[['leo',115,'determined','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So we need lots of different photos: different places, light and angles. And the right labels.","所以我们需要各种各样的照片：不同地方、不同光线、不同角度，还要标对答案。"],
+      ['bit',"Exactly. Better data, better AI.","完全正确。数据越好，AI越好。"]]}
+],
+terms:[["Training data","训练数据","Labelled examples that a model learns from.","模型用来学习的、带标签的例子。"],
+ ["Label","标签","The correct answer attached to an example.","附在例子上的正确答案。"],
+ ["Model","模型","What training produces: a pattern-finder that makes predictions.","训练得到的“规律发现器”，用来做预测。"],
+ ["Test set","测试集","New examples kept aside to check whether the model really learned.","预留出来的新例子，用来检验模型是否真的学会了。"]],
+tryIt:T("Try Teachable Machine (or the machine learning extension in Mind+). Train it to tell 'thumbs up' from 'thumbs down'. Then try to fool it!","试试Teachable Machine（或Mind+的机器学习扩展）。训练它分辨“点赞”和“踩”的手势，然后想办法骗过它！")},
+
+// ---------- 9 ----------
+{t:T("A Brain Made of Numbers","数字做的大脑"),topic:T("Neural networks","神经网络"),
+panels:[
+{bg:'cyber',cast:[['leo',95,'surprised','idle'],['bit',300,'talk','wave']],
+ say:[['nar',"Bit shrinks Leo down to look inside a model.","比特把乐乐“缩小”，带他钻进一个模型里看看。"],
+      ['leo',"Whoa, where are we?","哇，这是哪儿？"],
+      ['bit',"Inside a neural network, the engine behind most modern AI!","神经网络内部！现在大多数AI背后的发动机！"]]},
+{bg:'cyber',holo:{t:'neuron',title:T("One neuron","一个神经元"),ins:[{l:T("Sunny?","晴天？"),v:1,w:2},{l:T("Homework done?","作业写完？"),v:0,w:5},{l:T("Friends free?","朋友有空？"),v:1,w:3}],sum:'Σ = 5',out:T("Needs 6 → No football!","要6分 → 不能踢球！")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A neuron multiplies each input by a weight and adds them up. If the total beats a threshold, it says yes.","神经元把每个输入乘以权重再相加。总分超过门槛，就输出“是”。"],
+      ['leo',"Homework has the biggest weight. Sounds like Mom.","“作业”的权重最大。这听起来像我妈。"]]},
+{bg:'cyber',holo:{t:'layers',title:T("Layers of neurons","一层层神经元"),sizes:[3,4,4,2],labels:[T("Input","输入"),T("Hidden","隐藏层"),null,T("Output","输出")]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Connect lots of neurons in layers. Early layers spot simple things like edges. Later layers spot shapes like eyes or wheels.","把很多神经元一层层连起来。前面的层识别简单的东西，比如边缘；后面的层识别形状，比如眼睛或车轮。"]]},
+{bg:'cyber',holo:{t:'knobs',title:T("Learning = nudging weights","学习 = 微调权重"),foot:T("Error gets smaller","误差越来越小")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When an answer is wrong, every weight gets nudged a tiny bit in the direction that makes the error smaller.","答案错了，每个权重就朝着让错误变小的方向，微微调一点。"],
+      ['leo',"Then repeat... millions of times?","然后重复……几百万次？"]]},
+{bg:'cyber',holo:{t:'big',title:T("How big?","有多大？"),rows:[{s:T("1 neuron → 3 weights","1个神经元 → 3个权重"),size:13},{s:T("Big AI models →","大型AI模型 →"),size:13},{s:T("billions of weights","数十亿个权重"),size:17,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"How many weights do big models have?","大模型有多少个权重？"],
+      ['bit',"Billions, sometimes far more! Weights are also called parameters.","几十亿个，有的还多得多！权重也叫“参数”。"]]},
+{bg:'cyber',cast:[['leo',125,'dizzy','idle'],['bit',285,'happy','wave']],fx:[['stars','leo']],
+ say:[['leo',"My brain hurts.","我的脑袋要炸了。"],
+      ['bit',"Relax! Your brain has about 86 billion real neurons. It can handle this.","放松！你的大脑里有大约860亿个真正的神经元，完全搞得定。"]]}
+],
+terms:[["Neural network","神经网络","Layers of simple math 'neurons' connected together, loosely inspired by the brain.","由一层层简单的数学“神经元”连接而成，灵感来自大脑。"],
+ ["Weight (parameter)","权重（参数）","A number that sets how much an input matters. Training adjusts these numbers.","决定某个输入有多重要的数字，训练就是在调整这些数字。"],
+ ["Layer","层","A group of neurons working at the same stage.","处在同一阶段的一组神经元。"]],
+tryIt:T("Be a neuron: give 'sunny', 'homework done' and 'friends free' your own weights and threshold. Then compare with a parent's weights!","当一回神经元：给“晴天”“作业写完”“朋友有空”设定你自己的权重和门槛，再和爸爸妈妈的比一比！")},
+
+// ---------- 10 ----------
+{t:T("The Word Predictor","猜词高手"),topic:T("Large language models (LLMs)","大语言模型"),
+panels:[
+{bg:'room',props:[['desk',282],['laptop',282,'chat']],cast:[['leo',130,'surprised','idle'],['bit',345,'talk','idle',{y:82}]],
+ say:[['leo',"This chatbot writes poems, explains physics, even tells jokes. How?!","这个聊天机器人会写诗、讲物理，还会讲笑话。怎么做到的？！"],
+      ['bit',"It's a Large Language Model, an LLM.","它是一个大语言模型，简称LLM。"]]},
+{bg:'room',holo:{t:'tokens',title:T("Text → tokens → numbers","文字 → 词元 → 数字"),rows:[[['Shang','9227'],['hai','6151'],[' is','374'],[' great','2294']],[['我','35946'],['爱','76505'],['上海','52072']]],foot:T("(example numbers)","（数字仅为示例）")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"First, text is chopped into tokens: words or pieces of words. Each token becomes a number.","第一步：把文字切成“词元”，也就是词或词的一部分。每个词元都变成一个数字。"]]},
+{bg:'room',holo:{t:'probs',title:T("Predict the next token","预测下一个词元"),prompt:T("The cat sat on the …","小猫坐在……"),opts:[[T("mat","垫子上"),62],[T("sofa","沙发上"),21],[T("floor","地板上"),12],[T("moon","月亮上"),1]]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"An LLM's core skill: predict the next token. Then the next. Then the next.","大语言模型的核心本领：预测下一个词元。然后再下一个，再下一个。"]]},
+{bg:'room',holo:{t:'flow',dir:'v',title:T("Pre-training","预训练"),steps:[{i:'book',l:T("Read huge amounts of text","阅读海量文字")},{i:'brain',l:T("Practise predicting, trillions of times","练习预测，上万亿次")},{i:'chat',l:T("Learn patterns of language and facts","学会语言和知识的规律")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"It learned by reading enormous amounts of text (books, websites, code) and practising prediction over and over.","它的学习方式是：阅读海量文字（书、网页、代码），一遍又一遍地练习预测。"],
+      ['leo',"That's more than every library in Shanghai!","那比上海所有图书馆的书都多！"]]},
+{bg:'class',holo:{t:'vs',title:T("Learning from feedback","从反馈中学习"),a:{l:T("Answer A: rude and made-up","回答A：没礼貌，还瞎编"),ok:false},b:{l:T("Answer B: kind, clear and honest","回答B：友善、清楚、诚实"),ok:true}},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Then people rate its answers, and it learns which kind are better: helpful, honest and safe.","然后，人们给它的回答打分，它就学会哪种回答更好：有用、诚实、安全。"],
+      ['mia',"So it's predicting words... but it seems to understand.","所以它是在预测词语……但看起来好像真的懂。"]]},
+{bg:'class',cast:[['mia',85,'think','idle'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"To predict well, it had to learn a lot about the world. Scientists still debate how much it really 'understands'.","为了预测得准，它不得不学到很多关于世界的知识。它到底“懂”多少，科学家们还在争论。"],
+      ['leo',"And that's why answers appear word by word!","怪不得回答是一个字一个字冒出来的！"]]}
+],
+terms:[["LLM (large language model)","大语言模型（LLM）","A huge neural network trained on text to predict the next token.","用海量文字训练、用来预测下一个词元的巨大神经网络。"],
+ ["Token","词元","A word or piece of a word that the model reads and writes.","模型读写的基本单位：一个词或词的一部分。"],
+ ["Prompt","提示词","What you type to the model.","你输入给模型的内容。"],
+ ["Pre-training & feedback","预训练与反馈","First learning from lots of text, then learning from people's ratings.","先从海量文本中学习，再从人们的评分中学习。"]],
+tryIt:T("Play 'human LLM': one person says a word, the next adds the most likely next word, and so on. Then ask a chatbot the same question twice. Are the answers identical?","玩“人肉大语言模型”：一个人说一个词，下一个人接上最可能的下一个词，依次接龙。再问聊天机器人同一个问题两次，答案一模一样吗？")},
+
+// ---------- 11 ----------
+{t:T("When AI Gets It Wrong","当AI犯错时"),topic:T("Hallucinations & using AI wisely","幻觉与聪明用AI"),
+panels:[
+{bg:'class',props:[['phone',138,152]],cast:[['mia',90,'surprised','hold'],['leo',210,'surprised','idle'],['bit',330,'think','idle']],
+ say:[['mia',"Look! The chatbot says the Oriental Pearl Tower was finished in 1820!","快看！聊天机器人说东方明珠是1820年建成的！"],
+      ['leo',"That's way off! It was built in the 1990s.","差太远了！它是上世纪90年代建成的。"]]},
+{bg:'class',holo:{t:'chat',title:T("A hallucination","AI幻觉"),msgs:[{me:true,l:T("When was the Oriental Pearl Tower built?","东方明珠是哪年建成的？")},{me:false,l:T("It was completed in 1820.","它于1820年建成。"),warn:true}]},
+ cast:[['leo',54,'worried','idle'],['bit',356,'talk','present']],
+ say:[['bit',"That's called a hallucination: the model writes something that sounds right but isn't true.","这叫“幻觉”：模型写出了听起来很对、其实是错的内容。"]]},
+{bg:'class',holo:{t:'big',title:T("Remember","记住"),rows:[{s:T("Sounds likely","听起来像对的"),size:15},{s:'≠',size:28,fill:'#C2416B'},{s:T("Is true","真的是对的"),size:15}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"It predicts likely words. Unless it's connected to search, it isn't looking anything up.","它在预测“可能的”词语。除非接入了搜索，它并没有去查资料。"],
+      ['leo',"Like a student bluffing in an exam?","就像考试时硬编答案的同学？"],
+      ['bit',"A very confident one!","还是特别自信的那种！"]]},
+{bg:'class',holo:{t:'vs',title:T("Better prompts","更好的提示词"),a:{l:T("“Tell me about space.”","“给我讲讲太空。”"),ok:false},b:{l:T("“Explain black holes to a 13-year-old in 5 sentences, with one everyday example.”","“用5句话给13岁的学生解释黑洞，举一个生活中的例子。”"),ok:true}},
+ cast:[['mia',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"Clear prompts get better answers. Say who it's for, what you want and what format.","提示词越清楚，回答越好。说清楚给谁看、要什么、什么格式。"]]},
+{bg:'room',holo:{t:'list',title:T("Smart AI rules","聪明用AI的规则"),items:[{i:'search',l:T("Check important facts with reliable sources","重要信息要用可靠来源核实")},{i:'lock',l:T("Never share your address, ID or passwords","不透露住址、身份证号、密码")},{i:'book',l:T("Use it to learn, not to copy homework","用它学习，不要抄作业")},{i:'pen',l:T("Say when you used AI","用了AI要说明")}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Pin these four rules next to your desk!","把这四条规则贴在书桌旁边！"]]},
+{bg:'room',cast:[['leo',125,'grin','cheer'],['bit',285,'happy','wave']],
+ say:[['leo',"AI is a super-smart helper, but I'm the boss of my own brain!","AI是超级聪明的助手，但我的大脑我做主！"],
+      ['bit',"Exactly. You think, AI helps.","说得好。你来思考，AI来帮忙。"]]}
+],
+terms:[["Hallucination","幻觉","When AI states something false as if it were true.","AI把错误的内容当成事实说出来。"],
+ ["Fact-checking","核实","Checking a claim against reliable sources.","用可靠的来源检验一个说法。"],
+ ["Prompting","写提示词","Writing clear instructions to get useful answers.","写出清晰的指令，得到有用的回答。"],
+ ["Honest learning","诚实学习","Doing your own thinking and saying when you had help.","自己动脑思考，用了帮助就如实说明。"]],
+tryIt:T("Catch AI making a mistake: ask a chatbot about something you know really well (your school, your favourite team). Find one error, then check it with a reliable source.","抓住AI的错误：问聊天机器人一个你特别熟悉的话题（你的学校、你喜欢的球队）。找出一个错误，再用可靠来源核实。")},
+
+// ---------- 12 ----------
+{t:T("AI That Takes Action","会动手的AI"),topic:T("AI agents","智能体"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'wink','wave']],
+ say:[['leo',"Chatbots only talk. Could an AI actually DO things?","聊天机器人只会说话。AI能真的动手做事吗？"],
+      ['bit',"Yes! That's called an AI agent.","能！那叫AI智能体。"]]},
+{bg:'room',holo:{t:'hub',title:T("Agent = brain + tools + loop","智能体 = 大脑 + 工具 + 循环"),tools:[{i:'search',l:T("Search","搜索")},{i:'calc',l:T("Calculator","计算器")},{i:'cal',l:T("Calendar","日历")},{i:'code',l:T("Run code","运行代码")},{i:'map',l:T("Maps","地图")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"An agent is an LLM that can use tools, and keeps working in a loop until the job is done.","智能体就是会使用工具的大模型，它会循环工作，直到把任务完成。"]]},
+{bg:'room',holo:{t:'cycle',title:T("The agent loop","智能体循环"),items:[{i:'brain',l:T("Think","思考")},{i:'gear',l:T("Act","行动")},{i:'eye',l:T("Observe","观察")}],center:T("until done","直到完成")},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['leo',"Test time: plan our class trip to the Shanghai Science and Technology Museum!","考考你：帮我们班规划去上海科技馆的秋游！"],
+      ['bit',"Think, act, look at the result, repeat. Watch!","思考、行动、观察结果，再重复。看好了！"]]},
+{bg:'class',holo:{t:'list',title:T("Agent at work","智能体在工作"),items:[{i:'search',l:T("Search opening hours","搜索开放时间")},{i:'map',l:T("Metro Line 2 to the museum","地铁2号线到科技馆站")},{i:'calc',l:T("40 students × ticket price","40名学生 × 票价")},{i:'cal',l:T("Draft the day's schedule","生成当天日程")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'happy','present']],
+ say:[['mia',"It breaks one big job into small steps and uses a tool for each!","它把一个大任务拆成小步骤，每一步用一个工具！"]]},
+{bg:'room',holo:{t:'dialog',title:T("Human approval","人工确认"),head:T("The agent wants to:","智能体请求："),msg:T("Pay ¥1,200 for 40 tickets","支付1200元购买40张门票"),yes:T("Approve","批准"),no:T("Cancel","取消")},
+ cast:[['leo',54,'worried','think'],['bit',356,'talk','present']],
+ say:[['bit',"Agents can take real actions: send messages, book tickets, spend money. So a human should approve the important steps.","智能体能做真实的事：发消息、订票、花钱。所以重要的步骤要由人来批准。"],
+      ['leo',"Like asking Mom before buying something online.","就像网上买东西前要先问妈妈。"]]},
+{bg:'room-night',cast:[['leo',120,'think','think'],['bit',285,'wink','wave']],
+ say:[['bit',"Some agents can even write and test computer code. Engineers work with them every day.","有些智能体还会编写和测试代码，工程师每天都在和它们一起工作。"],
+      ['leo',"Hey Bit... are YOU an agent?","喂，比特……你是不是也是个智能体？"],
+      ['bit',"What do you think?","你说呢？"]]}
+],
+terms:[["AI agent","智能体","An AI that plans and uses tools to finish tasks step by step.","会规划并使用工具、一步步完成任务的AI。"],
+ ["Tool","工具","Something an agent can use: search, a calculator, code, apps.","智能体能使用的东西：搜索、计算器、代码、各种应用。"],
+ ["Agent loop","智能体循环","Think → act → observe, repeated until the job is done.","思考 → 行动 → 观察，一直重复到任务完成。"],
+ ["Human approval","人工确认","A person checks important actions before they happen.","重要操作执行前由人来确认。"]],
+tryIt:T("Be the agent: plan a family weekend outing using only 'tools' (a map app, a weather app, a calculator). Write down each think → act → observe step.","当一回智能体：只用“工具”（地图App、天气App、计算器）规划一次家庭周末出游。写下每一步的思考 → 行动 → 观察。")},
+
+// ---------- 13 ----------
+{t:T("Science Fair Day","科学节到了"),topic:T("Putting it all together","融会贯通"),
+panels:[
+{bg:'fair',props:[['board',300]],cast:[['leo',75,'happy','idle'],['mia',170,'grin','point']],
+ say:[['nar',"12 weeks later. Science Fair Day.","12周后，科学节当天。"],
+      ['mia',"Our Shanghai Garbage Sorting Helper is ready!","我们的“上海垃圾分类小助手”准备好啦！"]]},
+{bg:'fair',cast:[['leo',90,'talk','point'],['wang',300,'happy','idle']],
+ say:[['wang',"Impressive! How does it work?","很厉害！它是怎么工作的？"],
+      ['leo',"We took 600 photos of rubbish in different places and light, labelled them, trained a model, and tested it on new photos.","我们在不同地点、不同光线下拍了600张垃圾照片，标好标签，训练模型，再用新照片测试。"]]},
+{bg:'fair',holo:{t:'barchart',title:T("Accuracy on new photos (%)","新照片上的准确率（%）"),max:100,items:[{l:T("Wet","湿"),v:93,c:'#8B5A2B'},{l:T("Recycle","可回收"),v:88,c:'#2D6CDF'},{l:T("Dry","干"),v:84,c:'#3A3A44'},{l:T("Hazard","有害"),v:75,c:'#E04848'}]},
+ cast:[['mia',54,'talk','point'],['wang',356,'think','idle']],
+ say:[['mia',"It gets about 85% right. When it isn't sure, it says so and shows the rule for that bin.","它大约有85%的正确率。不确定的时候，它会说出来，并显示那个桶的分类规则。"]]},
+{bg:'fair',cast:[['wang',110,'think','think'],['leo',280,'determined','idle']],
+ say:[['wang',"And where does it make mistakes?","那它在哪些地方会出错？"],
+      ['leo',"Dirty or crumpled items. We didn't have enough photos of those, so our data was biased. We're taking more.","脏的或被揉皱的东西。这类照片我们拍得不够，数据有偏差。我们正在补拍。"],
+      ['wang',"That's thinking like a real scientist.","这才是真正的科学家思维。"]]},
+{bg:'burst',props:[['medal',195,74]],cast:[['leo',115,'grin','cheer'],['mia',270,'grin','cheer']],fx:[['sparkles',195,74]],
+ say:[['nar',"Award: Best Young Engineers!","获奖：最佳小工程师！"],
+      ['leo',"We did it!","我们成功了！"],
+      ['mia',"And we really understand how it works!","而且我们真的懂它是怎么工作的！"]]},
+{bg:'city',holo:{t:'grid',title:T("Your journey","你的旅程"),items:[T("Computers","计算机"),T("Binary","二进制"),T("Algorithms","算法"),T("Coding","编程"),T("Internet","互联网"),T("Data","数据"),T("AI","人工智能"),T("Machine learning","机器学习"),T("Neural networks","神经网络"),T("LLMs","大语言模型"),T("Using AI wisely","聪明用AI"),T("Agents","智能体")]},
+ cast:[['leo',54,'happy','idle'],['bit',356,'happy','present']],
+ say:[['bit',"The future of AI will be built by people who understand it, like you. Keep learning, keep building, keep asking questions!","AI的未来，将由懂得它的人来创造，比如你。继续学习，继续动手，继续提问！"],
+      ['nar',"The end... or just the beginning?","完……还是刚刚开始？"]]}
+],
+terms:[["Accuracy","准确率","The share of answers a model gets right on test data.","模型在测试数据上答对的比例。"],
+ ["Iteration","迭代","Improving in rounds: build, test, learn, repeat.","一轮一轮地改进：做出来、测试、总结、再来。"],
+ ["Responsible AI","负责任的AI","Being honest about what AI can't do, and protecting the people who use it.","如实说明AI做不到什么，并保护使用它的人。"]],
+tryIt:T("Your turn: pick a problem at home or at school. Could data, an algorithm or AI help? Sketch your own science fair project on one page.","轮到你了：在家里或学校找一个问题。数据、算法或AI能帮上忙吗？用一页纸画出你自己的科学节项目。")}
+];
+
+// ===== Drawing engine =====
+let MODE='both';
+const INK='#17182B', HT='#0B4F5C', HL='#18A3B5', HF='#ECFDFF', ZH_T='#3D7380', HOT='#C2416B', TEAL='#22B8A7';
+const n1=v=>Math.round(v*10)/10;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const isObj=t=>t!==null&&typeof t==='object';
+const pick=t=>isObj(t)?(MODE==='zh'?t.zh:t.en):t;
+
+// ---------- text measuring + wrapping for SVG ----------
+function tw(str,size,mono){let w=0;for(const ch of str){const c=ch.codePointAt(0);
+  if(c>=0x2E80) w+=size; else if(mono) w+=size*0.6; else if(ch===' ') w+=size*0.3;
+  else if(/[A-Z]/.test(ch)) w+=size*0.64; else if(/[ilj.,:;'!|()]/.test(ch)) w+=size*0.32;
+  else if(/[mwMW]/.test(ch)) w+=size*0.82; else w+=size*0.55;}return w*1.04;}
+const NOSTART='，。！？、；：）》」』”’…%';
+function wrap(s,maxW,size,mono){
+  if(!maxW) return [s];
+  const toks=String(s).match(/[^\s⺀-￿]+|\s+|[⺀-￿]/g)||[''];
+  const lines=[];let cur='';
+  for(const t of toks){
+    if(/^\s+$/.test(t)){ if(cur) cur+=' '; continue; }
+    const test=cur+t;
+    if(tw(test,size,mono)>maxW && cur.trim() && !NOSTART.includes(t)){ lines.push(cur.trim()); cur=t; }
+    else cur=test;
+  }
+  if(cur.trim()) lines.push(cur.trim());
+  return lines.length?lines:[''];
+}
+// st: draw (possibly bilingual) text block whose TOP is at y. returns {s,h}
+function st(x,y,txt,o={}){
+  const size=o.size||11,a=o.a||'middle',fill=o.fill||HT,wt=o.w||700,maxW=o.maxW;
+  const parts=[];
+  if(!isObj(txt)) parts.push({t:String(txt),size,cls:o.mono?'sv-mono':'sv-en',fill});
+  else{
+    if(MODE!=='zh') parts.push({t:txt.en,size,cls:'sv-en',fill});
+    if(MODE!=='en') parts.push({t:txt.zh,size:MODE==='both'?size*0.9:size,cls:'sv-zh',fill:MODE==='both'?(o.zfill||ZH_T):fill});
+  }
+  let out='',cy=y;
+  for(const p of parts){
+    for(const ln of wrap(p.t,maxW,p.size,o.mono&&!isObj(txt))){
+      cy+=p.size;
+      out+=`<text x="${n1(x)}" y="${n1(cy)}" text-anchor="${a}" font-size="${n1(p.size)}" fill="${p.fill}" font-weight="${wt}" class="${p.cls}">${esc(ln)}</text>`;
+      cy+=p.size*0.24;
+    }
+  }
+  return {s:out,h:cy-y};
+}
+const stH=(t,o)=>st(0,0,t,o).h;
+function ah(x,y,ang,col=HL,sz=7){const a1=ang+2.62,a2=ang-2.62;return `<polygon points="${n1(x)},${n1(y)} ${n1(x+sz*Math.cos(a1))},${n1(y+sz*Math.sin(a1))} ${n1(x+sz*Math.cos(a2))},${n1(y+sz*Math.sin(a2))}" fill="${col}"/>`;}
+function arrow(x1,y1,x2,y2,col=HL,w=2){const a=Math.atan2(y2-y1,x2-x1);return `<line x1="${n1(x1)}" y1="${n1(y1)}" x2="${n1(x2-Math.cos(a)*5)}" y2="${n1(y2-Math.sin(a)*5)}" stroke="${col}" stroke-width="${w}" stroke-linecap="round"/>`+ah(x2,y2,a,col);}
+
+// ---------- icons (drawn in a ±11 box) ----------
+function icon(name,cx,cy,s=1){
+  const I=INK;let g='';
+  switch(name){
+    case 'key': g=`<rect x="-11" y="-10" width="22" height="20" rx="4" fill="#fff" stroke="${I}" stroke-width="1.8"/><rect x="-8" y="-7" width="16" height="11" rx="2" fill="#EEF2F7"/><text x="0" y="3" font-size="11" text-anchor="middle" font-weight="700" class="sv-en" fill="${I}">W</text>`;break;
+    case 'chip': g=`<g stroke="${I}" stroke-width="1.6">${[-4,0,4].map(v=>`<line x1="${v}" y1="-11" x2="${v}" y2="11"/><line x1="-11" y1="${v}" x2="11" y2="${v}"/>`).join('')}</g><rect x="-8" y="-8" width="16" height="16" rx="2" fill="#2B3A55" stroke="${I}" stroke-width="1.6"/><text x="0" y="2" font-size="5" text-anchor="middle" fill="#7DF9FF" font-weight="700" class="sv-en">CPU</text>`;break;
+    case 'screen': g=`<rect x="-11" y="-9" width="22" height="15" rx="2" fill="#13213C" stroke="${I}" stroke-width="1.6"/><rect x="-8" y="-6" width="16" height="9" fill="#7DF9FF" opacity=".55"/><line x1="0" y1="6" x2="0" y2="9" stroke="${I}" stroke-width="2"/><line x1="-5" y1="10" x2="5" y2="10" stroke="${I}" stroke-width="2" stroke-linecap="round"/>`;break;
+    case 'desk': g=`<rect x="-6" y="-9" width="9" height="7" fill="#fff" stroke="${I}" stroke-width="1.2" transform="rotate(-8)"/><rect x="0" y="-8" width="8" height="6" fill="#FFE7A3" stroke="${I}" stroke-width="1.2"/><rect x="-11" y="-2" width="22" height="4" rx="1" fill="#A8754A" stroke="${I}" stroke-width="1.4"/><line x1="-8" y1="2" x2="-8" y2="10" stroke="${I}" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="10" stroke="${I}" stroke-width="2"/>`;break;
+    case 'shelf': g=`<rect x="-10" y="-11" width="20" height="22" fill="#F3E3C8" stroke="${I}" stroke-width="1.5"/><line x1="-10" y1="0" x2="10" y2="0" stroke="${I}" stroke-width="1.5"/>`+[['#FF5D5D',-8,-10],['#2F6FD6',-4,-9],['#22B8A7',0,-10],['#FFD84D',-8,1],['#C2416B',-4,2],['#2F6FD6',1,1]].map(b=>`<rect x="${b[1]}" y="${b[2]}" width="3.4" height="${b[2]<0?-1-b[2]:10-b[2]}" fill="${b[0]}"/>`).join('');break;
+    case 'bulb': g=`<circle cx="0" cy="-3" r="7.5" fill="#FFE45C" stroke="${I}" stroke-width="1.6"/><rect x="-3.5" y="4" width="7" height="5" fill="#8A97A8" stroke="${I}" stroke-width="1.4"/>`;break;
+    case 'eye': g=`<path d="M-11 0 Q0 -10 11 0 Q0 10 -11 0 Z" fill="#fff" stroke="${I}" stroke-width="1.6"/><circle r="4.2" fill="${HL}"/><circle r="2" fill="${I}"/>`;break;
+    case 'brain': g=`<path d="M-10 2 C-13 -4 -8 -10 -3 -8 C-1 -12 6 -11 7 -7 C12 -7 13 0 10 3 C12 8 5 11 2 8 C-1 11 -8 10 -8 6 C-11 6 -12 4 -10 2 Z" fill="#FFB8C6" stroke="${I}" stroke-width="1.6"/><path d="M-5 -3 Q-2 0 -5 3 M2 -5 Q5 -1 2 2 M0 4 Q4 6 6 3" stroke="${I}" stroke-width="1.2" fill="none"/>`;break;
+    case 'photo': g=`<rect x="-11" y="-8" width="22" height="16" rx="2" fill="#BFE3FA" stroke="${I}" stroke-width="1.6"/><path d="M-11 8 L-3 -1 L3 5 L6 2 L11 8 Z" fill="#6CC56A" stroke="${I}" stroke-width="1.2"/><circle cx="6" cy="-3" r="2.4" fill="#FFD84D"/>`;break;
+    case 'tag': g=`<path d="M-11 -6 L4 -6 L11 0 L4 6 L-11 6 Z" fill="#FFD84D" stroke="${I}" stroke-width="1.6"/><circle cx="4" cy="0" r="1.8" fill="#fff" stroke="${I}"/>`;break;
+    case 'check': g=`<circle r="10" fill="#2BAE66" stroke="${I}" stroke-width="1.6"/><path d="M-5 0 L-1 4.5 L6 -4" stroke="#fff" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;break;
+    case 'cross': g=`<circle r="10" fill="#FF5D5D" stroke="${I}" stroke-width="1.6"/><path d="M-4.5 -4.5 L4.5 4.5 M4.5 -4.5 L-4.5 4.5" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>`;break;
+    case 'q': g=`<circle r="10" fill="#FFD84D" stroke="${I}" stroke-width="1.6"/><text x="0" y="5" font-size="14" text-anchor="middle" font-weight="700" class="sv-en" fill="${I}">?</text>`;break;
+    case 'search': g=`<circle cx="-2" cy="-2" r="6.5" fill="#fff" stroke="${I}" stroke-width="2.2"/><line x1="3" y1="3" x2="10" y2="10" stroke="${I}" stroke-width="3.2" stroke-linecap="round"/>`;break;
+    case 'calc': g=`<rect x="-8" y="-11" width="16" height="22" rx="2.5" fill="#2B3A55" stroke="${I}" stroke-width="1.5"/><rect x="-5.5" y="-8.5" width="11" height="5" fill="#7DF9FF"/>`+[-4,0,4].map(x=>[0,4,8].map(y=>`<circle cx="${x}" cy="${y-1}" r="1.2" fill="#fff"/>`).join('')).join('');break;
+    case 'cal': g=`<rect x="-10" y="-8" width="20" height="18" rx="2" fill="#fff" stroke="${I}" stroke-width="1.6"/><rect x="-10" y="-8" width="20" height="5" fill="#FF5D5D" stroke="${I}" stroke-width="1.6"/><line x1="-5" y1="-11" x2="-5" y2="-6" stroke="${I}" stroke-width="2"/><line x1="5" y1="-11" x2="5" y2="-6" stroke="${I}" stroke-width="2"/>`+[-5,0,5].map(x=>[1,6].map(y=>`<rect x="${x-1.5}" y="${y-1.5}" width="3" height="3" fill="${HL}"/>`).join('')).join('');break;
+    case 'code': g=`<rect x="-11" y="-9" width="22" height="18" rx="3" fill="#13213C" stroke="${I}" stroke-width="1.5"/><text x="0" y="3.5" font-size="9" text-anchor="middle" font-weight="700" class="sv-mono" fill="#7DF9FF">&lt;/&gt;</text>`;break;
+    case 'globe': g=`<circle r="10" fill="#9FD4F7" stroke="${I}" stroke-width="1.6"/><ellipse rx="4.5" ry="10" fill="none" stroke="${I}" stroke-width="1.3"/><line x1="-10" y1="0" x2="10" y2="0" stroke="${I}" stroke-width="1.3"/><path d="M-8 -5 Q0 -3 8 -5 M-8 5 Q0 3 8 5" stroke="${I}" stroke-width="1" fill="none"/>`;break;
+    case 'play': g=`<rect x="-11" y="-8" width="22" height="16" rx="4" fill="#FF5D5D" stroke="${I}" stroke-width="1.6"/><path d="M-3 -4.5 L5 0 L-3 4.5 Z" fill="#fff"/>`;break;
+    case 'mic': g=`<rect x="-4" y="-11" width="8" height="13" rx="4" fill="#2B3A55" stroke="${I}" stroke-width="1.5"/><path d="M-7.5 -1 Q-7.5 7 0 7 Q7.5 7 7.5 -1" stroke="${I}" stroke-width="1.6" fill="none"/><line x1="0" y1="7" x2="0" y2="11" stroke="${I}" stroke-width="1.8"/>`;break;
+    case 'map': g=`<path d="M0 11 C-8 2 -8 -2 -8 -4 A8 8 0 1 1 8 -4 C8 -2 8 2 0 11 Z" fill="#FF5D5D" stroke="${I}" stroke-width="1.6"/><circle cx="0" cy="-4" r="3" fill="#fff"/>`;break;
+    case 'book': g=`<path d="M0 -6 Q-6 -10 -11 -8 L-11 8 Q-6 6 0 9 Q6 6 11 8 L11 -8 Q6 -10 0 -6 Z" fill="#fff" stroke="${I}" stroke-width="1.6"/><line x1="0" y1="-6" x2="0" y2="9" stroke="${I}" stroke-width="1.4"/><path d="M-8 -4 L-3 -3 M-8 0 L-3 1 M3 -3 L8 -4 M3 1 L8 0" stroke="${HL}" stroke-width="1.2"/>`;break;
+    case 'chat': g=`<path d="M-11 -8 Q-11 -10 -9 -10 L9 -10 Q11 -10 11 -8 L11 3 Q11 5 9 5 L-2 5 L-7 10 L-6 5 L-9 5 Q-11 5 -11 3 Z" fill="#fff" stroke="${I}" stroke-width="1.6"/><circle cx="-5" cy="-2.5" r="1.6" fill="${HL}"/><circle cx="0" cy="-2.5" r="1.6" fill="${HL}"/><circle cx="5" cy="-2.5" r="1.6" fill="${HL}"/>`;break;
+    case 'data': g=`<path d="M-9 -7 L-9 7 A9 3.5 0 0 0 9 7 L9 -7" fill="#CFF5EF" stroke="${I}" stroke-width="1.6"/><ellipse cx="0" cy="-7" rx="9" ry="3.5" fill="#E9FFFB" stroke="${I}" stroke-width="1.6"/><path d="M-9 0 A9 3.5 0 0 0 9 0" fill="none" stroke="${I}" stroke-width="1.3"/>`;break;
+    case 'game': g=`<path d="M-11 2 Q-11 -6 -5 -6 L5 -6 Q11 -6 11 2 Q11 9 6 7 L3 4 L-3 4 L-6 7 Q-11 9 -11 2 Z" fill="#2B3A55" stroke="${I}" stroke-width="1.5"/><path d="M-7 -1 L-3 -1 M-5 -3 L-5 1" stroke="#fff" stroke-width="1.6"/><circle cx="4" cy="-2" r="1.5" fill="#FF5D5D"/><circle cx="7" cy="1" r="1.5" fill="#FFD84D"/>`;break;
+    case 'warn': g=`<path d="M0 -10 L11 9 L-11 9 Z" fill="#FFD84D" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><text x="0" y="7" font-size="12" text-anchor="middle" font-weight="700" class="sv-en" fill="${I}">!</text>`;break;
+    case 'lock': g=`<path d="M-5 -2 L-5 -6 A5 5 0 0 1 5 -6 L5 -2" fill="none" stroke="${I}" stroke-width="2.2"/><rect x="-8" y="-2" width="16" height="12" rx="2" fill="#FFD84D" stroke="${I}" stroke-width="1.6"/><circle cx="0" cy="4" r="1.8" fill="${I}"/>`;break;
+    case 'pen': g=`<path d="M-9 9 L-7 3 L5 -9 L9 -5 L-3 7 Z" fill="#FFD84D" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-9 9 L-7 3 L-3 7 Z" fill="#F5CBA7" stroke="${I}" stroke-width="1.2"/>`;break;
+    case 'gear': g=`<g fill="#8A97A8" stroke="${I}" stroke-width="1.4">${[0,45,90,135].map(a=>`<rect x="-2.5" y="-11" width="5" height="22" rx="1" transform="rotate(${a})"/>`).join('')}<circle r="7.5"/></g><circle r="3" fill="#fff" stroke="${I}" stroke-width="1.4"/>`;break;
+    case 'laptop': g=`<rect x="-10" y="-9" width="20" height="13" rx="2" fill="#13213C" stroke="${I}" stroke-width="1.5"/><rect x="-7.5" y="-6.5" width="15" height="8" fill="#7DF9FF" opacity=".6"/><path d="M-13 6 L13 6 L11 4 L-11 4 Z" fill="#AEB6C6" stroke="${I}" stroke-width="1.4"/>`;break;
+    default: g=`<circle r="6" fill="${HL}"/>`;
+  }
+  return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
+}
+
+// ---------- little pictures for cards (±20 x ±16) ----------
+function pic(name,cx,cy,s=1){
+  const I=INK;let g='';
+  const catHead=(fill,folded)=>{
+    let e=folded?`<path d="M-11 -6 Q-12 -13 -5 -10 Z" fill="${fill}" stroke="${I}" stroke-width="1.6"/><path d="M11 -6 Q12 -13 5 -10 Z" fill="${fill}" stroke="${I}" stroke-width="1.6"/>`
+      :`<path d="M-11 -4 L-10 -16 L-3 -9 Z" fill="${fill}" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 -4 L10 -16 L3 -9 Z" fill="${fill}" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/>`;
+    return e+`<ellipse cx="0" cy="0" rx="12" ry="10.5" fill="${fill}" stroke="${I}" stroke-width="1.6"/><circle cx="-4.5" cy="-1.5" r="1.7" fill="${I}"/><circle cx="4.5" cy="-1.5" r="1.7" fill="${I}"/><path d="M-1.5 2 L1.5 2 L0 3.8 Z" fill="#FF8FA3"/><path d="M-6 3 L-17 1 M-6 5 L-17 6 M6 3 L17 1 M6 5 L17 6" stroke="${I}" stroke-width=".9"/>`;};
+  switch(name){
+    case 'cat': g=catHead('#F2A65A',false);break;
+    case 'foldcat': g=catHead('#C9CCD6',true);break;
+    case 'fox': g=`<path d="M-12 -2 L-12 -16 L-3 -9 Z M12 -2 L12 -16 L3 -9 Z" fill="#F07B2B" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-13 -4 Q-13 -11 0 -11 Q13 -11 13 -4 Q10 6 0 11 Q-10 6 -13 -4 Z" fill="#F07B2B" stroke="${I}" stroke-width="1.6"/><path d="M-11 -1 Q-6 8 0 11 Q6 8 11 -1 Q5 3 0 3 Q-5 3 -11 -1 Z" fill="#fff"/><circle cx="-5" cy="-3" r="1.7" fill="${I}"/><circle cx="5" cy="-3" r="1.7" fill="${I}"/><circle cx="0" cy="9" r="1.8" fill="${I}"/><path d="M-5 5 L-16 3 M5 5 L16 3" stroke="${I}" stroke-width=".9"/>`;break;
+    case 'banana': g=`<path d="M-15 -6 Q-12 12 14 6 Q17 4 15 2 Q-4 6 -10 -8 Z" fill="#FFD23F" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-15 -6 L-13 -10 L-10 -8" fill="#6B4A1E" stroke="${I}" stroke-width="1.4"/><path d="M14 6 L17 6" stroke="#6B4A1E" stroke-width="2.4"/><circle cx="2" cy="5" r="1.1" fill="#8B5A2B"/><circle cx="-4" cy="2" r="1" fill="#8B5A2B"/>`;break;
+    case 'bottle': g=`<path d="M-5 -10 L-5 -7 Q-9 -4 -9 1 L-9 13 Q-9 15 -7 15 L7 15 Q9 15 9 13 L9 1 Q9 -4 5 -7 L5 -10 Z" fill="#BFE8FF" stroke="${I}" stroke-width="1.6"/><rect x="-5.5" y="-15" width="11" height="5" rx="1" fill="#2D6CDF" stroke="${I}" stroke-width="1.4"/><rect x="-9" y="2" width="18" height="6" fill="#fff" opacity=".8"/><line x1="-5" y1="-4" x2="-5" y2="12" stroke="#fff" stroke-width="1.6" opacity=".8"/>`;break;
+    case 'medicine': g=`<rect x="-8" y="-9" width="16" height="22" rx="3" fill="#FFB347" stroke="${I}" stroke-width="1.6"/><rect x="-9.5" y="-15" width="19" height="7" rx="1.5" fill="#fff" stroke="${I}" stroke-width="1.6"/><rect x="-8" y="-3" width="16" height="10" fill="#fff"/><path d="M0 -1.5 L0 5.5 M-3.5 2 L3.5 2" stroke="#E04848" stroke-width="2.2"/>`;break;
+    case 'tissue': g=`<path d="M-12 4 L-9 -8 L-2 -12 L6 -9 L12 -2 L10 9 L1 12 L-8 10 Z" fill="#fff" stroke="${I}" stroke-width="1.6" stroke-linejoin="round"/><path d="M-6 -4 L0 1 L5 -5 M-3 6 L2 2 L7 5 M-8 2 L-4 0" stroke="#AEB6C6" stroke-width="1.2" fill="none"/>`;break;
+    case 'table': g=`<rect x="-19" y="-6" width="38" height="20" rx="2" fill="#B98552" stroke="${I}" stroke-width="1.6"/><path d="M-16 0 Q-4 -2 6 1 T17 0 M-17 7 Q-5 5 5 8 T17 7" stroke="#8A5E38" stroke-width="1.1" fill="none"/>`;break;
+    case 'bananaT': g=pic('table',0,0,1)+`<g transform="translate(0,-4) scale(.8)">${pic('banana',0,0,1)}</g>`;return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
+  }
+  return `<g transform="translate(${n1(cx)},${n1(cy)}) scale(${n1(s*100)/100})">${g}</g>`;
+}
+
+// ---------- hologram diagrams ----------
+const DIAG={};
+DIAG.flow=(d,B)=>{let s='';const n=d.steps.length;
+  const fo={size:10,maxW:B.w,fill:HOT};const footH=d.foot?stH(d.foot,fo)+4:0;const H=B.h-footH;
+  if(d.dir==='v'){const rh=H/n,r=Math.min(15,rh*0.36);
+    d.steps.forEach((it,i)=>{const cy=B.y+rh*(i+.5),cx=B.x+r+1;
+      s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(r)}" fill="#fff" stroke="${HL}" stroke-width="2"/>`+icon(it.i,cx,cy,r/13);
+      const o={size:10.5,maxW:B.w-2*r-10,a:'start'};s+=st(cx+r+8,cy-stH(it.l,o)/2,it.l,o).s;
+      if(i<n-1) s+=arrow(cx,cy+r+3,cx,cy+rh-r-3);});
+  }else{const cw=B.w/n,r=Math.min(19,cw*0.3);
+    const lo={size:10.5,maxW:cw-4};const lh=Math.max(...d.steps.map(it=>stH(it.l,lo)));
+    const top=B.y+Math.max(0,(H-(2*r+8+lh))/2);const cy=top+r;
+    d.steps.forEach((it,i)=>{const cx=B.x+cw*(i+.5);
+      s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(r)}" fill="#fff" stroke="${HL}" stroke-width="2"/>`+icon(it.i,cx,cy,r/13);
+      s+=st(cx,cy+r+6,it.l,lo).s;
+      if(i<n-1) s+=arrow(cx+r+4,cy,cx+cw-r-4,cy);});
+  }
+  if(d.foot) s+=st(B.x+B.w/2,B.y+B.h-footH+4,d.foot,fo).s;
+  return s;};
+DIAG.list=(d,B)=>{let s='';const n=d.items.length,rh=B.h/n,size=d.size||10.5;
+  d.items.forEach((it,i)=>{const cy=B.y+rh*(i+.5),mx=B.x+9;
+    if(d.num) s+=`<circle cx="${mx}" cy="${n1(cy)}" r="8" fill="${HL}"/><text x="${mx}" y="${n1(cy+3.6)}" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700" class="sv-en">${i+1}</text>`;
+    else if(it.i) s+=icon(it.i,mx,cy,0.8);
+    const o={size,maxW:B.w-25,a:'start'};s+=st(B.x+23,cy-stH(it.l,o)/2,it.l,o).s;});
+  return s;};
+DIAG.bulbs=(d,B)=>{let s='';const bits=d.bits,n=bits.length,cw=B.w/n,r=Math.min(cw*0.33,22);
+  const fo={size:11.5,maxW:B.w,fill:HOT};const footH=d.foot?stH(d.foot,fo)+4:0;
+  const ds=Math.min(22,cw*0.62);const co={size:10.5,maxW:cw};
+  const capH=d.caps?Math.max(...d.caps.map(c=>stH(c,co))):0;
+  const contentH=r*2.3+6+ds+(d.pv?12:0)+(d.caps?capH+4:0);
+  const cy=B.y+Math.max(0,(B.h-footH-contentH)/2)+r+r*0.3;
+  for(let i=0;i<n;i++){const cx=B.x+cw*(i+.5),on=bits[i]==='1';
+    if(on) s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(r*1.6)}" fill="#FFE45C" opacity=".4"/>`;
+    s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(r)}" fill="${on?'#FFE45C':'#D5DEE6'}" stroke="${INK}" stroke-width="1.6"/><rect x="${n1(cx-r*.42)}" y="${n1(cy+r*.8)}" width="${n1(r*.84)}" height="${n1(r*.5)}" rx="1.5" fill="#8A97A8" stroke="${INK}" stroke-width="1.4"/>`;
+    const dy=cy+r*1.3+ds+2;
+    s+=`<text x="${n1(cx)}" y="${n1(dy)}" font-size="${n1(ds)}" text-anchor="middle" fill="${on?HOT:HT}" class="sv-mono" font-weight="700">${bits[i]}</text>`;
+    if(d.pv) s+=`<text x="${n1(cx)}" y="${n1(dy+11)}" font-size="8" text-anchor="middle" fill="${ZH_T}" class="sv-mono">${2**(n-1-i)}</text>`;
+    if(d.caps) s+=st(cx,dy+(d.pv?14:4),d.caps[i],co).s;}
+  if(d.foot) s+=st(B.x+B.w/2,B.y+B.h-footH+4,d.foot,fo).s;
+  return s;};
+DIAG.big=(d,B)=>{let s='';const os=d.rows.map(r=>({size:r.size||14,maxW:B.w,mono:r.mono,fill:r.fill||HT}));
+  const hs=d.rows.map((r,i)=>stH(r.s,os[i]));const gap=Math.max(2,(B.h-hs.reduce((a,b)=>a+b,0))/(d.rows.length+1));let y=B.y+gap;
+  d.rows.forEach((r,i)=>{s+=st(B.x+B.w/2,y,r.s,os[i]).s;y+=hs[i]+gap;});return s;};
+DIAG.pixels=(d,B)=>{let s='';const P=["..YYYY..",".YYYYYY.","YYKYYKYY","YYYYYYYY","YKYYYYKY","YYKKKKYY",".YYYYYY.","..YYYY.."];
+  const c=Math.min((B.w*0.5)/8,(B.h-4)/8),gx=B.x,gy=B.y+(B.h-8*c)/2;const col={'.':'#fff',Y:'#FFD23F',K:INK};
+  P.forEach((row,r)=>[...row].forEach((ch,k)=>{s+=`<rect x="${n1(gx+k*c)}" y="${n1(gy+r*c)}" width="${n1(c)}" height="${n1(c)}" fill="${col[ch]}" stroke="#B9D7DD" stroke-width=".6"/>`;}));
+  const hx=gx+3*c,hy=gy+1*c;s+=`<rect x="${n1(hx)}" y="${n1(hy)}" width="${n1(c)}" height="${n1(c)}" fill="none" stroke="${HOT}" stroke-width="2.2"/>`;
+  const bx=gx+8*c+14,bw=B.x+B.w-bx,by=B.y+B.h/2-44;
+  s+=`<line x1="${n1(hx+c)}" y1="${n1(hy+c/2)}" x2="${n1(bx)}" y2="${n1(by+16)}" stroke="${HOT}" stroke-width="1.6" stroke-dasharray="3 2"/>`;
+  s+=`<rect x="${n1(bx)}" y="${n1(by)}" width="${n1(bw)}" height="88" rx="6" fill="#fff" stroke="${HL}" stroke-width="1.8"/><rect x="${n1(bx+bw/2-12)}" y="${n1(by+8)}" width="24" height="16" fill="#FFD23F" stroke="${INK}" stroke-width="1.4"/>`;
+  [['R 255','#E04848'],['G 210','#2BAE66'],['B 63','#2D6CDF']].forEach((t,i)=>{s+=`<text x="${n1(bx+bw/2)}" y="${n1(by+40+i*14)}" font-size="11.5" text-anchor="middle" font-weight="700" fill="${t[1]}" class="sv-mono">${t[0]}</text>`;});
+  s+=st(bx+bw/2,by+90,T("1 pixel","1个像素"),{size:10,maxW:bw}).s;
+  return s;};
+DIAG.numline=(d,B)=>{let s='';const rows=d.rows,rh=B.h/rows.length,x0=B.x+6,x1=B.x+B.w-58,mp=v=>x0+(v-1)/99*(x1-x0);
+  const R={h:T("Higher","再大点"),l:T("Lower","再小点"),ok:T("Got it!","猜中！")};
+  rows.forEach((r,i)=>{const y=B.y+rh*(i+.62);const [lo,hi,g,res]=r;
+    s+=`<line x1="${x0}" y1="${n1(y)}" x2="${x1}" y2="${n1(y)}" stroke="#C9DDE2" stroke-width="3" stroke-linecap="round"/>`;
+    s+=`<line x1="${n1(mp(lo))}" y1="${n1(y)}" x2="${n1(mp(hi))}" y2="${n1(y)}" stroke="${HL}" stroke-width="7" stroke-linecap="round"/>`;
+    s+=`<text x="${n1(mp(lo))}" y="${n1(y+13)}" font-size="8.5" text-anchor="middle" fill="${ZH_T}" class="sv-mono">${lo}</text><text x="${n1(mp(hi))}" y="${n1(y+13)}" font-size="8.5" text-anchor="middle" fill="${ZH_T}" class="sv-mono">${hi}</text>`;
+    s+=`<circle cx="${n1(mp(g))}" cy="${n1(y)}" r="7" fill="${res==='ok'?'#2BAE66':'#FF5D5D'}" stroke="${INK}" stroke-width="1.5"/><text x="${n1(mp(g))}" y="${n1(y-10)}" font-size="11" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-mono">${g}</text>`;
+    const o={size:10,maxW:56,a:'start',fill:res==='ok'?'#1E8A50':HOT};s+=st(x1+8,y-stH(R[res],o)/2,R[res],o).s;});
+  return s;};
+DIAG.compare=(d,B)=>{let s='';const n=d.items.length,rh=B.h/n,mx=Math.max(...d.items.map(i=>i.v));
+  d.items.forEach((it,i)=>{const lo={size:10.5,a:'start',maxW:B.w};const lh=stH(it.l,lo);const y=B.y+rh*i+(rh-lh-24)/2;
+    s+=st(B.x,y,it.l,lo).s;const by=y+lh+5,bw=Math.max(5,(B.w-2)*it.v/mx);
+    s+=`<rect x="${B.x}" y="${n1(by)}" width="${n1(bw)}" height="17" rx="4" fill="${it.c||HL}" stroke="${INK}" stroke-width="1.4"/>`;
+    const inside=bw>90;s+=`<text x="${n1(inside?B.x+bw-6:B.x+bw+6)}" y="${n1(by+12.5)}" font-size="11" text-anchor="${inside?'end':'start'}" font-weight="700" fill="${inside?'#fff':INK}" class="sv-mono">${esc(it.txt)}</text>`;});
+  return s;};
+DIAG.vs=(d,B)=>{let s='';const bh=(B.h-8)/2;[d.a,d.b].forEach((it,i)=>{const y=B.y+i*(bh+8);const col=it.ok?'#2BAE66':'#FF5D5D';
+  s+=`<rect x="${B.x}" y="${n1(y)}" width="${B.w}" height="${n1(bh)}" rx="7" fill="#fff" stroke="${col}" stroke-width="2.2"/>`+icon(it.ok?'check':'cross',B.x+16,y+bh/2,1);
+  const o={size:10.5,maxW:B.w-40,a:'start',fill:INK};s+=st(B.x+33,y+bh/2-stH(it.l,o)/2,it.l,o).s;});return s;};
+function hlCode(line){const parts=line.split(/("[^"]*"|\b(?:for|in|if|else|print|range|IF|AND|THEN)\b|如果|并且|那么|\b\d+\b)/);
+  return parts.map((p,i)=>{if(i%2===0) return esc(p);const c=p.startsWith('"')?'#7DF9FF':/^\d+$/.test(p)?'#FF9E9E':'#FFD84D';return `<tspan fill="${c}">${esc(p)}</tspan>`;}).join('');}
+DIAG.code=(d,B)=>{let s='';const L=[];d.lines.forEach(l=>{if(isObj(l)){if(MODE!=='zh')L.push({t:l.en});if(MODE!=='en')L.push({t:l.zh,zh:MODE==='both'});}else L.push({t:l});});
+  const lh=16,ch=L.length*lh+12;s+=`<rect x="${B.x}" y="${B.y}" width="${B.w}" height="${ch}" rx="6" fill="#13213C" stroke="${INK}" stroke-width="1.5"/>`;
+  L.forEach((l,i)=>{s+=`<text x="${B.x+8}" y="${B.y+18+i*lh}" font-size="${l.zh?10.5:11}" fill="${l.zh?'#9FB3D1':'#E6F1FF'}" class="${l.zh?'sv-zh':'sv-mono'}" xml:space="preserve">${hlCode(l.t)}</text>`;});
+  if(d.out){const oy=B.y+ch+8;s+=st(B.x,oy,T("▶ Output","▶ 输出"),{size:9.5,a:'start',fill:ZH_T}).s;const ly=oy+(MODE==='both'?24:13);const oh=d.out.length*15+10;
+    s+=`<rect x="${B.x}" y="${n1(ly)}" width="${B.w}" height="${oh}" rx="6" fill="#fff" stroke="${d.err?'#FF5D5D':HL}" stroke-width="1.8"/>`;
+    d.out.forEach((o,i)=>{s+=`<text x="${B.x+8}" y="${n1(ly+17+i*15)}" font-size="11" fill="${d.err?'#D93636':INK}" font-weight="700" class="sv-mono">${esc(o)}</text>`;});}
+  return s;};
+DIAG.table=(d,B)=>{let s='';const cols=d.head.length,cw=B.w/cols;const ho={size:10,maxW:cw-4,fill:'#fff'};
+  const hh=Math.max(...d.head.map(h=>stH(h,ho)))+8;s+=`<rect x="${B.x}" y="${B.y}" width="${B.w}" height="${n1(hh)}" rx="5" fill="${HL}"/>`;
+  d.head.forEach((h,i)=>{s+=st(B.x+cw*(i+.5),B.y+4,h,{...ho,zfill:'#E6FDFF'}).s;});
+  const co={size:11,maxW:cw-4};const no={size:9.5,maxW:B.w,fill:HOT};const noteH=d.note?stH(d.note,no)+4:0;
+  const rh=(B.h-hh-noteH)/d.rows.length;
+  d.rows.forEach((r,ri)=>{const y=B.y+hh+rh*ri;if(ri%2) s+=`<rect x="${B.x}" y="${n1(y)}" width="${B.w}" height="${n1(rh)}" fill="#D6F4F7"/>`;
+    r.forEach((c,ci)=>{const o={...co,mono:!isObj(c)};s+=st(B.x+cw*(ci+.5),y+rh/2-stH(c,o)/2,c,o).s;});});
+  if(d.note) s+=st(B.x+B.w/2,B.y+B.h-noteH+4,d.note,no).s;return s;};
+DIAG.barchart=(d,B)=>{let s='';const n=d.items.length,mx=d.max||Math.max(...d.items.map(i=>i.v)),cw=B.w/n;const lo={size:10,maxW:cw-2};
+  const lh=Math.max(...d.items.map(i=>stH(i.l,lo)));const base=B.y+B.h-lh-4,top=B.y+16,bw=Math.min(40,cw*0.58);const pal=[TEAL,'#2F6FD6','#FF5D5D','#FFC83D'];
+  s+=`<line x1="${B.x}" y1="${n1(base)}" x2="${B.x+B.w}" y2="${n1(base)}" stroke="${HT}" stroke-width="1.6"/>`;
+  d.items.forEach((it,i)=>{const cx=B.x+cw*(i+.5),h=(base-top)*it.v/mx;
+    s+=`<rect x="${n1(cx-bw/2)}" y="${n1(base-h)}" width="${n1(bw)}" height="${n1(h)}" rx="3" fill="${it.c||pal[i%4]}" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=`<text x="${n1(cx)}" y="${n1(base-h-4)}" font-size="12" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-mono">${it.v}</text>`;
+    s+=st(cx,base+4,it.l,lo).s;});return s;};
+function envelope(x,y,num,col,w=40,h=26){return `<g><rect x="${n1(x-w/2)}" y="${n1(y-h/2)}" width="${w}" height="${h}" rx="3" fill="#fff" stroke="${INK}" stroke-width="1.6"/><path d="M${n1(x-w/2)} ${n1(y-h/2)} L${n1(x)} ${n1(y+2)} L${n1(x+w/2)} ${n1(y-h/2)}" fill="none" stroke="${INK}" stroke-width="1.4"/><circle cx="${n1(x+w/2-3)}" cy="${n1(y+h/2-3)}" r="7.5" fill="${col}" stroke="${INK}" stroke-width="1.4"/><text x="${n1(x+w/2-3)}" y="${n1(y+h/2+0.8)}" font-size="9.5" text-anchor="middle" font-weight="700" fill="#fff" class="sv-en">${num}</text></g>`;}
+const PCOL=['#FF5D5D','#2F6FD6','#22B8A7','#E0A21B'];
+DIAG.packets=(d,B)=>{let s='';const fo={size:10,maxW:B.w,fill:HOT};const fh=stH(d.foot,fo);const mid=B.y+(B.h-fh)/2;
+  const px=B.x+28;s+=`<rect x="${px-26}" y="${n1(mid-22)}" width="52" height="44" rx="4" fill="#BFE3FA" stroke="${INK}" stroke-width="1.8"/><circle cx="${px}" cy="${n1(mid-2)}" r="11" fill="#F5CBA7" stroke="${INK}" stroke-width="1.5"/><path d="M${px-11} ${n1(mid-5)} Q${px} ${n1(mid-20)} ${px+11} ${n1(mid-5)} Z" fill="#1E1B24"/><path d="M${px-4} ${n1(mid+3)} Q${px} ${n1(mid+7)} ${px+4} ${n1(mid+3)}" stroke="${INK}" stroke-width="1.4" fill="none"/><path d="M${px-26} ${n1(mid+22)} L${px-26} ${n1(mid+16)} Q${px} ${n1(mid+8)} ${px+26} ${n1(mid+16)} L${px+26} ${n1(mid+22)} Z" fill="#2F6FD6"/>`;
+  s+=st(px,mid+26,T("Video","视频"),{size:9.5}).s;
+  s+=arrow(px+30,mid,px+48,mid,HOT,2.4);
+  const gx=B.x+B.w-58;[[0,0],[1,0],[0,1],[1,1]].forEach(([c,r],i)=>{s+=envelope(gx+c*46,mid-17+r*36,i+1,PCOL[i]);});
+  s+=st(B.x+B.w/2,B.y+B.h-fh,d.foot,fo).s;return s;};
+DIAG.reorder=(d,B)=>{let s='';const lo={size:10,a:'start'};const h1=stH(T("Arrived:","到达顺序："),lo);
+  const y1=B.y+4;s+=st(B.x,y1,T("Arrived:","到达顺序："),lo).s;const ey1=y1+h1+18;
+  [3,1,4,2].forEach((n,i)=>{s+=envelope(B.x+22+i*45,ey1,n,PCOL[n-1],38,24);});
+  const ay=ey1+20;s+=arrow(B.x+B.w/2,ay,B.x+B.w/2,ay+22,HOT,2.6);
+  const y2=ay+26;s+=st(B.x,y2,T("Rebuilt:","重新拼好："),lo).s;const ey2=y2+h1+18;
+  [1,2,3,4].forEach((n,i)=>{s+=envelope(B.x+22+i*45,ey2,n,PCOL[n-1],38,24);});
+  return s;};
+DIAG.network=(d,B)=>{let s='';const lo={size:9.5,maxW:70};const lh=stH(T("Singapore","新加坡"),lo);const H=B.h-lh-6;
+  const A=[B.x+14,B.y+H*0.5],Z=[B.x+B.w-14,B.y+H*0.5],R=[[B.x+B.w*0.36,B.y+H*0.16],[B.x+B.w*0.36,B.y+H*0.84],[B.x+B.w*0.64,B.y+H*0.16],[B.x+B.w*0.64,B.y+H*0.84]];
+  const links=[[A,R[0]],[A,R[1]],[R[0],R[2]],[R[1],R[3]],[R[0],R[3]],[R[2],Z],[R[3],Z]];
+  links.forEach(([p,q])=>{s+=`<line x1="${n1(p[0])}" y1="${n1(p[1])}" x2="${n1(q[0])}" y2="${n1(q[1])}" stroke="${HL}" stroke-width="2.2" stroke-dasharray="4 3"/>`;});
+  R.forEach(p=>{s+=`<circle cx="${n1(p[0])}" cy="${n1(p[1])}" r="10" fill="#2B3A55" stroke="${INK}" stroke-width="1.6"/><path d="M${n1(p[0]-5)} ${n1(p[1]-2)} L${n1(p[0]+5)} ${n1(p[1]-2)} M${n1(p[0]+5)} ${n1(p[1]+2)} L${n1(p[0]-5)} ${n1(p[1]+2)}" stroke="#7DF9FF" stroke-width="1.6"/>`;});
+  [[links[0],0],[links[3],1],[links[4],2],[links[5],3]].forEach(([[p,q],i])=>{const t=0.5;s+=envelope(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,i+1,PCOL[i],22,15);});
+  s+=icon('laptop',A[0],A[1],1.05)+icon('laptop',Z[0],Z[1],1.05);
+  s+=st(A[0]+4,B.y+B.h-lh,T("Shanghai","上海"),lo).s+st(Z[0]-4,B.y+B.h-lh,T("Singapore","新加坡"),lo).s;
+  s+=st(B.x+B.w/2,B.y+B.h-lh,T("Routers","路由器"),{...lo,fill:HOT}).s;return s;};
+DIAG.cable=(d,B)=>{let s='';const fo={size:9.5,maxW:B.w,fill:HOT};const fh=stH(T("Light in glass: ~200,000 km/s","光纤中的光：约每秒20万公里"),fo);const H=B.h-fh-4;
+  s+=`<rect x="${B.x}" y="${B.y}" width="${B.w}" height="${n1(H)}" rx="6" fill="#CDEFFF"/>`;
+  s+=`<path d="M${B.x+B.w*0.55} ${B.y} Q${B.x+B.w*0.62} ${n1(B.y+H*0.25)} ${B.x+B.w*0.78} ${n1(B.y+H*0.3)} Q${B.x+B.w*0.9} ${n1(B.y+H*0.38)} ${B.x+B.w} ${n1(B.y+H*0.5)} L${B.x+B.w} ${B.y} Z" fill="#F3E3B8" stroke="${HL}" stroke-width="1.4"/>`;
+  s+=`<path d="M${B.x} ${n1(B.y+H*0.55)} Q${B.x+B.w*0.22} ${n1(B.y+H*0.62)} ${B.x+B.w*0.26} ${n1(B.y+H*0.8)} Q${B.x+B.w*0.3} ${n1(B.y+H*0.95)} ${B.x+B.w*0.36} ${n1(B.y+H)} L${B.x} ${n1(B.y+H)} Z" fill="#F3E3B8" stroke="${HL}" stroke-width="1.4"/>`;
+  const P0=[B.x+B.w*0.74,B.y+H*0.27],P3=[B.x+B.w*0.3,B.y+H*0.82],P1=[B.x+B.w*0.95,B.y+H*0.7],P2=[B.x+B.w*0.55,B.y+H*0.95];
+  s+=`<path d="M${n1(P0[0])} ${n1(P0[1])} C${n1(P1[0])} ${n1(P1[1])} ${n1(P2[0])} ${n1(P2[1])} ${n1(P3[0])} ${n1(P3[1])}" fill="none" stroke="${INK}" stroke-width="2.6" stroke-dasharray="6 4"/>`;
+  const bz=t=>[0,1].map(k=>(1-t)**3*P0[k]+3*(1-t)**2*t*P1[k]+3*(1-t)*t*t*P2[k]+t**3*P3[k]);
+  [.25,.5,.75].forEach(t=>{const p=bz(t);s+=`<circle cx="${n1(p[0])}" cy="${n1(p[1])}" r="5" fill="#FFD84D" stroke="${INK}" stroke-width="1.4"/>`;});
+  s+=`<circle cx="${n1(P0[0])}" cy="${n1(P0[1])}" r="5" fill="#FF5D5D" stroke="${INK}" stroke-width="1.5"/><circle cx="${n1(P3[0])}" cy="${n1(P3[1])}" r="5" fill="#FF5D5D" stroke="${INK}" stroke-width="1.5"/>`;
+  s+=st(P0[0]-8,P0[1]-6-stH(T("Shanghai","上海"),{size:10}),T("Shanghai","上海"),{size:10,a:'end'}).s;
+  s+=st(P3[0]+8,P3[1]-8,T("Singapore","新加坡"),{size:10,a:'start'}).s;
+  const m=bz(.5);s+=`<text x="${n1(m[0]-14)}" y="${n1(m[1]-30)}" font-size="11" font-weight="700" text-anchor="middle" fill="${INK}" class="sv-mono">≈3,800 km</text>`;
+  s+=st(B.x+B.w/2,B.y+B.h-fh,T("Light in glass: ~200,000 km/s","光纤中的光：约每秒20万公里"),fo).s;return s;};
+DIAG.cards=(d,B)=>{let s='';const n=d.items.length,cols=d.cols||Math.min(n,3),rows=Math.ceil(n/cols),gap=6;
+  const fo={size:10,maxW:B.w,fill:HOT};const fh=d.foot?stH(d.foot,fo)+4:0;
+  const cw=(B.w-gap*(cols-1))/cols,ch=(B.h-fh-gap*(rows-1))/rows;const lo={size:9.5,maxW:cw-6};
+  d.items.forEach((it,i)=>{const c=i%cols,r=Math.floor(i/cols),x=B.x+c*(cw+gap),y=B.y+r*(ch+gap);
+    s+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(cw)}" height="${n1(ch)}" rx="6" fill="#fff" stroke="${HL}" stroke-width="1.6"/>`;
+    const lh=stH(it.l,lo);const picH=ch-lh-6;const sc=Math.min(cw/44,picH/36,1.25);
+    s+=pic(it.p,x+cw/2,y+3+picH/2,sc);s+=st(x+cw/2,y+ch-lh-3,it.l,lo).s;
+    if(it.m) s+=icon({ok:'check',no:'cross',q:'q'}[it.m],x+cw-9,y+9,0.72);});
+  if(d.foot) s+=st(B.x+B.w/2,B.y+B.h-fh+4,d.foot,fo).s;return s;};
+DIAG.cycle=(d,B)=>{let s='';const n=d.items.length,cx=B.x+B.w/2,cy=B.y+B.h/2-4,R=Math.min(B.w*0.34,B.h*0.36),r=16;
+  const ang=i=>(-90+360*i/n)*Math.PI/180;const dA=(r+6)/R;
+  for(let i=0;i<n;i++){const a1=ang(i)+dA,a2=ang(i+1)-dA;const p1=[cx+R*Math.cos(a1),cy+R*Math.sin(a1)],p2=[cx+R*Math.cos(a2),cy+R*Math.sin(a2)];
+    s+=`<path d="M${n1(p1[0])} ${n1(p1[1])} A${n1(R)} ${n1(R)} 0 0 1 ${n1(p2[0])} ${n1(p2[1])}" fill="none" stroke="${HL}" stroke-width="2.4"/>`+ah(p2[0],p2[1],a2+Math.PI/2,HL,8);}
+  d.items.forEach((it,i)=>{const a=ang(i),x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
+    s+=`<circle cx="${n1(x)}" cy="${n1(y)}" r="${r}" fill="#fff" stroke="${HL}" stroke-width="2"/>`+icon(it.i,x,y,1);
+    const lo={size:10.5,maxW:70,fill:INK};const lh=stH(it.l,lo);
+    const ly=Math.sin(a)<-0.5?y-r-lh-2:y+r+2;s+=st(x,ly,it.l,lo).s;});
+  if(d.center){const co={size:10.5,maxW:R*1.3,fill:HOT};s+=st(cx,cy-stH(d.center,co)/2+4,d.center,co).s;}
+  return s;};
+DIAG.neuron=(d,B)=>{let s='';const sx=B.x+B.w-40,sy=B.y+B.h*0.36;const vx=B.x+88;
+  d.ins.forEach((it,i)=>{const y=B.y+B.h*(0.14+0.33*i);const lo={size:9.5,maxW:74,a:'start',fill:INK};
+    s+=`<line x1="${vx}" y1="${n1(y)}" x2="${n1(sx)}" y2="${n1(sy)}" stroke="${HL}" stroke-width="${1+it.w*0.6}" opacity=".85"/>`;
+    s+=st(B.x,y-stH(it.l,lo)/2,it.l,lo).s;
+    s+=`<circle cx="${vx}" cy="${n1(y)}" r="9" fill="${it.v?'#FFE45C':'#fff'}" stroke="${INK}" stroke-width="1.5"/><text x="${vx}" y="${n1(y+3.8)}" font-size="10.5" text-anchor="middle" font-weight="700" class="sv-mono" fill="${INK}">${it.v}</text>`;
+    const mx=vx+(sx-vx)*0.45,my=y+(sy-y)*0.45;s+=`<rect x="${n1(mx-13)}" y="${n1(my-8)}" width="26" height="15" rx="7" fill="#fff" stroke="${HOT}" stroke-width="1.4"/><text x="${n1(mx)}" y="${n1(my+3.5)}" font-size="10" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-mono">×${it.w}</text>`;});
+  s+=`<circle cx="${n1(sx)}" cy="${n1(sy)}" r="18" fill="#fff" stroke="${INK}" stroke-width="2"/><text x="${n1(sx)}" y="${n1(sy+6)}" font-size="17" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-en">Σ</text>`;
+  s+=`<text x="${n1(sx)}" y="${n1(sy+34)}" font-size="12" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-mono">${esc(d.sum)}</text>`;
+  s+=st(sx-6,sy+40,d.out,{size:9.5,maxW:84,fill:HOT}).s;return s;};
+DIAG.layers=(d,B)=>{let s='';const lo={size:9.5,maxW:B.w/d.sizes.length+16};const lh=Math.max(...d.labels.map(l=>l?stH(l,lo):0));
+  const top=B.y+6,bot=B.y+B.h-lh-8;const cols=d.sizes.map((n,i)=>{const x=B.x+B.w*(i+.5)/d.sizes.length;const gap=(bot-top)/n;return [...Array(n)].map((_,k)=>[x,top+gap*(k+.5)]);});
+  for(let i=0;i<cols.length-1;i++) cols[i].forEach(p=>cols[i+1].forEach(q=>{s+=`<line x1="${n1(p[0])}" y1="${n1(p[1])}" x2="${n1(q[0])}" y2="${n1(q[1])}" stroke="${HL}" stroke-width="1" opacity=".45"/>`;}));
+  cols.forEach((c,i)=>c.forEach(p=>{const f=i===0?'#FFE45C':i===cols.length-1?'#FF8FA3':'#fff';s+=`<circle cx="${n1(p[0])}" cy="${n1(p[1])}" r="8" fill="${f}" stroke="${INK}" stroke-width="1.5"/>`;}));
+  d.labels.forEach((l,i)=>{if(l) s+=st(B.x+B.w*(i+.5)/d.sizes.length+(i===1?B.w/d.sizes.length/2:0),bot+6,l,lo).s;});return s;};
+DIAG.knobs=(d,B)=>{let s='';const angs=[-40,20,-70,60],nx=angs.length,cw=B.w/nx,ky=B.y+30;
+  angs.forEach((a,i)=>{const cx=B.x+cw*(i+.5);const r=14;const rad=(a-90)*Math.PI/180;
+    s+=`<circle cx="${n1(cx)}" cy="${ky}" r="${r}" fill="#fff" stroke="${INK}" stroke-width="1.8"/><line x1="${n1(cx)}" y1="${ky}" x2="${n1(cx+(r-3)*Math.cos(rad))}" y2="${n1(ky+(r-3)*Math.sin(rad))}" stroke="${HOT}" stroke-width="2.6" stroke-linecap="round"/>`;
+    const dir=i%2?1:-1;s+=`<path d="M${n1(cx-dir*8)} ${ky-r-5} Q${n1(cx)} ${ky-r-11} ${n1(cx+dir*8)} ${ky-r-5}" fill="none" stroke="${TEAL}" stroke-width="2"/>`+ah(cx+dir*8,ky-r-5,dir>0?0.5:Math.PI-0.5,TEAL,6);
+    s+=`<text x="${n1(cx)}" y="${ky+r+12}" font-size="9.5" text-anchor="middle" fill="${ZH_T}" class="sv-mono">w${i+1}</text>`;});
+  const fo={size:10,maxW:B.w,fill:HOT};const fh=stH(d.foot,fo);const base=B.y+B.h-fh-4,top=ky+34;const hs=[1,.78,.6,.45,.33,.24,.17,.12];const bw=B.w/hs.length;
+  hs.forEach((h,i)=>{const bh=(base-top)*h;s+=`<rect x="${n1(B.x+i*bw+3)}" y="${n1(base-bh)}" width="${n1(bw-6)}" height="${n1(bh)}" rx="2" fill="#FF8FA3" stroke="${INK}" stroke-width="1.2"/>`;});
+  s+=st(B.x+B.w/2,B.y+B.h-fh,d.foot,fo).s;return s;};
+DIAG.tokens=(d,B)=>{let s='';const pal=['#FFE7A3','#CFF5EF','#FFD6D6','#DCE6FF'];let y=B.y+6;
+  d.rows.forEach(row=>{let x=B.x;const H=20;row.forEach((t,i)=>{const w=Math.max(24,tw(t[0].replace(/^ /,'·'),12,/^[\x00-\x7F]+$/.test(t[0]))+12);if(x+w>B.x+B.w){x=B.x;y+=40;}
+    s+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${H}" rx="4" fill="${pal[i%4]}" stroke="${INK}" stroke-width="1.4"/><text x="${n1(x+w/2)}" y="${n1(y+14.5)}" font-size="12" text-anchor="middle" font-weight="700" fill="${INK}" class="${/^[\x00-\x7F]+$/.test(t[0])?'sv-mono':'sv-zh'}" xml:space="preserve">${esc(t[0].replace(/^ /,'·'))}</text><text x="${n1(x+w/2)}" y="${n1(y+H+11)}" font-size="8.5" text-anchor="middle" fill="${ZH_T}" class="sv-mono">${t[1]}</text>`;x+=w+4;});y+=46;});
+  if(d.foot){const fo={size:9,maxW:B.w,fill:ZH_T};s+=st(B.x+B.w/2,B.y+B.h-stH(d.foot,fo),d.foot,fo).s;}return s;};
+DIAG.probs=(d,B)=>{let s='';const po={size:11.5,maxW:B.w,fill:INK};const ph=stH(d.prompt,po);s+=st(B.x+B.w/2,B.y+2,d.prompt,po).s;
+  const top=B.y+ph+10,rh=(B.h-ph-10)/d.opts.length,lw=60,bx=B.x+lw+4,bmax=B.x+B.w-34-bx;
+  d.opts.forEach(([l,p],i)=>{const cy=top+rh*(i+.5);const lo={size:10,maxW:lw,a:'start',fill:INK};s+=st(B.x,cy-stH(l,lo)/2,l,lo).s;
+    s+=`<rect x="${n1(bx)}" y="${n1(cy-6)}" width="${n1(bmax)}" height="12" rx="3" fill="#D6F4F7"/><rect x="${n1(bx)}" y="${n1(cy-6)}" width="${n1(Math.max(3,bmax*p/100))}" height="12" rx="3" fill="${i===0?TEAL:'#8FD9E2'}" stroke="${INK}" stroke-width="1.2"/>`;
+    s+=`<text x="${n1(B.x+B.w)}" y="${n1(cy+4)}" font-size="11" text-anchor="end" font-weight="700" fill="${INK}" class="sv-mono">${p}%</text>`;});return s;};
+DIAG.chat=(d,B)=>{let s='';let y=B.y+4;const bw=B.w*0.8;
+  d.msgs.forEach(m=>{const o={size:10.5,maxW:bw-16,a:'start',fill:m.me?'#fff':INK,zfill:m.me?'#DCE9FF':ZH_T};const h=stH(m.l,o)+12;const x=m.me?B.x+B.w-bw:B.x+(m.warn?0:0);
+    s+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(bw)}" height="${n1(h)}" rx="9" fill="${m.me?'#2F6FD6':'#fff'}" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=st(x+8,y+6,m.l,o).s;if(m.warn) s+=icon('warn',x+bw-2,y+h-2,0.9);y+=h+14;});return s;};
+DIAG.hub=(d,B)=>{let s='';const n=d.tools.length,cx=B.x+B.w/2,cy=B.y+B.h/2-6,R=Math.min(B.w*0.36,B.h*0.36);
+  const pts=d.tools.map((t,i)=>{const a=(-90+360*i/n)*Math.PI/180;return [cx+R*Math.cos(a),cy+R*Math.sin(a)];});
+  pts.forEach(p=>{s+=`<line x1="${n1(cx)}" y1="${n1(cy)}" x2="${n1(p[0])}" y2="${n1(p[1])}" stroke="${HL}" stroke-width="2" stroke-dasharray="3 3"/>`;});
+  s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="22" fill="#fff" stroke="${HOT}" stroke-width="2.4"/>`+icon('brain',cx,cy-3,1.3)+`<text x="${n1(cx)}" y="${n1(cy+15)}" font-size="7.5" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-en">LLM</text>`;
+  d.tools.forEach((t,i)=>{const p=pts[i];s+=`<circle cx="${n1(p[0])}" cy="${n1(p[1])}" r="14" fill="#fff" stroke="${HL}" stroke-width="2"/>`+icon(t.i,p[0],p[1],0.85);
+    const lo={size:9.5,maxW:64,fill:INK};s+=st(p[0],p[1]+16,t.l,lo).s;});return s;};
+DIAG.dialog=(d,B)=>{let s='';const x=B.x+2,w=B.w-4,y=B.y+4,h=B.h-8;
+  s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" fill="#fff" stroke="${INK}" stroke-width="2"/>`;
+  const ho={size:10.5,a:'start',fill:INK,maxW:w-36};const hh=stH(d.head,ho)+10;
+  s+=`<path d="M${x} ${y+9} Q${x} ${y} ${x+9} ${y} L${x+w-9} ${y} Q${x+w} ${y} ${x+w} ${y+9} L${x+w} ${n1(y+hh)} L${x} ${n1(y+hh)} Z" fill="#FFD84D" stroke="${INK}" stroke-width="2"/>`+icon('lock',x+14,y+hh/2,0.8)+st(x+28,y+5,d.head,ho).s;
+  const mo={size:13,maxW:w-16,fill:INK};const mh=stH(d.msg,mo);const btnY=y+h-34;s+=st(x+w/2,y+hh+(btnY-y-hh-mh)/2,d.msg,mo).s;
+  const bw=(w-24)/2;[[d.yes,'#2BAE66','#fff'],[d.no,'#E3E8EF',INK]].forEach(([l,bg,fg],i)=>{const bx=x+8+i*(bw+8);s+=`<rect x="${n1(bx)}" y="${n1(btnY)}" width="${n1(bw)}" height="26" rx="13" fill="${bg}" stroke="${INK}" stroke-width="1.6"/>`;
+    s+=`<text x="${n1(bx+bw/2)}" y="${n1(btnY+17)}" font-size="${MODE==='both'?9.5:11}" text-anchor="middle" font-weight="700" fill="${fg}" class="${MODE==='zh'?'sv-zh':'sv-en'}">${esc(MODE==='both'?l.en+' '+l.zh:pick(l))}</text>`;});
+  s+=`<path d="M${n1(x+8+bw*0.7)} ${n1(btnY+14)} l0 16 l4 -4 l3 7 l3 -1 l-3 -7 l6 0 Z" fill="#fff" stroke="${INK}" stroke-width="1.3" stroke-linejoin="round"/>`;
+  return s;};
+DIAG.grid=(d,B)=>{let s='';const n=d.items.length,rows=Math.ceil(n/2),rh=B.h/rows,cw=B.w/2;
+  d.items.forEach((it,i)=>{const c=Math.floor(i/rows),r=i%rows,x=B.x+c*cw,cy=B.y+rh*(r+.5);
+    s+=`<circle cx="${n1(x+8)}" cy="${n1(cy)}" r="7.5" fill="${i===n-1?HOT:HL}"/><text x="${n1(x+8)}" y="${n1(cy+3.3)}" font-size="9" text-anchor="middle" font-weight="700" fill="#fff" class="sv-en">${i+1}</text>`;
+    const o={size:9.5,maxW:cw-22,a:'start',fill:INK};s+=st(x+20,cy-stH(it,o)/2,it,o).s;});return s;};
+
+const HOLO={x:104,y:12,w:200,h:200};
+function holo(d){const x=d.x??HOLO.x,y=d.y??HOLO.y,w=d.w??HOLO.w,h=d.h??HOLO.h;
+  let s=`<g class="holo"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${HF}" fill-opacity=".97" stroke="${HL}" stroke-width="2.5"/>`;
+  for(let ly=y+6;ly<y+h-4;ly+=6) s+=`<line x1="${x+3}" y1="${ly}" x2="${x+w-3}" y2="${ly}" stroke="${HL}" stroke-opacity=".07" stroke-width="1"/>`;
+  [[x,y,1,1],[x+w,y,-1,1],[x,y+h,1,-1],[x+w,y+h,-1,-1]].forEach(([cx,cy,dx,dy])=>{s+=`<path d="M${cx+dx*4} ${cy+dy*16} L${cx+dx*4} ${cy+dy*4} L${cx+dx*16} ${cy+dy*4}" fill="none" stroke="${HT}" stroke-width="2.6" stroke-linecap="round"/>`;});
+  let top=y+9;
+  if(d.title){const o={size:12,fill:HT,maxW:w-36};const m=st(x+w/2,top,d.title,o);s+=m.s;top+=m.h+4;s+=`<line x1="${x+16}" y1="${n1(top)}" x2="${x+w-16}" y2="${n1(top)}" stroke="${HL}" stroke-width="1.2" stroke-dasharray="3 3"/>`;top+=6;}
+  const B={x:x+10,y:top,w:w-20,h:y+h-9-top};
+  s+=(DIAG[d.t]||(()=>''))(d,B);
+  return s+'</g>';}
+
+// ---------- characters ----------
+const POSES={
+  idle:{b:[[-22,-104],[-31,-82],[-29,-60]],f:[[22,-104],[31,-82],[29,-60]]},
+  point:{b:[[-22,-104],[-31,-82],[-29,-60]],f:[[22,-104],[44,-102],[64,-112]]},
+  wave:{b:[[-22,-104],[-31,-82],[-29,-60]],f:[[22,-104],[44,-118],[44,-148]]},
+  cheer:{b:[[-22,-104],[-42,-122],[-46,-152]],f:[[22,-104],[42,-122],[46,-152]]},
+  think:{b:[[-22,-104],[-8,-84],[12,-88]],f:[[22,-104],[36,-96],[18,-120]]},
+  hold:{b:[[-22,-104],[-31,-82],[-29,-60]],f:[[22,-104],[38,-88],[52,-94]]},
+  talk:{b:[[-22,-104],[-31,-82],[-29,-60]],f:[[22,-104],[40,-92],[54,-100]]},
+};
+const hairLeo=L=>`<path d="M-35 -148 C-38 -178 -18 -192 2 -190 C24 -190 41 -176 37 -148 L31 -162 L23 -165 L17 -173 L9 -167 L3 -177 L-5 -168 L-13 -175 L-20 -166 L-28 -169 Z" fill="${L.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/><path d="M-12 -187 L-6 -199 L0 -189 L8 -201 L12 -188" fill="${L.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>`;
+const hairMiaBack=L=>`<path d="M-22 -172 C-54 -176 -64 -138 -52 -100 C-46 -120 -38 -138 -26 -150 Z" fill="${L.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="-30" cy="-168" r="5" fill="#22B8A7" stroke="${INK}" stroke-width="2"/>`;
+const hairMiaFront=L=>`<path d="M-34 -136 C-40 -178 -16 -192 2 -190 C24 -190 42 -178 37 -136 C35 -150 33 -160 26 -165 C18 -159 6 -159 -2 -166 C-10 -159 -22 -159 -28 -164 C-32 -156 -33 -146 -34 -136 Z" fill="${L.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>`;
+const hairWangBack=L=>`<circle cx="2" cy="-188" r="13" fill="${L.hair}" stroke="${INK}" stroke-width="2.5"/>`;
+const hairWangFront=L=>`<path d="M-31 -144 C-36 -178 -14 -186 2 -185 C20 -186 40 -176 35 -144 C30 -164 16 -170 2 -168 C-12 -170 -26 -164 -31 -144 Z" fill="${L.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>`;
+const LOOK={
+  leo:{skin:'#F5CBA7',hair:'#1E1B24',jacket:'#2F6FD6',trim:'#FFFFFF',pants:'#22305A',shoe:'#FFFFFF',hairF:hairLeo,s:0.92},
+  mia:{skin:'#F7D2B6',hair:'#3B2418',jacket:'#2F6FD6',trim:'#FFFFFF',pants:'#22305A',shoe:'#FF8FA3',hairB:hairMiaBack,hairF:hairMiaFront,glasses:true,s:0.88},
+  wang:{skin:'#EFC4A0',hair:'#2A2230',jacket:'#8C3B52',trim:'#F3D9DF',pants:'#3A3F55',shoe:'#3A3F55',hairB:hairWangBack,hairF:hairWangFront,glasses:true,s:1.0},
+};
+function face(e){
+  const E=INK;
+  const brow=(a,b,c,d)=>`<path d="M-14 ${-158+a} L-3 ${-159+b} M9 ${-159+c} L20 ${-158+d}" stroke="${E}" stroke-width="2.6" stroke-linecap="round" fill="none"/>`;
+  const eyes=(rx,ry,ox=0,oy=0)=>[-8,14].map(cx=>`<ellipse cx="${cx+ox}" cy="${-147+oy}" rx="${rx}" ry="${ry}" fill="${E}"/><circle cx="${cx+ox+1.3}" cy="${-149.5+oy}" r="1.4" fill="#fff"/>`).join('');
+  const arcs=()=>[-8,14].map(cx=>`<path d="M${cx-5} -145 Q${cx} -153 ${cx+5} -145" stroke="${E}" stroke-width="2.7" fill="none" stroke-linecap="round"/>`).join('');
+  const blush=`<ellipse cx="-17" cy="-136" rx="5" ry="3" fill="#FF7C8A" opacity=".45"/><ellipse cx="25" cy="-136" rx="5" ry="3" fill="#FF7C8A" opacity=".45"/>`;
+  const M={talk:`<ellipse cx="4" cy="-130" rx="5.5" ry="4" fill="#8E2B3A" stroke="${E}" stroke-width="2"/>`,
+    happy:`<path d="M-4 -133 Q4 -125 12 -133" stroke="${E}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`,
+    grin:`<path d="M-6 -134 Q4 -118 14 -134 Z" fill="#8E2B3A" stroke="${E}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    o:`<ellipse cx="4" cy="-129" rx="4.5" ry="6" fill="#8E2B3A" stroke="${E}" stroke-width="2"/>`,
+    flat:`<path d="M-1 -130 L10 -132" stroke="${E}" stroke-width="2.6" stroke-linecap="round"/>`,
+    wavy:`<path d="M-4 -129 Q-1 -132 2 -129 Q5 -126 8 -129 Q10 -131 12 -129" stroke="${E}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+    smirk:`<path d="M-2 -131 Q6 -127 13 -135" stroke="${E}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`};
+  switch(e){
+    case 'surprised': return brow(-5,-6,-6,-5)+eyes(4.4,6.2)+M.o;
+    case 'happy': return brow(0,0,0,0)+eyes(3.6,5)+M.happy+blush;
+    case 'grin': return brow(-2,-3,-3,-2)+arcs()+M.grin+blush;
+    case 'think': return brow(0,-4,0,0)+eyes(3.4,4.8,2,-2)+M.flat;
+    case 'worried': return brow(2,-3,-3,2)+eyes(3.6,5)+M.wavy;
+    case 'determined': return brow(-3,2,2,-3)+eyes(3.6,4.4)+M.happy;
+    case 'smirk': return brow(0,0,-4,-3)+eyes(3.4,4.6)+M.smirk;
+    case 'dizzy': return brow(2,-3,-3,2)+[-8,14].map(cx=>`<circle cx="${cx}" cy="-147" r="5" fill="none" stroke="${E}" stroke-width="2"/><circle cx="${cx}" cy="-147" r="1.8" fill="${E}"/>`).join('')+M.wavy;
+    default: return brow(0,0,0,0)+eyes(3.6,5)+M.talk;
+  }
+}
+function arm(pts,L){const p=pts.map(q=>q.join(',')).join(' ');const h=pts[2];
+  return `<polyline points="${p}" fill="none" stroke="${INK}" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><polyline points="${p}" fill="none" stroke="${L.jacket}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${h[0]}" cy="${h[1]}" r="6.5" fill="${L.skin}" stroke="${INK}" stroke-width="2.5"/>`;}
+function person(who,x,y,f,s,expr,pose){
+  const L=LOOK[who],P=POSES[pose]||POSES.idle,W=`stroke="${INK}" stroke-width="2.5"`;
+  let g=`<g transform="translate(${x},${y}) scale(${n1(f*s*100)/100},${n1(s*100)/100})" stroke-linejoin="round">`;
+  g+=`<ellipse cx="0" cy="0" rx="32" ry="5" fill="#000" opacity=".12"/>`;
+  g+=`<rect x="-17" y="-56" width="14" height="50" rx="4" fill="${L.pants}" ${W}/><rect x="3" y="-56" width="14" height="50" rx="4" fill="${L.pants}" ${W}/>`;
+  g+=`<path d="M-22 -1 Q-22 -11 -10 -11 L-3 -11 L-3 -1 Z" fill="${L.shoe}" ${W}/><path d="M3 -1 L3 -11 L12 -11 Q25 -11 25 -1 Z" fill="${L.shoe}" ${W}/>`;
+  if(L.hairB) g+=L.hairB(L);
+  g+=`<rect x="-26" y="-114" width="52" height="64" rx="15" fill="${L.jacket}" ${W}/>`;
+  g+=`<rect x="-24" y="-62" width="48" height="9" rx="4" fill="${L.trim}" stroke="${INK}" stroke-width="2"/>`;
+  g+=`<path d="M-13 -113 L0 -99 L13 -113" fill="none" stroke="${L.trim}" stroke-width="4.5"/><line x1="0" y1="-99" x2="0" y2="-62" stroke="${INK}" stroke-width="1.6" opacity=".45"/>`;
+  g+=arm(P.b,L)+arm(P.f,L);
+  g+=`<rect x="-7" y="-124" width="14" height="12" fill="${L.skin}" ${W}/>`;
+  g+=`<circle cx="-31" cy="-148" r="7" fill="${L.skin}" ${W}/><circle cx="35" cy="-148" r="7" fill="${L.skin}" ${W}/>`;
+  g+=`<circle cx="2" cy="-150" r="33" fill="${L.skin}" ${W}/>`;
+  g+=face(expr)+L.hairF(L);
+  if(L.glasses) g+=`<g fill="#fff" fill-opacity=".18" stroke="${INK}" stroke-width="2"><circle cx="-8" cy="-147" r="8.5"/><circle cx="14" cy="-147" r="8.5"/></g><path d="M0.5 -148 L5.5 -148 M-16.5 -148 L-29 -150" stroke="${INK}" stroke-width="2" fill="none"/>`;
+  return g+'</g>';}
+function bit(x,y,f,s,expr,pose){
+  const T1=TEAL,TD='#178F82',C='#7DF9FF';
+  let g=`<g transform="translate(${x},${y}) scale(${n1(f*s*100)/100},${n1(s*100)/100})" stroke-linejoin="round">`;
+  g+=`<ellipse cx="0" cy="40" rx="17" ry="4.5" fill="${C}" opacity=".5"/><path d="M-7 25 Q0 44 7 25 Z" fill="#FFD84D" stroke="${INK}" stroke-width="2"/>`;
+  const A={idle:{b:[-29,6,-42,16],f:[29,6,42,16]},wave:{b:[-29,6,-42,16],f:[29,0,44,-18]},present:{b:[-29,6,-42,16],f:[29,2,50,-6]},cheer:{b:[-29,0,-44,-18],f:[29,0,44,-18]}}[pose]||{b:[-29,6,-42,16],f:[29,6,42,16]};
+  const armD=a=>`<line x1="${a[0]}" y1="${a[1]}" x2="${a[2]}" y2="${a[3]}" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><line x1="${a[0]}" y1="${a[1]}" x2="${a[2]}" y2="${a[3]}" stroke="${T1}" stroke-width="4" stroke-linecap="round"/><circle cx="${a[2]}" cy="${a[3]}" r="5" fill="${T1}" stroke="${INK}" stroke-width="2"/>`;
+  g+=armD(A.b)+armD(A.f);
+  g+=`<line x1="0" y1="-26" x2="0" y2="-39" stroke="${INK}" stroke-width="2.5"/><circle cx="0" cy="-43" r="5" fill="#FFD84D" stroke="${INK}" stroke-width="2.5"/>`;
+  g+=`<rect x="-36" y="-10" width="8" height="16" rx="3" fill="${TD}" stroke="${INK}" stroke-width="2"/><rect x="28" y="-10" width="8" height="16" rx="3" fill="${TD}" stroke="${INK}" stroke-width="2"/>`;
+  g+=`<rect x="-30" y="-26" width="60" height="52" rx="18" fill="${T1}" stroke="${INK}" stroke-width="2.5"/><path d="M-22 -20 Q-12 -25 0 -24" stroke="#fff" stroke-width="2.5" opacity=".5" fill="none" stroke-linecap="round"/>`;
+  g+=`<rect x="-22" y="-18" width="44" height="28" rx="9" fill="#13213C" stroke="${INK}" stroke-width="2"/>`;
+  const heart=(cx,cy)=>`<path d="M${cx} ${cy+4} C${cx-7} ${cy-1} ${cx-4} ${cy-7} ${cx} ${cy-3} C${cx+4} ${cy-7} ${cx+7} ${cy-1} ${cx} ${cy+4} Z" fill="#FF8FA3"/>`;
+  const sm=`<path d="M-5 2 Q0 7 5 2" stroke="${C}" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+  const EY={talk:`<circle cx="-9" cy="-5" r="4" fill="${C}"/><circle cx="9" cy="-5" r="4" fill="${C}"/><path d="M-4 3 Q0 6 4 3" stroke="${C}" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+    happy:`<path d="M-14 -3 Q-9 -11 -4 -3 M4 -3 Q9 -11 14 -3" stroke="${C}" stroke-width="3" fill="none" stroke-linecap="round"/>`+sm,
+    wow:`<circle cx="-9" cy="-5" r="6" fill="none" stroke="${C}" stroke-width="2.4"/><circle cx="-9" cy="-5" r="2.2" fill="${C}"/><circle cx="9" cy="-5" r="6" fill="none" stroke="${C}" stroke-width="2.4"/><circle cx="9" cy="-5" r="2.2" fill="${C}"/><circle cx="0" cy="5" r="2.2" fill="${C}"/>`,
+    think:`<circle cx="-6" cy="-8" r="3.4" fill="${C}"/><circle cx="12" cy="-8" r="3.4" fill="${C}"/><path d="M-3 4 L5 3" stroke="${C}" stroke-width="2" stroke-linecap="round"/>`,
+    wink:`<path d="M-14 -4 Q-9 -10 -4 -4" stroke="${C}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="9" cy="-5" r="4" fill="${C}"/>`+sm,
+    error:`<path d="M-13 -9 L-5 -1 M-5 -9 L-13 -1 M5 -9 L13 -1 M13 -9 L5 -1" stroke="#FF6B6B" stroke-width="2.6" stroke-linecap="round"/><path d="M-6 5 L-3 3 L0 5 L3 3 L6 5" stroke="#FF6B6B" stroke-width="2" fill="none"/>`,
+    love:heart(-9,-5)+heart(9,-5)+sm};
+  g+=EY[expr]||EY.talk;
+  g+='</g>';
+  g+=`<text x="${x}" y="${n1(y+20*s)}" font-size="${n1(8*s)}" text-anchor="middle" fill="#E9FFFB" font-weight="700" class="sv-mono" letter-spacing="1">01</text>`;
+  return g;}
+
+// ---------- scenes ----------
+function skyline(ox,base,k,col,lit,hole){
+  let g=`<g transform="translate(${ox},${base}) scale(${k})" fill="${col}">`;
+  g+=`<rect x="4" y="-20" width="12" height="20"/><rect x="18" y="-30" width="9" height="30"/>`;
+  g+=`<path d="M38 0 L44 -16 L50 0" stroke="${col}" stroke-width="2.4" fill="none"/><line x1="44" y1="0" x2="44" y2="-63" stroke="${col}" stroke-width="2.6"/><circle cx="44" cy="-16" r="7"/><circle cx="44" cy="-42" r="5"/><circle cx="44" cy="-55" r="2.5"/>`;
+  g+=`<path d="M60 0 L62 -60 Q66 -68 71 -63 L74 0 Z"/><path d="M80 0 L82 -50 L92 -50 L94 0 Z"/><rect x="84.5" y="-47" width="5" height="4" fill="${hole}"/>`;
+  g+=`<path d="M98 0 L99 -38 L102 -46 L105 -38 L106 0 Z"/><line x1="102" y1="-46" x2="102" y2="-54" stroke="${col}" stroke-width="1.2"/><rect x="108" y="-16" width="8" height="16"/>`;
+  if(lit) [[7,-16],[11,-10],[20,-24],[22,-14],[64,-40],[67,-24],[85,-30],[89,-18],[100,-26],[110,-10]].forEach(([wx,wy])=>{g+=`<rect x="${wx}" y="${wy}" width="2" height="2.5" fill="#FFE45C"/>`;});
+  return g+'</g>';}
+function room(night){const wall=night?'#C9D3EC':'#DCE7F7',sky=night?'#1E2B55':'#9FD4F7',bld=night?'#34477A':'#7E95BF';
+  let s=`<rect width="400" height="250" fill="${wall}"/>`;
+  for(let x=0;x<400;x+=28) s+=`<rect x="${x}" y="0" width="13" height="200" fill="#fff" opacity=".18"/>`;
+  s+=`<rect x="18" y="24" width="116" height="88" fill="${sky}"/>`;
+  if(night) [[30,36],[52,44],[110,34],[124,52],[78,30],[96,46]].forEach(([a,b])=>{s+=`<circle cx="${a}" cy="${b}" r="1.3" fill="#fff"/>`;});
+  if(night) s+=`<circle cx="118" cy="40" r="7" fill="#FFF3B0"/><circle cx="121" cy="38" r="6" fill="${sky}"/>`;
+  s+=skyline(18,112,1,bld,night,sky);
+  s+=`<rect x="18" y="24" width="116" height="88" fill="none" stroke="#fff" stroke-width="5"/><line x1="76" y1="24" x2="76" y2="112" stroke="#fff" stroke-width="4"/><rect x="18" y="24" width="116" height="88" fill="none" stroke="${INK}" stroke-width="2.5"/><rect x="12" y="110" width="128" height="7" fill="#fff" stroke="${INK}" stroke-width="2"/>`;
+  s+=`<g transform="rotate(4 335 75)"><rect x="302" y="32" width="64" height="84" fill="#fff" stroke="${INK}" stroke-width="2.5"/><rect x="306" y="36" width="56" height="54" fill="#6CC56A"/>${ball(334,62,13)}<text x="334" y="108" font-size="14" text-anchor="middle" fill="#FF5D5D" class="sv-disp">GOAL!</text></g>`;
+  s+=`<rect x="0" y="198" width="400" height="7" fill="#fff" stroke="${INK}" stroke-width="1.5"/><rect x="0" y="204" width="400" height="46" fill="#C99D6E"/><line x1="0" y1="204" x2="400" y2="204" stroke="${INK}" stroke-width="2.5"/>`;
+  for(let x=40;x<400;x+=90) s+=`<line x1="${x}" y1="204" x2="${x-30}" y2="250" stroke="#A97F55" stroke-width="1.5"/>`;
+  return s;}
+function kitchen(){let s=`<rect width="400" height="250" fill="#EEF3F6"/>`;
+  for(let y=52;y<166;y+=18) s+=`<line x1="0" y1="${y}" x2="400" y2="${y}" stroke="#D5DEE6" stroke-width="1.2"/>`;
+  for(let x=9;x<400;x+=18) s+=`<line x1="${x}" y1="34" x2="${x}" y2="166" stroke="#D5DEE6" stroke-width="1.2"/>`;
+  s+=`<rect x="-2" y="-2" width="404" height="36" fill="#8FC7BE" stroke="${INK}" stroke-width="2.5"/>`;
+  for(let x=66;x<400;x+=66) s+=`<line x1="${x}" y1="0" x2="${x}" y2="34" stroke="${INK}" stroke-width="2"/><circle cx="${x-8}" cy="26" r="2" fill="${INK}"/>`;
+  s+=`<rect x="0" y="176" width="400" height="74" fill="#E7D5BD"/><rect x="-2" y="166" width="404" height="11" fill="#5E6E86" stroke="${INK}" stroke-width="2.5"/>`;
+  for(let x=10;x<400;x+=98) s+=`<rect x="${x}" y="188" width="86" height="54" rx="3" fill="none" stroke="#B89F82" stroke-width="2"/><rect x="${x+36}" y="196" width="14" height="4" rx="2" fill="#B89F82"/>`;
+  return s;}
+function classroom(){let s=`<rect width="400" height="250" fill="#E2EDDA"/>`;
+  s+=`<rect x="34" y="18" width="332" height="126" rx="3" fill="#A8754A" stroke="${INK}" stroke-width="3"/><rect x="42" y="26" width="316" height="110" fill="#2F5D4E"/>`;
+  s+=`<g fill="#fff" opacity=".35" class="sv-mono"><text x="58" y="52" font-size="14">0101</text><text x="300" y="60" font-size="22" class="sv-disp">AI</text><text x="70" y="122" font-size="13">x + y = 10</text><text x="250" y="122" font-size="13">if → then</text></g><circle cx="200" cy="60" r="14" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2"/>`;
+  s+=`<rect x="40" y="136" width="320" height="6" fill="#8A5E38" stroke="${INK}" stroke-width="1.5"/><rect x="0" y="204" width="400" height="46" fill="#D9C3A0"/><line x1="0" y1="204" x2="400" y2="204" stroke="${INK}" stroke-width="2.5"/>`;
+  return s;}
+function field(){let s=`<rect width="400" height="250" fill="#BFE3FA"/>`;
+  [[70,38,26],[250,26,20],[350,50,16]].forEach(([x,y,r])=>{s+=`<g fill="#fff"><ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r*0.5}"/><ellipse cx="${x+r*0.6}" cy="${y-4}" rx="${r*0.6}" ry="${r*0.45}"/></g>`;});
+  s+=`<rect x="0" y="118" width="400" height="34" fill="#9DB4D3"/>`;for(let y=124;y<152;y+=7) s+=`<line x1="0" y1="${y}" x2="400" y2="${y}" stroke="#87A0C4" stroke-width="1.5"/>`;
+  s+=`<rect x="0" y="150" width="400" height="100" fill="#6CC56A"/>`;for(let x=0;x<400;x+=60) s+=`<rect x="${x}" y="150" width="30" height="100" fill="#62B860"/>`;
+  s+=`<line x1="0" y1="150" x2="400" y2="150" stroke="${INK}" stroke-width="2.5"/>`;
+  s+=`<g fill="none" stroke-linecap="round"><path d="M304 172 L304 108 L392 108 L392 172" stroke="${INK}" stroke-width="7"/><path d="M304 172 L304 108 L392 108 L392 172" stroke="#fff" stroke-width="4"/></g>`;
+  for(let x=314;x<392;x+=10) s+=`<line x1="${x}" y1="110" x2="${x}" y2="170" stroke="#fff" stroke-width=".8" opacity=".7"/>`;
+  for(let y=118;y<172;y+=10) s+=`<line x1="306" y1="${y}" x2="390" y2="${y}" stroke="#fff" stroke-width=".8" opacity=".7"/>`;
+  return s;}
+function city(){let s=`<rect width="400" height="250" fill="#FFD6B5"/><rect y="62" width="400" height="48" fill="#FFC7A6"/><rect y="110" width="400" height="42" fill="#F9B39E"/><circle cx="330" cy="112" r="26" fill="#FFE08A" opacity=".9"/>`;
+  [[6,104,22],[30,118,18],[50,96,20],[318,100,20],[340,112,24],[366,92,22]].forEach(([x,y,w])=>{s+=`<rect x="${x}" y="${y}" width="${w}" height="${150-y}" fill="#5D5F8C"/>`;});
+  s+=skyline(84,150,2,'#4B4E7A',false,'#F9B39E');
+  s+=`<rect x="0" y="150" width="400" height="46" fill="#5F7FA8"/>`;[[40,160,60],[160,170,90],[290,162,70],[90,184,50],[250,186,80]].forEach(([x,y,w])=>{s+=`<line x1="${x}" y1="${y}" x2="${x+w}" y2="${y}" stroke="#FFD6B5" stroke-width="2" opacity=".55" stroke-linecap="round"/>`;});
+  s+=`<rect x="0" y="196" width="400" height="54" fill="#CDBFA9"/><line x1="0" y1="182" x2="400" y2="182" stroke="${INK}" stroke-width="2.5"/><line x1="0" y1="196" x2="400" y2="196" stroke="${INK}" stroke-width="2.5"/>`;
+  for(let x=10;x<400;x+=30) s+=`<line x1="${x}" y1="182" x2="${x}" y2="196" stroke="${INK}" stroke-width="2"/>`;
+  return s;}
+function cyber(){let s=`<rect width="400" height="250" fill="#0E1A33"/>`;
+  for(let x=0;x<=400;x+=25) s+=`<line x1="${x}" y1="0" x2="${x}" y2="250" stroke="#1C3360" stroke-width="1"/>`;
+  for(let y=0;y<=250;y+=25) s+=`<line x1="0" y1="${y}" x2="400" y2="${y}" stroke="#1C3360" stroke-width="1"/>`;
+  s+=`<g fill="none" stroke="${TEAL}" stroke-width="2" opacity=".6"><path d="M0 50 H75 V100 H150"/><path d="M400 75 H325 V25 H250"/><path d="M0 175 H50 V150 H125"/><path d="M400 150 H350 V200 H275"/></g>`;
+  [[150,100],[250,25],[125,150],[275,200],[75,50],[325,75]].forEach(([x,y])=>{s+=`<circle cx="${x}" cy="${y}" r="4" fill="#7DF9FF"/>`;});
+  s+=`<rect x="0" y="210" width="400" height="40" fill="#13264A"/><line x1="0" y1="210" x2="400" y2="210" stroke="#7DF9FF" stroke-width="1.5" opacity=".6"/>`;return s;}
+function fair(){let s=`<rect width="400" height="250" fill="#FCE8EE"/>`;
+  s+=`<rect x="8" y="112" width="84" height="60" fill="#fff" stroke="${INK}" stroke-width="2"/><rect x="16" y="120" width="68" height="10" fill="#9FD4F7"/><rect x="16" y="136" width="40" height="28" fill="#FFE7A3"/><rect x="0" y="172" width="104" height="8" fill="#A8754A" stroke="${INK}" stroke-width="2"/>`;
+  s+=`<path d="M0 10 Q100 34 200 14 Q300 34 400 10" stroke="${INK}" stroke-width="1.5" fill="none"/>`;
+  const cols=['#FF5D5D','#FFD84D','#22B8A7','#2F6FD6'];for(let i=0;i<16;i++){const x=12+i*25;const t=(x%200)/200;const y=(x<200?10+(14-10)*t:14+(10-14)*t)+ (4*t*(1-t))*20*2;s+=`<path d="M${x-7} ${n1(y)} L${x+7} ${n1(y)} L${x} ${n1(y+13)} Z" fill="${cols[i%4]}" stroke="${INK}" stroke-width="1.2"/>`;}
+  s+=`<rect x="122" y="34" width="156" height="30" rx="4" fill="#2F6FD6" stroke="${INK}" stroke-width="2.5"/><text x="178" y="55" font-size="15" text-anchor="middle" fill="#fff" class="sv-disp">SCIENCE FAIR</text><text x="252" y="55" font-size="13" text-anchor="middle" fill="#FFD84D" class="sv-zhd">科学节</text>`;
+  s+=`<rect x="0" y="204" width="400" height="46" fill="#D9C3A0"/><line x1="0" y1="204" x2="400" y2="204" stroke="${INK}" stroke-width="2.5"/>`;return s;}
+function burst(){let s=`<rect width="400" height="250" fill="#FFE36E"/>`;
+  for(let i=0;i<24;i+=2){const a1=i*15*Math.PI/180,a2=(i+1)*15*Math.PI/180;s+=`<polygon points="200,140 ${n1(200+500*Math.cos(a1))},${n1(140+500*Math.sin(a1))} ${n1(200+500*Math.cos(a2))},${n1(140+500*Math.sin(a2))}" fill="#FFD23F"/>`;}
+  return s;}
+const SCENES={'room':{top:'#DCE7F7',draw:()=>room(false)},'room-night':{top:'#C9D3EC',draw:()=>room(true)},kitchen:{top:'#EEF3F6',draw:kitchen},class:{top:'#E2EDDA',draw:classroom},field:{top:'#BFE3FA',draw:field},city:{top:'#FFD6B5',draw:city},cyber:{top:'#0E1A33',draw:cyber},fair:{top:'#FCE8EE',draw:fair},burst:{top:'#FFE36E',draw:burst}};
+
+// ---------- props + effects ----------
+function ball(x,y,r=9){return `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${INK}" stroke-width="2"/><path d="M${x} ${y-r*0.35} L${n1(x+r*0.33)} ${n1(y-r*0.1)} L${n1(x+r*0.2)} ${n1(y+r*0.3)} L${n1(x-r*0.2)} ${n1(y+r*0.3)} L${n1(x-r*0.33)} ${n1(y-r*0.1)} Z" fill="${INK}"/>`;}
+function prop(p){const [k,x,a]=p;
+  switch(k){
+    case 'desk': return `<rect x="${x-72}" y="166" width="144" height="9" rx="2" fill="#A8754A" stroke="${INK}" stroke-width="2.5"/><rect x="${x-64}" y="175" width="9" height="65" fill="#8A5E38" stroke="${INK}" stroke-width="2.2"/><rect x="${x+55}" y="175" width="9" height="65" fill="#8A5E38" stroke="${INK}" stroke-width="2.2"/>`;
+    case 'table': return `<rect x="${x-58}" y="180" width="116" height="8" rx="2" fill="#B98552" stroke="${INK}" stroke-width="2.5"/><rect x="${x-50}" y="188" width="8" height="52" fill="#8A5E38" stroke="${INK}" stroke-width="2"/><rect x="${x+42}" y="188" width="8" height="52" fill="#8A5E38" stroke="${INK}" stroke-width="2"/>`;
+    case 'laptop': {const y=166;let sc='';
+      if(a==='face') sc=`<rect x="${x-26}" y="${y-42}" width="52" height="34" fill="#BFE3FA"/><circle cx="${x}" cy="${y-22}" r="9" fill="#EFC4A0" stroke="${INK}" stroke-width="1.5"/><path d="M${x-9} ${y-24} Q${x} ${y-36} ${x+9} ${y-24} Z" fill="#2A2230"/><path d="M${x-3} ${y-18} Q${x} ${y-15} ${x+3} ${y-18}" stroke="${INK}" stroke-width="1.3" fill="none"/><path d="M${x-14} ${y-8} Q${x} ${y-16} ${x+14} ${y-8} Z" fill="#FF5D5D"/>`;
+      else if(a==='chat') sc=`<rect x="${x-26}" y="${y-42}" width="52" height="34" fill="#F4F7FB"/><rect x="${x-22}" y="${y-39}" width="26" height="7" rx="3" fill="#DCE6FF"/><rect x="${x-4}" y="${y-29}" width="26" height="7" rx="3" fill="#2F6FD6"/><rect x="${x-22}" y="${y-19}" width="32" height="7" rx="3" fill="#DCE6FF"/>`;
+      else sc=`<rect x="${x-26}" y="${y-42}" width="52" height="34" fill="#7DF9FF" opacity=".75"/><g stroke="#13213C" stroke-width="2" opacity=".5"><line x1="${x-20}" y1="${y-35}" x2="${x+6}" y2="${y-35}"/><line x1="${x-16}" y1="${y-27}" x2="${x+14}" y2="${y-27}"/><line x1="${x-20}" y1="${y-19}" x2="${x}" y2="${y-19}"/></g>`;
+      return `<rect x="${x-30}" y="${y-46}" width="60" height="42" rx="4" fill="#2B2F45" stroke="${INK}" stroke-width="2.5"/>`+sc+`<path d="M${x-38} ${y} L${x+38} ${y} L${x+33} ${y-5} L${x-33} ${y-5} Z" fill="#AEB6C6" stroke="${INK}" stroke-width="2"/>`;}
+    case 'bins': {const B=[['#2D6CDF','可回收'],['#E04848','有害'],['#8B5A2B','湿'],['#3A3A44','干']];return B.map((b,i)=>{const bx=x-50+i*25;return `<rect x="${bx+2}" y="198" width="21" height="42" rx="3" fill="${b[0]}" stroke="${INK}" stroke-width="2"/><rect x="${bx}" y="192" width="25" height="8" rx="2" fill="${b[0]}" stroke="${INK}" stroke-width="2"/><text x="${bx+12.5}" y="224" font-size="${b[1].length>2?6:8}" fill="#fff" text-anchor="middle" font-weight="700" class="sv-zh">${b[1]}</text>`;}).join('');}
+    case 'ball': return ball(x,a,9);
+    case 'bowl': {const y=a;return `<path d="M${x-26} ${y-30} L${x+16} ${y-12}" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><path d="M${x-26} ${y-30} L${x+16} ${y-12}" stroke="#E8A23C" stroke-width="5" stroke-linecap="round"/><path d="M${x-18} ${y-16} Q${x} ${y+4} ${x+18} ${y-16} Z" fill="#fff" stroke="${INK}" stroke-width="2.2"/><ellipse cx="${x}" cy="${y-16}" rx="18" ry="4" fill="#FFF3D6" stroke="${INK}" stroke-width="2"/><path d="M${x-6} ${y-24} q-4 -6 0 -12 M${x+4} ${y-24} q-4 -6 0 -12" stroke="#9AA3B5" stroke-width="1.6" fill="none"/>`;}
+    case 'stove': return `<rect x="${x-46}" y="156" width="92" height="12" rx="2" fill="#3A3F55" stroke="${INK}" stroke-width="2"/><path d="M${x-36} 148 Q${x} 170 ${x+36} 148 Z" fill="#2B2F45" stroke="${INK}" stroke-width="2.5"/><line x1="${x+34}" y1="148" x2="${x+60}" y2="140" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><circle cx="${x-12}" cy="150" r="6" fill="#FF5D5D" stroke="${INK}" stroke-width="1.4"/><circle cx="${x+4}" cy="151" r="6" fill="#FFD84D" stroke="${INK}" stroke-width="1.4"/><circle cx="${x+16}" cy="149" r="5" fill="#FF5D5D" stroke="${INK}" stroke-width="1.4"/><path d="M${x-10} 138 q-5 -8 0 -16 M${x+8} 138 q-5 -8 0 -16" stroke="#9AA3B5" stroke-width="2" fill="none"/>`;
+    case 'board': {let s=`<rect x="${x-74}" y="196" width="148" height="8" rx="2" fill="#A8754A" stroke="${INK}" stroke-width="2.5"/><rect x="${x-66}" y="204" width="8" height="38" fill="#8A5E38" stroke="${INK}" stroke-width="2"/><rect x="${x+58}" y="204" width="8" height="38" fill="#8A5E38" stroke="${INK}" stroke-width="2"/>`;
+      s+=`<path d="M${x-44} 82 L${x-74} 92 L${x-74} 192 L${x-44} 196 Z" fill="#EAF2FF" stroke="${INK}" stroke-width="2.2"/><path d="M${x+44} 82 L${x+74} 92 L${x+74} 192 L${x+44} 196 Z" fill="#EAF2FF" stroke="${INK}" stroke-width="2.2"/><rect x="${x-44}" y="80" width="88" height="116" fill="#fff" stroke="${INK}" stroke-width="2.5"/>`;
+      s+=`<text x="${x}" y="96" font-size="8.5" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-en">Garbage Sorting</text><text x="${x}" y="106" font-size="8.5" text-anchor="middle" font-weight="700" fill="${INK}" class="sv-en">Helper</text><text x="${x}" y="118" font-size="9" text-anchor="middle" font-weight="700" fill="${HOT}" class="sv-zh">垃圾分类小助手</text>`;
+      [['#8B5A2B',34],['#2D6CDF',30],['#3A3A44',27],['#E04848',22]].forEach(([c,h],i)=>{s+=`<rect x="${x-30+i*16}" y="${186-h}" width="11" height="${h}" fill="${c}" stroke="${INK}" stroke-width="1.2"/>`;});
+      s+=`<g transform="translate(${x-60},130) scale(.9)">${pic('banana',0,0,0.7)}</g><g transform="translate(${x-60},165) scale(.9)">${pic('bottle',0,0,0.6)}</g><g transform="translate(${x+60},140) scale(.9)">${pic('tissue',0,0,0.7)}</g>`;return s;}
+    case 'medal': {const y=a;return `<path d="M${x-12} ${y-34} L${x-4} ${y-8} L${x+4} ${y-8} L${x-4} ${y-34} Z" fill="#2F6FD6" stroke="${INK}" stroke-width="2"/><path d="M${x+12} ${y-34} L${x+4} ${y-8} L${x-4} ${y-8} L${x+4} ${y-34} Z" fill="#FF5D5D" stroke="${INK}" stroke-width="2"/><circle cx="${x}" cy="${y+6}" r="18" fill="#FFC83D" stroke="${INK}" stroke-width="2.5"/><circle cx="${x}" cy="${y+6}" r="12" fill="none" stroke="#E0A21B" stroke-width="2"/>${star(x,y+6,8,'#fff')}`;}
+    case 'phone': {const y=a;return `<g transform="rotate(-12 ${x} ${y})"><rect x="${x-7}" y="${y-12}" width="14" height="24" rx="3" fill="#2B2F45" stroke="${INK}" stroke-width="2"/><rect x="${x-5}" y="${y-9}" width="10" height="17" fill="#7DF9FF"/></g>`;}
+  }
+  return '';}
+function star(x,y,r,fill){let pts=[];for(let i=0;i<10;i++){const a=(-90+i*36)*Math.PI/180,rr=i%2?r*0.45:r;pts.push(`${n1(x+rr*Math.cos(a))},${n1(y+rr*Math.sin(a))}`);}return `<polygon points="${pts.join(' ')}" fill="${fill}" stroke="${INK}" stroke-width="1.4" stroke-linejoin="round"/>`;}
+function sparkle(x,y,r=8){return `<path d="M${x} ${y-r} Q${x} ${y} ${x+r} ${y} Q${x} ${y} ${x} ${y+r} Q${x} ${y} ${x-r} ${y} Q${x} ${y} ${x} ${y-r} Z" fill="#FFF3B0" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/>`;}
+function fxDraw(f,castMap){const [k,a,b]=f;let x=a,y=b;
+  if(typeof a==='string'){const c=castMap[a];if(!c) return '';const [who,cx,,,o]=c;const fc=facing(c);
+    if(who==='bit'){x=cx;y=(o&&o.y)||108;y-=56;} else {const s=LOOK[who].s;x=cx+fc*30*s;y=242-200*s;}
+    if(k==='sweat'){ if(who==='bit'){x+= -fc*30;y+=30;} else {x=cx-fc*36*LOOK[who].s;y=242-170*LOOK[who].s;} }
+    if(k==='stars'){x=cx;}
+  }
+  switch(k){
+    case '!': return `<text x="${n1(x)}" y="${n1(y)}" font-size="34" text-anchor="middle" fill="#FF5D5D" stroke="${INK}" stroke-width="1.6" class="sv-disp">!</text>`;
+    case '?': return `<text x="${n1(x)}" y="${n1(y)}" font-size="30" text-anchor="middle" fill="#2F6FD6" stroke="${INK}" stroke-width="1.5" class="sv-disp">?</text>`;
+    case 'sweat': return `<path d="M${n1(x)} ${n1(y)} C${n1(x+6)} ${n1(y+9)} ${n1(x+6)} ${n1(y+14)} ${n1(x)} ${n1(y+14)} C${n1(x-6)} ${n1(y+14)} ${n1(x-6)} ${n1(y+9)} ${n1(x)} ${n1(y)} Z" fill="#9FD4F7" stroke="${INK}" stroke-width="1.6"/>`;
+    case 'sparkles': return sparkle(x-50,y-30,9)+sparkle(x+48,y-38,7)+sparkle(x+56,y+26,10)+sparkle(x-58,y+30,6);
+    case 'stars': return [0,120,240].map(d=>{const r=d*Math.PI/180;return star(n1(x+30*Math.cos(r)),n1(y+6+8*Math.sin(r)),7,'#FFD84D');}).join('');
+    case 'moth': return `<g transform="translate(${x},${y})"><ellipse cx="-9" cy="-2" rx="11" ry="8" fill="#C9B79C" stroke="${INK}" stroke-width="1.6" transform="rotate(-20 -9 -2)"/><ellipse cx="9" cy="-2" rx="11" ry="8" fill="#C9B79C" stroke="${INK}" stroke-width="1.6" transform="rotate(20 9 -2)"/><ellipse cx="0" cy="0" rx="3.5" ry="9" fill="#6B5A44" stroke="${INK}" stroke-width="1.4"/><path d="M-1 -8 Q-5 -16 -8 -16 M1 -8 Q5 -16 8 -16" stroke="${INK}" stroke-width="1.3" fill="none"/></g><path d="M${x-30} ${y+8} q6 -4 12 0 M${x-34} ${y+16} q6 -4 12 0" stroke="${INK}" stroke-width="1.4" fill="none"/>`;
+  }
+  return '';}
+function facing(c){const o=c[4]||{};return o.f??(c[1]<200?1:-1);}
+
+// ---------- panel ----------
+const NAMES={leo:{en:'Leo',zh:'乐乐',c:'#2F6FD6'},bit:{en:'Bit',zh:'比特',c:'#0F8576'},mia:{en:'Mia',zh:'米娅',c:'#C2416B'},wang:{en:'Ms. Wang',zh:'王老师',c:'#8C3B52'}};
+function artSVG(p){
+  const sc=SCENES[p.bg];let svg=sc.draw();const cm={};(p.cast||[]).forEach(c=>cm[c[0]]=c);
+  if(p.holo){const b=cm.bit;
+    if(b&&b[3]==='present'){const f=facing(b),o=b[4]||{},s=o.s||1.05,by=o.y||108;const ex=f<0?HOLO.x+HOLO.w:HOLO.x;const fx=b[1]+f*20*s;
+      svg+=`<polygon points="${n1(fx)},${n1(by-6)} ${ex},${HOLO.y+26} ${ex},${HOLO.y+HOLO.h-26}" fill="#7DF9FF" opacity=".28"/>`;}
+    svg+=holo(p.holo);}
+  const front=['phone','medal'];
+  (p.props||[]).filter(q=>!front.includes(q[0])).forEach(q=>svg+=prop(q));
+  (p.cast||[]).forEach(c=>{const [who,x,e,pose,o={}]=c;const f=facing(c);
+    if(who==='bit') svg+=bit(x,o.y||108,f,o.s||1.05,e,pose); else svg+=person(who,x,242,f,o.s||LOOK[who].s,e,pose);});
+  (p.props||[]).filter(q=>front.includes(q[0])).forEach(q=>svg+=prop(q));
+  (p.fx||[]).forEach(f=>svg+=fxDraw(f,cm));
+  return `<svg class="art" viewBox="0 0 400 250" aria-hidden="true" focusable="false">${svg}</svg>`;}
+function hx(o){if(!isObj(o)) return esc(o);if(MODE==='en') return `<span class="en">${esc(o.en)}</span>`;if(MODE==='zh') return `<span class="zh">${esc(o.zh)}</span>`;return `<span class="en">${esc(o.en)}</span><span class="zh">${esc(o.zh)}</span>`;}
+function bubbles(p){const cm={};(p.cast||[]).forEach(c=>cm[c[0]]=c);
+  return (p.say||[]).map(([who,en,zh])=>{const body=hx({en,zh});
+    if(who==='nar') return `<div class="cap">${body}</div>`;
+    const c=cm[who];const x=c?c[1]:200;const side=x<150?'l':x>250?'r':'c';const N=NAMES[who];
+    const name=MODE==='both'?`${N.en} · ${N.zh}`:pick(N);
+    return `<div class="b ${side}"><span class="who" style="--c:${N.c}">${esc(name)}</span>${body}</div>`;}).join('');}
+function panelHTML(p,i){return `<figure class="panel" style="--top:${SCENES[p.bg].top}"><span class="pn">${i+1}</span><div class="bubbles">${bubbles(p)}</div>${artSVG(p)}</figure>`;}
+
+
+const CAST=[
+  {k:'leo',name:NAMES.leo,bio:T("13, lives in Shanghai. Loves football and video games. Curious about everything.","13岁，住在上海。爱踢足球、爱打游戏，对什么都好奇。")},
+  {k:'bit',name:NAMES.bit,bio:T("A pocket-sized robot who lives in Leo's laptop. Named after the smallest unit of information.","住在乐乐笔记本电脑里的口袋机器人，名字来自最小的信息单位。")},
+  {k:'mia',name:NAMES.mia,bio:T("Leo's classmate. Sharp and skeptical. Always asks: how do you know?","乐乐的同学。聪明、爱质疑，总爱问：你怎么知道？")},
+];
+const UI={
+  tag:T("13 comic episodes for curious 13-year-olds: from zeros and ones to AI agents.","写给13岁好奇少年的13集漫画：从0和1一路讲到AI智能体。"),
+  cast:T("Meet the cast","主要角色"),eps:T("Episodes","全部剧集"),terms:T("Key words","关键词"),tryIt:T("Try it","动手试试"),
+  prev:T("Previous","上一集"),next:T("Next","下一集"),
+  note:T("Parents: read one episode a week together, then do the activity.","家长小贴士：每周一起读一集，再完成这个小活动。"),
+  foot:T("Leo, Bit and Mia are original characters. Fun facts checked in 2026.","乐乐、比特和米娅均为原创角色。文中知识点核对于2026年。"),
+};
+let CUR=0;
+try{const m=localStorage.getItem('lb-mode');if(m==='en'||m==='zh'||m==='both')MODE=m;const e=parseInt(localStorage.getItem('lb-ep'),10);if(e>=0&&e<EPISODES.length)CUR=e;}catch(e){}
+const hm=/^#ep(\d+)$/.exec(location.hash);if(hm){const e=parseInt(hm[1],10)-1;if(e>=0&&e<EPISODES.length)CUR=e;}
+
+function portrait(k){if(k==='bit') return `<svg viewBox="-56 -60 112 128" aria-hidden="true">${bit(0,0,1,1.25,'happy','wave')}</svg>`;
+  return `<svg viewBox="-62 -212 124 220" aria-hidden="true">${person(k,0,0,1,1,k==='mia'?'smirk':'happy',k==='leo'?'wave':'idle')}</svg>`;}
+function epNo(i){return MODE==='zh'?`<span class="zh">第${i+1}集</span>`:MODE==='en'?`<span class="en">EPISODE ${i+1}</span>`:`<span class="en">EPISODE ${i+1}</span><span class="zh">第${i+1}集</span>`;}
+function render(){
+  const app=document.getElementById('app');document.documentElement.lang=MODE==='zh'?'zh-CN':'en';
+  document.body.className='mode-'+MODE;
+  const E=EPISODES[CUR];
+  const langs=[['both','EN + 中文'],['en','English'],['zh','中文']].map(([m,l])=>`<button type="button" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('');
+  let h=`<header class="mast"><div><h1 class="logo">Leo &amp; Bit</h1><p class="logo-zh">乐乐和比特的AI大冒险</p><p class="tag">${hx(UI.tag)}</p><div class="langs" role="group" aria-label="Language">${langs}</div></div>
+    <svg class="mast-art" viewBox="0 -215 260 225" aria-hidden="true">${person('leo',80,0,1,1,'grin','point')}${bit(200,-120,-1,1.3,'happy','wave')}</svg></header>`;
+  h+=`<h2 class="sh">${hx(UI.cast)}</h2><div class="cast">${CAST.map(c=>`<div class="cc" style="--c:${c.name.c}">${portrait(c.k)}<div><h3>${hx(c.name)}</h3><p>${hx(c.bio)}</p></div></div>`).join('')}</div>`;
+  h+=`<h2 class="sh">${hx(UI.eps)}</h2><nav class="eps" aria-label="Episodes">${EPISODES.map((e,i)=>`<button type="button" class="ep-btn" data-ep="${i}" aria-current="${i===CUR}"><span class="num">${i+1}</span><span class="tt">${hx(e.t)}</span></button>`).join('')}</nav>`;
+  h+=`<section id="episode"><div class="ep-head"><span class="ep-no">${epNo(CUR)}</span><h2 class="ep-title">${hx(E.t)}</h2><span class="ep-topic">${hx(E.topic)}</span></div>`;
+  h+=`<div class="grid">${E.panels.map(panelHTML).join('')}</div>`;
+  h+=`<div class="after"><div class="box"><h3>${hx(UI.terms)}</h3><dl class="terms">${E.terms.map(t=>`<div class="term"><dt>${hx({en:t[0],zh:t[1]})}</dt><dd>${hx({en:t[2],zh:t[3]})}</dd></div>`).join('')}</dl></div>
+    <div class="box try"><h3>${hx(UI.tryIt)}</h3><p>${hx(E.tryIt)}</p><div class="note">${hx(UI.note)}</div></div></div>`;
+  const pv=EPISODES[CUR-1],nx=EPISODES[CUR+1];
+  h+=`<div class="nav"><button type="button" data-go="${CUR-1}" ${pv?'':'disabled'}><small>← ${hx(UI.prev)}</small>${pv?hx(pv.t):''}</button><button type="button" data-go="${CUR+1}" ${nx?'':'disabled'}><small>${hx(UI.next)} →</small>${nx?hx(nx.t):''}</button></div></section>`;
+  h+=`<p class="foot">${hx(UI.foot)}</p>`;
+  app.innerHTML=h;
+}
+function go(i,scroll){CUR=i;try{localStorage.setItem('lb-ep',String(i));}catch(e){}
+  try{history.replaceState(null,'','#ep'+(i+1));}catch(e){}
+  render();if(scroll){const el=document.getElementById('episode');if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}}
+document.addEventListener('click',ev=>{const t=ev.target.closest('button');if(!t)return;
+  if(t.dataset.mode){MODE=t.dataset.mode;try{localStorage.setItem('lb-mode',MODE);}catch(e){}render();}
+  else if(t.dataset.ep!==undefined) go(+t.dataset.ep,true);
+  else if(t.dataset.go!==undefined) go(+t.dataset.go,true);});
+render();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>render());
+</script>
+</body>
+</html>
