@@ -1,0 +1,30 @@
+// chem · episode 4 (script marker C4)
+LBC.registerEpisode('chem',4,
+{t:T("Too Small to See","看不见的微粒"),topic:T("Atoms and molecules","物质的微观构成"),
+panels:[
+{bg:'kitchen',props:[['stove',300]],cast:[['leo',120,'surprised','idle'],['bit',320,'talk','idle',{y:80}]],
+ say:[['nar',"Leo's grandma is making pan-fried buns.","乐乐的奶奶在煎生煎包。"],
+      ['leo',"I could smell the buns from my bedroom! How did the smell get there?","我在卧室都闻到生煎包的香味了！香味是怎么跑过来的？"],
+      ['bit',"Tiny particles called molecules flew through the air to your nose.","叫作“分子”的微小粒子穿过空气，飞进了你的鼻子。"]]},
+{bg:'kitchen',holo:{t:'beakers',title:T("Particles never stop moving","分子在不停运动"),items:[{l:T("Cold water","冷水"),spread:0.35},{l:T("Hot water","热水"),spread:1}],foot:T("A drop of ink spreads faster in hot water","墨水在热水中扩散得更快")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Molecules are always moving. In hot water they move faster, so the ink spreads faster.","分子永不停歇地运动。热水中分子运动更快，所以墨水扩散得更快。"]]},
+{bg:'kitchen',holo:{t:'big',title:T("How small?","有多小？"),rows:[{s:T("One drop of water holds about","一滴水里大约有"),size:12},{s:'1.7 × 10²¹',size:20,mono:true,fill:'#C2416B'},{s:T("water molecules!","个水分子！"),size:12}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"That number is too big to imagine!","这个数大得没法想象！"]]},
+{bg:'class',holo:{t:'mol',items:['O2','CO2','H2O'],title:T("Molecules are made of atoms","分子由原子构成")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Molecules are built from even smaller atoms, like building blocks. An oxygen molecule is two oxygen atoms joined together.","分子由更小的原子构成，就像搭积木。一个氧分子由两个氧原子结合而成。"]]},
+{bg:'class',holo:{t:'elements',title:T("Elements","元素")},
+ cast:[['mia',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"There are 118 known elements. Everything around you is built from them.","目前已知的元素有118种，你身边的一切都由它们构成。"]]},
+{bg:'kitchen',cast:[['leo',100,'grin','point'],['mia',210,'smirk','idle'],['bit',322,'wink','idle',{y:96}]],
+ say:[['leo',"So the buns, the plate and me are all made of atoms!","所以生煎包、盘子，还有我，全都是原子构成的！"],
+      ['mia',"Mostly oxygen, carbon, hydrogen and nitrogen, in your case.","你嘛，主要是氧、碳、氢、氮。"]]}
+],
+terms:[["Molecule","分子","A tiny particle made of atoms joined together, like H₂O.","由原子结合成的微小粒子，比如H₂O。"],
+ ["Atom","原子","The basic building block of every substance.","构成物质的基本单元。"],
+ ["Element","元素","One kind of atom, such as oxygen (O) or carbon (C).","同一类原子的总称，比如氧（O）、碳（C）。"],
+ ["Diffusion","扩散","Particles spreading out by themselves because they keep moving.","由于微粒不停运动而自发散开的现象。"]],
+tryIt:T("With an adult, add one drop of food colouring to a glass of cold water and one to a glass of warm water at the same time. Which spreads faster? Draw what you see every minute.","在大人陪同下，同时往一杯冷水和一杯温水里各滴一滴食用色素。哪一杯扩散得更快？每分钟画一次你看到的样子。")}
+);

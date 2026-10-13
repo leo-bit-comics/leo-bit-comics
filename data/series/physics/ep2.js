@@ -1,0 +1,32 @@
+// physics · episode 2 (script marker P2)
+LBC.registerEpisode('physics',2,
+{t:T("Good Vibrations","声音的秘密"),topic:T("Sound","声"),
+panels:[
+{bg:'class',props:[['band',130,160]],cast:[['mia',85,'happy','hold'],['leo',200,'surprised','idle'],['bit',322,'talk','idle']],
+ say:[['nar',"Mia stretches a rubber band and plucks it.","米娅拉紧一根橡皮筋，用手指拨了一下。"],
+      ['mia',"Twang! I can see it shaking.","嘣！我能看到它在抖动。"],
+      ['bit',"All sound comes from vibration.","所有声音都来自振动。"]]},
+{bg:'class',holo:{t:'flow',title:T("How sound travels","声音怎么传播"),steps:[{i:'speaker',l:T("Something vibrates","物体振动")},{i:'wave',l:T("Air passes it on","空气传递振动")},{i:'ear',l:T("Your ear hears it","耳朵听到")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The vibration pushes on the air, the air pushes on more air, all the way to your ear.","振动推动空气，空气一层层往前传，一直传到你的耳朵。"]]},
+{bg:'class',holo:{t:'big',title:T("No air, no sound","真空不能传声"),rows:[{s:T("Sound needs something to travel through","声音需要介质才能传播"),size:12},{s:T("Air · water · wood · metal","空气 · 水 · 木头 · 金属"),size:12},{s:T("In space: silence","太空中：一片寂静"),size:15,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"So the loud spaceship noises in movies aren't real?","所以电影里飞船在太空中轰隆隆的声音是假的？"],
+      ['bit',"Right! In space there's no air to carry sound.","没错！太空里没有空气来传播声音。"]]},
+{bg:'class',holo:{t:'wave',title:T("Pitch and loudness","音调和响度"),rows:[{l:T("High pitch: fast vibration","音调高：振动快"),f:6,a:0.5},{l:T("Low pitch: slow vibration","音调低：振动慢"),f:2,a:0.5},{l:T("Loud: big vibration","响度大：振幅大"),f:3,a:1,c:'#FF5D5D'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Faster vibrations sound higher. Bigger vibrations sound louder.","振动越快，音调越高；振幅越大，声音越响。"]]},
+{bg:'class',holo:{t:'big',title:T("Count the thunder","数雷声"),rows:[{s:T("Sound in air ≈ 340 m/s","声音在空气中 ≈ 每秒340米"),size:12},{s:T("Light arrives almost instantly","光几乎瞬间到达"),size:12},{s:T("3 seconds ≈ 1 km away","间隔3秒 ≈ 1千米远"),size:15,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"See the lightning, then count the seconds until the thunder. Every 3 seconds is about 1 kilometre.","看到闪电后数秒，直到听到雷声。每3秒大约代表1千米。"],
+      ['bit',"And if you can hear thunder, go indoors!","听到雷声就要进屋躲避！"]]},
+{bg:'class',cast:[['mia',85,'smirk','point'],['leo',200,'surprised','idle'],['bit',322,'happy','idle']],
+ say:[['mia',"Fun fact: sound travels about 4 times faster in water than in air.","冷知识：声音在水中的传播速度大约是空气中的4倍。"],
+      ['leo',"So whales can call to each other across huge distances!","所以鲸鱼能隔着很远的距离互相呼唤！"]]}
+],
+terms:[["Vibration","振动","Moving quickly back and forth. All sound starts with it.","快速地来回运动，一切声音都由它产生。"],
+ ["Medium","介质","The material sound travels through: air, water or solids.","传播声音的物质：空气、水或固体。"],
+ ["Pitch","音调","How high or low a sound is. Faster vibration means higher pitch.","声音的高低，振动越快音调越高。"],
+ ["Loudness","响度","How strong a sound is. Bigger vibration means louder.","声音的强弱，振幅越大越响。"]],
+tryIt:T("Fill some glasses with different amounts of water and tap them gently with a spoon. Which has the highest pitch? Can you explain why?","在几个玻璃杯里装不同量的水，用勺子轻轻敲。哪个音调最高？你能解释原因吗？")}
+);

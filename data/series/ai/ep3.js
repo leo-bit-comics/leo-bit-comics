@@ -1,0 +1,31 @@
+// ai · episode 3 (script marker 3)
+LBC.registerEpisode('ai',3,
+{t:T("Step by Step","一步一步来"),topic:T("Algorithms","算法"),
+panels:[
+{bg:'kitchen',props:[['stove',300]],cast:[['leo',150,'happy','hold'],['bit',330,'talk','wave',{y:80}]],
+ say:[['nar',"Leo is cooking tomato and egg stir-fry.","乐乐正在做番茄炒蛋。"],
+      ['bit',"A recipe is an algorithm: clear steps, in order, that solve a problem.","菜谱就是一种算法：按顺序排好的清晰步骤，用来解决一个问题。"]]},
+{bg:'kitchen',holo:{t:'list',num:true,size:10,title:T("Algorithm: tomato & egg","算法：番茄炒蛋"),items:[{l:T("Beat 3 eggs","打散3个鸡蛋")},{l:T("Cut 2 tomatoes","切好2个番茄")},{l:T("Heat the oil","锅里热油")},{l:T("Scramble eggs, set aside","炒熟鸡蛋，盛出")},{l:T("Cook tomatoes, add eggs","炒番茄，倒回鸡蛋")},{l:T("Add salt. Done!","加盐，出锅！")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['leo',"What if I skip step 3?","要是我跳过第3步呢？"],
+      ['bit',"Then you get burnt eggs. Order matters!","那你就会得到一锅焦鸡蛋。顺序很重要！"]]},
+{bg:'class',cast:[['leo',80,'think','think'],['mia',195,'smirk','idle'],['bit',320,'talk','wave']],
+ say:[['bit',"I'm thinking of a number from 1 to 100. I'll tell you higher or lower.","我心里想了一个1到100之间的数字。我会告诉你大了还是小了。"],
+      ['leo',"Um... 3? 4? 5?","嗯……3？4？5？"],
+      ['mia',"Too slow! Guess 50 first, then cut the range in half every time.","太慢了！先猜50，然后每次把范围砍掉一半。"]]},
+{bg:'class',holo:{t:'numline',title:T("Binary search","二分查找"),rows:[[1,100,50,'h'],[51,100,75,'l'],[51,74,62,'h'],[63,74,68,'ok']]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Mia found binary search! You never need more than 7 guesses for 1 to 100.","米娅发现了二分查找！从1到100，最多7次就能猜中。"]]},
+{bg:'class',holo:{t:'compare',title:T("Find 1 number among 1,000,000","在100万个数里找一个"),items:[{l:T("One by one: up to 1,000,000 steps","逐个查找：最多100万步"),v:1000000,txt:'1,000,000',c:'#FF5D5D'},{l:T("Binary search: 20 steps","二分查找：20步"),v:20,txt:'20',c:'#22B8A7'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A good algorithm is correct AND fast. In a million sorted numbers, binary search needs only 20 steps.","好的算法既要正确，也要快。在100万个排好序的数字里，二分查找只需要20步。"],
+      ['mia',"Checking one by one could take a million!","一个一个找，可能要找100万次！"]]},
+{bg:'city',cast:[['leo',115,'happy','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So map apps finding the fastest route and video apps choosing what to show me... those are algorithms too?","那地图软件找最快的路线、视频软件决定给我推荐什么……也都是算法？"],
+      ['bit',"Yep! Algorithms are everywhere.","没错！算法无处不在。"]]}
+],
+terms:[["Algorithm","算法","A clear, step-by-step method to solve a problem.","解决问题的清晰、分步骤的方法。"],
+ ["Binary search","二分查找","Find something in a sorted list by throwing away half the list each time.","在排好序的列表里，每次排除一半来查找。"],
+ ["Efficiency","效率","How many steps, or how much time, an algorithm needs.","一个算法需要多少步骤或多少时间。"]],
+tryIt:T("Write the 'brushing teeth' algorithm so exactly that a robot could follow it. Then ask someone to act it out word for word!","把“刷牙”写成一个算法，要精确到机器人也能照做。然后请家人严格按字面意思表演一遍！")}
+);

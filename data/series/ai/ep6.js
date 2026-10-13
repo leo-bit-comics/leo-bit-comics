@@ -1,0 +1,32 @@
+// ai · episode 6 (script marker 6)
+LBC.registerEpisode('ai',6,
+{t:T("Data Everywhere","数据无处不在"),topic:T("Data","数据"),
+panels:[
+{bg:'field',props:[['ball',178,232]],cast:[['leo',120,'grin','cheer'],['bit',300,'talk','wave',{y:96}]],
+ say:[['nar',"Leo writes down every shot at football practice.","足球训练时，乐乐记下了每一次射门。"],
+      ['bit',"Every shot you take is data!","你的每一次射门都是数据！"],
+      ['leo',"Data? I thought it was just football.","数据？我还以为只是踢球呢。"]]},
+{bg:'field',holo:{t:'table',title:T("Data = recorded facts","数据 = 记录下来的事实"),head:[T("Day","日期"),T("Left foot","左脚"),T("Right foot","右脚")],rows:[[T("Mon","周一"),'2','1'],[T("Tue","周二"),'3','1'],[T("Wed","周三"),'2','2'],[T("Thu","周四"),'4','1']],note:T("Goals scored","进球数")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Data is facts we record. Put it in rows and columns, and it's easy to study.","数据就是我们记录下来的事实。把它排成行和列，就很方便研究了。"]]},
+{bg:'field',holo:{t:'barchart',title:T("Total goals","进球总数"),items:[{l:T("Left","左脚"),v:11},{l:T("Right","右脚"),v:5}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'happy','present']],fx:[['!','leo']],
+ say:[['leo',"Wait... I score more with my LEFT foot?!","等等……我用左脚进的球更多？！"],
+      ['bit',"Data shows patterns you can't see by feel.","数据能揭示你凭感觉看不出来的规律。"]]},
+{bg:'class',cast:[['mia',85,'think','idle'],['leo',200,'surprised','idle'],['bit',322,'talk','wave']],
+ say:[['mia',"Apps collect data about us too: what we watch, what we buy, where we go.","App也在收集我们的数据：看了什么、买了什么、去了哪里。"],
+      ['bit',"Right. Your data is valuable, so privacy matters. Share as little as you need to.","对。你的数据很有价值，所以隐私很重要。能少分享就少分享。"]]},
+{bg:'field',cast:[['leo',110,'worried','idle'],['bit',295,'talk','idle']],fx:[['sweat','leo']],
+ say:[['bit',"Careful: garbage in, garbage out. Did you record every practice?","小心：输入的是垃圾，输出的也是垃圾。你每次训练都记了吗？"],
+      ['leo',"Um... only the days I played well.","呃……只记了踢得好的那几天。"],
+      ['bit',"Then your data is biased. It only tells part of the story.","那你的数据就有偏差了，它只讲了一半的故事。"]]},
+{bg:'room-night',holo:{t:'flow',title:T("Data feeds AI","数据是AI的食物"),steps:[{i:'data',l:T("Data","数据")},{i:'brain',l:T("AI learns","AI学习")},{i:'check',l:T("Predictions","做出预测")}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Data is the food of AI. Next time: what AI really is!","数据是AI的“食物”。下一课：AI到底是什么！"]]}
+],
+terms:[["Data","数据","Recorded facts: numbers, words, images, sounds.","记录下来的事实：数字、文字、图像、声音。"],
+ ["Dataset","数据集","A collection of data, often a table of rows and columns.","一组数据，常常是一张有行有列的表。"],
+ ["Privacy","隐私","Your right to control information about yourself.","你掌控自己个人信息的权利。"],
+ ["Bias","偏差","When data leans one way and misses part of the truth.","数据偏向一边，漏掉了部分真相。"]],
+tryIt:T("Track one thing for 7 days (sleep, steps or minutes of reading). Draw a bar chart. What pattern do you see?","连续7天记录一件事（睡眠、步数或阅读分钟数），画一张柱状图。你发现了什么规律？")}
+);

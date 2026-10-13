@@ -1,0 +1,32 @@
+// physics · episode 3 (script marker P3)
+LBC.registerEpisode('physics',3,
+{t:T("Bouncing and Bending Light","光的反射与折射"),topic:T("Light","光"),
+panels:[
+{bg:'city',cast:[['leo',115,'think','point'],['bit',290,'talk','idle']],
+ say:[['leo',"Why do shadows have such sharp edges?","为什么影子的边缘这么清楚？"],
+      ['bit',"Because light travels in straight lines!","因为光沿直线传播！"]]},
+{bg:'room',holo:{t:'light',kind:'reflect',title:T("Reflection","光的反射"),foot:T("Angle in = angle out","反射角 = 入射角")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When light hits a mirror, it bounces off at the same angle it came in.","光照到镜面上，会以相同的角度反射出去。"],
+      ['leo',"Like a football bouncing off a wall!","就像足球撞墙弹回来！"]]},
+{bg:'kitchen',props:[['glass',205]],cast:[['mia',95,'surprised','idle'],['bit',310,'happy','idle',{y:96}]],
+ say:[['nar',"Mia puts a pencil in a glass of water.","米娅把一支铅笔放进一杯水里。"],
+      ['mia',"The pencil looks broken!","铅笔看起来断了！"]]},
+{bg:'kitchen',holo:{t:'light',kind:'refract',title:T("Refraction","光的折射")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Light changes direction when it passes from water into air. That bending is called refraction, so things under water look shallower than they are.","光从水中进入空气时会改变方向，这叫折射。所以水里的东西看起来比实际浅。"]]},
+{bg:'class',holo:{t:'light',kind:'lens',title:T("Lenses","透镜")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A convex lens bends light rays together to a point. Cameras, glasses and your own eyes use lenses.","凸透镜能把光线会聚到一点。照相机、眼镜，还有你的眼睛里都有透镜。"],
+      ['leo',"Cool! But I must never look at the Sun through one, right?","酷！不过绝对不能用透镜看太阳，对吧？"],
+      ['bit',"Never! It can badly hurt your eyes.","绝对不能！会严重伤害眼睛。"]]},
+{bg:'class',cast:[['mia',85,'grin','point'],['leo',200,'happy','idle'],['bit',322,'talk','idle']],
+ say:[['mia',"Mirrors bounce light. Water and lenses bend it.","镜子反射光，水和透镜让光弯折。"],
+      ['bit',"Next time: where do the colours of a rainbow come from?","下一课：彩虹的颜色从哪里来？"]]}
+],
+terms:[["Straight-line travel","光沿直线传播","Light goes in straight lines, which is why shadows form.","光沿直线传播，所以会形成影子。"],
+ ["Reflection","反射","Light bouncing off a surface: angle in = angle out.","光在表面弹回：反射角等于入射角。"],
+ ["Refraction","折射","Light bending as it passes from one material into another.","光从一种物质进入另一种物质时方向发生偏折。"],
+ ["Lens","透镜","Curved glass that bends light to focus it.","能让光会聚或发散的弧面镜片。"]],
+tryIt:T("Put a coin in an empty cup and step back until it just disappears behind the rim. Ask someone to pour in water slowly. Why does the coin reappear?","把一枚硬币放进空杯里，后退到刚好被杯沿挡住看不见。请家人慢慢往杯里倒水。硬币为什么又出现了？")}
+);

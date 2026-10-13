@@ -1,0 +1,30 @@
+// physics · episode 5 (script marker P5)
+LBC.registerEpisode('physics',5,
+{t:T("How Fast?","有多快？"),topic:T("Motion and speed","机械运动与速度"),
+panels:[
+{bg:'field',props:[['phone',174,156]],cast:[['leo',100,'grin','cheer'],['mia',220,'happy','hold'],['bit',330,'talk','idle',{y:96}]],
+ say:[['nar',"Sports day practice. Mia times Leo's 100-metre run.","运动会训练，米娅给乐乐的100米跑计时。"],
+      ['mia',"16 seconds!","16秒！"],
+      ['leo',"Is that fast?","这算快吗？"]]},
+{bg:'field',holo:{t:'big',title:T("Speed = distance ÷ time","速度 = 路程 ÷ 时间"),rows:[{s:'v = s / t',size:20,mono:true},{s:'100 m ÷ 16 s',size:14,mono:true},{s:'≈ 6.3 m/s',size:18,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Speed tells you how far you go each second. You ran about 6.3 metres every second!","速度表示每秒走多远。你每秒大约跑6.3米！"]]},
+{bg:'field',holo:{t:'list',size:10,title:T("Speeds compared","速度大比拼"),items:[{i:'user',l:T("Walking: about 1.4 m/s","步行：约每秒1.4米")},{i:'bike',l:T("Cycling: about 5 m/s","骑车：约每秒5米")},{i:'train',l:T("High-speed train: up to about 97 m/s","高铁：最高约每秒97米")},{i:'speaker',l:T("Sound: about 340 m/s","声音：约每秒340米")},{i:'bulb',l:T("Light: 300,000 km per second!","光：每秒30万千米！")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"Light is SO much faster than everything else!","光比别的东西都快得多！"]]},
+{bg:'city',holo:{t:'big',title:T("It depends who's watching","运动是相对的"),rows:[{s:T("On the metro, your friend seems still","坐在地铁上，同伴好像没动"),size:12},{s:T("From the platform, you both zoom past","站台上的人看，你们都在飞驰"),size:12},{s:T("Motion depends on the reference point","运动和静止取决于参照物"),size:12,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So am I moving or not?","那我到底动没动？"],
+      ['bit',"Both! It depends on what you compare with.","都对！取决于你拿什么作比较。"]]},
+{bg:'class',holo:{t:'graph',title:T("Distance-time graph","路程-时间图像"),xl:T("time","时间"),yl:T("distance","路程"),lines:[{x:0.62,y:0.95,c:'#2F6FD6',l:T("Leo","乐乐")},{x:0.95,y:0.6,c:'#C2416B',l:T("Mia walking","米娅步行")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"On a distance-time graph, a steeper line means a faster speed. Coordinates from math class, used in physics!","在路程-时间图像中，线越陡，速度越快。数学课学的坐标，用在了物理上！"]]},
+{bg:'field',cast:[['leo',115,'determined','point'],['bit',290,'happy','wave']],
+ say:[['leo',"Next week I'll beat 16 seconds!","下周我要跑进16秒！"],
+      ['bit',"And we'll measure it. That's science!","我们来测量记录。这就是科学！"]]}
+],
+terms:[["Speed","速度","Distance travelled per unit of time: v = s / t.","单位时间内通过的路程：v = s / t。"],
+ ["Metres per second","米/秒","The SI unit of speed (m/s).","速度的国际单位（m/s）。"],
+ ["Reference point","参照物","What you compare against to decide whether something is moving.","判断物体是否运动时选作标准的物体。"]],
+tryIt:T("Time how long it takes you to walk 50 metres, then work out your speed in m/s. Compare walking, jogging and skipping!","测出你步行50米的时间，算出速度（米/秒）。比较一下走、慢跑和跳着走！")}
+);

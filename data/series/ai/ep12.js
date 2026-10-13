@@ -1,0 +1,32 @@
+// ai · episode 12 (script marker 12)
+LBC.registerEpisode('ai',12,
+{t:T("AI That Takes Action","会动手的AI"),topic:T("AI agents","智能体"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'wink','wave']],
+ say:[['leo',"Chatbots only talk. Could an AI actually DO things?","聊天机器人只会说话。AI能真的动手做事吗？"],
+      ['bit',"Yes! That's called an AI agent.","能！那叫AI智能体。"]]},
+{bg:'room',holo:{t:'hub',title:T("Agent = brain + tools + loop","智能体 = 大脑 + 工具 + 循环"),tools:[{i:'search',l:T("Search","搜索")},{i:'calc',l:T("Calculator","计算器")},{i:'cal',l:T("Calendar","日历")},{i:'code',l:T("Run code","运行代码")},{i:'map',l:T("Maps","地图")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"An agent is an LLM that can use tools, and keeps working in a loop until the job is done.","智能体就是会使用工具的大模型，它会循环工作，直到把任务完成。"]]},
+{bg:'room',holo:{t:'cycle',title:T("The agent loop","智能体循环"),items:[{i:'brain',l:T("Think","思考")},{i:'gear',l:T("Act","行动")},{i:'eye',l:T("Observe","观察")}],center:T("until done","直到完成")},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['leo',"Test time: plan our class trip to the Shanghai Science and Technology Museum!","考考你：帮我们班规划去上海科技馆的秋游！"],
+      ['bit',"Think, act, look at the result, repeat. Watch!","思考、行动、观察结果，再重复。看好了！"]]},
+{bg:'class',holo:{t:'list',title:T("Agent at work","智能体在工作"),items:[{i:'search',l:T("Search opening hours","搜索开放时间")},{i:'map',l:T("Metro Line 2 to the museum","地铁2号线到科技馆站")},{i:'calc',l:T("40 students × ticket price","40名学生 × 票价")},{i:'cal',l:T("Draft the day's schedule","生成当天日程")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'happy','present']],
+ say:[['mia',"It breaks one big job into small steps and uses a tool for each!","它把一个大任务拆成小步骤，每一步用一个工具！"]]},
+{bg:'room',holo:{t:'dialog',title:T("Human approval","人工确认"),head:T("The agent wants to:","智能体请求："),msg:T("Pay ¥1,200 for 40 tickets","支付1200元购买40张门票"),yes:T("Approve","批准"),no:T("Cancel","取消")},
+ cast:[['leo',54,'worried','think'],['bit',356,'talk','present']],
+ say:[['bit',"Agents can take real actions: send messages, book tickets, spend money. So a human should approve the important steps.","智能体能做真实的事：发消息、订票、花钱。所以重要的步骤要由人来批准。"],
+      ['leo',"Like asking Mom before buying something online.","就像网上买东西前要先问妈妈。"]]},
+{bg:'room-night',cast:[['leo',120,'think','think'],['bit',285,'wink','wave']],
+ say:[['bit',"Some agents can even write and test computer code. Engineers work with them every day.","有些智能体还会编写和测试代码，工程师每天都在和它们一起工作。"],
+      ['leo',"Hey Bit... are YOU an agent?","喂，比特……你是不是也是个智能体？"],
+      ['bit',"What do you think?","你说呢？"]]}
+],
+terms:[["AI agent","智能体","An AI that plans and uses tools to finish tasks step by step.","会规划并使用工具、一步步完成任务的AI。"],
+ ["Tool","工具","Something an agent can use: search, a calculator, code, apps.","智能体能使用的东西：搜索、计算器、代码、各种应用。"],
+ ["Agent loop","智能体循环","Think → act → observe, repeated until the job is done.","思考 → 行动 → 观察，一直重复到任务完成。"],
+ ["Human approval","人工确认","A person checks important actions before they happen.","重要操作执行前由人来确认。"]],
+tryIt:T("Be the agent: plan a family weekend outing using only 'tools' (a map app, a weather app, a calculator). Write down each think → act → observe step.","当一回智能体：只用“工具”（地图App、天气App、计算器）规划一次家庭周末出游。写下每一步的思考 → 行动 → 观察。")}
+);

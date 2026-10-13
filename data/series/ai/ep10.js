@@ -1,0 +1,31 @@
+// ai · episode 10 (script marker 10)
+LBC.registerEpisode('ai',10,
+{t:T("The Word Predictor","猜词高手"),topic:T("Large language models (LLMs)","大语言模型"),
+panels:[
+{bg:'room',props:[['desk',282],['laptop',282,'chat']],cast:[['leo',130,'surprised','idle'],['bit',345,'talk','idle',{y:82}]],
+ say:[['leo',"This chatbot writes poems, explains physics, even tells jokes. How?!","这个聊天机器人会写诗、讲物理，还会讲笑话。怎么做到的？！"],
+      ['bit',"It's a Large Language Model, an LLM.","它是一个大语言模型，简称LLM。"]]},
+{bg:'room',holo:{t:'tokens',title:T("Text → tokens → numbers","文字 → 词元 → 数字"),rows:[[['Shang','9227'],['hai','6151'],[' is','374'],[' great','2294']],[['我','35946'],['爱','76505'],['上海','52072']]],foot:T("(example numbers)","（数字仅为示例）")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"First, text is chopped into tokens: words or pieces of words. Each token becomes a number.","第一步：把文字切成“词元”，也就是词或词的一部分。每个词元都变成一个数字。"]]},
+{bg:'room',holo:{t:'probs',title:T("Predict the next token","预测下一个词元"),prompt:T("The cat sat on the …","小猫坐在……"),opts:[[T("mat","垫子上"),62],[T("sofa","沙发上"),21],[T("floor","地板上"),12],[T("moon","月亮上"),1]]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"An LLM's core skill: predict the next token. Then the next. Then the next.","大语言模型的核心本领：预测下一个词元。然后再下一个，再下一个。"]]},
+{bg:'room',holo:{t:'flow',dir:'v',title:T("Pre-training","预训练"),steps:[{i:'book',l:T("Read huge amounts of text","阅读海量文字")},{i:'brain',l:T("Practise predicting, trillions of times","练习预测，上万亿次")},{i:'chat',l:T("Learn patterns of language and facts","学会语言和知识的规律")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"It learned by reading enormous amounts of text (books, websites, code) and practising prediction over and over.","它的学习方式是：阅读海量文字（书、网页、代码），一遍又一遍地练习预测。"],
+      ['leo',"That's more than every library in Shanghai!","那比上海所有图书馆的书都多！"]]},
+{bg:'class',holo:{t:'vs',title:T("Learning from feedback","从反馈中学习"),a:{l:T("Answer A: rude and made-up","回答A：没礼貌，还瞎编"),ok:false},b:{l:T("Answer B: kind, clear and honest","回答B：友善、清楚、诚实"),ok:true}},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Then people rate its answers, and it learns which kind are better: helpful, honest and safe.","然后，人们给它的回答打分，它就学会哪种回答更好：有用、诚实、安全。"],
+      ['mia',"So it's predicting words... but it seems to understand.","所以它是在预测词语……但看起来好像真的懂。"]]},
+{bg:'class',cast:[['mia',85,'think','idle'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"To predict well, it had to learn a lot about the world. Scientists still debate how much it really 'understands'.","为了预测得准，它不得不学到很多关于世界的知识。它到底“懂”多少，科学家们还在争论。"],
+      ['leo',"And that's why answers appear word by word!","怪不得回答是一个字一个字冒出来的！"]]}
+],
+terms:[["LLM (large language model)","大语言模型（LLM）","A huge neural network trained on text to predict the next token.","用海量文字训练、用来预测下一个词元的巨大神经网络。"],
+ ["Token","词元","A word or piece of a word that the model reads and writes.","模型读写的基本单位：一个词或词的一部分。"],
+ ["Prompt","提示词","What you type to the model.","你输入给模型的内容。"],
+ ["Pre-training & feedback","预训练与反馈","First learning from lots of text, then learning from people's ratings.","先从海量文本中学习，再从人们的评分中学习。"]],
+tryIt:T("Play 'human LLM': one person says a word, the next adds the most likely next word, and so on. Then ask a chatbot the same question twice. Are the answers identical?","玩“人肉大语言模型”：一个人说一个词，下一个人接上最可能的下一个词，依次接龙。再问聊天机器人同一个问题两次，答案一模一样吗？")}
+);

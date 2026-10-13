@@ -1,0 +1,32 @@
+// math · episode 6 (script marker M6)
+LBC.registerEpisode('math',6,
+{t:T("Angles and Triangles","角与三角形"),topic:T("Parallel lines and triangles","相交线、平行线与三角形"),
+panels:[
+{bg:'city',cast:[['leo',115,'happy','point'],['bit',290,'talk','idle']],
+ say:[['leo',"Railway tracks, zebra crossings, the railings by the river... parallel lines are everywhere!","铁轨、斑马线、江边的栏杆……平行线到处都是！"],
+      ['bit',"Parallel lines never meet, however far they go.","平行线无论延伸多远都不会相交。"]]},
+{bg:'class',holo:{t:'angles',title:T("A line crossing parallel lines","截线与平行线"),foot:T("∠1 = ∠2 (corresponding angles)","∠1 = ∠2（同位角相等）")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When a line crosses two parallel lines, the angles in matching positions are equal. These are corresponding angles.","一条直线截两条平行线，位置相同的角相等，这叫同位角。"]]},
+{bg:'class',props:[['ptri',126,159]],cast:[['mia',80,'happy','hold'],['leo',200,'surprised','idle'],['bit',322,'think','idle']],
+ say:[['nar',"Mia cuts out a paper triangle and tears off its three corners.","米娅剪出一个纸三角形，把三个角撕了下来。"],
+      ['mia',"Put the three corners together and...","把三个角拼在一起……"],
+      ['leo',"They make a straight line!","拼成了一条直线！"]]},
+{bg:'class',holo:{t:'tri',title:T("Angles add up to 180°","内角和是180°"),foot:T("∠A + ∠B + ∠C = 180°","∠A + ∠B + ∠C = 180°")},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Every triangle's angles add up to 180°, a straight angle. Big or small, thin or wide!","任何三角形的内角和都是180°，正好一个平角。不管大小胖瘦！"]]},
+{bg:'class',holo:{t:'truss',title:T("Triangles don't wobble","三角形不变形")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Push a square frame and it squashes. A triangle keeps its shape. That's triangle stability.","推一下正方形框架，它会变形；三角形却能保持形状。这就是三角形的稳定性。"],
+      ['leo',"That's why bridges and cranes are full of triangles!","怪不得桥和塔吊上全是三角形！"]]},
+{bg:'class',holo:{t:'big',title:T("Congruent triangles","全等三角形"),rows:[{s:T("Same 3 sides → same triangle","三边对应相等 → 两个三角形全等"),size:12},{s:'SSS · SAS · ASA',size:16,mono:true,fill:'#C2416B'},{s:T("Builders use this to copy shapes exactly","工匠用它精确地复制形状"),size:11}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So three sticks of fixed length can only make one triangle shape?","所以三根长度固定的木棍，只能拼出一种形状的三角形？"],
+      ['bit',"Exactly. That's why triangles are so strong.","没错。所以三角形结构才那么稳固。"]]}
+],
+terms:[["Parallel lines","平行线","Lines in the same plane that never meet.","同一平面内永不相交的直线。"],
+ ["Corresponding angles","同位角","Angles in matching positions. They're equal when the lines are parallel.","位置相同的角；两直线平行时它们相等。"],
+ ["Angle sum","内角和","A triangle's three angles always add up to 180°.","三角形三个内角之和总是180°。"],
+ ["Congruent","全等","Exactly the same shape and size.","形状和大小完全相同。"]],
+tryIt:T("Cut out three different paper triangles and tear off the corners. Do they always make a straight line? Then build a square and a triangle from straws and push on them.","剪三个不同的纸三角形，撕下三个角拼一拼，总能拼成直线吗？再用吸管做一个正方形和一个三角形，推推看。")}
+);

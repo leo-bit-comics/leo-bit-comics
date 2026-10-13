@@ -1,0 +1,32 @@
+// ai · episode 9 (script marker 9)
+LBC.registerEpisode('ai',9,
+{t:T("A Brain Made of Numbers","数字做的大脑"),topic:T("Neural networks","神经网络"),
+panels:[
+{bg:'cyber',cast:[['leo',95,'surprised','idle'],['bit',300,'talk','wave']],
+ say:[['nar',"Bit shrinks Leo down to look inside a model.","比特把乐乐“缩小”，带他钻进一个模型里看看。"],
+      ['leo',"Whoa, where are we?","哇，这是哪儿？"],
+      ['bit',"Inside a neural network, the engine behind most modern AI!","神经网络内部！现在大多数AI背后的发动机！"]]},
+{bg:'cyber',holo:{t:'neuron',title:T("One neuron","一个神经元"),ins:[{l:T("Sunny?","晴天？"),v:1,w:2},{l:T("Homework done?","作业写完？"),v:0,w:5},{l:T("Friends free?","朋友有空？"),v:1,w:3}],sum:'Σ = 5',out:T("Needs 6 → No football!","要6分 → 不能踢球！")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A neuron multiplies each input by a weight and adds them up. If the total beats a threshold, it says yes.","神经元把每个输入乘以权重再相加。总分超过门槛，就输出“是”。"],
+      ['leo',"Homework has the biggest weight. Sounds like Mom.","“作业”的权重最大。这听起来像我妈。"]]},
+{bg:'cyber',holo:{t:'layers',title:T("Layers of neurons","一层层神经元"),sizes:[3,4,4,2],labels:[T("Input","输入"),T("Hidden","隐藏层"),null,T("Output","输出")]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Connect lots of neurons in layers. Early layers spot simple things like edges. Later layers spot shapes like eyes or wheels.","把很多神经元一层层连起来。前面的层识别简单的东西，比如边缘；后面的层识别形状，比如眼睛或车轮。"]]},
+{bg:'cyber',holo:{t:'knobs',title:T("Learning = nudging weights","学习 = 微调权重"),foot:T("Error gets smaller","误差越来越小")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When an answer is wrong, every weight gets nudged a tiny bit in the direction that makes the error smaller.","答案错了，每个权重就朝着让错误变小的方向，微微调一点。"],
+      ['leo',"Then repeat... millions of times?","然后重复……几百万次？"]]},
+{bg:'cyber',holo:{t:'big',title:T("How big?","有多大？"),rows:[{s:T("1 neuron → 3 weights","1个神经元 → 3个权重"),size:13},{s:T("Big AI models →","大型AI模型 →"),size:13},{s:T("billions of weights","数十亿个权重"),size:17,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"How many weights do big models have?","大模型有多少个权重？"],
+      ['bit',"Billions, sometimes far more! Weights are also called parameters.","几十亿个，有的还多得多！权重也叫“参数”。"]]},
+{bg:'cyber',cast:[['leo',125,'dizzy','idle'],['bit',285,'happy','wave']],fx:[['stars','leo']],
+ say:[['leo',"My brain hurts.","我的脑子要转晕了。"],
+      ['bit',"Relax! Your brain has about 86 billion real neurons. It can handle this.","放松！你的大脑里有大约860亿个真正的神经元，完全搞得定。"]]}
+],
+terms:[["Neural network","神经网络","Layers of simple math 'neurons' connected together, loosely inspired by the brain.","由一层层简单的数学“神经元”连接而成，灵感来自大脑。"],
+ ["Weight (parameter)","权重（参数）","A number that sets how much an input matters. Training adjusts these numbers.","决定某个输入有多重要的数字，训练就是在调整这些数字。"],
+ ["Layer","层","A group of neurons working at the same stage.","处在同一阶段的一组神经元。"]],
+tryIt:T("Be a neuron: give 'sunny', 'homework done' and 'friends free' your own weights and threshold. Then compare with a parent's weights!","当一回神经元：给“晴天”“作业写完”“朋友有空”设定你自己的权重和门槛，再和爸爸妈妈的比一比！")}
+);

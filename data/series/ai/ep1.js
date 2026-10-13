@@ -1,0 +1,32 @@
+// ai · episode 1 (script marker 1)
+LBC.registerEpisode('ai',1,
+{t:T("Meet Bit","遇见比特"),topic:T("What is a computer?","计算机是什么？"),
+panels:[
+{bg:'room-night',props:[['desk',292],['laptop',292,'glow']],cast:[['leo',160,'worried','idle']],fx:[['sweat','leo']],
+ say:[['nar',"Shanghai. Friday, 9 p.m.","上海，周五晚上九点。"],
+      ['leo',"The science fair is in 12 weeks and I still have NO idea what to build...","科学节还有12周，我还完全不知道该做什么……"]]},
+{bg:'burst',cast:[['leo',95,'surprised','cheer'],['bit',290,'happy','wave',{y:118}]],fx:[['!','leo'],['sparkles',290,110]],
+ say:[['bit',"Hi! I'm Bit, the smallest piece of information in a computer. I live in your laptop!","嗨！我是比特，计算机里最小的信息单位。我就住在你的笔记本电脑里！"],
+      ['leo',"A ROBOT just came out of my laptop?!","我的电脑里……蹦出来一个机器人？！"]]},
+{bg:'room-night',holo:{t:'flow',title:T("What a computer does","计算机做什么"),steps:[{i:'key',l:T("Input","输入")},{i:'chip',l:T("Process","处理")},{i:'screen',l:T("Output","输出")}],foot:T("Keyboard → CPU → Screen","键盘 → CPU → 屏幕")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['leo',"Okay... so what IS a computer, really?","好吧……那计算机到底是什么？"],
+      ['bit',"A machine that follows instructions to turn input into output. Super, super fast.","一台按照指令工作的机器：把输入变成输出，而且超级快。"]]},
+{bg:'room-night',holo:{t:'list',title:T("Main parts","主要部件"),items:[{i:'chip',l:T("CPU: the brain that calculates","CPU：负责计算的“大脑”")},{i:'desk',l:T("Memory (RAM): the desk for work in progress","内存：放正在做的事的“书桌”")},{i:'shelf',l:T("Storage: the bookshelf that keeps files","硬盘：长期保存文件的“书架”")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The CPU does billions of tiny steps every second.","CPU每秒能完成几十亿个小步骤。"],
+      ['leo',"Billions? Every SECOND?!","几十亿？每一秒？！"]]},
+{bg:'room-night',holo:{t:'flow',title:T("Playing a game","玩游戏的时候"),steps:[{i:'key',l:T("Press W","按下W")},{i:'chip',l:T("Run game code","运行游戏代码")},{i:'game',l:T("Player moves","角色前进")}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"So when I press W in my game...","所以我在游戏里按下W键的时候……"],
+      ['bit',"The keyboard sends a signal, the CPU runs the game's instructions, and the screen draws you moving. Input, process, output!","键盘发出信号，CPU执行游戏指令，屏幕画出你向前走。输入、处理、输出！"]]},
+{bg:'room-night',cast:[['leo',125,'determined','point'],['bit',285,'wink','wave']],
+ say:[['leo',"Bit, help me build an AI for the science fair!","比特，帮我做一个AI去参加科学节吧！"],
+      ['bit',"Deal! But first you need to know how computers think. Lesson one tomorrow: zeros and ones.","成交！不过你得先弄懂计算机是怎么“思考”的。明天第一课：0和1。"]]}
+],
+terms:[["Input / Output","输入 / 输出","Information going in (keyboard, mic, camera) and coming out (screen, speaker).","进入计算机的信息（键盘、麦克风、摄像头）和出来的信息（屏幕、音箱）。"],
+ ["CPU","中央处理器（CPU）","The chip that carries out instructions, billions every second.","执行指令的芯片，每秒执行几十亿条。"],
+ ["Memory (RAM)","内存","Fast, temporary space for what is running now. Cleared when the power goes off.","存放正在运行内容的高速临时空间，断电就清空。"],
+ ["Storage","存储（硬盘）","Keeps your files even when the power is off.","断电后也能保存文件。"]],
+tryIt:T("Walk around your home and list 5 input devices and 5 output devices. Is a touchscreen input or output?","在家里找一找：列出5个输入设备和5个输出设备。触摸屏算输入还是输出？")}
+);

@@ -1,0 +1,31 @@
+// ai · episode 5 (script marker 5)
+LBC.registerEpisode('ai',5,
+{t:T("Parcels of Light","光的快递"),topic:T("The internet","互联网"),
+panels:[
+{bg:'room',props:[['desk',285],['laptop',285,'face']],cast:[['leo',140,'happy','wave']],
+ say:[['nar',"Leo video-calls his cousin Jay in Singapore.","乐乐在和新加坡的表哥阿杰视频通话。"],
+      ['leo',"How does my face get to Singapore in less than a second?","我的脸是怎么在不到一秒钟内跑到新加坡的？"]]},
+{bg:'room',holo:{t:'packets',title:T("Data is cut into packets","数据被切成数据包"),foot:T("Each packet: address + number","每个包：地址 + 编号")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Your video is chopped into thousands of small packets, like parcels. Each one has an address.","你的视频被切成成千上万个小数据包，就像快递包裹，每个都写着地址。"]]},
+{bg:'room',holo:{t:'network',title:T("Routers pass packets on","路由器一站站转发")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Every device has an IP address. Routers pass packets along, like couriers at sorting stations.","每台设备都有一个IP地址。路由器把数据包一站一站往下传，就像快递分拣站。"]]},
+{bg:'room',holo:{t:'reorder',title:T("Put back in order","重新排好顺序")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Packets can take different roads and arrive out of order. Jay's computer puts them back together.","数据包可能走不同的路，到达顺序也会乱。阿杰的电脑会把它们重新拼好。"],
+      ['leo',"Like a jigsaw puzzle mailed in lots of envelopes!","就像把拼图分装在很多信封里寄过去！"]]},
+{bg:'room',holo:{t:'cable',title:T("Cables under the sea","海底光缆")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"Do they fly there by satellite?","它们是靠卫星飞过去的吗？"],
+      ['bit',"Mostly not! Most data between countries travels as light through glass cables on the sea floor.","大多数不是！国家之间的数据，大部分是以光的形式，在海底的玻璃光纤里传输的。"]]},
+{bg:'class',cast:[['mia',85,'think','think'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['mia',"So the internet is just computers sending messages to each other?","所以互联网就是电脑之间互相发消息？"],
+      ['bit',"Billions of them! And remember: anything you send can be copied and kept. Think before you post.","几十亿台电脑！还要记住：你发出去的任何东西都可能被复制和保存。发之前先想一想。"]]}
+],
+terms:[["Internet","互联网","A worldwide network of networks connecting billions of devices.","连接几十亿台设备的全球网络。"],
+ ["Packet","数据包","A small chunk of data with an address and a number.","带有地址和编号的一小块数据。"],
+ ["IP address","IP地址","A number that identifies a device on a network.","网络中用来识别设备的号码。"],
+ ["Router","路由器","A device that passes packets toward where they are going.","把数据包转发向目的地的设备。"]],
+tryIt:T("With a parent, check how many devices are connected to your home Wi-Fi. Which ones surprised you?","和爸爸妈妈一起看看：家里的Wi-Fi连着多少台设备？有没有让你意外的？")}
+);

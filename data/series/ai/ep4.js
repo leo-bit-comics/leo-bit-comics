@@ -1,0 +1,32 @@
+// ai · episode 4 (script marker 4)
+LBC.registerEpisode('ai',4,
+{t:T("Talking to Computers","和电脑对话"),topic:T("Programming","编程"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'talk','wave']],
+ say:[['leo',"How do I give a computer instructions? It doesn't understand Chinese or English.","我怎么给电脑下指令？它又听不懂中文和英文。"],
+      ['bit',"We use a programming language, like Python. People can read it and computers can run it.","用编程语言，比如Python。人能看懂，电脑也能运行。"]]},
+{bg:'room',holo:{t:'code',title:T("Your first program","你的第一个程序"),lines:['print("Hello, Shanghai!")'],out:['Hello, Shanghai!']},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"It printed my message! I'm a programmer!","它把我的话打印出来了！我是程序员啦！"]]},
+{bg:'room',holo:{t:'code',title:T("Variables","变量"),lines:['score = 0','score = score + 3','print(score)'],out:['3']},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A variable is a box with a name. Here, the box called score holds a number we can change.","变量就是一个有名字的盒子。这里名叫score的盒子装着一个可以改变的数字。"]]},
+{bg:'room',holo:{t:'code',title:T("Loops","循环"),lines:['for i in range(3):','    print("Goal!")'],out:['Goal!','Goal!','Goal!']},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"Goal! Goal! Goal!","进球！进球！进球！"],
+      ['bit',"A loop repeats steps for you. 3 times or 3 million, same code!","循环会帮你重复步骤。重复3次还是300万次，代码都一样！"]]},
+{bg:'class',holo:{t:'code',title:T("Decisions","判断"),lines:['if score >= 60:','    print("Pass")','else:','    print("Try again")']},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So the computer makes its own decisions?","所以电脑会自己做决定？"],
+      ['bit',"It checks the rules YOU wrote: if this, then that.","它只是在检查“你”写好的规则：如果这样，就那样。"]]},
+{bg:'room',holo:{t:'code',title:T("Oops!","哎呀！"),lines:['prnt("hi")'],out:["NameError: name 'prnt'","is not defined"],err:true},
+ cast:[['leo',54,'worried','idle'],['bit',356,'error','present']],fx:[['sweat','leo'],['moth',300,40]],
+ say:[['bit',"A bug! Everyone writes them. Read the error, fix it, run it again. That's debugging.","出bug啦！谁都会写出bug。读懂报错，改好，再运行一次。这就叫调试。"],
+      ['nar',"Fun fact: in 1947, engineers found a real moth stuck inside a computer!","冷知识：1947年，工程师真的在一台计算机里发现了一只飞蛾（bug）！"]]}
+],
+terms:[["Program","程序","A list of instructions written in a language a computer can run.","用电脑能运行的语言写成的一组指令。"],
+ ["Variable","变量","A named box that stores a value.","存放数值的、有名字的盒子。"],
+ ["Loop","循环","Code that repeats.","会重复执行的代码。"],
+ ["Bug / Debugging","错误 / 调试","A mistake in code. Debugging means finding and fixing it.","代码里的错误。调试就是找到并修复它。"]],
+tryIt:T("Open an online Python editor and change the loop so it prints your name 10 times. Then make a bug on purpose and read the error message.","打开一个在线Python编辑器，修改循环让它打印你的名字10次。再故意制造一个bug，读一读报错信息。")}
+);

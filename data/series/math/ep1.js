@@ -1,0 +1,31 @@
+// math · episode 1 (script marker M1)
+LBC.registerEpisode('math',1,
+{t:T("Letters That Hide Numbers","藏着数字的字母"),topic:T("Algebraic expressions and like terms","整式的加减"),
+panels:[
+{bg:'class',cast:[['leo',85,'think','think'],['mia',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"Math class. Ms. Wang writes 3a + 2b + 4a on the board.","数学课上，王老师在黑板上写下 3a + 2b + 4a。"],
+      ['leo',"Why are there letters in math? I thought math was about numbers!","数学里怎么有字母？我以为数学只跟数字打交道！"],
+      ['bit',"A letter is a box that can hold any number. You met it in coding: a variable!","字母就像一个可以装任何数的盒子。你学编程时见过它：变量！"]]},
+{bg:'class',holo:{t:'big',title:T("Like terms","同类项"),rows:[{s:'3a + 2b + 4a',size:18,mono:true},{s:'= (3 + 4)a + 2b',size:14,mono:true},{s:'= 7a + 2b',size:20,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Terms with the same letters are like terms. Add their numbers and keep the letters.","字母部分相同的项叫同类项。把系数相加，字母部分不变。"]]},
+{bg:'class',holo:{t:'cards',cols:3,title:T("Apples and oranges","苹果和橙子"),items:[{p:'apple',l:'3a'},{p:'apple',l:'4a'},{p:'orange',l:'2b'}],foot:T("3a + 4a = 7a, but 7a + 2b stays as it is","3a + 4a = 7a，但 7a + 2b 不能再合并")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"Like adding apples to apples. But apples and oranges can't be combined!","就像苹果加苹果。可苹果和橙子没法合并！"]]},
+{bg:'class',holo:{t:'big',title:T("Watch the signs","注意符号"),rows:[{s:'5x − (2x − 3)',size:16,mono:true},{s:'= 5x − 2x + 3',size:14,mono:true},{s:'= 3x + 3',size:18,mono:true,fill:'#C2416B'},{s:T("A minus sign before brackets flips every sign inside","括号前是减号，去括号时括号里每一项都变号"),size:10}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"Wait, why did −3 become +3?","等等，−3 怎么变成 +3 了？"],
+      ['bit',"Taking away a debt is like getting money back!","减去一笔欠款，就等于拿回了钱！"]]},
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'think','think'],['bit',322,'wink','idle']],
+ say:[['leo',"Mia, think of a number. Double it, add 6, halve it, then take away the number you first thought of.","米娅，心里想一个数。乘以2，加6，再除以2，最后减去你一开始想的数。"],
+      ['mia',"...Done.","……好了。"],
+      ['leo',"You got 3!","你得到的是3！"]]},
+{bg:'class',holo:{t:'big',title:T("Why the trick works","魔术的秘密"),rows:[{s:'n → 2n → 2n + 6',size:14,mono:true},{s:'→ n + 3 → 3',size:16,mono:true},{s:T("Algebra proves it works for EVERY number","代数证明它对“每一个”数都成立"),size:11,fill:'#C2416B'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'happy','present']],fx:[['!','mia']],
+ say:[['bit',"Algebra lets you prove something for every number at once. That's its superpower.","代数能一次性证明对所有数都成立的结论。这就是它的超能力。"]]}
+],
+terms:[["Variable","字母（变量）","A letter that stands for a number.","代表数的字母。"],
+ ["Like terms","同类项","Terms with exactly the same letters and powers, such as 3a and 4a.","所含字母相同、相同字母的指数也相同的项，比如3a和4a。"],
+ ["Coefficient","系数","The number in front of the letters: in 7a it is 7.","字母前面的数，7a的系数是7。"]],
+tryIt:T("Invent your own 'think of a number' trick, then use algebra to check that it always works. Try it on your family!","自己发明一个“心里想一个数”的魔术，用代数验证它总是成立，再拿家人试一试！")}
+);

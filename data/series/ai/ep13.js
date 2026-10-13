@@ -1,0 +1,31 @@
+// ai · episode 13 (script marker 13)
+LBC.registerEpisode('ai',13,
+{t:T("Science Fair Day","科学节到了"),topic:T("Putting it all together","融会贯通"),
+panels:[
+{bg:'fair',props:[['board',300]],cast:[['leo',75,'happy','idle'],['mia',170,'grin','point']],
+ say:[['nar',"12 weeks later. Science Fair Day.","12周后，科学节当天。"],
+      ['mia',"Our Shanghai Garbage Sorting Helper is ready!","我们的“上海垃圾分类小助手”准备好啦！"]]},
+{bg:'fair',cast:[['leo',90,'talk','point'],['wang',300,'happy','idle']],
+ say:[['wang',"Impressive! How does it work?","很厉害！它是怎么工作的？"],
+      ['leo',"We took 600 photos of rubbish in different places and light, labelled them, trained a model, and tested it on new photos.","我们在不同地点、不同光线下拍了600张垃圾照片，标好标签，训练模型，再用新照片测试。"]]},
+{bg:'fair',holo:{t:'barchart',title:T("Accuracy on new photos (%)","新照片上的准确率（%）"),max:100,items:[{l:T("Wet","湿"),v:93,c:'#8B5A2B'},{l:T("Recycle","可回收"),v:88,c:'#2D6CDF'},{l:T("Dry","干"),v:84,c:'#3A3A44'},{l:T("Hazard","有害"),v:75,c:'#E04848'}]},
+ cast:[['mia',54,'talk','point'],['wang',356,'think','idle']],
+ say:[['mia',"It gets about 85% right. When it isn't sure, it says so and shows the rule for that bin.","它大约有85%的正确率。不确定的时候，它会说出来，并显示那个桶的分类规则。"]]},
+{bg:'fair',cast:[['wang',110,'think','think'],['leo',280,'determined','idle']],
+ say:[['wang',"And where does it make mistakes?","那它在哪些地方会出错？"],
+      ['leo',"Dirty or crumpled items. We didn't have enough photos of those, so our data was biased. We're taking more.","脏的或被揉皱的东西。这类照片我们拍得不够，数据有偏差。我们正在补拍。"],
+      ['wang',"That's thinking like a real scientist.","这才是真正的科学家思维。"]]},
+{bg:'burst',props:[['medal',195,74]],cast:[['leo',115,'grin','cheer'],['mia',270,'grin','cheer']],fx:[['sparkles',195,74]],
+ say:[['nar',"Award: Best Young Engineers!","获奖：最佳小工程师！"],
+      ['leo',"We did it!","我们成功了！"],
+      ['mia',"And we really understand how it works!","而且我们真的懂它是怎么工作的！"]]},
+{bg:'city',holo:{t:'grid',title:T("Your journey","你的旅程"),items:[T("Computers","计算机"),T("Binary","二进制"),T("Algorithms","算法"),T("Coding","编程"),T("Internet","互联网"),T("Data","数据"),T("AI","人工智能"),T("Machine learning","机器学习"),T("Neural networks","神经网络"),T("LLMs","大语言模型"),T("Using AI wisely","聪明用AI"),T("Agents","智能体")]},
+ cast:[['leo',54,'happy','idle'],['bit',356,'happy','present']],
+ say:[['bit',"The future of AI will be built by people who understand it, like you. Keep learning, keep building, keep asking questions!","AI的未来，将由懂得它的人来创造，比如你。继续学习，继续动手，继续提问！"],
+      ['nar',"The end... or just the beginning?","完……还是刚刚开始？"]]}
+],
+terms:[["Accuracy","准确率","The share of answers a model gets right on test data.","模型在测试数据上答对的比例。"],
+ ["Iteration","迭代","Improving in rounds: build, test, learn, repeat.","一轮一轮地改进：做出来、测试、总结、再来。"],
+ ["Responsible AI","负责任的AI","Being honest about what AI can't do, and protecting the people who use it.","如实说明AI做不到什么，并保护使用它的人。"]],
+tryIt:T("Your turn: pick a problem at home or at school. Could data, an algorithm or AI help? Sketch your own science fair project on one page.","轮到你了：在家里或学校找一个问题。数据、算法或AI能帮上忙吗？用一页纸画出你自己的科学节项目。")}
+);

@@ -1,0 +1,32 @@
+// eng · episode 6 (script marker E6)
+LBC.registerEpisode('eng',6,
+{t:T("The Smart Plant Helper","智能浇花助手"),topic:T("Sensors, control and feedback","传感器、控制与反馈"),
+panels:[
+{bg:'room',props:[['desk',265],['plant',265,'droop']],cast:[['leo',120,'worried','idle'],['bit',350,'talk','idle',{y:80}]],
+ say:[['nar',"Leo's desk plant is drooping again.","乐乐书桌上的植物又蔫了。"],
+      ['leo',"I keep forgetting to water it!","我老是忘记给它浇水！"],
+      ['bit',"Let's build a system that remembers for you.","我们造一个能替你记住的系统吧。"]]},
+{bg:'room',holo:{t:'flow',title:T("Sense → decide → act","感知 → 判断 → 执行"),steps:[{i:'drop',l:T("Sensor: is the soil dry?","传感器：土壤干了吗？")},{i:'chip',l:T("Controller decides","控制器做判断")},{i:'gear',l:T("Pump waters the plant","水泵浇水")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Every smart device has three parts: a sensor to measure, a controller to decide, and an actuator to act.","每个智能装置都有三部分：测量的传感器、做判断的控制器、执行动作的执行器。"],
+      ['leo',"It's input, process, output, like in my very first lesson!","这就是输入、处理、输出，跟我第一课学的一样！"]]},
+{bg:'workshop',holo:{t:'code',title:T("The control rule","控制规则"),lines:['if soil < 30:','    pump_on()','else:','    pump_off()']},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The controller runs a simple rule: if the soil moisture drops below 30%, turn on the pump.","控制器执行一条简单规则：土壤湿度低于30%，就打开水泵。"]]},
+{bg:'workshop',holo:{t:'cycle',title:T("Feedback","反馈"),items:[{i:'eye',l:T("Measure","测量")},{i:'chip',l:T("Decide","判断")},{i:'gear',l:T("Act","执行")}],center:T("feedback loop","反馈回路")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"After watering, the sensor measures again. That loop is called feedback. Your body does it too, like sweating when you get hot.","浇完水后，传感器再测一次，这个循环叫“反馈”。你的身体也会这样，比如热了就出汗。"]]},
+{bg:'workshop',props:[['plant',205,'happy']],cast:[['leo',95,'grin','point'],['mia',310,'happy','idle']],
+ say:[['nar',"One week later, the plant is green and healthy again.","一周后，植物又绿又精神。"],
+      ['mia',"Math for the rule, physics for the pump, chemistry for the soil, engineering for the build!","规则用数学，水泵用物理，土壤用化学，制作靠工程！"]]},
+{bg:'city',holo:{t:'grid',title:T("Everything connects","知识都是相通的"),items:[T("Math","数学"),T("Physics","物理"),T("Chemistry","化学"),T("Engineering","工程"),T("Coding","编程"),T("AI","人工智能")]},
+ cast:[['leo',54,'happy','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Every subject is a tool. Put them together and you can build almost anything.","每门学科都是一种工具。把它们组合起来，你几乎能造出任何东西。"],
+      ['nar',"To be continued...","未完待续……"]]}
+],
+terms:[["Sensor","传感器","A device that measures something, like temperature or moisture.","测量温度、湿度等的装置。"],
+ ["Actuator","执行器","The part that acts: a motor, a pump or a light.","执行动作的部分，比如电机、水泵、灯。"],
+ ["Feedback","反馈","Measuring the result and adjusting again.","测量结果后再次调整。"],
+ ["System","系统","Parts working together for one purpose.","为同一目标协同工作的各个部分。"]],
+tryIt:T("Find 3 devices at home that use sensors (hint: automatic lights, fridges, phones). For each one, name the sensor, the controller and what it does.","在家里找出3个用到传感器的装置（提示：感应灯、冰箱、手机），说出它们的传感器、控制器和执行的动作。")}
+);

@@ -1,0 +1,31 @@
+// physics · episode 6 (script marker P6)
+LBC.registerEpisode('physics',6,
+{t:T("Push and Pull","推与拉"),topic:T("Force, gravity and friction","力、重力与摩擦力"),
+panels:[
+{bg:'field',props:[['ball',178,232]],cast:[['leo',115,'think','point'],['bit',290,'talk','idle']],
+ say:[['leo',"When I kick the ball, it flies. When it lands, it rolls and stops. Why?","我一踢，球就飞出去；落地后滚一会儿就停了。为什么？"],
+      ['bit',"Forces! A force is a push or a pull.","因为力！力就是推或拉。"]]},
+{bg:'class',holo:{t:'forces',title:T("Forces on a box","箱子受到的力")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Forces have a size and a direction, so we draw them as arrows.","力有大小和方向，所以我们用箭头来表示。"]]},
+{bg:'class',holo:{t:'big',title:T("Gravity","重力"),rows:[{s:T("Earth pulls everything down","地球把一切往下拉"),size:12},{s:'G = m × g',size:18,mono:true},{s:T("g ≈ 9.8 N/kg","g ≈ 9.8 牛/千克"),size:13},{s:T("On the Moon: about 1/6","在月球上：约为1/6"),size:12,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Gravity is why things fall. On the Moon, gravity would pull on you only about one sixth as hard!","重力让物体往下落。在月球上，你受到的重力只有地球上的六分之一左右！"],
+      ['leo',"I could jump so high!","那我能跳得好高！"]]},
+{bg:'field',holo:{t:'big',title:T("Friction","摩擦力"),rows:[{s:T("Rubbing surfaces resist sliding","接触面会阻碍相对滑动"),size:12},{s:T("Football boots: studs grip the grass","足球鞋：鞋钉抓住草地"),size:11},{s:T("Ice: almost no grip","冰面：几乎抓不住"),size:11},{s:T("Friction stopped your ball!","是摩擦力让你的球停下来！"),size:12,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So friction stopped Leo's ball?","所以是摩擦力让乐乐的球停下来的？"],
+      ['bit',"Yes, friction from the grass and the air.","对，来自草地和空气的阻力。"]]},
+{bg:'class',holo:{t:'big',title:T("Forces come in pairs","力的作用是相互的"),rows:[{s:T("You push the wall","你推墙"),size:13},{s:T("The wall pushes you back","墙也推你"),size:13},{s:T("A rocket pushes gas down; the gas pushes the rocket up","火箭向下喷气，气体推火箭向上"),size:11,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When you push on something, it pushes back on you just as hard.","你推一个物体时，它也会以同样大小的力推你。"]]},
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'happy','idle'],['bit',322,'happy','idle']],
+ say:[['leo',"Forces explain football, rockets, and why I slip on ice!","力能解释足球、火箭，还有我为什么会在冰上滑倒！"],
+      ['bit',"And in 8th-grade physics, you'll measure forces with a spring scale.","到了八年级物理课，你们还会用弹簧测力计来测量力。"]]}
+],
+terms:[["Force","力","A push or a pull, measured in newtons (N).","推或拉的作用，单位是牛顿（N）。"],
+ ["Gravity","重力","The pull of the Earth: G = mg.","由于地球吸引而受到的力：G = mg。"],
+ ["Friction","摩擦力","A force that resists sliding between surfaces.","阻碍接触面之间相对滑动的力。"],
+ ["Action and reaction","相互作用力","Forces always come in equal and opposite pairs.","力总是成对出现，大小相等、方向相反。"]],
+tryIt:T("Slide a book across different surfaces (a table, a carpet, a towel) with the same push. Where does it go farthest? What does that tell you about friction?","用同样的力把一本书推过不同表面（桌面、地毯、毛巾），在哪儿滑得最远？这说明了摩擦力的什么特点？")}
+);

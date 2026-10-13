@@ -1,0 +1,33 @@
+// ai · episode 2 (script marker 2)
+LBC.registerEpisode('ai',2,
+{t:T("Zeros and Ones","0和1的秘密"),topic:T("Binary","二进制"),
+panels:[
+{bg:'kitchen',props:[['table',205],['bowl',205,172]],cast:[['leo',100,'surprised','idle'],['bit',300,'talk','wave',{y:100}]],
+ say:[['nar',"Saturday breakfast.","周六早餐时间。"],
+      ['bit',"Everything in a computer is stored as 0s and 1s.","计算机里的一切，都是用0和1存起来的。"],
+      ['leo',"Everything? Even my photos and game saves?","一切？连我的照片和游戏存档也是？"]]},
+{bg:'kitchen',holo:{t:'bulbs',title:T("One switch = one bit","一个开关 = 一个比特"),bits:'01',caps:[T("OFF","关"),T("ON","开")]},
+ cast:[['leo',54,'think','think'],['bit',356,'happy','present']],
+ say:[['bit',"Inside the chip are billions of tiny switches. Off means 0, on means 1. One switch is one bit. That's me!","芯片里有几十亿个微小的开关。关代表0，开代表1。一个开关就是一个比特——就是我！"]]},
+{bg:'kitchen',holo:{t:'bulbs',title:T("8 bits = 1 byte","8个比特 = 1个字节"),bits:'10110010',pv:true,foot:T("2⁸ = 256 patterns","2⁸ = 256 种组合")},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"Put 8 bits together and you get a byte. 8 switches can make 256 different patterns.","把8个比特放在一起，就是1个字节。8个开关能组成256种不同的图案。"],
+      ['leo',"2×2×2×2×2×2×2×2... that's 256!","2×2×2×2×2×2×2×2……正好256！"]]},
+{bg:'kitchen',holo:{t:'big',title:T("Letters are numbers","文字也是数字"),rows:[{s:'A = 65',size:22},{s:'= 01000001',size:15,mono:true,fill:'#C2416B'},{s:'中 = 20013',size:22}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Computers agree on codes. 65 means the letter A. Chinese characters use bigger numbers: in Unicode, 中 is 20013.","计算机之间约定好了编码：65代表字母A。汉字用更大的数字，在Unicode里，“中”是20013。"]]},
+{bg:'kitchen',holo:{t:'pixels',title:T("A photo = a grid of pixels","照片 = 像素网格")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A picture is a grid of tiny dots called pixels. Each pixel's color is three numbers: red, green and blue.","图片是由很多叫“像素”的小点组成的网格。每个像素的颜色用三个数字表示：红、绿、蓝。"],
+      ['leo',"So a photo is just a giant list of numbers?!","所以一张照片就是一大串数字？！"]]},
+{bg:'class',cast:[['mia',80,'smirk','idle'],['leo',195,'grin','idle'],['bit',320,'happy','wave']],
+ say:[['nar',"Monday, at school. Leo introduces Bit to his classmate Mia.","周一，学校里。乐乐把比特介绍给同学米娅。"],
+      ['mia',"A pocket robot? Fine. But can it count to 1,000 on its fingers?","口袋机器人？好吧。那它能用手指数到1000吗？"],
+      ['bit',"With binary, your 10 fingers can count all the way to 1,023!","用二进制，你的10根手指能一直数到1023！"]]}
+],
+terms:[["Binary","二进制","A way of counting with only two digits: 0 and 1.","只用0和1两个数字的计数方法。"],
+ ["Bit","比特","One 0 or 1, the smallest unit of information.","一个0或1，最小的信息单位。"],
+ ["Byte","字节","8 bits. One English letter usually takes 1 byte.","8个比特。一个英文字母通常占1个字节。"],
+ ["Pixel","像素","One tiny colored dot in a picture.","图片中的一个彩色小点。"]],
+tryIt:T("Count in binary on one hand: thumb = 1, index = 2, middle = 4, ring = 8, pinky = 16. Which fingers do you raise to make 13?","用一只手数二进制：拇指=1，食指=2，中指=4，无名指=8，小指=16。要表示13，该竖起哪几根手指？")}
+);

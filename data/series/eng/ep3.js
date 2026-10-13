@@ -1,0 +1,31 @@
+// eng · episode 3 (script marker E3)
+LBC.registerEpisode('eng',3,
+{t:T("Simple Machines","简单机械"),topic:T("Levers, pulleys and ramps","杠杆、滑轮与斜面"),
+panels:[
+{bg:'workshop',props:[['tin',210]],cast:[['leo',110,'worried','idle'],['bit',320,'talk','idle',{y:90}]],fx:[['sweat','leo']],
+ say:[['leo',"This paint tin lid is stuck tight!","这个油漆罐的盖子卡得死死的！"],
+      ['bit',"Use a screwdriver as a lever. A small push becomes a big force!","用螺丝刀当杠杆。小小一撬，力量大增！"]]},
+{bg:'workshop',holo:{t:'lever',title:T("The lever rule","杠杆原理"),foot:'2 kg × 1 m = 1 kg × 2 m'},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The farther from the pivot you push, the less force you need. That's why long handles help.","离支点越远，需要的力就越小。所以长柄工具更省力。"]]},
+{bg:'workshop',holo:{t:'list',title:T("Levers everywhere","生活中的杠杆"),items:[{i:'check',l:T("Scissors","剪刀")},{i:'check',l:T("Seesaw","跷跷板")},{i:'check',l:T("Bottle opener","开瓶器")},{i:'check',l:T("Chopsticks","筷子")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['mia',"Even chopsticks are levers?","连筷子都是杠杆？"],
+      ['bit',"Yes! Some levers save force, some save distance.","是的！有的杠杆省力，有的杠杆省距离。"]]},
+{bg:'workshop',holo:{t:'pulley',title:T("Pulleys","滑轮")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A fixed pulley changes the direction you pull. A movable pulley halves the force you need.","定滑轮改变用力的方向，动滑轮可以省一半的力。"]]},
+{bg:'class',holo:{t:'ramp',title:T("Ramps","斜面")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A ramp lets you raise something with less force by going a longer way.","斜面让你走更长的路，用更小的力把东西抬高。"],
+      ['leo',"Like the wheelchair ramp at school!","就像学校里的无障碍坡道！"]]},
+{bg:'workshop',props:[['tin',210]],cast:[['leo',110,'grin','cheer'],['bit',320,'happy','wave',{y:90}]],
+ say:[['leo',"The lid's off! Simple machines don't give you free energy, but they make the job easier.","盖子打开了！简单机械不会凭空产生能量，但能让活儿干起来更轻松。"],
+      ['bit',"Exactly. You trade distance for force.","正是。你是用距离换力。"]]}
+],
+terms:[["Lever","杠杆","A bar that turns around a fixed point.","绕固定点转动的硬棒。"],
+ ["Fulcrum","支点","The point a lever turns around.","杠杆绕着转动的点。"],
+ ["Pulley","滑轮","A wheel and rope that change the direction of a pull or reduce the force.","带绳子的轮子，可以改变力的方向或省力。"],
+ ["Inclined plane","斜面","A ramp: less force over a longer distance.","坡面：用更长的距离换取更小的力。"]],
+tryIt:T("Make a lever from a ruler, with a pencil underneath as the fulcrum. Put coins at different distances. Can 1 coin balance 2 coins?","用一把尺子和下面垫着的一支铅笔（当支点）做杠杆。在不同位置放硬币，1枚硬币能和2枚硬币平衡吗？")}
+);

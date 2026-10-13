@@ -1,0 +1,31 @@
+// math · episode 2 (script marker M2)
+LBC.registerEpisode('math',2,
+{t:T("The Area Trick","面积的魔法"),topic:T("Multiplying expressions","整式的乘除"),
+panels:[
+{bg:'class',cast:[['leo',110,'worried','think'],['bit',290,'talk','wave']],fx:[['?','leo']],
+ say:[['leo',"Ms. Wang says (a + b)² is NOT a² + b². Why not?","王老师说 (a + b)² 不等于 a² + b²。为什么？"],
+      ['bit',"Let's draw it. Multiplying is really finding an area!","我们画出来看看。乘法其实就是求面积！"]]},
+{bg:'class',holo:{t:'area',title:T("(a + b)² as a picture","把 (a + b)² 画出来"),foot:'(a + b)² = a² + 2ab + b²'},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A square with side a + b splits into four pieces: a², b², and TWO ab rectangles.","边长为 a + b 的正方形可以分成四块：a²、b²，还有“两个” ab 长方形。"],
+      ['leo',"So the 2ab was hiding in the corners!","原来 2ab 藏在角落里！"]]},
+{bg:'class',holo:{t:'big',title:T("Multiply every term","逐项相乘"),rows:[{s:'(x + 2)(x + 5)',size:16,mono:true},{s:'= x² + 5x + 2x + 10',size:13,mono:true},{s:'= x² + 7x + 10',size:17,mono:true,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Every term in the first bracket multiplies every term in the second. Then collect like terms.","第一个括号里的每一项都要乘第二个括号里的每一项，再合并同类项。"]]},
+{bg:'class',cast:[['mia',80,'smirk','point'],['leo',195,'surprised','idle'],['bit',322,'wink','idle']],
+ say:[['mia',"Quick: what is 21 × 19?","快算：21 × 19 等于多少？"],
+      ['leo',"Um... let me get a calculator...","呃……我去拿计算器……"],
+      ['mia',"399. Done!","399。算完了！"]]},
+{bg:'class',holo:{t:'big',title:T("Difference of squares","平方差公式"),rows:[{s:'(a + b)(a − b) = a² − b²',size:12,mono:true},{s:'21 × 19 = (20 + 1)(20 − 1)',size:12,mono:true},{s:'= 400 − 1 = 399',size:17,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Mia used the difference of squares: (a + b)(a − b) = a² − b².","米娅用了平方差公式：(a + b)(a − b) = a² − b²。"]]},
+{bg:'class',holo:{t:'big',title:T("Rules for powers","幂的运算"),rows:[{s:'a² · a³ = a⁵',size:17,mono:true},{s:'a⁶ ÷ a² = a⁴',size:17,mono:true},{s:T("Same base: add the powers to multiply, subtract to divide","同底数幂：相乘指数相加，相除指数相减"),size:10.5,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['leo',"a·a times a·a·a is five a's multiplied together. Makes sense!","a·a 乘 a·a·a 就是五个 a 相乘。说得通！"]]}
+],
+terms:[["Expanding","展开","Multiplying out the brackets.","把括号乘开。"],
+ ["Square of a sum","完全平方公式","(a + b)² = a² + 2ab + b²","(a + b)² = a² + 2ab + b²"],
+ ["Difference of squares","平方差公式","(a + b)(a − b) = a² − b²","(a + b)(a − b) = a² − b²"],
+ ["Power","幂","aⁿ means n copies of a multiplied together.","aⁿ 表示 n 个 a 相乘。"]],
+tryIt:T("Use the difference of squares to work out 31 × 29, 52 × 48 and 105 × 95 in your head. Then check with a calculator.","用平方差公式心算 31 × 29、52 × 48 和 105 × 95，再用计算器验算。")}
+);

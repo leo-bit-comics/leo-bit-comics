@@ -1,0 +1,31 @@
+// ai · episode 7 (script marker 7)
+LBC.registerEpisode('ai',7,
+{t:T("What Is AI?","什么是人工智能？"),topic:T("Artificial intelligence","人工智能"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'wink','wave']],
+ say:[['leo',"Bit, are you an AI?","比特，你是AI吗？"],
+      ['bit',"Kind of! AI means computers doing things that usually need human intelligence, like seeing, understanding language and making choices.","算是吧！人工智能（AI）就是让计算机做通常需要人类智能的事，比如看东西、理解语言、做选择。"]]},
+{bg:'room',holo:{t:'code',title:T("Old way: write rules","老办法：写规则"),lines:[T('IF has whiskers','如果 有胡须'),T('AND pointy ears','并且 耳朵是尖的'),T('THEN it is a cat','那么 它是猫')]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"The old way: humans write rules. Whiskers plus pointy ears means cat.","老办法：人来写规则。有胡须加尖耳朵，就是猫。"],
+      ['leo',"Easy!","简单！"]]},
+{bg:'class',holo:{t:'cards',cols:2,title:T("The rule breaks","规则失灵了"),items:[{p:'foldcat',l:T("A cat. Rule: not a cat","是猫，规则说不是"),m:'no'},{p:'fox',l:T("A fox. Rule: cat!","是狐狸，规则说是猫"),m:'no'}]},
+ cast:[['mia',54,'smirk','point'],['bit',356,'error','present']],
+ say:[['mia',"A cat with folded ears? A fox with whiskers and pointy ears? Your rule gets both wrong.","折耳猫怎么办？有胡须、有尖耳朵的狐狸呢？你的规则两个都会认错。"],
+      ['bit',"The real world is messy. You can't write a rule for everything.","现实世界太复杂了，不可能为每种情况都写规则。"]]},
+{bg:'room',holo:{t:'flow',title:T("New way: learn from examples","新办法：从例子中学习"),steps:[{i:'photo',l:T("1000s of examples","成千上万个例子")},{i:'brain',l:T("Find patterns","找出规律")},{i:'tag',l:T("“Cat!”","“是猫！”")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The new way: show the computer thousands of examples and let it find the patterns itself. That's machine learning.","新办法：给计算机看成千上万个例子，让它自己找出规律。这就是机器学习。"]]},
+{bg:'room',holo:{t:'list',title:T("AI you already use","你已经在用的AI"),items:[{i:'eye',l:T("Face unlock","刷脸解锁")},{i:'globe',l:T("Translation","翻译")},{i:'play',l:T("Video recommendations","视频推荐")},{i:'mic',l:T("Voice assistants","语音助手")},{i:'map',l:T("Map routes","地图导航")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'happy','present']],
+ say:[['leo',"I use AI every day without even knowing it!","我每天都在用AI，自己都不知道！"]]},
+{bg:'class',cast:[['mia',85,'think','think'],['leo',200,'happy','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"But AI isn't magic, and it isn't a person. It's math that finds patterns. Very powerful math.","但AI不是魔法，也不是人。它是寻找规律的数学，非常强大的数学。"],
+      ['mia',"So it can be wrong?","所以它也会出错？"],
+      ['bit',"Definitely. Hold on to that question, Mia!","当然会。米娅，这个问题要一直记着！"]]}
+],
+terms:[["Artificial intelligence (AI)","人工智能（AI）","Computers doing tasks that usually need human intelligence.","让计算机完成通常需要人类智能的任务。"],
+ ["Rule-based program","基于规则的程序","A program where humans write every rule by hand.","由人手工写好每一条规则的程序。"],
+ ["Machine learning","机器学习","Computers learning patterns from examples instead of fixed rules.","计算机从例子中学习规律，而不是靠固定规则。"]],
+tryIt:T("List every AI you used today. Hints: camera, maps, keyboard suggestions, video apps...","列出你今天用过的所有AI。提示：相机、地图、输入法联想、视频App……")}
+);

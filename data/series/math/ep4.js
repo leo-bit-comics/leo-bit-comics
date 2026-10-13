@@ -1,0 +1,30 @@
+// math · episode 4 (script marker M4)
+LBC.registerEpisode('math',4,
+{t:T("Fractions with Letters","带字母的分数"),topic:T("Algebraic fractions","分式"),
+panels:[
+{bg:'class',cast:[['leo',85,'think','think'],['mia',200,'talk','point'],['bit',322,'happy','idle']],
+ say:[['mia',"The bus for our class trip costs ¥600. If n students go, how much does each pay?","我们班出游包车要600元。如果有 n 个同学去，每人付多少？"],
+      ['leo',"600 ÷ n... so 600/n yuan!","600 ÷ n……所以是 600/n 元！"]]},
+{bg:'class',holo:{t:'big',title:T("An algebraic fraction","分式"),rows:[{s:'600 / n',size:24,mono:true,fill:'#C2416B'},{s:T("n = 40 → ¥15 each","n = 40 → 每人15元"),size:12},{s:T("n = 50 → ¥12 each","n = 50 → 每人12元"),size:12}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"A fraction with a letter on the bottom is an algebraic fraction. More students, smaller share!","分母里含有字母的式子叫分式。人越多，每人分摊得越少！"]]},
+{bg:'class',holo:{t:'code',title:T("What if n = 0?","如果 n = 0 呢？"),lines:['print(600 / 0)'],out:['ZeroDivisionError:','division by zero'],err:true},
+ cast:[['leo',54,'grin','point'],['bit',356,'error','present']],
+ say:[['leo',"What if nobody goes? n = 0!","要是没人去呢？n = 0！"],
+      ['bit',"ERROR! You can never divide by zero. So in 600/n, n can't be 0.","错误！除数永远不能是0。所以在 600/n 里，n 不能等于0。"]]},
+{bg:'class',holo:{t:'big',title:T("Simplifying","约分"),rows:[{s:'(x² − 9) / (x + 3)',size:13,mono:true},{s:'= (x+3)(x−3) / (x+3)',size:12,mono:true},{s:'= x − 3',size:19,mono:true,fill:'#C2416B'},{s:T("(x ≠ −3)","（x ≠ −3）"),size:10.5}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Factorise, then cancel the common factor, just like 6/9 = 2/3.","先因式分解，再约去公因式，就像 6/9 = 2/3 一样。"],
+      ['mia',"So factorising really was useful!","原来因式分解真有用！"]]},
+{bg:'class',holo:{t:'big',title:T("Speed problems","行程问题"),rows:[{s:T("Time = distance ÷ speed","时间 = 路程 ÷ 速度"),size:12},{s:'t = 12 / v',size:19,mono:true,fill:'#C2416B'},{s:T("Cycling at 12 km/h → 1 hour","骑车每小时12千米 → 1小时"),size:11},{s:T("Walking at 4 km/h → 3 hours","步行每小时4千米 → 3小时"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Algebraic fractions show up everywhere: speed, sharing costs, price per item.","分式无处不在：速度、平均分摊、单价……"]]},
+{bg:'class',cast:[['leo',115,'happy','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So an algebraic fraction is a fraction that can change. And the bottom can never be zero.","所以分式就是会变化的分数，而且分母永远不能为零。"],
+      ['bit',"Perfect summary!","总结得太好了！"]]}
+],
+terms:[["Algebraic fraction","分式","A fraction with a letter in the denominator, like 600/n.","分母中含有字母的式子，比如 600/n。"],
+ ["Denominator ≠ 0","分母不为零","A fraction only makes sense when its bottom is not zero.","分母不为零时，分式才有意义。"],
+ ["Simplifying","约分","Dividing top and bottom by the same factor.","分子分母同时除以相同的因式。"]],
+tryIt:T("Plan a family meal out: write the cost per person as a fraction of the total bill. What happens as more people join?","规划一次家庭聚餐：把人均费用写成分式。人越多会怎样？")}
+);

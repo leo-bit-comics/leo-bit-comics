@@ -1,0 +1,30 @@
+// eng · episode 4 (script marker E4)
+LBC.registerEpisode('eng',4,
+{t:T("Making Electricity Flow","让电流动起来"),topic:T("Circuits","电路"),
+panels:[
+{bg:'workshop',props:[['kit',205]],cast:[['leo',95,'grin','point'],['mia',310,'think','think']],
+ say:[['nar',"Leo has a battery, two wires and a small bulb.","乐乐有一节电池、两根导线和一个小灯泡。"],
+      ['leo',"How do I make it light up?","怎么让它亮起来？"]]},
+{bg:'workshop',holo:{t:'circuit',kind:'simple',title:T("A complete circuit","闭合电路")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Electricity needs a complete loop: out of the battery, through the bulb and back. If there's any gap, it stops.","电流需要一条完整的回路：从电池出发，经过灯泡，再回到电池。有任何断开，电流就停了。"]]},
+{bg:'workshop',holo:{t:'list',title:T("Conductors and insulators","导体和绝缘体"),items:[{i:'check',l:T("Copper wire: conductor","铜线：导体")},{i:'check',l:T("Steel spoon: conductor","钢勺：导体")},{i:'cross',l:T("Plastic ruler: insulator","塑料尺：绝缘体")},{i:'cross',l:T("Rubber eraser: insulator","橡皮：绝缘体")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Metals let electricity through: they're conductors. Plastic and rubber stop it: insulators. That's why wires have plastic coats.","金属能导电，是导体；塑料和橡胶不导电，是绝缘体。所以电线外面包着塑料皮。"]]},
+{bg:'workshop',holo:{t:'circuit',kind:'both',title:T("Series and parallel","串联和并联")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"In series there's one path: remove one bulb and both go out. In parallel, each bulb has its own path.","串联只有一条路径：拧下一个灯泡，两个都灭。并联时每个灯泡都有自己的路径。"],
+      ['leo',"So the lights at home must be in parallel!","所以家里的灯一定是并联的！"]]},
+{bg:'workshop',holo:{t:'big',title:T("Safety first!","安全第一！"),rows:[{s:T("Small batteries (1.5 V): OK to experiment","小电池（1.5伏）：可以做实验"),size:11},{s:T("Wall sockets (220 V): NEVER","墙上插座（220伏）：绝对不碰"),size:14,fill:'#C2416B'},{s:T("Never touch switches with wet hands","不要用湿手碰开关"),size:11}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Home electricity is about 150 times the voltage of a small battery and can seriously hurt you. Only experiment with small batteries.","家庭电路的电压大约是小电池的150倍，会造成严重伤害。只能用小电池做实验。"]]},
+{bg:'workshop',props:[['kit',205]],cast:[['leo',95,'grin','cheer'],['mia',310,'happy','idle']],fx:[['sparkles',229,150]],
+ say:[['nar',"Leo adds a switch made from a paper clip.","乐乐用回形针做了一个开关。"],
+      ['leo',"Click: on! Click: off! I'm an electrical engineer!","咔哒，亮！咔哒，灭！我是电气工程师啦！"]]}
+],
+terms:[["Circuit","电路","A complete loop that electricity can flow around.","电流能够流通的完整回路。"],
+ ["Conductor","导体","A material that lets electricity flow, like copper.","能导电的材料，比如铜。"],
+ ["Insulator","绝缘体","A material that blocks electricity, like plastic.","不容易导电的材料，比如塑料。"],
+ ["Series and parallel","串联与并联","One shared path, or separate paths for each part.","所有元件共用一条路径，或每个元件各有一条路径。"]],
+tryIt:T("With an adult, build a circuit with a 1.5 V battery, a small bulb, wires and a paper-clip switch. Test which objects conduct. Never join the two ends of a battery directly with a wire.","在大人陪同下，用1.5伏电池、小灯泡、导线和回形针开关搭一个电路，测试哪些物品能导电。千万不要用导线直接连接电池两端。")}
+);

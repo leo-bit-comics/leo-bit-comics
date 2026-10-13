@@ -1,0 +1,31 @@
+// ai · episode 11 (script marker 11)
+LBC.registerEpisode('ai',11,
+{t:T("When AI Gets It Wrong","当AI犯错时"),topic:T("Hallucinations & using AI wisely","幻觉与聪明用AI"),
+panels:[
+{bg:'class',props:[['phone',138,152]],cast:[['mia',90,'surprised','hold'],['leo',210,'surprised','idle'],['bit',330,'think','idle']],
+ say:[['mia',"Look! The chatbot says the Oriental Pearl Tower was finished in 1820!","快看！聊天机器人说东方明珠是1820年建成的！"],
+      ['leo',"That's way off! It was built in the 1990s.","差太远了！它是上世纪90年代建成的。"]]},
+{bg:'class',holo:{t:'chat',title:T("A hallucination","AI幻觉"),msgs:[{me:true,l:T("When was the Oriental Pearl Tower built?","东方明珠是哪年建成的？")},{me:false,l:T("It was completed in 1820.","它于1820年建成。"),warn:true}]},
+ cast:[['leo',54,'worried','idle'],['bit',356,'talk','present']],
+ say:[['bit',"That's called a hallucination: the model writes something that sounds right but isn't true.","这叫“幻觉”：模型写出了听起来很对、其实是错的内容。"]]},
+{bg:'class',holo:{t:'big',title:T("Remember","记住"),rows:[{s:T("Sounds likely","听起来像对的"),size:15},{s:'≠',size:28,fill:'#C2416B'},{s:T("Is true","真的是对的"),size:15}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"It predicts likely words. Unless it's connected to search, it isn't looking anything up.","它在预测“可能的”词语。除非接入了搜索，它并没有去查资料。"],
+      ['leo',"Like a student bluffing in an exam?","就像考试时硬编答案的同学？"],
+      ['bit',"A very confident one!","还是特别自信的那种！"]]},
+{bg:'class',holo:{t:'vs',title:T("Better prompts","更好的提示词"),a:{l:T("“Tell me about space.”","“给我讲讲太空。”"),ok:false},b:{l:T("“Explain black holes to a 13-year-old in 5 sentences, with one everyday example.”","“用5句话给13岁的学生解释黑洞，举一个生活中的例子。”"),ok:true}},
+ cast:[['mia',54,'grin','point'],['bit',356,'talk','present']],
+ say:[['bit',"Clear prompts get better answers. Say who it's for, what you want and what format.","提示词越清楚，回答越好。说清楚给谁看、要什么、什么格式。"]]},
+{bg:'room',holo:{t:'list',title:T("Smart AI rules","聪明用AI的规则"),items:[{i:'search',l:T("Check important facts with reliable sources","重要信息要用可靠来源核实")},{i:'lock',l:T("Never share your address, ID or passwords","不透露住址、身份证号、密码")},{i:'book',l:T("Use it to learn, not to copy homework","用它学习，不要抄作业")},{i:'pen',l:T("Say when you used AI","用了AI要说明")}]},
+ cast:[['leo',54,'determined','idle'],['bit',356,'happy','present']],
+ say:[['bit',"Pin these four rules next to your desk!","把这四条规则贴在书桌旁边！"]]},
+{bg:'room',cast:[['leo',125,'grin','cheer'],['bit',285,'happy','wave']],
+ say:[['leo',"AI is a super-smart helper, but I'm the boss of my own brain!","AI是超级聪明的助手，但我的大脑我做主！"],
+      ['bit',"Exactly. You think, AI helps.","说得好。你来思考，AI来帮忙。"]]}
+],
+terms:[["Hallucination","幻觉","When AI states something false as if it were true.","AI把错误的内容当成事实说出来。"],
+ ["Fact-checking","核实","Checking a claim against reliable sources.","用可靠的来源检验一个说法。"],
+ ["Prompting","写提示词","Writing clear instructions to get useful answers.","写出清晰的指令，得到有用的回答。"],
+ ["Honest learning","诚实学习","Doing your own thinking and saying when you had help.","自己动脑思考，用了帮助就如实说明。"]],
+tryIt:T("Catch AI making a mistake: ask a chatbot about something you know really well (your school, your favourite team). Find one error, then check it with a reliable source.","抓住AI的错误：问聊天机器人一个你特别熟悉的话题（你的学校、你喜欢的球队）。找出一个错误，再用可靠来源核实。")}
+);

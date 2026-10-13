@@ -1,0 +1,30 @@
+// eng · episode 2 (script marker E2)
+LBC.registerEpisode('eng',2,
+{t:T("Bridges and Strong Shapes","桥梁与稳固结构"),topic:T("Structures","结构"),
+panels:[
+{bg:'city',cast:[['leo',110,'think','point'],['mia',220,'happy','idle'],['bit',330,'talk','idle',{y:96}]],
+ say:[['nar',"Leo and Mia walk along the river, looking at the bridges.","乐乐和米娅沿着江边散步，看着江上的大桥。"],
+      ['leo',"How does a bridge hold up so many cars?","一座桥怎么撑得住那么多车？"]]},
+{bg:'city',holo:{t:'truss',title:T("Why triangles?","为什么用三角形？")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Remember triangle stability? Bridges use triangles so forces spread out and the shape can't squash.","还记得三角形的稳定性吗？桥梁用三角形结构，让力分散开，形状也不会被压扁。"]]},
+{bg:'city',holo:{t:'bridges',title:T("Bridge types","桥的类型")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"The Lupu Bridge is an arch, and the Nanpu Bridge hangs from cables!","卢浦大桥是拱桥，南浦大桥用的是斜拉索！"],
+      ['bit',"Exactly. Each design moves the weight to the ground in a different way.","没错。每种设计用不同的方式把重量传到地面。"]]},
+{bg:'workshop',props:[['paperbridge',205]],cast:[['leo',90,'grin','point'],['mia',315,'surprised','idle']],
+ say:[['nar',"Challenge: build a bridge from one sheet of paper that holds as many coins as possible.","挑战：用一张纸搭一座桥，看能承受多少枚硬币。"],
+      ['mia',"A flat sheet only held 2 coins...","平铺的纸只放得下2枚硬币……"]]},
+{bg:'workshop',holo:{t:'compare',title:T("Our paper bridge test","我们的纸桥测试"),items:[{l:T("Flat sheet: 2 coins","平铺：2枚"),v:2,txt:'2',c:'#FF5D5D'},{l:T("Folded into zigzags: 40 coins","折成波浪形：40枚"),v:40,txt:'40',c:'#22B8A7'}]},
+ cast:[['leo',54,'grin','cheer'],['bit',356,'happy','present']],
+ say:[['leo',"Folding it into zigzags made it 20 times stronger!","折成波浪形，承重提高了20倍！"],
+      ['bit',"Shape matters as much as material.","形状和材料一样重要。"]]},
+{bg:'class',cast:[['leo',85,'happy','idle'],['mia',200,'grin','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"Engineers test models before building the real thing. Breaking paper is much cheaper than breaking steel!","工程师在建造真东西之前先测试模型。弄坏纸可比弄坏钢材便宜多了！"]]}
+],
+terms:[["Structure","结构","Parts arranged to hold a shape and carry weight.","为保持形状、承受重量而组合起来的部件。"],
+ ["Load","荷载","The weight or force a structure must carry.","结构需要承受的重量或力。"],
+ ["Truss","桁架","A frame made of triangles.","由三角形组成的框架结构。"],
+ ["Arch","拱","A curved shape that pushes forces outward into its supports.","把力向两侧传到支撑处的弧形结构。"]],
+tryIt:T("Paper bridge challenge: span a 20 cm gap between two piles of books with one sheet of A4 paper. Try flat, folded and rolled designs and count the coins each one holds!","纸桥挑战：用一张A4纸跨过两摞书之间20厘米的空隙，试试平铺、折叠、卷筒等方案，数一数各能承受多少枚硬币！")}
+);

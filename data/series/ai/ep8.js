@@ -1,0 +1,31 @@
+// ai · episode 8 (script marker 8)
+LBC.registerEpisode('ai',8,
+{t:T("Teaching a Machine","教机器学习"),topic:T("Machine learning","机器学习"),
+panels:[
+{bg:'kitchen',props:[['bins',330]],cast:[['leo',80,'determined','point'],['mia',195,'worried','idle',{f:-1}]],
+ say:[['leo',"Science fair idea: an AI that knows Shanghai garbage sorting!","科学节点子：做一个会上海垃圾分类的AI！"],
+      ['mia',"Even my grandma can't remember which bin a bubble tea cup goes in.","连我奶奶都记不住奶茶杯该扔哪个桶。"]]},
+{bg:'kitchen',holo:{t:'cards',cols:2,title:T("Labelled examples","带标签的例子"),items:[{p:'banana',l:T("Wet waste","湿垃圾")},{p:'bottle',l:T("Recyclable","可回收物")},{p:'medicine',l:T("Hazardous","有害垃圾")},{p:'tissue',l:T("Dry waste","干垃圾")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Step one: collect photos and label each one with the right answer. These are your training examples.","第一步：收集照片，给每张标上正确答案。这些就是训练样本。"]]},
+{bg:'kitchen',holo:{t:'cycle',title:T("Training","训练"),items:[{i:'brain',l:T("Guess","猜")},{i:'check',l:T("Check","对答案")},{i:'gear',l:T("Adjust","调整")}],center:T("× 1000s","重复上千次")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"The model guesses, checks the answer, and adjusts itself a little. Then again. Thousands of times.","模型先猜，再对答案，然后把自己调整一点点。再来一遍，重复成千上万次。"]]},
+{bg:'kitchen',holo:{t:'cards',cols:2,title:T("Test on NEW photos","用新照片测试"),items:[{p:'banana',l:T("Wet waste","湿垃圾"),m:'ok'},{p:'bottle',l:T("Recyclable","可回收物"),m:'ok'},{p:'tissue',l:T("Dry waste","干垃圾"),m:'ok'},{p:'medicine',l:T("Guessed dry","猜成干垃圾"),m:'no'}],foot:T("Score: 3 / 4","得分：3 / 4")},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['bit',"Then we test it on photos it has never seen. That shows if it really learned.","然后用它从没见过的照片来测试，这样才知道它是不是真学会了。"],
+      ['leo',"Like an exam with new questions, not the homework questions!","就像考试出新题，而不是考原来的作业题！"]]},
+{bg:'kitchen',holo:{t:'cards',cols:3,title:T("Oops: it learned the table","糟糕：它学会的是桌子"),items:[{p:'bananaT',l:T("Wet","湿垃圾"),m:'ok'},{p:'bananaT',l:T("Wet","湿垃圾"),m:'ok'},{p:'table',l:T("Wet?!","湿垃圾？！"),m:'q'}],foot:T("Every training banana was on the same table","训练用的香蕉都在同一张桌子上")},
+ cast:[['mia',54,'grin','point'],['bit',356,'error','present']],
+ say:[['mia',"Every banana photo was on your kitchen table. Now it thinks the TABLE is wet waste!","所有香蕉照片都是在你家餐桌上拍的。现在它以为“桌子”是湿垃圾！"],
+      ['bit',"Models learn whatever patterns are in the data, even the wrong ones.","数据里有什么规律，模型就学什么，哪怕是错的规律。"]]},
+{bg:'kitchen',cast:[['leo',115,'determined','point'],['bit',290,'happy','wave']],
+ say:[['leo',"So we need lots of different photos: different places, light and angles. And the right labels.","所以我们需要各种各样的照片：不同地方、不同光线、不同角度，还要标对答案。"],
+      ['bit',"Exactly. Better data, better AI.","完全正确。数据越好，AI越好。"]]}
+],
+terms:[["Training data","训练数据","Labelled examples that a model learns from.","模型用来学习的、带标签的例子。"],
+ ["Label","标签","The correct answer attached to an example.","附在例子上的正确答案。"],
+ ["Model","模型","What training produces: a pattern-finder that makes predictions.","训练得到的“规律发现器”，用来做预测。"],
+ ["Test set","测试集","New examples kept aside to check whether the model really learned.","预留出来的新例子，用来检验模型是否真的学会了。"]],
+tryIt:T("Try Teachable Machine (or the machine learning extension in Mind+). Train it to tell 'thumbs up' from 'thumbs down'. Then try to fool it!","试试Teachable Machine（或Mind+的机器学习扩展）。训练它分辨“点赞”和“踩”的手势，然后想办法骗过它！")}
+);

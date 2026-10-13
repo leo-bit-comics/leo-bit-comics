@@ -1,0 +1,30 @@
+// math · episode 3 (script marker M3)
+LBC.registerEpisode('math',3,
+{t:T("Packing It Back Up","打包还原"),topic:T("Factorising","因式分解"),
+panels:[
+{bg:'room',cast:[['leo',115,'think','think'],['bit',290,'talk','wave']],
+ say:[['bit',"Expanding is like unpacking a box. Factorising is packing it back up.","展开就像拆箱子，因式分解就是把东西装回去。"],
+      ['leo',"So I turn a sum back into a product?","也就是把加法式子变回乘法式子？"]]},
+{bg:'room',holo:{t:'big',title:T("Take out a common factor","提公因式"),rows:[{s:'6x + 9',size:20,mono:true},{s:'= 3(2x + 3)',size:20,mono:true,fill:'#C2416B'},{s:T("3 goes into both terms","3 是两项的公因数"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"First, look for something every term shares and pull it out in front.","先找每一项都有的公因式，把它提到括号外面。"]]},
+{bg:'room',holo:{t:'tiles',p:2,q:3,title:T("Tiles make a rectangle","拼成长方形"),foot:'x² + 5x + 6 = (x + 2)(x + 3)'},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"One big x² tile, five x strips and six small squares. Arrange them into a rectangle...","一块 x² 大方块、五根 x 长条、六个小方块，把它们拼成长方形……"],
+      ['leo',"...and the sides are x + 2 and x + 3!","……边长就是 x + 2 和 x + 3！"]]},
+{bg:'class',holo:{t:'big',title:T("The number hunt","找数字"),rows:[{s:'x² + 7x + 12',size:16,mono:true},{s:T("Two numbers: product 12, sum 7","找两个数：积是12，和是7"),size:11},{s:'3 × 4 = 12,  3 + 4 = 7',size:12,mono:true},{s:'= (x + 3)(x + 4)',size:16,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"It's a puzzle! Which two numbers multiply to 12 and add to 7?","这是个谜题！哪两个数相乘得12、相加得7？"]]},
+{bg:'class',holo:{t:'big',title:T("Use a formula backwards","公式倒着用"),rows:[{s:'x² − 25',size:20,mono:true},{s:'= (x + 5)(x − 5)',size:18,mono:true,fill:'#C2416B'},{s:T("The difference of squares, in reverse","平方差公式，倒过来用"),size:11}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"It's Mia's speed trick in reverse!","这就是米娅的速算技巧倒过来！"]]},
+{bg:'class',cast:[['mia',85,'happy','idle'],['leo',200,'grin','idle'],['bit',322,'talk','wave']],
+ say:[['bit',"Factorising turns hard problems into easy ones. You'll use it to solve equations and simplify fractions.","因式分解能把难题变简单。以后解方程、化简分式都会用到它。"],
+      ['mia',"So next is fractions with letters?","所以下一课是带字母的分数？"],
+      ['bit',"Exactly!","没错！"]]}
+],
+terms:[["Factorising","因式分解","Writing a sum as a product of factors.","把一个多项式写成几个整式乘积的形式。"],
+ ["Common factor","公因式","A factor that every term shares.","各项都含有的因式。"],
+ ["Check by expanding","展开检验","Multiply your answer back out. You should get the original expression.","把结果乘开，应该得到原式。"]],
+tryIt:T("Cut paper tiles (1 big square, some strips, some small squares) and try to build rectangles for x² + 5x + 6 and x² + 6x + 8.","用纸剪出大方块、长条和小方块，试着为 x² + 5x + 6 和 x² + 6x + 8 拼出长方形。")}
+);
