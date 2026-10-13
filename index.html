@@ -1312,6 +1312,44 @@ terms:[["Sensor","传感器","A device that measures something, like temperature
  ["System","系统","Parts working together for one purpose.","为同一目标协同工作的各个部分。"]],
 tryIt:T("Find 3 devices at home that use sensors (hint: automatic lights, fridges, phones). For each one, name the sensor, the controller and what it does.","在家里找出3个用到传感器的装置（提示：感应灯、冰箱、手机），说出它们的传感器、控制器和执行的动作。")}
 ]});
+// ===== Earth Rangers: preview of Shanghai 8th-grade geography and earth science. Every home activity is safe and done with an adult. =====
+// Series entry: push after the 'eng' series closes (after its "]});"), same as the other SERIES.push blocks.
+SERIES.push({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers","地球巡游"),
+ desc:T("Weather, the water cycle, climate, rocks and landforms, and how our planet works. Every home activity is safe and done with an adult.","天气、水循环、气候、岩石与地形，看看我们的星球如何运转。所有家庭小实验都安全，并需大人陪同。"),
+ grade:T("A preview of Shanghai 8th-grade geography and earth science","上海八年级地理与地球科学预习"),
+ episodes:[
+// ---------- E1 ----------
+{t:T("Why Is Shanghai So Muggy?","为什么上海这么闷？"),topic:T("Humidity and the water cycle","湿度与水循环"),
+panels:[
+{bg:'city',cast:[['leo',125,'worried','idle'],['bit',295,'talk','wave',{y:100}]],fx:[['sweat','leo']],
+ say:[['nar',"Shanghai. A July afternoon, 32 °C.","上海，七月的一个下午，32 °C。"],
+      ['leo',"I'm not even running and my T-shirt is soaked. Why is it so MUGGY?","我又没跑步，T恤都湿透了。为什么这么闷？"]]},
+{bg:'city',holo:{t:'big',title:T("Bit's sensor reading","比特的传感器读数"),rows:[{s:'32 °C',size:22},{s:T("Relative humidity: 75%","相对湿度：75%"),size:15,fill:'#C2416B'},{s:T("Dew point: 27 °C","露点：27 °C"),size:15}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Humidity is how much water vapour is in the air. 75% means the air holds three-quarters of all the vapour it could hold at this temperature.","湿度就是空气里含有多少水蒸气。75%表示，空气里的水蒸气已经达到这个温度下最多能容纳量的四分之三。"]]},
+{bg:'city',holo:{t:'vs',title:T("Why sweat helps (or doesn't)","出汗为什么有时不管用"),a:{l:T("Humid air: sweat evaporates slowly, you stay hot and sticky","潮湿的空气：汗蒸发得慢，又热又黏"),ok:false},b:{l:T("Dry air: sweat evaporates fast and carries heat away","干燥的空气：汗蒸发得快，带走热量"),ok:true}},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"When sweat evaporates, it takes heat from your skin. But when the air is already this full of vapour, sweat can't evaporate fast enough.","汗水蒸发时会从皮肤带走热量。可空气里水蒸气已经这么多时，汗就蒸发不了那么快。"],
+      ['leo',"So it's not just hot. It's hot AND wet!","所以不只是热，是又热又湿！"]]},
+{bg:'kitchen',props:[['glass',205]],holo:{t:'list',title:T("Where do the drops come from?","水珠从哪里来？"),items:[{i:'ice',l:T("Ice makes the glass cold","冰让杯子变冷")},{i:'wave',l:T("Air touching it cools below the dew point","贴着杯子的空气降到露点以下")},{i:'drop',l:T("Vapour condenses into drops","水蒸气凝结成水珠")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"My iced drink is 'sweating' too! Is water leaking through the glass?","我的冰饮料也在“出汗”！是水从杯子里渗出来了吗？"],
+      ['bit',"Nope! That water came from the air. Cool air below its dew point and the vapour turns back into liquid. That's condensation.","不是！这些水来自空气。空气冷却到露点以下，水蒸气就会变回液体。这叫凝结。"]]},
+{bg:'field',holo:{t:'cycle',title:T("The water cycle","水循环"),items:[{i:'wave',l:T("Evaporation","蒸发")},{i:'bubbles',l:T("Condensation","凝结")},{i:'drop',l:T("Precipitation","降水")},{i:'globe',l:T("Collection","汇集")}],center:T("powered by the Sun","太阳提供能量")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The Sun heats the sea and the Huangpu River, so water evaporates. High up, the air cools and vapour condenses into clouds. Then it rains, and the water collects in rivers, lakes and the ocean. Round and round!","太阳晒热大海和黄浦江，水蒸发了。到了高空，空气变冷，水蒸气凝结成云。然后下雨，雨水汇集到江河、湖泊和海洋。周而复始！"]]},
+{bg:'city',cast:[['leo',125,'grin','point'],['bit',290,'wink','wave']],
+ say:[['nar',"That evening, a thunderstorm rolls over the city.","傍晚，一场雷阵雨掠过城市。"],
+      ['leo',"Shanghai is next to the sea, so there's tons of water to evaporate. No wonder our summers are so muggy!","上海靠海，有大量的水可以蒸发。难怪我们的夏天这么闷！"],
+      ['bit',"Exactly! Next time, Earth Rangers: where do clouds come from?","没错！地球巡游下一集：云是从哪里来的？"]]}
+],
+terms:[["Humidity","湿度","How much water vapour is in the air. Relative humidity compares it with the most the air can hold at that temperature.","空气中水蒸气的多少。相对湿度是它和该温度下空气最多能容纳的水蒸气量之比。"],
+ ["Dew point","露点","The temperature air must cool to before its vapour starts to condense.","空气冷却到水蒸气开始凝结时的温度。"],
+ ["Evaporation / Condensation","蒸发 / 凝结","Liquid turning into gas / gas turning back into liquid.","液体变成气体 / 气体变回液体。"],
+ ["Precipitation","降水","Water falling from clouds as rain, snow or hail.","水从云中以雨、雪或冰雹的形式落下。"],
+ ["Collection","汇集","Water gathering in rivers, lakes, oceans and underground.","水汇集到江河、湖泊、海洋和地下。"]],
+tryIt:T("Make a water cycle in a jar: with an adult, pour about 3 cm of warm (not boiling) tap water into a glass jar. Put a plate on top with ice cubes on it. Watch for 10 minutes. Where do drops form, and where do they fall? Name each step of the water cycle you see.","做一个“罐子里的水循环”：在大人陪同下，往玻璃罐里倒约3厘米深的温热自来水（不要用开水），罐口盖一个盘子，盘子上放几块冰。观察10分钟：水珠在哪里形成？又落到了哪里？说出你看到的每一个水循环步骤。")}
+]});
 
 // ===== Drawing engine =====
 let MODE='both';
