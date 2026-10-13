@@ -1,0 +1,30 @@
+// mathjr · episode 4 (script marker MJ4)
+LBC.registerEpisode('mathjr',4,
+{t:T("Who Ate the Pizza?","谁吃了比萨？"),topic:T("Fractions: equivalent fractions and the four operations","分数：分数的基本性质与运算"),
+panels:[
+{bg:'kitchen',cast:[['leo',85,'grin','point'],['mia',200,'think','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"Saturday lunch. One pizza on the table.","周六午饭，桌上有一个比萨。"],
+      ['leo',"I ate 1/2 of the pizza and Mia ate 1/3. How much is left?","我吃了比萨的1/2，米娅吃了1/3。还剩多少？"],
+      ['mia',"1/2 + 1/3 = 2/5? That can't be right...","1/2 + 1/3 = 2/5？好像不对……"]]},
+{bg:'kitchen',holo:{t:'big',title:T("Same-size slices first","先切成一样大的块"),rows:[{s:'1/2 = 3/6',size:16,mono:true},{s:'1/3 = 2/6',size:16,mono:true},{s:'3/6 + 2/6 = 5/6',size:18,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"You can only add slices of the same size. Cut both into sixths, and 6 is the LCM of 2 and 3!","只有大小相同的块才能相加。都切成六分之一，6正是2和3的最小公倍数！"]]},
+{bg:'kitchen',holo:{t:'donut',title:T("One whole pizza","一整个比萨"),segs:[{v:3,c:'#2F6FD6',l:T("Leo 3/6","乐乐 3/6")},{v:2,c:'#FF5D5D',l:T("Mia 2/6","米娅 2/6")},{v:1,c:'#FFD84D',l:T("Left 1/6","剩下 1/6")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['leo',"So 1 − 5/6 = 1/6 is left. One slice for Bit!","所以还剩1 − 5/6 = 1/6。给比特留一块！"],
+      ['bit',"Robots don't eat pizza, but thanks.","机器人不吃比萨，不过谢谢。"]]},
+{bg:'kitchen',holo:{t:'vs',title:T("Adding fractions","分数加法"),a:{l:'1/2 + 1/3 = 2/5',ok:false},b:{l:'3/6 + 2/6 = 5/6',ok:true}},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['mia',"2/5 is less than 1/2, but we added MORE pizza. Adding tops and bottoms doesn't work!","2/5比1/2还小，可我们是又加了比萨。分子分母各加各的不行！"]]},
+{bg:'kitchen',holo:{t:'big',title:T("Multiply and divide","乘法和除法"),rows:[{s:'3/4 × 20 = 15',size:16,mono:true},{s:'3 ÷ 1/4 = 3 × 4 = 12',size:14,mono:true,fill:'#C2416B'},{s:'4/8 = 1/2',size:14,mono:true},{s:T("Divide: × the reciprocal","除以一个数 = 乘它的倒数"),size:11}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"3/4 of 20 dumplings is 15. And 3 pizzas cut into quarters gives 12 slices: that's 3 ÷ 1/4.","20个饺子的3/4是15个。3个比萨都切成四等份，一共12块：这就是3 ÷ 1/4。"]]},
+{bg:'kitchen',cast:[['leo',85,'grin','cheer'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"Common denominator to add, reciprocal to divide. Case closed!","加法先通分，除法乘倒数。结案！"],
+      ['bit',"Next time: the juice ratio mystery!","下一集：果汁配比之谜！"]]}
+],
+terms:[["Equivalent fractions","等值分数","Fractions that show the same amount, like 1/2 = 3/6.","大小相等的分数，比如1/2 = 3/6。"],
+ ["Common denominator","通分","Rewriting fractions with the same denominator before adding or subtracting.","把分数化成分母相同的分数，再相加减。"],
+ ["Reciprocal","倒数","Flip a fraction: the reciprocal of 1/4 is 4. A number times its reciprocal is 1.","把分子分母颠倒：1/4的倒数是4。一个数乘它的倒数等于1。"]],
+tryIt:T("Paper pizza: draw and cut out three equal paper circles. Fold one into halves, one into thirds and one into sixths. Lay the pieces on top of each other to show that 1/2 + 1/3 = 5/6. Use safety scissors.","纸比萨：画三个一样大的纸圆并剪下来。一个折成二等份，一个折成三等份，一个折成六等份。把纸片叠在一起，证明1/2 + 1/3 = 5/6。请使用安全剪刀。")}
+);

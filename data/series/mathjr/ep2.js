@@ -1,0 +1,31 @@
+// mathjr · episode 2 (script marker MJ2)
+LBC.registerEpisode('mathjr',2,
+{t:T("The Mystery Below Zero","零下之谜"),topic:T("Negative numbers and rational numbers","正数、负数与有理数"),
+panels:[
+{bg:'room',cast:[['leo',85,'surprised','point'],['mia',200,'think','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"January. Leo checks the weather app.","一月，乐乐打开天气软件。"],
+      ['leo',"Shanghai: 3 °C. Harbin: −18 °C! What does the minus sign mean?","上海3 °C，哈尔滨−18 °C！这个减号是什么意思？"],
+      ['mia',"Is it like 18 degrees taken away?","是被拿走了18度吗？"]]},
+{bg:'room',holo:{t:'big',title:T("Opposite quantities","相反意义的量"),rows:[{s:T("+3 °C = 3 above zero","+3 °C = 零上3度"),size:15},{s:T("−18 °C = 18 below zero","−18 °C = 零下18度"),size:15,fill:'#C2416B'},{s:T("0 is neither + nor −","0既不是正数也不是负数"),size:12}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Clue one: a negative number is the opposite of a positive one. Above and below zero, deposit and spend, up and down.","第一条线索：负数表示和正数意义相反的量。零上和零下、存钱和花钱、上升和下降。"]]},
+{bg:'room',holo:{t:'table',title:T("How much colder?","冷了多少？"),head:[T("City","城市"),T("Temp","气温")],rows:[[T("Shanghai","上海"),'3 °C'],[T("Harbin","哈尔滨"),'−18 °C'],[T("Gap","温差"),'21 °C']],note:'3 − (−18) = 21'},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"3 degrees down to zero, then 18 more down to −18. That's 21 degrees in all.","从3度降到0度，再降18度到−18度，一共21度。"],
+      ['mia',"So subtracting a negative is like adding!","原来减去一个负数就像加上它！"]]},
+{bg:'room',holo:{t:'vs',title:T("Which is bigger?","哪个更大？"),a:{l:T("−18 > −5, because 18 > 5","−18 > −5，因为18 > 5"),ok:false},b:{l:T("−18 < −5: left is smaller","−18 < −5：越靠左越小"),ok:true}},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"Of course! −18 °C is way colder than −5 °C, so it's smaller.","对呀！−18 °C比−5 °C冷多了，所以它更小。"]]},
+{bg:'room',holo:{t:'big',title:T("Sign rules","符号法则"),rows:[{s:'(−3) + (−5) = −8',size:16,mono:true},{s:'7 + (−10) = −3',size:16,mono:true},{s:'(−2) × (−3) = 6',size:16,mono:true,fill:'#C2416B'},{s:T("Same signs multiply to +","同号相乘得正"),size:11}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Spend ¥3 and then ¥5: you're down ¥8. Earn ¥7 but spend ¥10: down ¥3.","先花3元再花5元，一共少了8元。挣7元却花10元，还是少了3元。"]]},
+{bg:'room',cast:[['leo',85,'grin','cheer'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['mia',"Positives, negatives and zero, including fractions: together they're the rational numbers.","正数、负数和零，再加上分数，合起来就是有理数。"],
+      ['leo',"Case closed: Harbin wins the coldest prize!","结案：哈尔滨获得“最冷奖”！"],
+      ['bit',"Next time: the party bag puzzle!","下一集：礼包分装之谜！"]]}
+],
+terms:[["Negative number","负数","A number less than zero, such as −18.","小于0的数，比如−18。"],
+ ["Opposite numbers","相反数","Two numbers the same distance from 0 on opposite sides, like 5 and −5.","在数轴上到0距离相等、位于两侧的两个数，如5和−5。"],
+ ["Rational number","有理数","Integers and fractions, positive, negative or zero.","整数和分数的统称，包括正数、负数和零。"]],
+tryIt:T("Weather detective: for one week, write down the lowest temperature in Shanghai and in a cold city such as Harbin. Each day, work out the difference. Which day had the biggest gap?","天气侦探：连续一周，记下上海和一个寒冷城市（比如哈尔滨）的最低气温。每天算出温差。哪一天温差最大？")}
+);
