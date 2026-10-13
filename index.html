@@ -8,85 +8,36 @@
 <meta property="og:description" content="Bilingual (English / 简体中文) comic series for 13-year-olds: Leo and his robot Bit explore AI, math, physics, chemistry and engineering, linked to the 7th-grade curriculum.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='14' width='48' height='40' rx='14' fill='%2322B8A7' stroke='%2317182B' stroke-width='4'/%3E%3Crect x='16' y='22' width='32' height='20' rx='7' fill='%2313213C'/%3E%3Ccircle cx='26' cy='32' r='4' fill='%237DF9FF'/%3E%3Ccircle cx='38' cy='32' r='4' fill='%237DF9FF'/%3E%3Cline x1='32' y1='14' x2='32' y2='6' stroke='%2317182B' stroke-width='4'/%3E%3Ccircle cx='32' cy='6' r='4' fill='%23FFD84D'/%3E%3C/svg%3E">
-<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3RUfic9N09KpuCzN",ck:"3RUfic9N09KpuCzN"})</script>
 
-<link rel="stylesheet" href="css/styles.css">
-<title>Leo &amp; Bit Comics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<title>Leo &amp; Bit Comics</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Luckiest+Guy&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700&display=swap">
 </head>
 <body>
 <div class="wrap" id="app"></div>
+<!-- Deferred scripts run in this order after parsing. Episode files data/series/<id>/ep<N>.js are not listed:
+     js/core.js loads them on demand. Only series files (with their titles list) go here. -->
 
-<script src="js/i18n.js"></script>
-<script src="js/core.js"></script>
-<script src="data/manifest.js"></script>
-<script src="data/series/ai.js"></script>
-<script src="data/series/ai/ep1.js"></script>
-<script src="data/series/ai/ep2.js"></script>
-<script src="data/series/ai/ep3.js"></script>
-<script src="data/series/ai/ep4.js"></script>
-<script src="data/series/ai/ep5.js"></script>
-<script src="data/series/ai/ep6.js"></script>
-<script src="data/series/ai/ep7.js"></script>
-<script src="data/series/ai/ep8.js"></script>
-<script src="data/series/ai/ep9.js"></script>
-<script src="data/series/ai/ep10.js"></script>
-<script src="data/series/ai/ep11.js"></script>
-<script src="data/series/ai/ep12.js"></script>
-<script src="data/series/ai/ep13.js"></script>
-<script src="data/series/math.js"></script>
-<script src="data/series/math/ep1.js"></script>
-<script src="data/series/math/ep2.js"></script>
-<script src="data/series/math/ep3.js"></script>
-<script src="data/series/math/ep4.js"></script>
-<script src="data/series/math/ep5.js"></script>
-<script src="data/series/math/ep6.js"></script>
-<script src="data/series/math/ep7.js"></script>
-<script src="data/series/mathjr.js"></script>
-<script src="data/series/mathjr/ep1.js"></script>
-<script src="data/series/mathjr/ep2.js"></script>
-<script src="data/series/mathjr/ep3.js"></script>
-<script src="data/series/mathjr/ep4.js"></script>
-<script src="data/series/mathjr/ep5.js"></script>
-<script src="data/series/mathjr/ep6.js"></script>
-<script src="data/series/mathjr/ep7.js"></script>
-<script src="data/series/mathjr/ep8.js"></script>
-<script src="data/series/mathjr/ep9.js"></script>
-<script src="data/series/mathjr/ep10.js"></script>
-<script src="data/series/physics.js"></script>
-<script src="data/series/physics/ep1.js"></script>
-<script src="data/series/physics/ep2.js"></script>
-<script src="data/series/physics/ep3.js"></script>
-<script src="data/series/physics/ep4.js"></script>
-<script src="data/series/physics/ep5.js"></script>
-<script src="data/series/physics/ep6.js"></script>
-<script src="data/series/chem.js"></script>
-<script src="data/series/chem/ep1.js"></script>
-<script src="data/series/chem/ep2.js"></script>
-<script src="data/series/chem/ep3.js"></script>
-<script src="data/series/chem/ep4.js"></script>
-<script src="data/series/chem/ep5.js"></script>
-<script src="data/series/chem/ep6.js"></script>
-<script src="data/series/eng.js"></script>
-<script src="data/series/eng/ep1.js"></script>
-<script src="data/series/eng/ep2.js"></script>
-<script src="data/series/eng/ep3.js"></script>
-<script src="data/series/eng/ep4.js"></script>
-<script src="data/series/eng/ep5.js"></script>
-<script src="data/series/eng/ep6.js"></script>
-<script src="data/series/earth.js"></script>
-<script src="data/series/earth/ep1.js"></script>
-<script src="data/series/earth/ep2.js"></script>
-<script src="js/render/base.js"></script>
-<script src="js/icons.js"></script>
-<script src="js/render/diagrams.js"></script>
-<script src="js/render/characters.js"></script>
-<script src="js/render/backgrounds.js"></script>
-<script src="js/render/props.js"></script>
-<script src="js/render/panel.js"></script>
-<script src="js/app.js"></script>
+<script defer src="js/i18n.js"></script>
+<script defer src="js/core.js"></script>
+<script defer src="data/manifest.js"></script>
+<script defer src="data/series/ai.js"></script>
+<script defer src="data/series/math.js"></script>
+<script defer src="data/series/mathjr.js"></script>
+<script defer src="data/series/physics.js"></script>
+<script defer src="data/series/chem.js"></script>
+<script defer src="data/series/eng.js"></script>
+<script defer src="data/series/earth.js"></script>
+<script defer src="js/render/base.js"></script>
+<script defer src="js/icons.js"></script>
+<script defer src="js/render/diagrams.js"></script>
+<script defer src="js/render/characters.js"></script>
+<script defer src="js/render/backgrounds.js"></script>
+<script defer src="js/render/props.js"></script>
+<script defer src="js/render/panel.js"></script>
+<script defer src="js/app.js"></script>
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" async onload="LA.init({id:'3RUfic9N09KpuCzN',ck:'3RUfic9N09KpuCzN'})"></script>
 </body>
 </html>

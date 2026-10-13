@@ -23,18 +23,21 @@ Each episode ends with key words and a hands-on activity for kids and parents.
 
 This repository is published automatically from the private source repo. Don't edit it directly; changes made here are overwritten on the next deploy.
 
-A static site served by GitHub Pages. No build step: `index.html` loads plain `<script>` files in order,
-and they share global names (classic scripts, not modules).
+A static site served by GitHub Pages. No build step: `index.html` loads plain deferred `<script>` files in
+order, and they share global names (classic scripts, not modules). Episode files are not in `index.html`:
+`LBC.loadEpisode(id, n)` injects `data/series/<id>/ep<N>.js` when that episode is opened (cached promise),
+and the next episode is prefetched after each render. The first view only loads the shell, the renderer,
+the manifest, the series files and one episode.
 
 ```
-index.html                 page shell: <head>, #app, and the ordered <script> list
+index.html                 page shell: <head>, #app, and the ordered <script defer> list (no episode files)
 CNAME, .nojekyll           GitHub Pages custom domain (leo-bit.gavin.run) / no Jekyll
 css/styles.css             all styles
 js/i18n.js                 T(en,zh), MODE ('both'|'en'|'zh'), pick/hx, UI strings, epNo/cnt, loadMode/setMode
-js/core.js                 SERIES + window.LBC registry (registerSeries, registerEpisode, finalize)
+js/core.js                 SERIES + window.LBC registry (registerSeries, registerEpisode, finalize, loadEpisode)
 data/manifest.js           LBC.manifest: series ids in display order
-data/series/<id>.js        one file per series (title, icon, colour, description, school link)
-data/series/<id>/ep<N>.js  one file per episode (panels, key words, activity)
+data/series/<id>.js        one file per series (title, icon, colour, description, school link, episode titles)
+data/series/<id>/ep<N>.js  one file per episode (panels, key words, activity), loaded on demand
 js/render/base.js          colours, escaping, SVG text measuring/wrapping, arrows
 js/icons.js                icon() / pic() and the ICON2 / PIC2 extension sets
 js/render/diagrams.js      hologram diagrams DIAG.<type> and holo()
@@ -46,7 +49,8 @@ js/app.js                  cast, page render, routing, navigation, click handlin
 templates/                 copy-and-edit templates (not loaded by the site)
 ```
 
-Load order matters: `i18n.js` → `core.js` → `manifest.js` → series/episode data → render files → `app.js`.
+Load order matters: `i18n.js` → `core.js` → `manifest.js` → series files → render files → `app.js`
+(→ the current episode, on demand).
 
 URLs: `#<series-id>-<n>` (e.g. `#earth-1`); legacy `#ep<n>` opens AI & Computers episode n.
 localStorage keys: `lb-mode`, `lb-series`, `lb-ep`. Keep series ids stable, they are part of links.
@@ -56,8 +60,8 @@ localStorage keys: `lb-mode`, `lb-series`, `lb-ep`. Keep series ids stable, they
 1. Copy `templates/series.js` to `data/series/<id>.js` (`<id>`: lowercase letters only) and fill it in.
    `icon` is an icon name from `js/icons.js`; `color` is the series accent colour.
 2. Add `'<id>'` to `LBC.manifest` in `data/manifest.js` at the position it should appear.
-3. Add at least one episode (below), then add `<script>` tags to `index.html`, before `js/render/base.js`:
-   `<script src="data/series/<id>.js"></script>` followed by its episode files.
+3. Add `<script defer src="data/series/<id>.js"></script>` to `index.html`, before `js/render/base.js`.
+   Then add at least one episode (below). Episode files get no `<script>` tag.
 4. Test locally (see below).
 
 ## How to add an episode
@@ -69,10 +73,12 @@ localStorage keys: `lb-mode`, `lb-series`, `lb-ep`. Keep series ids stable, they
    Scenes: `room room-night kitchen class field city cyber fair burst lab workshop`.
    Cast: `leo bit mia wang`. Poses: `idle point wave cheer think hold talk`.
    Hologram types are the `DIAG.<type>` functions in `js/render/diagrams.js`; look at existing episodes for examples.
-3. Add `<script src="data/series/<id>/ep<N>.js"></script>` to `index.html` after that series' previous episode.
+3. Add the episode's title to the end of `titles:[...]` in `data/series/<id>.js`, exactly the same
+   `T("English","中文")` as its `t`. Do not add a `<script>` tag; the site loads the file on demand.
+   `scripts/check.py` fails if the list and the files don't match.
 4. If the series' row in the table above changes, update it.
 
-A missing or misnumbered file shows a `LBC:` warning in the browser console.
+A missing or misnumbered file shows a `LBC:` warning in the browser console when that episode is opened.
 
 ## Test locally
 

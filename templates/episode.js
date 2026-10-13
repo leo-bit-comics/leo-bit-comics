@@ -1,5 +1,6 @@
 // TEMPLATE — copy to data/series/<id>/ep<N>.js (N = 1, 2, 3 … in reading order, no gaps).
-// Not loaded by the site. See README.md "How to add an episode".
+// Not loaded by the site. See README.md "How to add an episode". No <script> tag needed: the site loads
+// this file on demand. Do add the same t to the titles list in data/series/<id>.js.
 LBC.registerEpisode('myseries',1,
 {t:T("Episode title","剧集标题"),topic:T("Topic line","本集主题"),
 panels:[

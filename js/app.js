@@ -37,13 +37,19 @@ function render(){
   app.innerHTML=h;
 }
 function neighbour(d){let si=SI,e=CUR+d;if(e<0){si--;if(si<0)return null;e=SERIES[si].episodes.length-1;}else if(e>=SERIES[si].episodes.length){si++;if(si>=SERIES.length)return null;e=0;}return {si,e};}
+// Episode data loads on demand; render once the current episode is in, then prefetch the next one.
+let SEQ=0;
+function show(after){const my=++SEQ,S=SERIES[SI];
+  return LBC.loadEpisode(S.id,CUR+1).then(()=>{if(my!==SEQ)return;render();if(after)after();
+    const nx=neighbour(1);if(nx){const f=()=>LBC.loadEpisode(SERIES[nx.si].id,nx.e+1).catch(()=>{});
+      if(window.requestIdleCallback)requestIdleCallback(f,{timeout:2000});else setTimeout(f,200);}}).catch(()=>{});}
 function go(si,e,scroll,target){SI=si;CUR=e;try{localStorage.setItem('lb-series',SERIES[si].id);localStorage.setItem('lb-ep',String(e));}catch(err){}
   try{history.replaceState(null,'','#'+SERIES[si].id+'-'+(e+1));}catch(err){}
-  render();if(scroll){const el=document.getElementById(target||'episode');if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}}
+  show(scroll?()=>{const el=document.getElementById(target||'episode');if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}:null);}
 document.addEventListener('click',ev=>{const t=ev.target.closest('button');if(!t)return;
-  if(t.dataset.mode){setMode(t.dataset.mode);render();}
+  if(t.dataset.mode){setMode(t.dataset.mode);if(LBC.isLoaded(SERIES[SI].episodes[CUR]))render();}
   else if(t.dataset.series!==undefined){go(+t.dataset.series,0,false);}
   else if(t.dataset.ep!==undefined) go(SI,+t.dataset.ep,true);
   else if(t.dataset.go){const [a,b]=t.dataset.go.split(':');go(+a,+b,true);}});
-render();
-if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>render());
+show();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{if(LBC.isLoaded(SERIES[SI].episodes[CUR]))render();});
