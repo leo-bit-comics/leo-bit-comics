@@ -81,6 +81,10 @@ const ICON2={
 
 // ---------- extra pictures (±20 x ±16) ----------
 const PIC2={
+  // raindrop shapes (Earth Rangers ep3)
+  dropTear:()=>`<path d="M0 -15 C5 -6 10 0 10 5 A10 10 0 0 1 -10 5 C-10 0 -5 -6 0 -15 Z" fill="#7CC6F5" stroke="${INK}" stroke-width="1.6"/><path d="M-4 3 Q-4 7 0 8" stroke="#fff" stroke-width="1.6" fill="none"/>`,
+  dropRound:()=>`<circle cx="0" cy="0" r="9" fill="#7CC6F5" stroke="${INK}" stroke-width="1.6"/><path d="M-4 -3 Q-2 -6 2 -6" stroke="#fff" stroke-width="1.6" fill="none"/>`,
+  dropBun:()=>`<path d="M-15 6 Q-16 -10 0 -10 Q16 -10 15 6 Q0 2 -15 6 Z" fill="#7CC6F5" stroke="${INK}" stroke-width="1.6"/><path d="M-8 -4 Q-4 -7 2 -7" stroke="#fff" stroke-width="1.6" fill="none"/><path d="M-13 12 L-13 18 M0 10 L0 17 M13 12 L13 18" stroke="${HL}" stroke-width="1.4" stroke-dasharray="2 2"/>`,
   apple:()=>`<path d="M0 -8 C-6 -13 -15 -9 -14 0 C-13 9 -6 14 0 11 C6 14 13 9 14 0 C15 -9 6 -13 0 -8 Z" fill="${CORAL}" stroke="${INK}" stroke-width="1.6"/><path d="M0 -8 Q1 -13 4 -15" stroke="${INK}" stroke-width="1.8" fill="none"/><path d="M2 -12 Q8 -16 10 -11 Q6 -9 2 -12 Z" fill="#6CC56A" stroke="${INK}" stroke-width="1.2"/>`,
   orange:()=>`<circle cx="0" cy="1" r="13" fill="${ORANGE}" stroke="${INK}" stroke-width="1.6"/><circle cx="-4" cy="-3" r="1" fill="#C96A12"/><circle cx="4" cy="3" r="1" fill="#C96A12"/><circle cx="2" cy="-6" r="1" fill="#C96A12"/><path d="M0 -12 L2 -15" stroke="${INK}" stroke-width="1.6"/>`,
   ice:()=>`<rect x="-11" y="-10" width="20" height="18" rx="3" fill="#D8F3FF" stroke="${INK}" stroke-width="1.6"/><path d="M-7 -6 L-2 -6" stroke="#fff" stroke-width="2"/><path d="M-14 12 Q-4 8 4 12 T16 12" fill="none" stroke="#7CC6F5" stroke-width="2.2"/>`,

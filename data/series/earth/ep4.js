@@ -1,0 +1,33 @@
+// earth · episode 4 (script marker E4)
+LBC.registerEpisode('earth',4,
+{t:T("Weather or Climate?","天气还是气候？"),topic:T("Weather, climate and Shanghai's monsoon climate","天气、气候与上海的季风气候"),
+panels:[
+{bg:'class',cast:[['mia',85,'smirk','point'],['leo',200,'surprised','idle'],['bit',322,'talk','idle']],
+ say:[['nar',"A cold, windy morning in late October.","十月下旬一个又冷又刮风的早晨。"],
+      ['mia',"Yesterday was 26 °C and today it's 14 °C. Shanghai's climate is so random!","昨天26 °C，今天14 °C。上海的气候真是乱七八糟！"],
+      ['bit',"Careful! That's weather, not climate. They're different things.","小心！那是天气，不是气候。这是两回事。"]]},
+{bg:'class',holo:{t:'table',title:T("Weather vs climate","天气和气候"),head:[T("Compare","比较"),T("Weather","天气"),T("Climate","气候")],rows:[[T("Time","时间"),T("Hours to days","数小时到数天"),T("~30 years","约30年")],[T("Changes","变化"),T("Quickly","很快"),T("Slowly","很慢")],[T("Example","例子"),T("Rainy today","今天下雨"),T("Wet summers","夏季多雨")]]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Weather is what's happening outside right now. Climate is the usual pattern, worked out by averaging the weather over about 30 years.","天气是此刻外面正在发生的情况。气候是长期的规律，由大约30年的天气平均得出。"]]},
+{bg:'class',holo:{t:'big',title:T("An easy way to remember","一个好记的方法"),rows:[{s:T("Weather = your mood today","天气 = 你今天的心情"),size:14},{s:T("Climate = your personality","气候 = 你的性格"),size:14,fill:'#C2416B'}]},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],
+ say:[['leo',"So I can be grumpy today, but I'm still a cheerful person overall!","所以我今天可以不开心，但总体上我还是个快乐的人！"],
+      ['bit',"Exactly. One cold day doesn't change Shanghai's climate.","正是。一个冷天改变不了上海的气候。"]]},
+{bg:'city',holo:{t:'table',title:T("Shanghai's monsoon climate","上海的季风气候"),head:[T("Season","季节"),T("Wind blows from","风从哪里来"),T("Brings","带来")],rows:[[T("Summer","夏季"),T("The sea (south-east)","海洋（东南）"),T("Heat and rain","炎热、多雨")],[T("Winter","冬季"),T("The land (north-west)","陆地（西北）"),T("Cold, dry air","寒冷、干燥")]]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Shanghai has a subtropical monsoon climate. In summer, wind blows in from the warm sea and brings rain. In winter, it blows from the cold land and brings dry air.","上海属于亚热带季风气候。夏季，风从温暖的海洋吹来，带来降雨；冬季，风从寒冷的陆地吹来，带来干冷的空气。"]]},
+{bg:'field',holo:{t:'list',title:T("A weather station measures...","气象站测量……"),items:[{i:'flame',l:T("Temperature: thermometer","气温：温度计")},{i:'drop',l:T("Rainfall: rain gauge","降水量：雨量器")},{i:'wave',l:T("Wind speed: anemometer","风速：风速仪")},{i:'bubbles',l:T("Humidity: hygrometer","湿度：湿度计")},{i:'globe',l:T("Air pressure: barometer","气压：气压计")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Weather stations measure these every day, all over the world. Years of those numbers tell us the climate.","世界各地的气象站每天都在测量这些数据。积累多年的数据，就能告诉我们气候是什么样的。"],
+      ['mia',"So climate is really just a lot of data!","所以气候其实就是大量的数据！"]]},
+{bg:'class',cast:[['leo',85,'happy','idle'],['mia',200,'grin','point'],['bit',322,'wink','wave']],
+ say:[['mia',"Okay, I take it back. Today's WEATHER is random. The climate is fine.","好吧，我收回刚才的话。是今天的“天气”变化大，气候没问题。"],
+      ['leo',"And we collected data before, for my football shots. Same idea!","我们以前也收集过数据，记录我的射门。是一个道理！"],
+      ['bit',"Next time, Earth Rangers: typhoon season!","地球巡游下一集：台风季来了！"]]}
+],
+terms:[["Weather","天气","The conditions outside over hours or days: temperature, rain, wind, cloud.","几小时或几天内的大气状况：气温、降水、风、云。"],
+ ["Climate","气候","The usual weather pattern of a place, averaged over about 30 years.","一个地方多年（约30年）平均的天气状况。"],
+ ["Monsoon","季风","Winds that change direction with the seasons, bringing wet summers and dry winters.","随季节改变方向的风，带来湿润的夏季和干燥的冬季。"],
+ ["Subtropical monsoon climate","亚热带季风气候","Shanghai's climate: hot, rainy summers and cool, drier winters.","上海的气候类型：夏季高温多雨，冬季温和少雨。"]],
+tryIt:T("Be a weather reporter: for two weeks, record the temperature and weather at the same time each day. Then ask a parent what this month is usually like. Is your fortnight typical, or unusual?","当一回天气播报员：连续两周，每天同一时间记录气温和天气。再问问爸爸妈妈：这个月通常是什么样的？你记录的这两周正常，还是特别？")}
+);
