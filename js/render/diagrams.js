@@ -420,3 +420,30 @@ DIAG.circuit=(d,B)=>{let s='';const W=(x1,y1,x2,y2)=>lineS(x1,y1,x2,y2,INK,2);
   else{const cw=B.w/2;s+=loop(B.x+10,B.y+8,cw-24,B.h-8,false,T("Series: one path","串联：一条路径"))+loop(B.x+cw+12,B.y+8,cw-24,B.h-8,true,T("Parallel: two paths","并联：两条路径"));}
   return s;};
 
+
+// ---------- prize episodes (2026): Kakeya needle (math ep8), IceCube detector (physics ep8) ----------
+// kakeya: left = needle spun about its middle sweeps a disc; right = Kakeya's three-cusped curve (deltoid), half the area.
+DIAG.kakeya=(d,B)=>{let s='';const cw=B.w/2,lo={size:9.5,maxW:cw-4,fill:INK};
+  const L1=T("Spin in place: a circle","原地转：一个圆"),L2=T("Kakeya's curve: half the area","挂谷曲线：面积只有一半");
+  const lh=Math.max(stH(L1,lo),stH(L2,lo)),R=Math.min(cw*0.42,(B.h-lh-12)/2),cy=B.y+R+4;
+  // Same needle length in both drawings: deltoid scale k=R/3 gives needle 4k, so the circle's radius is 2k.
+  {const cx=B.x+cw/2,Rc=R*2/3;s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(Rc)}" fill="#DCE6FF" stroke="${INK}" stroke-width="1.6"/>`;
+    for(let k=0;k<6;k++){const a=k*Math.PI/6;s+=lineS(cx-Rc*Math.cos(a),cy-Rc*Math.sin(a),cx+Rc*Math.cos(a),cy+Rc*Math.sin(a),k===1?HOT:'#8A97A8',k===1?3:1.4);}
+    s+=st(cx,cy+R+6,L1,lo).s;}
+  {const cx=B.x+cw*1.5,k=R/3;let p='';for(let i=0;i<=90;i++){const t=i/90*2*Math.PI,x=2*Math.cos(t)+Math.cos(2*t),y=2*Math.sin(t)-Math.sin(2*t);p+=(i?'L':'M')+n1(cx+k*x)+' '+n1(cy-k*y);}
+    s+=`<path d="${p}Z" fill="#FFE7A3" stroke="${INK}" stroke-width="1.6"/>`;
+    // The tangent at parameter t touches the curve again at -t/2 and -t/2+π: a chord of constant length 4 = the needle.
+    const P=t=>[2*Math.cos(t)+Math.cos(2*t),2*Math.sin(t)-Math.sin(2*t)];
+    [0.5,1.55,2.6,3.65,4.7,5.75].forEach((t,i)=>{const a=P(-t/2),b=P(-t/2+Math.PI);
+      s+=lineS(cx+k*a[0],cy-k*a[1],cx+k*b[0],cy-k*b[1],i===1?HOT:'#8A97A8',i===1?3:1.4);});
+    s+=st(cx,cy+R+6,L2,lo).s;}
+  return s;};
+// icecube: ice surface with a lab hut, a cube of ice below with strings of light sensors and one blue light trail.
+DIAG.icecube=(d,B)=>{let s='';const lo={size:8.5,a:'start',fill:INK,maxW:B.w*0.42};const sy=B.y+20,cx=B.x+B.w*0.29,cs=Math.min(B.w*0.42,B.h-34),top=sy+12;
+  s+=`<rect x="${B.x}" y="${n1(sy)}" width="${B.w}" height="${n1(B.y+B.h-sy)}" fill="#E8F6FF"/>`+lineS(B.x,sy,B.x+B.w,sy,INK,1.8);
+  s+=`<rect x="${n1(cx-12)}" y="${n1(sy-14)}" width="24" height="14" fill="#fff" stroke="${INK}" stroke-width="1.4"/><path d="M${n1(cx-14)} ${n1(sy-14)} L${n1(cx)} ${n1(sy-21)} L${n1(cx+14)} ${n1(sy-14)} Z" fill="${CORAL}" stroke="${INK}" stroke-width="1.2"/>`;
+  const x0=cx-cs/2,y0=top+8;s+=`<rect x="${n1(x0)}" y="${n1(y0)}" width="${n1(cs)}" height="${n1(cs)}" fill="#BFE3F5" fill-opacity=".7" stroke="${HL}" stroke-width="1.8" stroke-dasharray="5 3"/>`;
+  for(let i=0;i<6;i++){const x=x0+cs*(i+.5)/6;s+=lineS(x,sy,x,y0+cs-4,'#8A97A8',1);for(let j=0;j<6;j++){const y=y0+cs*(j+.6)/6.4;s+=`<circle cx="${n1(x)}" cy="${n1(y)}" r="2.6" fill="${GOLD}" stroke="${INK}" stroke-width=".8"/>`;}}
+  s+=`<line x1="${n1(x0+cs*0.12)}" y1="${n1(y0+cs*0.92)}" x2="${n1(x0+cs*0.88)}" y2="${n1(y0+cs*0.18)}" stroke="#2E7DFF" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>`;
+  const lx=x0+cs+10;lo.maxW=B.x+B.w-lx-2;let ly=sy+6;[T("About 2 km under the ice","在冰下约2千米"),T("1 cubic km of ice","1立方千米的冰"),T("5,160 light sensors","5160个光传感器")].forEach(l=>{const h=stH(l,lo);s+=st(lx,ly,l,lo).s;ly+=h+6;});
+  s+=st(cx,B.y,T("South Pole","南极"),{size:9.5,fill:HT}).s;return s;};

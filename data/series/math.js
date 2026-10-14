@@ -12,4 +12,5 @@ LBC.registerSeries({id:'math',icon:'calc',color:'#2F6FD6',t:T("Math Detectives",
   T("The Never-Ending Number","永远写不完的数"), // ep5
   T("Angles and Triangles","角与三角形"), // ep6
   T("Treasure Map","藏宝图"), // ep7
+  T("The Spinning Needle","旋转的针"), // ep8 · 2026 Fields Medal
  ]});

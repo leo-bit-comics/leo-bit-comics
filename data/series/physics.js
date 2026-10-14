@@ -12,4 +12,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("How Fast?","有多快？"), // ep5
   T("Push and Pull","推与拉"), // ep6
   T("The Spinning Ping-Pong Ball","旋转的乒乓球"), // ep7
+  T("Ghost Particles from Space","来自太空的幽灵粒子"), // ep8 · 2026 Nobel Prize in Physics
  ]});

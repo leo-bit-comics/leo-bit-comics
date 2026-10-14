@@ -1,0 +1,33 @@
+// physics · episode 8 (script marker P8) · 2026 Nobel Prize in Physics: Francis Halzen and IceCube
+LBC.registerEpisode('physics',8,
+{t:T("Ghost Particles from Space","来自太空的幽灵粒子"),topic:T("Neutrinos and the 2026 Nobel Prize in Physics","中微子与2026年诺贝尔物理学奖"),
+panels:[
+{bg:'class',props:[['phone',133,156]],cast:[['leo',85,'surprised','hold'],['mia',200,'smirk','idle'],['bit',322,'talk','wave']],
+ say:[['leo',"This year's Nobel Prize in Physics is about 'ghost particles'? Ghosts aren't science!","今年的诺贝尔物理学奖讲的是“幽灵粒子”？幽灵可不是科学！"],
+      ['bit',"They're real particles called neutrinos. Trillions are passing through your body right now, every second!","它们是真实存在的粒子，叫中微子。此时此刻，每秒都有成千上万亿个穿过你的身体！"]]},
+{bg:'class',holo:{t:'big',title:T("Neutrinos","中微子"),rows:[{s:T("Tiny, with almost no mass","极小，质量几乎为零"),size:13},{s:T("No electric charge","不带电"),size:13},{s:T("They fly through walls, people, even the whole Earth","能穿过墙壁、人体，甚至整个地球"),size:12,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Neutrinos hardly ever hit anything. Most of them fly straight through the whole planet without stopping.","中微子几乎从不撞上任何东西。它们大多直接穿过整个地球，一刻也不停。"],
+      ['leo',"Then how can anyone catch one?","那怎么才能抓到一个呢？"]]},
+{bg:'class',holo:{t:'flow',dir:'v',title:T("How to see a ghost","怎样“看见”幽灵"),steps:[{i:'globe',l:T("Very rarely, a neutrino hits ice","极少数时候，中微子撞上冰")},{i:'bubbles',l:T("It knocks out a fast particle","撞出一个高速粒子")},{i:'bulb',l:T("That particle gives off faint blue light","这个粒子发出微弱的蓝光")}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Hits are so rare that you need an ENORMOUS amount of clear material, so that a few neutrinos hit something.","撞击非常罕见，所以需要“超级大量”的透明物质，才能让少数几个中微子撞上东西。"],
+      ['mia',"Like catching rare fish: you need a really big net.","就像捕稀有的鱼：得用一张特别大的网。"]]},
+{bg:'class',holo:{t:'icecube',title:T("IceCube: a telescope made of ice","冰立方：用冰做的望远镜")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Physicist Francis Halzen led the idea of turning ice at the South Pole into a giant detector. Teams drilled deep holes with hot water and lowered 5,160 light sensors into the ice.","物理学家弗朗西斯·哈尔岑牵头提出，把南极的冰变成巨型探测器。科研团队用热水钻出深孔，把5160个光传感器放进冰里。"],
+      ['leo',"A whole cubic kilometre of ice, watching for blue flashes!","整整一立方千米的冰，盯着一道道蓝光！"]]},
+{bg:'class',holo:{t:'list',size:10,title:T("What IceCube found","冰立方的发现"),items:[{i:'cal',l:T("2011: IceCube fully running","2011年：冰立方全面运行")},{i:'search',l:T("2013: first high-energy neutrinos from deep space","2013年：首次发现来自遥远太空的高能中微子")},{i:'globe',l:T("2017: one traced to a galaxy with a giant black hole","2017年：一个中微子被追溯到一个中心有巨大黑洞的星系")},{i:'check',l:T("2026: Nobel Prize in Physics","2026年：诺贝尔物理学奖")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Light from space can be blocked by dust and gas, but neutrinos fly straight through. They bring news from the most extreme places in the universe.","来自太空的光会被尘埃和气体挡住，中微子却能一路穿过。它们带来了宇宙中最极端地方的消息。"]]},
+{bg:'city',cast:[['leo',85,'grin','point'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"So the 'ghosts' are really messengers from space!","原来“幽灵”其实是来自太空的信使！"],
+      ['mia',"And catching them took a cubic kilometre of ice, hundreds of scientists and a lot of patience.","要抓到它们，得用一立方千米的冰、几百位科学家，还有很多很多耐心。"],
+      ['bit',"That's science: a big question, a clever tool, and teamwork.","这就是科学：一个大问题、一件巧妙的工具，再加上团队合作。"]]}
+],
+terms:[["Neutrino","中微子","A tiny particle with no charge and almost no mass that passes through almost everything.","不带电、质量几乎为零的微小粒子，几乎能穿过一切物质。"],
+ ["Detector","探测器","An instrument built to notice something we can't see directly.","用来探测我们无法直接看到的事物的仪器。"],
+ ["IceCube","冰立方中微子天文台","A neutrino detector made of a cubic kilometre of ice at the South Pole, with 5,160 light sensors.","建在南极、由一立方千米冰和5160个光传感器组成的中微子探测器。"],
+ ["Light-year","光年","The distance light travels in one year: about 9.5 trillion km.","光在一年里走过的距离，约9.5万亿千米。"]],
+tryIt:T("In a dark room, with an adult, shine a torch through a clear glass of water with a few drops of milk stirred in. You'll see the beam's path, a bit like the light trails IceCube sees in the ice. Never shine a torch into anyone's eyes.","在大人陪同下，在黑暗的房间里，用手电筒照一杯滴了几滴牛奶的清水。你会看到光束的路径，有点像冰立方在冰里看到的光迹。千万不要用手电筒照别人的眼睛。")}
+);
