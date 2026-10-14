@@ -1,0 +1,32 @@
+// physics · episode 7 (script marker P7)
+LBC.registerEpisode('physics',7,
+{t:T("The Spinning Ping-Pong Ball","旋转的乒乓球"),topic:T("How force changes motion, and spin","力的作用效果与旋转"),
+panels:[
+{bg:'class',cast:[['leo',85,'surprised','point'],['mia',200,'grin','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"PE class: table tennis. Mia serves.","体育课：打乒乓球。米娅发球。"],
+      ['leo',"Her ball dipped down really fast and I hit it into the net! How?","她的球突然往下一沉，我一拍就下网了！怎么回事？"],
+      ['bit',"Let's investigate. First, the ball itself.","我们来调查。先看看球本身。"]]},
+{bg:'class',holo:{t:'big',title:T("A table tennis ball","一个乒乓球"),rows:[{s:T("40 mm wide, 2.7 g","直径40毫米，2.7克"),size:13},{s:T("Weight ≈ 0.026 N","重力 ≈ 0.026牛"),size:15,fill:'#C2416B'},{s:T("Table length 2.74 m","球台长2.74米"),size:13}]},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"It's very light: about 0.026 newtons of weight, using g = 9.8 N/kg. A small force can change its motion a lot.","它非常轻：按g = 9.8牛/千克算，重力只有约0.026牛。很小的力就能大大改变它的运动。"]]},
+{bg:'class',holo:{t:'list',title:T("What a force can do","力的作用效果"),items:[{i:'gear',l:T("Speed: a smash speeds it up","快慢：扣杀让球变快")},{i:'wave',l:T("Direction: returns turn it","方向：回球让球反向")},{i:'eye',l:T("Shape: the ball squashes","形状：球被压扁一点")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The paddle touches the ball for only about a thousandth of a second, but in that time the force changes its speed, its direction, and even squashes it slightly.","球拍和球只接触大约千分之一秒，但这一瞬间的力就改变了球的快慢、方向，还把球微微压扁。"],
+      ['leo',"And the ball pushes back on my paddle too. Forces come in pairs!","球也会反过来推我的球拍。力是成对出现的！"]]},
+{bg:'class',holo:{t:'big',title:T("How fast is a smash?","扣杀有多快？"),rows:[{s:T("Smash ≈ 25 m/s","扣杀 ≈ 25米/秒"),size:14},{s:'t = 2.74 ÷ 25',size:15,mono:true},{s:T("≈ 0.11 s","≈ 0.11秒"),size:15,fill:'#C2416B'}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['mia',"About a tenth of a second to cross the table! No wonder smashes are hard to return.","飞过球台只要大约十分之一秒！难怪扣杀那么难接。"]]},
+{bg:'class',holo:{t:'vs',title:T("Topspin vs backspin","上旋与下旋"),a:{l:T("Backspin: lifted, floats","下旋：空气上托，球飘远"),ok:true},b:{l:T("Topspin: pressed, dips","上旋：空气下压，球下沉"),ok:true}},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Rubber grips the ball with friction and makes it spin. A spinning ball drags the air around it, and the air pushes back sideways on the ball. This is called the Magnus effect.","球拍胶皮靠摩擦力“抓”住球，让它旋转。旋转的球带动周围的空气，空气又从侧面反推球。这叫马格努斯效应。"],
+      ['leo',"Mia's serve had topspin. That's why it dipped!","米娅发的是上旋球，所以才往下沉！"]]},
+{bg:'class',cast:[['leo',85,'grin','cheer'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['mia',"Top players can spin the ball over 100 turns per second.","顶尖选手能让球每秒转100多圈。"],
+      ['leo',"Force changes motion, friction makes spin, spin bends the path. Rematch!","力改变运动，摩擦产生旋转，旋转让球路拐弯。再来一局！"]]}
+],
+terms:[["Effects of force","力的作用效果","A force can change an object's motion (speed or direction) or its shape.","力可以改变物体的运动状态（快慢或方向），也可以改变物体的形状。"],
+ ["Interaction force","相互作用力","When the paddle pushes the ball, the ball pushes back on the paddle just as hard.","球拍推球时，球也同样大小地反推球拍。"],
+ ["Friction","摩擦力","A force that resists sliding between surfaces; rubber's grip makes the ball spin.","阻碍接触面之间相对滑动的力；胶皮的摩擦让球旋转。"],
+ ["Magnus effect","马格努斯效应","A spinning ball is pushed sideways by the air, so its path curves.","旋转的球受到空气的侧向推力，飞行路线会弯曲。"]],
+tryIt:T("Spin test (with an adult, in a clear space away from anything breakable): throw a table tennis ball gently forward with no spin and see where it lands. Now throw it again while brushing your fingers up the back of the ball so its top spins forwards (topspin): it dips and lands sooner. Brush down the back for backspin: it floats a little further. Bonus: roll it along the floor with backspin and it may roll back to you. That part is friction with the floor, not the Magnus effect.","旋转实验（在大人陪同下，在空旷、没有易碎物品的地方进行）：先把乒乓球不加旋转地轻轻向前抛出，看看落在哪里。再抛一次，出手时手指沿球的后面向上一搓，让球的顶部向前转（上旋）：它会下沉，落得更近。沿球的后面向下搓出下旋：它会飘得更远一点。附加题：让带下旋的球在地上滚出去，它可能会滚回来。这一点靠的是地面的摩擦力，不是马格努斯效应。")}
+);

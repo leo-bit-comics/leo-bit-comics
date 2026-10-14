@@ -1,5 +1,5 @@
 // ===== Physics Explorers: preview of Shanghai 8th-grade physics =====
-// Episodes live in data/series/physics/ep1.js … ep6.js
+// Episodes live in data/series/physics/ep1.js … ep7.js
 LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explorers","物理探险"),
  desc:T("Measurement, sound, light, colour, motion and force: the topics that open 8th-grade physics.","测量、声、光、颜色、运动和力：八年级物理开篇的内容。"),
  grade:T("A preview of Shanghai 8th-grade physics","上海八年级物理预习"),
@@ -11,4 +11,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("Where Rainbows Come From","彩虹从哪里来"), // ep4
   T("How Fast?","有多快？"), // ep5
   T("Push and Pull","推与拉"), // ep6
+  T("The Spinning Ping-Pong Ball","旋转的乒乓球"), // ep7
  ]});
