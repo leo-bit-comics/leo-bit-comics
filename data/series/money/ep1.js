@@ -1,0 +1,31 @@
+// money · episode 1 (script marker MO1)
+LBC.registerEpisode('money',1,
+{t:T("Where Did My Pocket Money Go?","我的零花钱去哪儿了？"),topic:T("Budgets, needs and wants, percentages and pie charts","预算、需要与想要、百分比和扇形统计图"),
+panels:[
+{bg:'room',cast:[['leo',85,'worried','idle'],['mia',200,'smirk','idle'],['bit',322,'talk','wave']],fx:[['sweat','leo']],
+ say:[['nar',"The 20th of the month. Leo checks his pocket money.","这个月20号，乐乐查看他的零花钱。"],
+      ['leo',"I got ¥200 on the 1st. Now it's ALL gone! Did someone steal it?","1号我拿到200元，现在全没了！是被偷了吗？"],
+      ['mia',"Or did someone... spend it?","还是被某人……花掉了？"]]},
+{bg:'room',holo:{t:'donut',title:T("Leo's ¥200 this month","乐乐这个月的200元"),segs:[{v:90,c:'#FF5D5D',l:T("Snacks ¥90","零食 90元")},{v:40,c:'#7B4FD6',l:T("Games ¥40","游戏 40元")},{v:30,c:'#2F6FD6',l:T("Bus ¥30","车费 30元")},{v:25,c:'#FFD84D',l:T("Pens ¥25","文具 25元")},{v:15,c:'#2BAE66',l:T("Gift ¥15","礼物 15元")}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Let's sort your receipts. A pie chart shows each part as a percentage of the whole: 90 ÷ 200 = 45%.","我们把你的消费记录分分类。扇形统计图把每部分表示成占整体的百分比：90 ÷ 200 = 45%。"]]},
+{bg:'room',holo:{t:'vs',title:T("Need or want?","需要还是想要？"),a:{l:T("Want: snacks, games","想要：零食、游戏"),ok:false},b:{l:T("Need: bus fare, pens","需要：车费、文具"),ok:true}},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So ¥90 + ¥40 = ¥130 went on wants. That's 65%!","所以90 + 40 = 130元都花在“想要”上了，占65%！"],
+      ['bit',"Wants are fine. They just shouldn't eat everything first.","“想要”没问题，只是别让它先把钱全吃光。"]]},
+{bg:'room',holo:{t:'table',title:T("A simple budget plan","一个简单的预算"),head:[T("Part","部分"),T("Share","比例"),T("Of ¥200","200元中")],rows:[[T("Needs","需要"),'50%','¥100'],[T("Wants","想要"),'30%','¥60'],[T("Save","储蓄"),'20%','¥40']],note:T("Check: 100 + 60 + 40 = 200","验算：100 + 60 + 40 = 200")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"A budget is a plan made BEFORE you spend. Split the money by percentages: 200 × 20% = ¥40 to save.","预算是花钱之前做的计划。按百分比分配：200 × 20% = 40元存起来。"]]},
+{bg:'room',holo:{t:'barchart',title:T("Saving for a ¥120 football","为一个120元的足球存钱"),items:[{l:T("Month 1","第1个月"),v:40,c:'#7B4FD6'},{l:T("Month 2","第2个月"),v:80,c:'#7B4FD6'},{l:T("Month 3","第3个月"),v:120,c:'#2BAE66'}],max:120},
+ cast:[['leo',54,'grin','point'],['bit',356,'happy','present']],fx:[['!','leo']],
+ say:[['leo',"¥40 a month: 120 ÷ 40 = 3 months, and I get a new football!","每月存40元：120 ÷ 40 = 3个月，我就能买新足球了！"]]},
+{bg:'room',cast:[['leo',85,'determined','point'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"New rule: plan first, spend second. Mystery solved. The thief was me!","新规矩：先计划，再花钱。谜底揭晓：小偷就是我自己！"],
+      ['bit',"Next time: how saved money can grow like a snowball.","下一集：存下的钱怎样像滚雪球一样长大。"]]}
+],
+terms:[["Budget","预算","A plan for how to split your money before you spend it.","花钱之前对钱怎么分配做的计划。"],
+ ["Needs and wants","需要与想要","Needs are things you must have; wants are nice extras.","需要是必须有的东西；想要是有了更好的东西。"],
+ ["Percentage","百分比","A part out of 100: ¥90 out of ¥200 is 45%.","表示一个数占另一个数的百分之几：200元中的90元是45%。"],
+ ["Pie chart","扇形统计图","A circle split into slices that show each part's share of the whole.","用圆和扇形表示各部分占总体百分比的统计图。"]],
+tryIt:T("Spending detective: for one week, write down everything you spend (or what your family spends on one thing, like breakfast) in a notebook. Add it up, work out each part as a percentage, and draw a pie chart. Then plan next week's budget with an adult.","消费侦探：用一周时间，在本子上记下你花的每一笔钱（或者家里在某一项上的花费，比如早餐）。算出总数和每部分的百分比，画一张扇形统计图。再和大人一起做下周的预算。")}
+);
