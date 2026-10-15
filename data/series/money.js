@@ -8,4 +8,5 @@ LBC.registerSeries({id:'money',icon:'tag',color:'#7B4FD6',t:T("Money Lab","金�
  // Episode titles, one per file data/series/money/ep<N>.js (in order). Must match each episode's t.
  titles:[
   T("Where Did My Pocket Money Go?","我的零花钱去哪儿了？"), // ep1
+  T("The Interest Snowball","利息滚雪球"), // ep2
  ]});

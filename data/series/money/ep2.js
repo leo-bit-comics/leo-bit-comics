@@ -1,0 +1,33 @@
+// money · episode 2 (script marker MO2)
+LBC.registerEpisode('money',2,
+{t:T("The Interest Snowball","利息滚雪球"),topic:T("Simple and compound interest, percentages and growth","单利与复利、百分比与增长"),
+panels:[
+{bg:'room',cast:[['leo',85,'grin','cheer'],['mia',200,'think','idle'],['bit',322,'talk','wave']],
+ say:[['nar',"After Spring Festival, Leo has ¥1000 of lucky money.","春节过后，乐乐攒下了1000元压岁钱。"],
+      ['leo',"Mum says a savings account pays 2% interest a year. That's only ¥20. Boring!","妈妈说存进储蓄账户，每年有2%的利息。才20元，好没劲！"],
+      ['mia',"Only in year one. What about later years?","那只是第一年。以后几年呢？"]]},
+{bg:'room',holo:{t:'big',title:T("Simple interest","单利"),rows:[{s:T("Interest = money × rate × time","利息 = 本金 × 利率 × 年数"),size:11},{s:'1000 × 2% × 1 = 20',size:16,mono:true},{s:T("5 yrs: 1000 + 20×5 = ¥1100","5年：1000 + 20×5 = 1100元"),size:13,fill:'#C2416B'}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"With simple interest you earn 2% of the ORIGINAL ¥1000 every year: ¥20, ¥20, ¥20…","单利每年都只按最初的1000元算2%：20元、20元、20元……"]]},
+{bg:'room',holo:{t:'flow',title:T("Compound interest","复利"),steps:[{i:'calc',l:T("Year 1: ¥1020","第1年：1020元")},{i:'calc',l:T("Year 2: ¥1040.40","第2年：1040.40元")},{i:'calc',l:T("Year 5: ≈ ¥1104.08","第5年：≈ 1104.08元")}],foot:T("Each year: × 1.02","每年都 × 1.02")},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"With compound interest, the interest joins the money and earns interest too. 1020 × 1.02 = 1040.40. Like a snowball picking up snow!","复利是把利息并入本金，利息也会再生利息。1020 × 1.02 = 1040.40。就像雪球越滚越大！"]]},
+{bg:'room',holo:{t:'table',title:T("¥1000 at 2% a year","1000元，年利率2%"),head:[T("Years","年数"),T("Simple","单利"),T("Compound","复利"),T("Gap","差额")],rows:[['5','1100','1104.08','≈4'],['10','1200','1218.99','≈19'],['20','1400','1485.95','≈86'],['30','1600','1811.36','≈211']],note:T("Amounts in ¥; the gap keeps growing","单位：元；差额越来越大")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['leo',"After 5 years it's only ¥4 more, but after 30 years it's over ¥200 more!","5年才多4元，30年就多了200多元！"],
+      ['bit',"Time is what makes the snowball big.","让雪球变大的，是时间。"]]},
+{bg:'room',holo:{t:'vs',title:T("Borrowing money","借钱"),a:{l:T("A loan is free money","借来的钱是白给的"),ok:false},b:{l:T("Borrow ¥1000 at 5%: repay ¥1050","借1000元，年息5%：还1050元"),ok:true}},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So interest works both ways. Savers EARN it, borrowers PAY it.","所以利息是双向的：存钱的人得到利息，借钱的人支付利息。"],
+      ['bit',"Yes. And unpaid loan interest can snowball too: after 5 years at 5%, ¥1000 grows to about ¥1276 owed.","没错。欠款的利息也会滚雪球：按5%算，5年后1000元会变成大约1276元的欠款。"]]},
+{bg:'room',cast:[['leo',85,'think','think'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['bit',"Quick trick: 72 ÷ rate ≈ years to double. 72 ÷ 2 = 36 years (the exact answer is about 35).","速算小窍门：72 ÷ 利率 ≈ 翻倍所需的年数。72 ÷ 2 = 36年（精确答案约为35年）。"],
+      ['leo',"36 years?! I'll be 49. I'd better be patient...","36年？！那时我都49岁了。看来得有耐心……"],
+      ['bit',"Next time: what does a bank actually do with your money?","下一集：银行到底拿你的钱做了什么？"]]}
+],
+terms:[["Principal","本金","The money you put in (or borrow) at the start.","最初存入（或借来）的钱。"],
+ ["Interest rate","利率","The percentage paid as interest each year, such as 2%.","每年利息占本金的百分比，比如2%。"],
+ ["Simple interest","单利","Interest calculated on the original principal only.","只按最初的本金计算利息。"],
+ ["Compound interest","复利","Interest added to the principal, so next time interest is earned on interest too.","把利息并入本金，下一期连利息也一起计算利息。"]],
+tryIt:T("Snowball race: with a calculator, start two columns at 1000. In one, add 20 each year. In the other, multiply by 1.02 each year. After how many years is the gap more than ¥10? Then try adding 50 versus multiplying by 1.05. Draw both lines on squared paper.","雪球比赛：用计算器做两列数，都从1000开始。一列每年加20，另一列每年乘1.02。第几年两列相差超过10元？再试试每年加50和每年乘1.05比较。在方格纸上把两条线画出来。")}
+);
