@@ -1,0 +1,32 @@
+// mathjr · episode 11 (script marker MJ11)
+LBC.registerEpisode('mathjr',11,
+{t:T("The Average Mystery","平均数之谜"),topic:T("Averages (the arithmetic mean)","平均数"),
+panels:[
+{bg:'class',cast:[['leo',85,'grin','cheer'],['mia',200,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"After Friday's science quiz, Leo waves his paper like a trophy.","周五科学小测验后，乐乐把试卷挥得像奖杯。"],
+      ['leo',"Ninety-five! Best score of the week!","九十五分！这周最高分！"],
+      ['mia',"Hold on. What about Monday to Thursday?","等等。周一到周四呢？"]]},
+{bg:'class',holo:{t:'big',title:T("The average (mean)","平均数"),rows:[{s:T("average = total ÷ count","平均数 = 总数 ÷ 个数"),size:14},{s:T("Add every score, then divide","先把每个分数加起来，再除"),size:12},{s:T("One peak is only a clue","一次高峰只是一条线索"),size:12,fill:'#C2416B'}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','leo']],
+ say:[['bit',"Detectives don't stop at one clue. The average is the total divided by how many scores you have.","侦探不会只看一条线索。平均数就是总数除以分数的个数。"]]},
+{bg:'class',holo:{t:'table',title:T("Leo's five quizzes","乐乐的五次测验"),head:[T("Quiz (Mon→Fri)","测验（周一→周五）"),T("Score","分数")],rows:[['1','80'],['2','90'],['3','70'],['4','85'],['5','95']],note:T("Sum 420 · mean 420 ÷ 5 = 84","总和420 · 平均420 ÷ 5 = 84")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Eighty plus ninety plus seventy plus eighty-five plus ninety-five is four hundred twenty. Divide by five: eighty-four.","八十加九十加七十加八十五加九十五等于四百二十。再除以五：八十四。"]]},
+{bg:'class',holo:{t:'vs',title:T("Which story is fairer?","哪个说法更公平？"),a:{l:T("Look only at Friday: 95","只看周五：95分"),ok:false},b:{l:T("Five-day average: 84","五天平均：84分"),ok:true}},
+ cast:[['leo',54,'dizzy','idle'],['mia',356,'happy','idle']],fx:[['sweat','leo']],
+ say:[['mia',"So you're an eighty-four kid with one lucky ninety-five!","所以你是个平均八十四、外加一次幸运九十五的孩子！"],
+      ['leo',"Ow. Fair… but ow.","哎。公平……但好扎心。"]]},
+{bg:'class',holo:{t:'list',title:T("Averages everywhere","平均数到处都有"),items:[{i:'book',l:T("Class quiz average","班级测验平均分")},{i:'cal',l:T("Average temperature","平均气温")},{i:'train',l:T("Average metro ride time","地铁平均乘车时间")},{i:'calc',l:T("Same rule: total ÷ count","同一规则：总数 ÷ 个数")}]},
+ cast:[['mia',54,'happy','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Same tool for temperatures, metro times, or steps walked. Add them up, divide by the count.","气温、地铁时长、走路步数，都用同一工具：加起来，再除以个数。"]]},
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"Case closed: the average tells the whole week's story!","结案：平均数讲的是整周的故事！"],
+      ['mia',"One peak doesn't hide the dips.","一次高峰藏不住低谷。"],
+      ['bit',"When numbers pile up, ask for the mean!","数字一堆堆的时候，先问问平均数！"]]}
+],
+terms:[["Average (mean)","平均数","The sum of the numbers divided by how many there are.","一组数的总和除以这组数的个数。"],
+ ["Sum (total)","总数（总和）","What you get when you add every value together.","把每一个数加在一起得到的结果。"],
+ ["Count","个数","How many numbers you are averaging.","参加求平均的数有多少个。"],
+ ["Fair comparison","公平比较","Using the average so one lucky day does not hide the rest.","用平均数比较，不让一次好运盖住其余几天。"]],
+tryIt:T("Five-day detective: for five school days, write down one number each day (minutes of reading, steps walked, or the outdoor temperature from a weather app with an adult). Add the five numbers, divide by 5, and find your average.","五天小侦探：连续五个上学日，每天记下一个数（阅读分钟数、走路步数，或在大人帮助下从天气软件看室外气温）。把五个数相加，再除以5，算出你的平均数。")}
+);
