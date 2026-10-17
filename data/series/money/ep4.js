@@ -1,0 +1,32 @@
+// money · episode 4 (script marker MO4)
+LBC.registerEpisode('money',4,
+{t:T("Scan to Pay","扫码支付的秘密"),topic:T("QR codes, encryption basics and paying safely","二维码、加密基础与安全支付"),
+panels:[
+{bg:'fair',props:[['phone',138,152]],cast:[['leo',90,'grin','hold'],['mia',215,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"A school fair. Leo buys an ¥8 snack by scanning a code.","学校游园会上，乐乐扫码买了一份8元的小吃。"],
+      ['leo',"Beep! Paid. Too easy.","嘀！付好了。太简单了。"],
+      ['mia',"But how can a picture of little squares move money?","可是一张小方块图片，怎么能让钱转过去？"]]},
+{bg:'fair',holo:{t:'list',title:T("Inside a QR code","二维码里有什么"),items:[{i:'data',l:T("Dark square = 1, light = 0: data as bits","深色 = 1，浅色 = 0：用比特存数据")},{i:'eye',l:T("3 big corner squares help the camera line it up","三个角上的大方块帮摄像头对准")},{i:'check',l:T("Error correction: fixes up to ~30% damaged data","纠错：数据坏了约30%也能修复")}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"A QR code is just data drawn as squares. Error correction can repair damaged data, but not the 3 corner squares. This one holds a payment link that says which shop to pay.","二维码就是画成方块的数据。纠错能修复损坏的数据，但三个角上的大方块不能挡住。这个码里存的是一个收款链接，写明要付给哪家店。"]]},
+{bg:'fair',holo:{t:'flow',title:T("What happens in a second","一秒钟里发生了什么"),steps:[{i:'eye',l:T("Phone reads the code","手机读取二维码")},{i:'lock',l:T("Sends an encrypted request","发送加密的支付请求")},{i:'check',l:T("System checks and confirms","系统核对并确认")}],foot:T("Then both phones show: ¥8 paid","然后双方手机都显示：已付8元")},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Your money isn't inside the code. The code tells your phone WHERE to pay; the payment system moves the numbers between the two accounts.","钱并不在码里面。二维码告诉手机“付给谁”，支付系统再把两个账户里的数字改过来。"]]},
+{bg:'fair',holo:{t:'table',title:T("A toy cipher: shift by 3","简单密码：每个字母后移3位"),head:[T("Plain","明文"),'P','A','Y'],rows:[[T("Coded","密文"),'S','D','B']],note:T("Real keys: 2¹²⁸ ≈ 3.4 × 10³⁸ possible keys","真实密钥：2¹²⁸ ≈ 3.4 × 10³⁸ 种可能")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"P → S, A → D, Y wraps round to B. But anyone could try all 25 shifts!","P变S，A变D，Y绕回到B。可谁都能把25种移法试一遍！"],
+      ['bit',"Exactly. Real encryption uses keys with so many options that trying them all would take longer than the age of the universe.","没错。真正的加密密钥有极多种可能，全部试一遍比宇宙的年龄还要长。"]]},
+{bg:'fair',holo:{t:'vs',title:T("Before you pay","付款之前"),a:{l:T("Scan any code and tap 'pay' fast","见码就扫，马上点支付"),ok:false},b:{l:T("Check the shop name and amount; ask an adult if unsure","核对收款方名字和金额，拿不准就问大人"),ok:true}},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','leo']],
+ say:[['bit',"The maths is strong, but people can be tricked. A fake sticker over a real code sends money to the wrong place.","数学很可靠，但人可能被骗。有人把假二维码贴在真码上面，钱就付错了地方。"]]},
+{bg:'fair',cast:[['leo',85,'grin','point'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"So it's bits, plus encryption, plus me checking the name. Got it!","所以是比特，加上加密，再加上我自己核对名字。明白了！"],
+      ['mia',"SDB! (That means 'PAY' in shift-3.)","SDB！（用后移3位密码，就是PAY。）"],
+      ['bit',"Next time: spotting scams and guarding your passwords.","下一集：识破骗局，守护你的密码。"]]}
+],
+terms:[["QR code","二维码","A square pattern that stores data as dark and light squares (bits).","用深浅方块（比特）存储数据的方形图案。"],
+ ["Error correction","纠错","Extra data that lets a code be read even if part of it is damaged.","额外的数据，即使码有一部分损坏也能读出来。"],
+ ["Encryption","加密","Scrambling a message with a key so only the right receiver can read it.","用密钥把信息打乱，只有正确的接收方才能读懂。"],
+ ["Key","密钥","The secret rule or number used to encrypt and decrypt.","用来加密和解密的秘密规则或数字。"]],
+tryIt:T("Secret messages: write a short message to a family member using a shift cipher (pick your own shift). Can they crack it by trying shifts? Then talk with an adult about how to check a payment code before scanning. Don't scan real payment codes as an experiment.","密码信：用字母移位法给家人写一句短信（移几位自己定）。他们能把每种移法试一遍破解出来吗？然后和大人聊聊扫码付款前该怎么核对。不要拿真实的付款码做实验。")}
+);

@@ -10,4 +10,5 @@ LBC.registerSeries({id:'money',icon:'tag',color:'#7B4FD6',t:T("Money Lab","金�
   T("Where Did My Pocket Money Go?","我的零花钱去哪儿了？"), // ep1
   T("The Interest Snowball","利息滚雪球"), // ep2
   T("How a Bank Works","银行是怎么运作的"), // ep3
+  T("Scan to Pay","扫码支付的秘密"), // ep4
  ]});

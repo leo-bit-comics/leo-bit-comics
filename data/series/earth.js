@@ -1,5 +1,5 @@
 // ===== Earth Rangers: preview of Shanghai 8th-grade geography and earth science. Every home activity is safe and done with an adult. =====
-// Episodes live in data/series/earth/ep1.js … ep6.js
+// Episodes live in data/series/earth/ep1.js … ep7.js
 LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers","地球巡游"),
  desc:T("Weather, the water cycle, climate, rocks and landforms, and how our planet works. Every home activity is safe and done with an adult.","天气、水循环、气候、岩石与地形，看看我们的星球如何运转。所有家庭小实验都安全，并需大人陪同。"),
  grade:T("A preview of Shanghai 8th-grade geography and earth science","上海八年级地理与地球科学预习"),
@@ -11,4 +11,5 @@ LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers",
   T("Weather or Climate?","天气还是气候？"), // ep4
   T("Typhoon Season","台风来了"), // ep5
   T("Rock Detectives","岩石侦探"), // ep6
+  T("Into the Ocean","潜入海洋"), // ep7
  ]});
