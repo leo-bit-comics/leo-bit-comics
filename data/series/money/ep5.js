@@ -1,0 +1,31 @@
+// money · episode 5 (script marker MO5)
+LBC.registerEpisode('money',5,
+{t:T("Spot the Scam","识破骗局"),topic:T("Phishing signs, strong passwords and two-step login","识别网络诈骗、设置强密码与两步验证"),
+panels:[
+{bg:'room',props:[['phone',138,152]],cast:[['leo',90,'surprised','hold'],['mia',215,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"A message pops up on Leo's phone.","乐乐的手机上弹出一条消息。"],
+      ['leo',"'You WON ¥5000! Send us the 6-digit code we just texted you within 10 minutes!' Wow!","“恭喜你中了5000元！请在10分钟内把我们刚发给你的6位验证码发过来！”哇！"],
+      ['mia',"Wait. Did you even enter a prize draw?","等等，你参加过什么抽奖吗？"]]},
+{bg:'room',holo:{t:'list',title:T("Scam red flags","诈骗的危险信号"),items:[{i:'warn',l:T("A prize you never entered","没参加过却中了奖")},{i:'cal',l:T("Hurry! Only 10 minutes!","快！只有10分钟！")},{i:'lock',l:T("Asks for a code or password","索要验证码或密码")},{i:'q',l:T("A strange link or sender","陌生的链接或发送者")}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"This is phishing: a fake message 'fishing' for your secrets. Rushing you is a trick so you don't stop to think.","这叫网络钓鱼：用假消息“钓”你的秘密。催你快点，就是不让你停下来想一想。"]]},
+{bg:'room',holo:{t:'vs',title:T("The 6-digit code","6位验证码"),a:{l:T("It's just 6 numbers, so sharing is fine","不过6个数字，告诉别人没关系"),ok:false},b:{l:T("Never share it, even with 'staff' who ask","绝不告诉别人，自称“工作人员”也不行"),ok:true}},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"A verification code is a one-time key to YOUR account. Real staff never need it. Anyone who asks for it is the warning sign.","验证码是打开你账户的一次性钥匙。真正的工作人员从来不需要它。谁要验证码，谁就可疑。"]]},
+{bg:'room',holo:{t:'big',title:T("How many guesses?","要猜多少次？"),rows:[{s:T("8 lowercase letters","8位小写字母"),size:12},{s:'26⁸ ≈ 2.1 × 10¹¹',size:15,mono:true},{s:T("12 mixed: A–Z, a–z, 0–9","12位：大小写字母加数字"),size:12},{s:'62¹² ≈ 3.2 × 10²¹',size:15,mono:true,fill:'#C2416B'},{s:T("≈ 15 billion times as many","约是上面的150亿倍"),size:11}]},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Each extra character multiplies the choices. Skip birthdays and names, and use a different password for each account.","每多一位，可能的组合就成倍增加。别用生日和名字，每个账户用不同的密码。"]]},
+{bg:'room',holo:{t:'flow',title:T("Two-step login","两步验证"),steps:[{i:'lock',l:T("Password you know","你知道的密码")},{i:'chat',l:T("Code sent to your phone","发到你手机的验证码")},{i:'check',l:T("Logged in","登录成功")}],foot:T("A thief would need both","坏人必须两样都拿到")},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['mia',"So that scam wanted the code because it's a key to my account. Some logins only need a phone number and a code!","原来骗子要验证码，是因为它就是进我账户的钥匙。有些登录只要手机号加验证码就行！"]]},
+{bg:'room',cast:[['leo',85,'determined','point'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"No code for them. I'll show Mum, then delete it.","验证码不给他们。我先拿给妈妈看，然后删掉。"],
+      ['mia',"The only prize you won: being smarter than a scammer.","你唯一中的奖：比骗子聪明。"],
+      ['bit',"Next time: the maths of swapping money between currencies.","下一集：换外币里的数学。"]]}
+],
+terms:[["Phishing","网络钓鱼","A fake message that tries to trick you into giving away secrets or money.","用假消息骗你交出密码、验证码或钱。"],
+ ["Verification code","验证码","A one-time code that proves it's really you. Never share it.","证明是你本人的一次性密码，绝不能告诉别人。"],
+ ["Strong password","强密码","Long, mixed and unique to one account, so it is hard to guess.","长、组合多样、每个账户不同，很难被猜到。"],
+ ["Two-step login","两步验证","Logging in needs two things, such as a password plus a code.","登录需要两样东西，比如密码加验证码。"]],
+tryIt:T("Red flag hunt: with an adult, look at a few messages or emails (or make up some practice ones together). Circle every red flag you find. Then agree on a family rule: what will you do if a message asks for a code or money? (Answer: don't reply or click any link, and show an adult. Not sure? An adult can call the anti-fraud hotline 96110. If money was already sent, call the police on 110 right away.)","找危险信号：和大人一起看几条短信或邮件（也可以一起编几条练习用的），把所有危险信号圈出来。再一起定一条家规：如果有消息要验证码或要钱，该怎么办？（答案：不回复、不点链接，拿给大人看。拿不准时，可以请大人拨打96110反诈专线咨询；如果已经转了钱，要马上拨打110报警。）")}
+);
