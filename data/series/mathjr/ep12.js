@@ -1,0 +1,32 @@
+// mathjr · episode 12 (script marker MJ12)
+LBC.registerEpisode('mathjr',12,
+{t:T("The Clock Hands Mystery","钟面夹角之谜"),topic:T("Angles: measuring angles, complementary and supplementary angles","角：角的度量、余角与补角"),
+panels:[
+{bg:'class',cast:[['leo',85,'grin','point'],['mia',200,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"Monday maths class. The challenge on the board: what angle do the clock hands make at 3:30?","周一数学课。黑板上的挑战题：3点30分时，时针和分针的夹角是多少度？"],
+      ['leo',"Easy! Minute hand on the 6, hour hand on the 3. Three gaps of 30°: 90°!","简单！分针指着6，时针指着3，隔了3大格，每格30°：90°！"],
+      ['mia',"Hmm. Does the hour hand really sit still on the 3 for half an hour?","嗯……时针真的会在3上一动不动待半个小时吗？"]]},
+{bg:'class',holo:{t:'big',title:T("Angles on a clock face","钟面上的角"),rows:[{s:T("Full turn = 360° (round angle)","转一整圈 = 360°（周角）"),size:11},{s:'360° ÷ 12 = 30°',size:16,mono:true,fill:'#C2416B'},{s:T("Straight angle 180° · right angle 90°","平角180° · 直角90°"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"An angle is two rays sharing one endpoint, the vertex. The clock hands act like two rays, and the centre is the vertex. Each number to the next: 30°.","有公共端点的两条射线组成的图形叫做角，公共端点叫顶点。两根指针就像两条射线，钟面中心就是顶点。相邻两个数字之间是30°。"]]},
+{bg:'class',holo:{t:'table',title:T("How fast do the hands turn?","指针转得多快？"),head:[T("Hand","指针"),T("60 min","60分钟"),T("1 min","1分钟")],rows:[[T("Minute hand","分针"),'360°','6°'],[T("Hour hand","时针"),'30°','0.5°']],note:'0.5° = 30′  (1° = 60′)'},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['?','leo']],
+ say:[['bit',"In one hour the minute hand goes all the way round, 360°. The hour hand only moves one number, 30°. So each minute: 6° and 0.5°.","一小时里，分针整整转一圈，360°；时针只走一个数字，30°。所以每分钟：分针转6°，时针转0.5°。"],
+      ['leo',"The hour hand is a real slowpoke!","时针真是个慢性子！"]]},
+{bg:'class',holo:{t:'big',title:T("3:30, measured clockwise from 12","3:30，从12起顺时针量"),rows:[{s:T("Minute: 30 × 6° = 180°","分针：30 × 6° = 180°"),size:11},{s:T("Hour: 90° + 30 × 0.5° = 105°","时针：90° + 30 × 0.5° = 105°"),size:11},{s:'180° − 105° = 75°',size:15,mono:true,fill:'#C2416B'}]},
+ cast:[['mia',54,'grin','point'],['bit',356,'happy','present']],fx:[['!','mia']],
+ say:[['mia',"So by 3:30 the hour hand has slid halfway to the 4. That's 15° we forgot! 75°, not 90°.","所以到3:30，时针已经滑到3和4的正中间，多走了15°！是75°，不是90°。"]]},
+{bg:'class',holo:{t:'big',title:T("Angle partners","互余与互补"),rows:[{s:T("12 to 6, a straight angle: supplementary","12到6是平角：互为补角"),size:11,fill:'#C2416B'},{s:'105° + 75° = 180°',size:15,mono:true},{s:T("3 to 6, a right angle: complementary","3到6是直角：互为余角"),size:11,fill:'#C2416B'},{s:'15° + 75° = 90°',size:15,mono:true}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"The hour hand splits the 12-to-6 straight line into 105° and 75°: supplementary, adding to 180°. It splits the 3-to-6 right angle into 15° and 75°: complementary, adding to 90°.","时针把12到6这条直线分成105°和75°，和是180°，互为补角；又把3到6的直角分成15°和75°，和是90°，互为余角！"]]},
+{bg:'class',cast:[['leo',85,'grin','cheer'],['mia',200,'happy','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"Case closed: 75°, not 90°! The hour hand was sneaking forward all along.","结案：是75°，不是90°！原来时针一直在偷偷往前走。"],
+      ['bit',"Earth is a clock too: it turns about 15° an hour, but its speed changes a tiny bit. In October 2026, timekeepers voted to stop adding leap seconds from 2027.","地球也是一座钟：每小时大约转15°，不过转速会有极小的变化。2026年10月，国际计时专家投票决定：从2027年起不再加闰秒。"],
+      ['mia',"So even Earth's “hour hand” isn't perfectly on time!","看来连地球这根“时针”也不是分秒不差！"]]}
+],
+terms:[["Angle / Vertex","角 / 顶点","Two rays that share an endpoint; that shared point is the vertex.","有公共端点的两条射线组成的图形叫做角；公共端点叫做角的顶点。"],
+ ["Degree (°) and minute (′)","度（°）与分（′）","Units for measuring angles: a full turn is 360°, and 1° = 60′.","度量角的单位：一周角是360°，1° = 60′。"],
+ ["Straight angle / Round angle","平角 / 周角","A straight angle is 180°; one full turn, a round angle, is 360°.","平角等于180°；旋转一整圈形成的周角等于360°。"],
+ ["Complementary / Supplementary","余角 / 补角","Two angles that add up to 90° / to 180°.","和为90°的两个角互为余角；和为180°的两个角互为补角。"]],
+tryIt:T("Clock-angle detective: with an adult, draw a big clock face with a compass, then use a protractor to mark a number every 30°. Draw the hands for 2:20 and for 6:30. Work out each angle with Bit's rule, then measure it with the protractor. (Check: 50° and 15°.)","钟面小侦探：在大人陪同下，用圆规画一个大钟面，再用量角器每隔30°标一个数字。画出2:20和6:30时的两根指针，先用比特的方法算出夹角，再用量角器量一量。（核对：50°和15°。）")}
+);

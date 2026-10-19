@@ -1,7 +1,7 @@
 // ===== Math Detectives Junior: Shanghai 6th-grade math review (沪教版 五·四学制 六年级) =====
-// Episodes live in data/series/mathjr/ep1.js … ep11.js
+// Episodes live in data/series/mathjr/ep1.js … ep12.js
 LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives Junior","小小数学侦探"),
- desc:T("Factors and multiples, fractions, ratios, percentages, circles, negative numbers, equations, inequalities, boxes and averages: a quick review of the 6th-grade toolkit.","因数与倍数、分数、比和比例、百分比、圆与扇形、负数、方程、不等式、长方体和平均数：快速复习六年级的数学工具箱。"),
+ desc:T("Factors and multiples, fractions, ratios, percentages, circles, negative numbers, equations, inequalities, boxes, averages and angles: a quick review of the 6th-grade toolkit.","因数与倍数、分数、比和比例、百分比、圆与扇形、负数、方程、不等式、长方体、平均数和角：快速复习六年级的数学工具箱。"),
  grade:T("6th-grade math review","六年级数学复习"),
  // Episode titles, one per file data/series/mathjr/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -16,4 +16,5 @@ LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives
   T("Chickens and Rabbits","鸡兔同笼"), // ep9
   T("The Mystery of the Box","盒子之谜"), // ep10
   T("The Average Mystery","平均数之谜"), // ep11
+  T("The Clock Hands Mystery","钟面夹角之谜"), // ep12
  ]});
