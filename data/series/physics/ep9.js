@@ -1,0 +1,32 @@
+// physics · episode 9 (script marker P9)
+LBC.registerEpisode('physics',9,
+{t:T("Can a Car Really Fly?","汽车真的能飞吗？"),topic:T("Thrust, weight and Newton's third law","推力、重力与相互作用力"),
+panels:[
+{bg:'room',props:[['phone',138,152]],cast:[['leo',90,'surprised','hold'],['mia',215,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"Oct 2026: a news video shows a new Tesla Roadster prototype leaping over other cars.","2026年10月：新闻视频里，一辆新款特斯拉Roadster原型车跃过了其他车辆。"],
+      ['leo',"It jumped, flipped and landed on its wheels! Flying cars are here!","它跳起来、翻个身，又稳稳落地！飞行汽车来了！"],
+      ['mia',"Hold on. Did it FLY, or just jump? Let's check what was really shown.","等等，它是“飞”，还是“跳”？我们先查清楚到底展示了什么。"]]},
+{bg:'room',holo:{t:'list',title:T("Shown or claimed?","已展示还是声称？"),items:[{i:'check',l:T("Shown: short jumps and flips","已展示：短暂跳跃和翻转")},{i:'check',l:T("Shown: landing on its wheels","已展示：四轮着地")},{i:'q',l:T("Claimed: production from 2028","声称：2028年开始生产")},{i:'cross',l:T("Not shown: sustained flight","未展示：持续飞行")}]},
+ cast:[['mia',54,'determined','point'],['bit',356,'talk','present']],
+ say:[['bit',"Good scientists sort facts from promises. The jumps were filmed in front of an audience. Sustained flight hasn't been shown.","好的科学家会把事实和承诺分开。跳跃是当着观众拍下来的，但持续飞行还没有展示过。"]]},
+{bg:'room',holo:{t:'big',title:T("To lift off: thrust > weight","要离地：推力 > 重力"),rows:[{s:T("Car mass ≈ 2 000 kg (estimate)","车的质量 ≈ 2 000 千克（估计）"),size:12},{s:'G = mg = 2000 × 9.8',size:15,mono:true},{s:'≈ 19 600 N',size:20,mono:true,fill:'#C2416B'},{s:T("Need more than about 19.6 kN","需要超过约19.6千牛"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Gravity pulls a car of about 2 tonnes down with about 19 600 newtons. To hover, the thrusters must push up at least that hard. To rise, even harder.","重力以大约19 600牛的力把约2吨重的车往下拉。要悬停，推力至少要这么大；要上升，还要更大。"]]},
+{bg:'room',holo:{t:'flow',title:T("Newton's 3rd law","牛顿第三定律"),steps:[{i:'lock',l:T("Gas under pressure","高压气体")},{i:'wave',l:T("Shoots down","向下喷出")},{i:'check',l:T("Car goes up","车被推上去")}],foot:T("Forces come in pairs","力的作用是相互的")},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"No burning, just squeezed gas rushing out. The car pushes gas down, so the gas pushes the car up.","不用燃烧，只是被压缩的气体冲出来。车把气体往下推，气体就把车往上推。"]]},
+{bg:'room',holo:{t:'table',title:T("Ways to lift","向上推的办法"),head:[T("Lifter","方式"),T("Lasts","能撑多久")],rows:[[T("Cold gas","冷气推进"),T("Seconds","几秒")],[T("Rocket","火箭"),T("Minutes","几分钟")],[T("Propellers","螺旋桨"),T("Much longer","长得多")]],note:T("Pushing lots of air gently saves energy","螺旋桨轻推大量空气，更省能量")},
+ cast:[['leo',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"My estimate: hovering on cold gas would use roughly 30 kg of gas EVERY second. That's why cold gas only gives short boosts.","我估算：靠冷气悬停，每秒大约要用掉30千克气体。所以冷气只能提供短暂的助推。"],
+      ['leo',"So drone-style flying taxis use propellers instead!","难怪无人机式的“空中出租车”用的是螺旋桨！"]]},
+{bg:'room',cast:[['leo',85,'grin','point'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['mia',"Verdict: a real, very short jump, not a flying car yet. Case closed.","结论：真实的、非常短的跳跃，还不算飞行汽车。结案。"],
+      ['leo',"I'll test thrust with a balloon rocket. No gas tanks!","我用气球火箭来测试推力，不用高压气罐！"],
+      ['bit',"Smart. High-pressure gas is for trained engineers only.","明智。高压气体只能由受过训练的工程师来操作。"]]}
+],
+terms:[["Thrust","推力","The push from an engine, thruster or propeller.","发动机、推进器或螺旋桨产生的推动力。"],
+ ["Weight (gravity)","重力","The pull of gravity on an object: G = mg, with g ≈ 9.8 N/kg.","物体受到的地球吸引力：G = mg，g ≈ 9.8 牛/千克。"],
+ ["Interaction forces","相互作用力","When A pushes B, B pushes back on A just as hard (Newton's 3rd law).","A推B时，B也同样大小地推A（牛顿第三定律）。"],
+ ["Cold-gas thruster","冷气推进器","A thruster that makes a push by letting stored high-pressure gas out of a nozzle, with no burning.","让高压储存的气体从喷管喷出来产生推力，不需要燃烧。"]],
+tryIt:T("Balloon rocket (with an adult): thread a string through a drinking straw and tie it tightly between two chairs. Blow up a balloon, hold the neck shut, tape it under the straw, then let go. Which way does the air go, and which way does the balloon go? Try a bigger and a smaller balloon and measure how far each travels. Never use gas canisters or anything pressurised.","气球火箭（请大人陪同）：把一根绳子穿过吸管，绷紧系在两把椅子之间。吹起一个气球，捏住口，用胶带粘在吸管下面，然后松手。空气往哪边跑？气球往哪边跑？换大一点和小一点的气球，量一量各跑了多远。不要使用任何气罐或高压的东西。")}
+);

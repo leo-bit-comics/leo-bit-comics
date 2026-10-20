@@ -1,5 +1,5 @@
 // ===== Physics Explorers: preview of Shanghai 8th-grade physics =====
-// Episodes live in data/series/physics/ep1.js … ep7.js
+// Episodes live in data/series/physics/ep1.js … ep9.js
 LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explorers","物理探险"),
  desc:T("Measurement, sound, light, colour, motion and force: the topics that open 8th-grade physics.","测量、声、光、颜色、运动和力：八年级物理开篇的内容。"),
  grade:T("A preview of Shanghai 8th-grade physics","上海八年级物理预习"),
@@ -13,4 +13,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("Push and Pull","推与拉"), // ep6
   T("The Spinning Ping-Pong Ball","旋转的乒乓球"), // ep7
   T("Ghost Particles from Space","来自太空的幽灵粒子"), // ep8 · 2026 Nobel Prize in Physics
+  T("Can a Car Really Fly?","汽车真的能飞吗？"), // ep9
  ]});
