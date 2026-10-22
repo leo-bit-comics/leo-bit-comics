@@ -13,4 +13,5 @@ LBC.registerSeries({id:'math',icon:'calc',color:'#2F6FD6',t:T("Math Detectives",
   T("Angles and Triangles","角与三角形"), // ep6
   T("Treasure Map","藏宝图"), // ep7
   T("The Spinning Needle","旋转的针"), // ep8 · 2026 Fields Medal
+  T("Giant Numbers, Tiny Numbers","超大的数，超小的数"), // ep9
  ]});
