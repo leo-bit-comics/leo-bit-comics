@@ -12,4 +12,5 @@ LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers",
   T("Typhoon Season","台风来了"), // ep5
   T("Rock Detectives","岩石侦探"), // ep6
   T("Into the Ocean","潜入海洋"), // ep7
+  T("The Shaking Ground","震动的大地"), // ep8
  ]});

@@ -14,4 +14,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("The Spinning Ping-Pong Ball","旋转的乒乓球"), // ep7
   T("Ghost Particles from Space","来自太空的幽灵粒子"), // ep8 · 2026 Nobel Prize in Physics
   T("Can a Car Really Fly?","汽车真的能飞吗？"), // ep9
+  T("Why Can Metal Float?","金属也能浮起来？"), // ep10
  ]});

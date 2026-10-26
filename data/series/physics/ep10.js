@@ -1,0 +1,32 @@
+// physics · episode 10 (script marker P10)
+LBC.registerEpisode('physics',10,
+{t:T("Why Can Metal Float?","金属也能浮起来？"),topic:T("Density, buoyancy and Archimedes' principle","密度、浮力与阿基米德原理"),
+panels:[
+{bg:'room',props:[['phone',138,152]],cast:[['leo',90,'surprised','hold'],['mia',215,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"Oct 2026 news: scientists made a titanium-alloy structure that floats in water.","2026年10月新闻：科学家做出了能浮在水上的钛合金结构。"],
+      ['leo',"Metal that floats? My spoon sinks every time!","金属会漂？我的勺子每次都沉下去！"],
+      ['mia',"Solid metal sinks. So how can a metal thing float?","实心金属会沉。那金属东西怎么能浮？"]]},
+{bg:'room',holo:{t:'big',title:T("Density ρ = m / V","密度 ρ = m / V"),rows:[{s:T("Mass ÷ volume","质量 ÷ 体积"),size:13},{s:T("Fresh water ≈ 1 g/cm³","淡水 ≈ 1 克/厘米³"),size:14,fill:'#C2416B'},{s:T("Solid titanium is denser → sinks","实心钛更密 → 会沉"),size:12}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Density is how much mass packs into a space. Water is about one gram per cubic centimetre. Solid titanium packs more, so it sinks.","密度就是单位体积里装了多少质量。水大约每立方厘米一克。实心钛更密，所以会沉。"]]},
+{bg:'room',holo:{t:'big',title:T("Archimedes' idea","阿基米德的想法"),rows:[{s:T("Buoyancy = weight of fluid pushed aside","浮力 = 排开液体的重力"),size:12},{s:T("Average density < fluid → floats","平均密度 < 液体 → 上浮"),size:13,fill:'#C2416B'},{s:T("Average density > fluid → sinks","平均密度 > 液体 → 下沉"),size:12}]},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],fx:[['!','mia']],
+ say:[['bit',"Push water aside and the water pushes back up. That upward push is buoyancy. Compare average density to the fluid.","排开水时，水会往上推回来。这向上的推力就是浮力。把平均密度和液体比一比就行。"]]},
+{bg:'room',holo:{t:'vs',title:T("Open lattice vs sealed foam","空心格 vs 密封泡沫"),a:{l:T("Empty channels fill with water → sinks","空通道进水 → 沉"),ok:false},b:{l:T("Foam seals channels → stays light → floats","泡沫封住通道 → 保持轻 → 浮"),ok:true}},
+ cast:[['mia',54,'surprised','idle'],['bit',356,'talk','present']],
+ say:[['bit',"They printed a hollow titanium-alloy lattice, then filled the struts with closed-cell polymer foam so water cannot flood in. Average density stays below water.","他们打印出空心钛合金格，再往支柱里灌闭孔高分子泡沫，水进不去。平均密度就低于水。"],
+      ['mia',"Unfilled open lattices sank. Sealed ones floated—even in seawater.","没灌的空心格会沉。密封的能浮——连海水里也行。"]]},
+{bg:'room',holo:{t:'list',title:T("Same idea all around us","身边到处是这招"),items:[{i:'drop',l:T("Boat: metal shell + lots of air","船：金属壳 + 大量空气")},{i:'check',l:T("Ball: thin shell traps air","球：薄壳困住空气")},{i:'leaf',l:T("Orange with peel can float","带皮的橙子能漂")},{i:'wave',l:T("Seawater ≈ 1.03 g/cm³","海水 ≈ 1.03 克/厘米³")}]},
+ cast:[['mia',54,'happy','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Ships are mostly trapped air. A solid metal block sinks; a metal shell with sealed air or foam can float. Seawater is a bit denser than fresh.","船里大半是困住的空气。实心金属块会沉；装满密封空气或泡沫的金属壳能浮。海水比淡水稍密一点。"]]},
+{bg:'room',cast:[['leo',85,'grin','point'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"Tonight: foil boat vs clay ball in a bowl. Science snack!","今晚：锡箔船对黏土球，水盆里比一比。科学加餐！"],
+      ['mia',"Average density decides. Case closed—until Leo tries to float his spoon.","平均密度说了算。结案——除非乐乐还想让勺子漂。"],
+      ['bit',"My chassis is sealed. I float on jokes, not water.","我的外壳是密封的。我靠笑话漂，不靠水。"]]}
+],
+terms:[["Density","密度","Mass per unit volume: ρ = m / V.","单位体积的质量：ρ = m / V。"],
+ ["Buoyancy","浮力","The upward push from a fluid on an object in it.","物体在流体中受到的向上推力。"],
+ ["Archimedes' principle","阿基米德原理","Buoyancy equals the weight of the fluid the object pushes aside.","浮力等于物体排开的那部分流体的重力。"],
+ ["Average density","平均密度","Total mass divided by the whole outer volume, including trapped air or foam.","总质量除以整体外形体积，包含困住的空气或泡沫。"]],
+tryIt:T("Foil boat vs clay ball (with an adult): shape a small boat from kitchen foil and a solid ball from the same mass of modelling clay (or crumpled foil). Float both gently in a bowl of water. Which floats? Why? Try an orange with peel, then carefully peel it and try again. Wipe spills; do not taste anything from the bowl.","锡箔船对黏土球（请大人陪同）：用厨房锡箔折一只小船，再用同样质量的橡皮泥（或揉成一团的锡箔）捏实心球。轻轻放进一碗水里。谁浮？为什么？再试带皮橙子，小心剥皮后再试。擦干洒出的水；不要品尝碗里的东西。")}
+);

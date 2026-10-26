@@ -1,0 +1,31 @@
+// money · episode 6 (script marker MO6)
+LBC.registerEpisode('money',6,
+{t:T("How Much Is That in Yuan?","换成人民币是多少？"),topic:T("Exchange rates as unit rates; converting currencies both ways","汇率作单位比率；双向货币换算"),
+panels:[
+{bg:'room',props:[['phone',138,152]],cast:[['leo',90,'surprised','hold'],['mia',215,'think','think'],['bit',322,'talk','wave']],
+ say:[['nar',"Uncle's trip photo: a keychain tagged $12.","舅舅旅行照：钥匙扣标着12美元。"],
+      ['leo',"Twelve dollars… is that a lot in yuan?","十二美元……换成人民币贵不贵？"],
+      ['mia',"We need a rate before we can tell.","要有汇率才能算。"]]},
+{bg:'room',holo:{t:'big',title:T("Example rate (not live)","示例汇率（非实时）"),rows:[{s:T("1 dollar ≈ 7 yuan","1美元 ≈ 7元"),size:18,mono:true,fill:'#C2416B'},{s:T("Unit rate: yuan per 1 dollar","单位比率：每1美元换多少元"),size:11},{s:T("Rates change; ask an adult today","汇率会变；当天问大人"),size:11}]},
+ cast:[['leo',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"An exchange rate is a unit rate: how many yuan for ONE unit of the other money. We'll use 7 only as a story example.","汇率就是单位比率：1单位外币能换多少元。故事里只用7作例子。"]]},
+{bg:'room',holo:{t:'big',title:T("Dollars → yuan","美元 → 人民币"),rows:[{s:T("amount × rate","金额 × 汇率"),size:13},{s:'12 × 7 = 84',size:20,mono:true,fill:'#C2416B'},{s:T("About ¥84","大约84元"),size:12}]},
+ cast:[['mia',54,'happy','idle'],['bit',356,'talk','present']],
+ say:[['bit',"Multiply: dollars times yuan-per-dollar. So twelve dollars is about eighty-four yuan in this example.","乘法：美元数 × 每美元的元数。按例子，12美元大约84元。"]]},
+{bg:'room',holo:{t:'big',title:T("Yuan → dollars","人民币 → 美元"),rows:[{s:T("amount ÷ rate","金额 ÷ 汇率"),size:13},{s:'84 ÷ 7 = 12',size:20,mono:true,fill:'#C2416B'},{s:T("Same pair both ways","同一组数，双向验算"),size:11}]},
+ cast:[['mia',54,'happy','idle'],['bit',356,'talk','present']],
+ say:[['mia',"Divide to go back: eighty-four divided by seven is twelve. Checks out!","反过来用除法：84÷7=12。对得上！"]]},
+{bg:'room',holo:{t:'vs',title:T("Sticker vs what you pay","标价 vs 实付"),a:{l:T("Use only the sticker and guess","只看标价瞎猜"),ok:false},b:{l:T("Read the board rate; fees may apply","看牌价；可能有手续费"),ok:true}},
+ cast:[['mia',54,'think','think'],['bit',356,'talk','present']],
+ say:[['bit',"Banks and shops may post a slightly different rate or add a small fee. Read the board; ask an adult before you pay.","银行和商店牌价可能略有不同，还可能加一点手续费。看牌价，付钱前问大人。"]]},
+{bg:'room',cast:[['leo',85,'grin','point'],['mia',200,'smirk','idle'],['bit',322,'wink','wave']],
+ say:[['leo',"Eighty-four yuan for a keychain? I'll pass—my budget says no.","钥匙扣要84元？我过——预算说不。"],
+      ['mia',"Math before shopping. Nice.","先算再买，不错。"],
+      ['bit',"My rate is fixed: one joke per bolt. No fee!","我的汇率固定：一笑话换一伏特，不收手续费！"]]}
+],
+terms:[["Exchange rate","汇率","How many units of one money equal one unit of another.","一种货币换另一种时，1单位能换多少。"],
+ ["Unit rate","单位比率","A rate for exactly one unit, like yuan per 1 dollar.","对应恰好1个单位的比率，如每1美元换多少元。"],
+ ["Convert","换算","Change an amount from one unit (or currency) to another.","把数量从一种单位（或货币）换成另一种。"],
+ ["Fee","手续费","A small extra charge some banks or shops add when you exchange.","兑换时银行或商店可能另收的一点费用。"]],
+tryIt:T("With an adult, pick 2–3 prices from a foreign-currency menu or catalog (or invent practice prices). Agree on an EXAMPLE rate for today—not a live guess—then convert each price to yuan and compare to a yuan budget. No real bank account needed.","和大人一起，从外币菜单或目录里挑2～3个标价（也可以一起编练习价）。约定一个今天用的示例汇率——不要自行猜实时牌价——再把每个价格换算成人民币，和你的人民币预算比一比。不需要真实银行账户。")}
+);
