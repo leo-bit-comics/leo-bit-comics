@@ -13,4 +13,5 @@ LBC.registerSeries({id:'chem',icon:'flame',color:'#C2416B',t:T("Chemistry Kitche
   T("Acids and Bases","酸和碱"), // ep6
   T("Mirror-Image Molecules","镜像分子"), // ep7
   T("Where Did the Sugar Go?","糖去哪儿了？"), // ep8
+  T("Speed It Up!","让反应加速！"), // ep9
  ]});
