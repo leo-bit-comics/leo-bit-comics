@@ -17,4 +17,5 @@ LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives
   T("The Mystery of the Box","盒子之谜"), // ep10
   T("The Average Mystery","平均数之谜"), // ep11
   T("The Clock Hands Mystery","钟面夹角之谜"), // ep12
+  T("Fair Coin, Fair Chance","公平的硬币，公平的机会"), // ep13
  ]});
