@@ -1,7 +1,7 @@
 // ===== Physics Explorers: preview of Shanghai 8th-grade physics =====
-// Episodes live in data/series/physics/ep1.js … ep9.js
+// Episodes live in data/series/physics/ep1.js … ep11.js
 LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explorers","物理探险"),
- desc:T("Measurement, sound, light, colour, motion and force: the topics that open 8th-grade physics.","测量、声、光、颜色、运动和力：八年级物理开篇的内容。"),
+ desc:T("Measurement, sound, light, colour, motion, force and how surfaces bounce heat.","测量、声、光、颜色、运动、力，以及表面怎样把热弹走。"),
  grade:T("A preview of Shanghai 8th-grade physics","上海八年级物理预习"),
  // Episode titles, one per file data/series/physics/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -15,4 +15,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("Ghost Particles from Space","来自太空的幽灵粒子"), // ep8 · 2026 Nobel Prize in Physics
   T("Can a Car Really Fly?","汽车真的能飞吗？"), // ep9
   T("Why Can Metal Float?","金属也能浮起来？"), // ep10
+  T("Why White Feels Cooler","为什么白色更凉快？"), // ep11
  ]});
