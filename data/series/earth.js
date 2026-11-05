@@ -1,7 +1,7 @@
 // ===== Earth Rangers: preview of Shanghai 8th-grade geography and earth science. Every home activity is safe and done with an adult. =====
-// Episodes live in data/series/earth/ep1.js … ep9.js
+// Episodes live in data/series/earth/ep1.js … ep10.js
 LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers","地球巡游"),
- desc:T("Weather, the water cycle, climate, rocks and landforms, and how our planet works. Every home activity is safe and done with an adult.","天气、水循环、气候、岩石与地形，看看我们的星球如何运转。所有家庭小实验都安全，并需大人陪同。"),
+ desc:T("Weather, climate, rocks, oceans, and models of how our planet works — even without life. Every home activity is safe and done with an adult.","天气、气候、岩石、海洋，以及没有生命时地球如何运转的模型。所有家庭小实验都安全，并需大人陪同。"),
  grade:T("A preview of Shanghai 8th-grade geography and earth science","上海八年级地理与地球科学预习"),
  // Episode titles, one per file data/series/earth/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -14,4 +14,5 @@ LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers",
   T("Into the Ocean","潜入海洋"), // ep7
   T("The Shaking Ground","震动的大地"), // ep8
   T("The Sun's Hidden Magnet","太阳藏着的磁"), // ep9
+  T("An Earth With No Life","没有生命的地球"), // ep10
  ]});
