@@ -1,7 +1,7 @@
 // ===== Chemistry Kitchen: preview of Shanghai 8th-grade chemistry. Fire and electricity appear only as teacher demos. =====
-// Episodes live in data/series/chem/ep1.js … ep8.js
+// Episodes live in data/series/chem/ep1.js … ep10.js
 LBC.registerSeries({id:'chem',icon:'flame',color:'#C2416B',t:T("Chemistry Kitchen","化学小厨房"),
- desc:T("Lab safety, air, water, atoms and molecules, chemical reactions, acids and bases, solutions and crystals. Every home activity is safe and done with an adult.","实验安全、空气、水、原子和分子、化学反应、酸和碱、溶液和结晶。所有家庭小实验都安全，并需大人陪同。"),
+ desc:T("Lab safety, air, water, atoms and molecules, chemical reactions, acids and bases, solutions and crystals, reaction rate and catalysts, fluorescence and carbon-dot glow. Every home activity is safe and done with an adult.","实验安全、空气、水、原子和分子、化学反应、酸和碱、溶液和结晶、反应速率与催化剂、荧光与碳点发光。所有家庭小实验都安全，并需大人陪同。"),
  grade:T("A preview of Shanghai 8th-grade chemistry","上海八年级化学预习"),
  // Episode titles, one per file data/series/chem/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -14,4 +14,5 @@ LBC.registerSeries({id:'chem',icon:'flame',color:'#C2416B',t:T("Chemistry Kitche
   T("Mirror-Image Molecules","镜像分子"), // ep7
   T("Where Did the Sugar Go?","糖去哪儿了？"), // ep8
   T("Speed It Up!","让反应加速！"), // ep9
+  T("Glow That Changes Color","会变色的荧光"), // ep10
  ]});
