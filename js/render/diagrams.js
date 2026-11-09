@@ -447,3 +447,52 @@ DIAG.icecube=(d,B)=>{let s='';const lo={size:8.5,a:'start',fill:INK,maxW:B.w*0.4
   s+=`<line x1="${n1(x0+cs*0.12)}" y1="${n1(y0+cs*0.92)}" x2="${n1(x0+cs*0.88)}" y2="${n1(y0+cs*0.18)}" stroke="#2E7DFF" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>`;
   const lx=x0+cs+10;lo.maxW=B.x+B.w-lx-2;let ly=sy+6;[T("About 2 km under the ice","在冰下约2千米"),T("1 cubic km of ice","1立方千米的冰"),T("5,160 light sensors","5160个光传感器")].forEach(l=>{const h=stH(l,lo);s+=st(lx,ly,l,lo).s;ly+=h+6;});
   s+=st(cx,B.y,T("South Pole","南极"),{size:9.5,fill:HT}).s;return s;};
+
+// ---------- mathjr ep15: cake sharing for polynomials ----------
+// Shows x cakes shared among 2 people vs 1 cake shared among x people
+DIAG.cakeshare=(d,B)=>{let s='';const rh=B.h/2;
+  // Top: x cakes ÷ 2 people
+  {const y=B.y+4,lo={size:10,maxW:B.w,fill:INK};
+    const titleH=stH(d.top.title,lo);s+=st(B.x+B.w/2,y,d.top.title,lo).s;
+    const ro={size:12,mono:true,fill:HOT,maxW:B.w-8};const resH=stH(d.top.result,ro);
+    const availH=rh-titleH-resH-14;const cy=y+titleH+availH/2;
+    const cakeW=22,gap=8,peopleX=B.x+B.w*0.64;
+    // Draw x cakes (show 2 or 4 based on d.top.x)
+    const numCakes=d.top.x||2;
+    const totalW=numCakes*cakeW+(numCakes-1)*gap;const startX=B.x+8;
+    for(let i=0;i<numCakes;i++){const cx=startX+i*(cakeW+gap)+cakeW/2;
+      s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(cakeW/2)}" fill="#FFE7A3" stroke="${INK}" stroke-width="1.4"/>`;
+      s+=`<path d="M${n1(cx)} ${n1(cy)} L${n1(cx+cakeW/2)} ${n1(cy)} A${cakeW/2} ${cakeW/2} 0 0 1 ${n1(cx-cakeW/2*Math.cos(Math.PI/3))} ${n1(cy+cakeW/2*Math.sin(Math.PI/3))} Z" fill="#FFD84D" stroke="${INK}" stroke-width="1"/>`;
+      if(i===0) s+=`<text x="${n1(cx+cakeW/2+10)}" y="${n1(cy+3)}" font-size="11" font-weight="700" fill="${INK}" class="sv-mono">×${numCakes}</text>`;}
+    // Arrow
+    s+=arrow(peopleX-28,cy,peopleX-4,cy,HOT,2);
+    // 2 people (stick figures)
+    for(let i=0;i<2;i++){const px=peopleX+i*26;
+      s+=`<circle cx="${n1(px)}" cy="${n1(cy-14)}" r="5" fill="#F5CBA7" stroke="${INK}" stroke-width="1.2"/>`;
+      s+=lineS(px,cy-9,px,cy+6,INK,1.6)+lineS(px-6,cy-2,px+6,cy-2,INK,1.6)+lineS(px,cy+6,px-5,cy+16,INK,1.6)+lineS(px,cy+6,px+5,cy+16,INK,1.6);}
+    // Result
+    s+=st(B.x+B.w/2,B.y+rh-resH-4,d.top.result,ro).s;}
+  
+  // Bottom: 1 cake ÷ x people
+  {const y=B.y+rh+4,lo={size:10,maxW:B.w,fill:INK};
+    const titleH=stH(d.bot.title,lo);s+=st(B.x+B.w/2,y,d.bot.title,lo).s;
+    const ro={size:12,mono:true,fill:HOT,maxW:B.w-8};const resH=stH(d.bot.result,ro);
+    const availH=rh-titleH-resH-14;const cy=y+titleH+availH/2;
+    const cakeW=22,peopleX=B.x+B.w*0.64;
+    // Draw 1 cake
+    const cx=B.x+20;
+    s+=`<circle cx="${n1(cx)}" cy="${n1(cy)}" r="${n1(cakeW/2)}" fill="#FFE7A3" stroke="${INK}" stroke-width="1.4"/>`;
+    s+=`<path d="M${n1(cx)} ${n1(cy)} L${n1(cx+cakeW/2)} ${n1(cy)} A${cakeW/2} ${cakeW/2} 0 0 1 ${n1(cx-cakeW/2*Math.cos(Math.PI/3))} ${n1(cy+cakeW/2*Math.sin(Math.PI/3))} Z" fill="#FFD84D" stroke="${INK}" stroke-width="1"/>`;
+    s+=`<text x="${n1(cx+cakeW/2+10)}" y="${n1(cy+3)}" font-size="11" font-weight="700" fill="${INK}" class="sv-mono">×1</text>`;
+    // Arrow
+    s+=arrow(peopleX-28,cy,peopleX-4,cy,HOT,2);
+    // x people (show 2 or 4 based on d.bot.x)
+    const numPeople=d.bot.x||2;
+    const rows=numPeople>2?2:1;
+    for(let i=0;i<numPeople;i++){const col=i%2,row=Math.floor(i/2);const px=peopleX+col*26,py=cy+(row-(rows-1)/2)*22;
+      s+=`<circle cx="${n1(px)}" cy="${n1(py-14)}" r="5" fill="#F5CBA7" stroke="${INK}" stroke-width="1.2"/>`;
+      s+=lineS(px,py-9,px,py+6,INK,1.6)+lineS(px-6,py-2,px+6,py-2,INK,1.6)+lineS(px,py+6,px-5,py+16,INK,1.6)+lineS(px,py+6,px+5,py+16,INK,1.6);
+      if(i===0) s+=`<text x="${n1(px+16)}" y="${n1(py+3)}" font-size="11" font-weight="700" fill="${INK}" class="sv-mono">×${numPeople}</text>`;}
+    // Result
+    s+=st(B.x+B.w/2,B.y+B.h-resH-4,d.bot.result,ro).s;}
+  return s;};

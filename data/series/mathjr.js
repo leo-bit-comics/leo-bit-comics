@@ -19,4 +19,5 @@ LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives
   T("The Clock Hands Mystery","钟面夹角之谜"), // ep12
   T("Fair Coin, Fair Chance","公平的硬币，公平的机会"), // ep13
   T("What Percent Is Left?","还剩百分之几？"), // ep14
+  T("Can a Fraction Be a Polynomial?","有分数，也能是整式？"), // ep15
  ]});
