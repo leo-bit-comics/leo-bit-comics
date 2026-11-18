@@ -101,3 +101,4 @@ python3 -m http.server 8000   # then open http://localhost:8000/#<id>-<N>
 ```
 
 Check the console has no errors and try all three language buttons.
+

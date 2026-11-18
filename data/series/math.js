@@ -1,7 +1,7 @@
 // ===== Math Detectives: Shanghai 7th-grade math (沪教版 五·四学制) =====
-// Episodes live in data/series/math/ep1.js … ep7.js
+// Episodes live in data/series/math/ep1.js … ep10.js
 LBC.registerSeries({id:'math',icon:'calc',color:'#2F6FD6',t:T("Math Detectives","数学侦探"),
- desc:T("Expressions, factorising, algebraic fractions, real numbers, parallel lines, triangles and coordinates.","整式、因式分解、分式、实数、相交线与平行线、三角形和平面直角坐标系。"),
+ desc:T("Expressions, factorising, algebraic fractions, real numbers, parallel lines, triangles, coordinates, scientific notation and how triangles tile a plane.","整式、因式分解、分式、实数、相交线与平行线、三角形、平面直角坐标系、科学记数法，以及三角形怎样铺满平面。"),
  grade:T("Matches Shanghai 7th-grade math, term 1 and term 2","对应上海七年级数学第一、第二学期"),
  // Episode titles, one per file data/series/math/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -14,4 +14,5 @@ LBC.registerSeries({id:'math',icon:'calc',color:'#2F6FD6',t:T("Math Detectives",
   T("Treasure Map","藏宝图"), // ep7
   T("The Spinning Needle","旋转的针"), // ep8 · 2026 Fields Medal
   T("Giant Numbers, Tiny Numbers","超大的数，超小的数"), // ep9
+  T("Triangles That Share Corners","只在顶点相接的三角形"), // ep10
  ]});
