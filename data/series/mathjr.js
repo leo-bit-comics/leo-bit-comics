@@ -1,7 +1,7 @@
 // ===== Math Detectives Junior: Shanghai 6th-grade math review (沪教版 五·四学制 六年级) =====
-// Episodes live in data/series/mathjr/ep1.js … ep16.js
+// Episodes live in data/series/mathjr/ep1.js … ep17.js
 LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives Junior","小小数学侦探"),
- desc:T("Factors and multiples, fractions, ratios, percentages as part of a whole, circles, negative numbers, equations, inequalities, boxes, averages, angles, possibility, and cylinders and cones: a quick review of the 6th-grade toolkit.","因数与倍数、分数、比和比例、百分数（部分占总量）、圆与扇形、负数、方程、不等式、长方体、平均数、角、可能性和圆柱与圆锥：快速复习六年级的数学工具箱。"),
+ desc:T("Factors and multiples, fractions, ratios, percentages as part of a whole, circles, negative numbers, equations, inequalities, boxes, averages, angles, possibility, cylinders and cones, and scale: a quick review of the 6th-grade toolkit.","因数与倍数、分数、比和比例、百分数（部分占总量）、圆与扇形、负数、方程、不等式、长方体、平均数、角、可能性、圆柱与圆锥，以及比例尺：快速复习六年级的数学工具箱。"),
  grade:T("6th-grade math review","六年级数学复习"),
  // Episode titles, one per file data/series/mathjr/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -21,4 +21,5 @@ LBC.registerSeries({id:'mathjr',icon:'calc',color:'#E07A1F',t:T("Math Detectives
   T("What Percent Is Left?","还剩百分之几？"), // ep14
   T("Can a Fraction Be a Polynomial?","有分数，也能是整式？"), // ep15
   T("Three Cones Fill a Can","三个圆锥装满一罐"), // ep16
+  T("The Thumb-Sized Football Field","拇指大的足球场"), // ep17
  ]});
