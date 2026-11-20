@@ -1,5 +1,5 @@
 // ===== Earth Rangers: preview of Shanghai 8th-grade geography and earth science. Every home activity is safe and done with an adult. =====
-// Episodes live in data/series/earth/ep1.js … ep13.js
+// Episodes live in data/series/earth/ep1.js … ep14.js
 LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers","地球巡游"),
  desc:T("Weather, climate, rocks, oceans, and fossils — including amber — as a record of Earth's past. Every home activity is safe and done with an adult.","天气、气候、岩石、海洋，以及化石和琥珀这样的地球历史记录。所有家庭小实验都安全，并需大人陪同。"),
  grade:T("A preview of Shanghai 8th-grade geography and earth science","上海八年级地理与地球科学预习"),
@@ -18,4 +18,5 @@ LBC.registerSeries({id:'earth',icon:'globe',color:'#2F9E5B',t:T("Earth Rangers",
   T("A Feather in Amber","琥珀里的羽毛"), // ep11
   T("Why the Path Zigzags","山路为什么弯着走"), // ep12
   T("A Plant in a Rock Crack","石缝里的植物"), // ep13
+  T("Are You Really Ready?","你真的准备好了吗？"), // ep14
  ]});
