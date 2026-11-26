@@ -2,6 +2,7 @@
 // episode files data/series/<id>/ep<N>.js call LBC.registerEpisode(id, N, {...}) and are loaded on demand
 // by LBC.loadEpisode(id, N) (script injection, cached promise). LBC.finalize() builds SERIES in manifest order.
 // Until its file has loaded, SERIES[i].episodes[n] is a stub {t}; LBC.isLoaded(ep) tells them apart.
+const _V=(document.currentScript&&new URL(document.currentScript.src).searchParams.get('v'))||'';
 const SERIES=[];
 window.LBC={manifest:[],_s:{},_p:{},
   registerSeries(s){if(this._s[s.id])console.warn('LBC: duplicate series',s.id);
@@ -13,7 +14,7 @@ window.LBC={manifest:[],_s:{},_p:{},
   loadEpisode(id,n){const key=id+'-'+n,s=this._s[id];
     if(s&&this.isLoaded(s.episodes[n-1]))return Promise.resolve(s.episodes[n-1]);
     return this._p[key]||(this._p[key]=new Promise((res,rej)=>{const el=document.createElement('script');
-      el.src='data/series/'+id+'/ep'+n+'.js';el.async=true;
+      el.src='data/series/'+id+'/ep'+n+'.js'+(_V?'?v='+_V:'');el.async=true;
       el.onload=()=>{const e=s&&s.episodes[n-1];if(this.isLoaded(e))res(e);else{console.warn('LBC: missing episode',id,n);delete this._p[key];rej(new Error(key));}};
       el.onerror=()=>{console.warn('LBC: missing episode',id,n);delete this._p[key];el.remove();rej(new Error(key));};
       document.head.appendChild(el);}));},
