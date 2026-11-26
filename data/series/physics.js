@@ -1,7 +1,7 @@
 // ===== Physics Explorers: preview of Shanghai 8th-grade physics =====
-// Episodes live in data/series/physics/ep1.js … ep13.js
+// Episodes live in data/series/physics/ep1.js … ep14.js
 LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explorers","物理探险"),
- desc:T("Measurement, sound, light, colour, motion, force, how surfaces bounce heat, how gravity can bend light, and how wind starts sand moving.","测量、声、光、颜色、运动、力，以及表面怎样把热弹走、引力怎样弯折光线、风怎样让沙子开始移动。"),
+ desc:T("Measurement, sound, light, colour, motion, force, how surfaces bounce heat, how gravity can bend light, how wind starts sand moving, and why a star can look green.","测量、声、光、颜色、运动、力，以及表面怎样把热弹走、引力怎样弯折光线、风怎样让沙子开始移动，还有星星为什么会看起来是绿色的。"),
  grade:T("A preview of Shanghai 8th-grade physics","上海八年级物理预习"),
  // Episode titles, one per file data/series/physics/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -18,4 +18,5 @@ LBC.registerSeries({id:'physics',icon:'bulb',color:'#E0A21B',t:T("Physics Explor
   T("Why White Feels Cooler","为什么白色更凉快？"), // ep11
   T("A Space Magnifying Glass","太空放大镜"), // ep12
   T("A Wind Meter Made of Sand","沙子做的风速计"), // ep13
+  T("Can a Star Be Green?","星星也可以是绿色的吗？"), // ep14
  ]});
