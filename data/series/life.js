@@ -1,8 +1,8 @@
-// ===== Life Lab: cells, plants, animals, ecosystems and how living things move, gather in groups, and partner (preview of Shanghai 7th-grade biology). Every home activity is safe and done with an adult. =====
-// Plan: ep1 animal locomotion (rolling snakes) · ep2 coral–algae mutualism · ep3 cells / label-free microscopy · ep4 fruit-specialist adaptation (structure↔diet) · ep5 fish schooling / collective movement (gain and loss) · ep6 flying-frog / gliding adaptation (webbed feet; telling species apart) · later: plants/photosynthesis, body systems
-// Episodes live in data/series/life/ep1.js … ep6.js
+// ===== Life Lab: cells, plants, animals, ecosystems and how living things move, gather in groups, and partner, and how many cells can live as one (preview of Shanghai 7th-grade biology). Every home activity is safe and done with an adult. =====
+// Plan: ep1 animal locomotion (rolling snakes) · ep2 coral–algae mutualism · ep3 cells / label-free microscopy · ep4 fruit-specialist adaptation (structure↔diet) · ep5 fish schooling / collective movement (gain and loss) · ep6 flying-frog / gliding adaptation (webbed feet; telling species apart) · ep7 Volvox / colonial green alga / cells living as one bead (daughter colonies) · later: plants/photosynthesis, body systems
+// Episodes live in data/series/life/ep1.js … ep7.js
 LBC.registerSeries({id:'life',icon:'leaf',color:'#3E8E3A',t:T("Life Lab","生命实验室"),
- desc:T("Cells, plants, animals, ecosystems, and how living things move, gather in groups, and partner. Every home activity is safe and done with an adult.","细胞、植物、动物、生态系统，以及生命如何运动、结群与合作。所有家庭小活动都安全，并需大人陪同。"),
+ desc:T("Cells, plants, animals, ecosystems, how living things move, gather in groups, and partner, and how thousands of cells can live as one green bead. Every home activity is safe and done with an adult.","细胞、植物、动物、生态系统，以及生命如何运动、结群与合作，还有成千上万个细胞怎样组成一颗绿色的小珠。所有家庭小活动都安全，并需大人陪同。"),
  grade:T("A preview of Shanghai 7th-grade biology","上海七年级生物学预习"),
  // Episode titles, one per file data/series/life/ep<N>.js (in order). Must match each episode's t.
  titles:[
@@ -12,4 +12,5 @@ LBC.registerSeries({id:'life',icon:'leaf',color:'#3E8E3A',t:T("Life Lab","生命
   T("Built for Fruit","为果实而生"), // ep4
   T("Swim as One","游成一片"), // ep5
   T("A Frog That Glides","会滑翔的青蛙"), // ep6
+  T("A Swimming Bead of Jade","会游泳的翡翠珠"), // ep7
  ]});
